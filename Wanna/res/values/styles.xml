@@ -16,10 +16,5 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-     <style name="FormTheme">
-        <item name="android:textColor">#48D1CC</item>
-        <item name="android:textSize">16sp</item> 
-    </style>
-    
 
 </resources>

@@ -46,7 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:ems="10"
-        android:labelFor="@+id/password"
         android:inputType="textPassword"
          />
 
@@ -59,7 +58,6 @@
         android:background="#48D1CC"
         android:layout_marginTop="20sp"
         android:textColor="#FFFFFF"
-        android:onClick="loginApp"
         />
 
 </LinearLayout>
