@@ -1,0 +1,142 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`user_table`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`user_table` (
+  `userID` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `userName` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `firstName` VARCHAR(45) NULL,
+  `lastName` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `birthday` DATE NOT NULL,
+  PRIMARY KEY (`userID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`userLocation_table`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`userLocation_table` (
+  `userLocation_ID` INT NOT NULL AUTO_INCREMENT,
+  `userID` INT NOT NULL,
+  `userCountry` VARCHAR(45) NULL,
+  `userCity` VARCHAR(45) NULL,
+  `userStreet` VARCHAR(45) NULL,
+  `userProtolCode` VARCHAR(6) NULL,
+  PRIMARY KEY (`userLocation_ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`eventType_table`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`eventType_table` (
+  `eventTypeID` INT NOT NULL AUTO_INCREMENT,
+  `eventTypeName` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`eventTypeID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`eventLocation_table`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`eventLocation_table` (
+  `eventLocationID` INT NOT NULL AUTO_INCREMENT,
+  `eventID` INT NOT NULL,
+  `eventLocationCountry` VARCHAR(45) NULL,
+  `eventLocationCity` VARCHAR(45) NULL,
+  `eventLocationStreet` VARCHAR(45) NULL,
+  `eventLocationProtolCode` VARCHAR(45) NULL,
+  `eventLongtitude` VARCHAR(45) NULL,
+  `eventLatitude` VARCHAR(45) NULL,
+  PRIMARY KEY (`eventLocationID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`event_table`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`event_table` (
+  `eventID` INT NOT NULL AUTO_INCREMENT,
+  `eventName` VARBINARY(255) NOT NULL,
+  `eventDescription` LONGTEXT NULL,
+  `eventCreateTime` TIMESTAMP(0) NOT NULL,
+  `eventStartTime` TIMESTAMP(0) NOT NULL,
+  `eventExpireTime` TIMESTAMP(0) NOT NULL,
+  `eventTypeID` INT NOT NULL,
+  `eventLocationID` INT NULL,
+  `createrID` INT UNSIGNED NOT NULL,
+  `eventPicture` LONGBLOB NULL,
+  PRIMARY KEY (`eventID`),
+  INDEX `createrID_idx` (`createrID` ASC),
+  INDEX `eventLocationID_idx` (`eventLocationID` ASC),
+  CONSTRAINT `eventTypeID`
+    FOREIGN KEY (`eventID`)
+    REFERENCES `mydb`.`eventType_table` (`eventTypeID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `eventLocationID`
+    FOREIGN KEY (`eventLocationID`)
+    REFERENCES `mydb`.`eventLocation_table` (`eventLocationID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `createrID`
+    FOREIGN KEY (`createrID`)
+    REFERENCES `mydb`.`user_table` (`userID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`profile_table`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`profile_table` (
+  `userID` INT NOT NULL,
+  `picture` VARCHAR(45) NULL,
+  `gender` CHAR(1) NOT NULL,
+  `description` TEXT(1000) NULL,
+  `localeID` INT NULL,
+  `groupID` INT NULL,
+  `statusID` INT NULL,
+  `nickName` VARCHAR(100) NULL,
+  PRIMARY KEY (`userID`),
+  INDEX `statusID_idx` (`statusID` ASC),
+  INDEX `localeID_idx` (`localeID` ASC),
+  CONSTRAINT `userID`
+    FOREIGN KEY ()
+    REFERENCES `mydb`.`user_table` ()
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `localeID`
+    FOREIGN KEY (`localeID`)
+    REFERENCES `mydb`.`userLocation_table` (`userLocation_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `statusID`
+    FOREIGN KEY (`statusID`)
+    REFERENCES `mydb`.`event_table` (`eventID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
