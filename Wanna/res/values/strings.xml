@@ -22,15 +22,5 @@
     <string name="eventLocation">Address: </string>
     <string name="eventPrice">Price range: </string>
     <string name="eventPurchase">Buy tickets now!</string>
-    <string name="title_activity_create_evenet">Create Event</string>
-    <string name="buttonCreateEvent">Create!</string>
-    <string name="rbEntertainment">Entertainment</string>
-    <string name="rbSports">Sports</string>
-    
-    <string-array name="createEventArray">
-        <item>Sports</item>
-        <item>Entertainment</item>
-    </string-array>
-         
 
 </resources>
