@@ -32,7 +32,18 @@
             android:name=".Login"
             android:label="@string/app_name" >
         </activity>
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+        <activity
+            android:name=".CreateEvenet"
+            android:label="@string/title_activity_create_evenet" >
+        </activity>
+        <activity
+            android:name=".CreateEvent"
+            android:label="@string/title_activity_create_event" >
+        </activity>
+>>>>>>> 11dc3efbc2db51c758724d6dc0e1afefa7322dfa
     </application>
 
 </manifest>
