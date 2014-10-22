@@ -11,7 +11,9 @@
     <string name="login">LOG IN</string>
     <string name="register">REGISTER</string>
     <string name="username">Username</string>
+    <string name="name">Name</string>
     <string name="password">Password</string>
+    <string name="retypePassword">Retype Password</string>
     <string name="loginButton">LOGIN</string>
     <string name="title_activity_create_event">Create Event</string>
     <string name="eventName">Event Name: </string>
@@ -22,5 +24,12 @@
     <string name="eventLocation">Address: </string>
     <string name="eventPrice">Price range: </string>
     <string name="eventPurchase">Buy tickets now!</string>
-
+    <string name="gender">Gender</string>
+    <string name="genderMale">Male</string>
+    <string name="genderFemale">Female</string>
+    <string name="age">Age</string>
+    <string name="description">Description</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="activity_profile_form">Profile Form</string>
 </resources>
