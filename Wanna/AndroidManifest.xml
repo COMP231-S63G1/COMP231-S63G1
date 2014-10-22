@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="18"
+        android:minSdkVersion="16"
         android:targetSdkVersion="19" />
 
     <application
@@ -29,6 +29,11 @@
         <activity
             android:name=".Login"
             android:label="@string/app_name" >
+        </activity>
+        
+        <activity
+            android:name=".Profile_Form"
+            android:label="@string/activity_profile_form" >
         </activity>
     </application>
 

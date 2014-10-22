@@ -33,6 +33,7 @@
         android:textColor="#48D1CC"
         android:textSize = "20sp"
         android:layout_marginTop="20dp"
+        android:onClick="onRegisterClick"
   
    	    />
 
