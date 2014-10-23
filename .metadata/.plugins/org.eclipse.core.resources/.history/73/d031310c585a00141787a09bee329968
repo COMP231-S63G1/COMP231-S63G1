@@ -32,20 +32,20 @@
     <string name="done">Done</string>
     <string name="cancel">Cancel</string>
     <string name="activity_profile_form">Profile Form</string>
+    
     <string name="uploadImage">Upload Image</string>
+    
     <string name="hintEventTime">Ex. 12am</string>
     <string name="hintEventDate">Ex. 1/1/2014</string>
     <string name="hintPrice">Ex. $35-$45</string>
+ 
     <string name="buttonCreateEvent">Create!</string>
-    <string name="btnSearch">Search</string>
-    <string name="searchEvent">Search Event</string>
-
+    
     <string-array name="createEventArray">
         <item>Select Event Type</item>
         <item>Sports</item>
         <item>Entertainment</item>
     </string-array>
-
-    <string name="title_activity_search_event">Wanna?</string>
-
+         
+    
 </resources>

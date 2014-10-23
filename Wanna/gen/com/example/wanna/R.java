@@ -30,7 +30,7 @@ public final class R {
     public static final class id {
         public static final int CustomFontText=0x7f090013;
         public static final int Retype_Password=0x7f090021;
-        public static final int action_settings=0x7f09002b;
+        public static final int action_settings=0x7f09002d;
         public static final int age=0x7f090026;
         public static final int btnSelectImage=0x7f090004;
         public static final int buttonCancle=0x7f09002a;
@@ -56,6 +56,8 @@ public final class R {
         public static final int password=0x7f090019;
         public static final int register=0x7f090014;
         public static final int scrollView1=0x7f090000;
+        public static final int searchBtn=0x7f09002c;
+        public static final int searchEvent=0x7f09002b;
         public static final int spinnerEventType=0x7f090001;
         public static final int tvAge=0x7f090025;
         public static final int tvDescription=0x7f090027;
@@ -79,18 +81,21 @@ public final class R {
         public static final int activity_login=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_profile_form=0x7f030004;
+        public static final int activity_search_event=0x7f030005;
     }
     public static final class menu {
         public static final int create_event=0x7f080000;
         public static final int home_page=0x7f080001;
         public static final int login=0x7f080002;
         public static final int main=0x7f080003;
+        public static final int search_event=0x7f080004;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int activity_profile_form=0x7f05001e;
         public static final int age=0x7f05001a;
         public static final int app_name=0x7f050000;
+        public static final int btnSearch=0x7f050024;
         public static final int buttonCreateEvent=0x7f050023;
         public static final int cancel=0x7f05001d;
         public static final int description=0x7f05001b;
@@ -117,9 +122,11 @@ public final class R {
         public static final int password=0x7f05000b;
         public static final int register=0x7f050008;
         public static final int retypePassword=0x7f05000c;
+        public static final int searchEvent=0x7f050025;
         public static final int title_activity_create_event=0x7f05000e;
         public static final int title_activity_home_page=0x7f050006;
         public static final int title_activity_register_login=0x7f050005;
+        public static final int title_activity_search_event=0x7f050026;
         public static final int uploadImage=0x7f05001f;
         public static final int username=0x7f050009;
         public static final int welcome=0x7f050003;
