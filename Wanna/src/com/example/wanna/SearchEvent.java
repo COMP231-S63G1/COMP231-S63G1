@@ -32,3 +32,4 @@ public class SearchEvent extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 }
+
