@@ -43,12 +43,12 @@ private static String KEY_ERROR = "error";
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
   
-        setContentView(R.layout.passwordreset);
+        setContentView(R.layout.activity_reset_password);
 
         Button login = (Button) findViewById(R.id.bktolog);
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), Login.class);
+                Intent myIntent = new Intent(view.getContext(), HomePage.class);
                 startActivityForResult(myIntent, 0);
                 finish();
             }

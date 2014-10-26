@@ -48,13 +48,13 @@ public class ChangePassword extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.changepassword);
+        setContentView(R.layout.activity_change_password);
 
         cancel = (Button) findViewById(R.id.btcancel);
         cancel.setOnClickListener(new View.OnClickListener(){
         public void onClick(View arg0){
 
-                Intent login = new Intent(getApplicationContext(), Login_Success.class);
+                Intent login = new Intent(getApplicationContext(), MainPage.class);
 
                 startActivity(login);
                 finish();
@@ -185,7 +185,7 @@ public class ChangePassword extends Activity {
                         pDialog.dismiss();
                         alert.setText("Your Password is successfully changed.");
                         
-                     Intent chgpass = new Intent(getApplicationContext(), Login.class);
+                     Intent chgpass = new Intent(getApplicationContext(), HomePage.class);
 
                             startActivity(chgpass);
                     

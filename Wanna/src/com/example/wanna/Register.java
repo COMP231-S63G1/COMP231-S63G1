@@ -60,7 +60,7 @@ public class Register extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.register);
+       setContentView(R.layout.activity_register);
 
     /**
      * Defining all layout items
@@ -82,7 +82,7 @@ public class Register extends Activity {
         Button login = (Button) findViewById(R.id.bktologin);
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), Login.class);
+                Intent myIntent = new Intent(view.getContext(), HomePage.class);
                 startActivityForResult(myIntent, 0);
                 finish();
             }
@@ -256,7 +256,7 @@ public class Register extends Activity {
                              * Launch Registered screen
                              **/
 
-                            Intent registered = new Intent(getApplicationContext(), Registered.class);
+                            Intent registered = new Intent(getApplicationContext(), RegistrationInfo.class);
 
                             /**
                              * Close all views before launching Registered screen

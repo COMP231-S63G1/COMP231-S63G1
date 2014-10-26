@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 
-public class Profile_Form extends Activity{
+public class CreateProfile extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_profile_form);
+		setContentView(R.layout.activity_create_profile);
 	}
 	public void onRadioButtonClicked(View view) {
 	    // Is the button now checked?

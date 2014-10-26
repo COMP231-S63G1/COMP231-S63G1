@@ -8,19 +8,19 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class MainActivity extends Activity {
+public class WelcomePage extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_welcome);
 		Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/RawengulkSans-094.otf");
         TextView tv = (TextView) findViewById(R.id.CustomFontText);
         tv.setTypeface(tf);
 	}
 	
-	public void enterApplication(View view){	
-		Intent intent = new Intent(this, Login.class);
+	public void onEnterApplicationClick(View view){	
+		Intent intent = new Intent(this, HomePage.class);
 		startActivity(intent);
 		}
 }

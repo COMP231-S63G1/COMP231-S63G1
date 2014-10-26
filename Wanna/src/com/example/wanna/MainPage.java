@@ -12,7 +12,7 @@ import com.example.wanna.library.DatabaseHandler;
 
 import java.util.HashMap;
 
-public class Login_Success extends Activity {
+public class MainPage extends Activity {
     Button btnLogout;
     Button changepas;
 
@@ -25,7 +25,7 @@ public class Login_Success extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_success);
+        setContentView(R.layout.activity_main_page);
         
 
         changepas = (Button) findViewById(R.id.btchangepass);
@@ -62,7 +62,7 @@ public class Login_Success extends Activity {
 
                 UserFunctions logout = new UserFunctions();
                 logout.logoutUser(getApplicationContext());
-                Intent login = new Intent(getApplicationContext(), Login.class);
+                Intent login = new Intent(getApplicationContext(), HomePage.class);
                 login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(login);
                 finish();
@@ -92,7 +92,7 @@ public class Login_Success extends Activity {
 		}
     
     public void onCreateProfile(View view){	
-		Intent intent = new Intent(this, Profile_Form.class);
+		Intent intent = new Intent(this, CreateProfile.class);
 		startActivity(intent);
 		}
   
