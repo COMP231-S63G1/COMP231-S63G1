@@ -17,6 +17,8 @@ public class UserFunctions {
     private static String registerURL = "http://192.168.137.1:80/wanna/";
     private static String forpassURL = "http://192.168.137.1:80/wanna/";
     private static String chgpassURL = "http://192.168.137.1:80/wanna/";
+    
+    public static final String URL_ROOT = "http://192.168.137.1:80/wanna/";
 
 
     private static String login_tag = "login";
