@@ -75,8 +75,6 @@ public class Login_Success extends Activity {
  **/
         final TextView login = (TextView) findViewById(R.id.textwelcome);
         login.setText("Welcome "+user.get("fname"));
-        final TextView lname = (TextView) findViewById(R.id.lname);
-        lname.setText(user.get("lname"));
 
 
     }
