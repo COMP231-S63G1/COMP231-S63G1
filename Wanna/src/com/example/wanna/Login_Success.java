@@ -92,7 +92,7 @@ public class Login_Success extends Activity {
 		}
     
     public void onCreateProfile(View view){	
-		Intent intent = new Intent(this, Profile_Form.class);
+		Intent intent = new Intent(this, CreateProfile.class);
 		startActivity(intent);
 		}
     

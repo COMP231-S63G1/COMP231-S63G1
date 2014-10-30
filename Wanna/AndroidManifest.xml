@@ -54,7 +54,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Profile_Form"
+            android:name=".CreateProfile"
             android:label="@string/activity_profile_form" >
         </activity>
         <activity

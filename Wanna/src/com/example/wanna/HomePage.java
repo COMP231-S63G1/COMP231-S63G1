@@ -19,7 +19,7 @@ public class HomePage extends Activity {
 		}
 	
 	public void onRegisterClick(View view){	
-		Intent intent = new Intent(this, Profile_Form.class);
+		Intent intent = new Intent(this, CreateProfile.class);
 		startActivity(intent);
 		}
 
