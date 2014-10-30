@@ -13,10 +13,10 @@ public class UserFunctions {
     private JSONParser jsonParser;
 
     //URL of the PHP API
-    private static String loginURL = "http://collegecornerstone.com/Wanna_login_api/wanna/";
-    private static String registerURL = "http://collegecornerstone.com/Wanna_login_api/wanna/";
-    private static String forpassURL = "http://collegecornerstone.com/Wanna_login_api/wanna/";
-    private static String chgpassURL = "http://collegecornerstone.com/Wanna_login_api/wanna/";
+    private static String loginURL = "http://192.168.137.1:80/wanna/";
+    private static String registerURL = "http://192.168.137.1:80/wanna/";
+    private static String forpassURL = "http://192.168.137.1:80/wanna/";
+    private static String chgpassURL = "http://192.168.137.1:80/wanna/";
 
 
     private static String login_tag = "login";

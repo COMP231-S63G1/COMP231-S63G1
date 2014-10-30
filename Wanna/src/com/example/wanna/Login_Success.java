@@ -95,5 +95,10 @@ public class Login_Success extends Activity {
 		Intent intent = new Intent(this, Profile_Form.class);
 		startActivity(intent);
 		}
+    
+    public void onEditProfileClick(View view){
+		Intent intent = new Intent(this, EditProfileForm.class);
+		startActivity(intent);    	
+    }
   
 }

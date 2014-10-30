@@ -99,9 +99,16 @@
             android:layout_marginTop="9dp"
       />
 
-    
-
-   
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="Edit Profile"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:background="#48D1CC"
+        android:layout_marginTop="9dp"
+        android:onClick="onEditProfileClick" />
    
 </TableRow>
     
