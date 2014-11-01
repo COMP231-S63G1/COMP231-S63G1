@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.example.wanna.library.UserFunctions;
 import com.example.wanna.library.DatabaseHandler;
@@ -15,8 +16,8 @@ import java.util.HashMap;
 public class Login_Success extends Activity {
     Button btnLogout;
     Button changepas;
-
-
+    
+    EditText etEeventID;
 
 
     /**
@@ -100,5 +101,15 @@ public class Login_Success extends Activity {
 		Intent intent = new Intent(this, EditProfileForm.class);
 		startActivity(intent);    	
     }
+
+    
+    public void onViewEventClick(View view){
+    	etEeventID = (EditText) findViewById(R.id.etEeventID);
+    	String eventID = etEeventID.getText().toString();
+		Intent intent = new Intent(this, ViewEventDetail.class);
+		intent.putExtra("eventID", eventID);
+		startActivity(intent);    	
+    }
+   
   
 }

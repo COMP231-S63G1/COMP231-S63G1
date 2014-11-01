@@ -23,7 +23,7 @@ public class CreateEvent extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_event);
-Spinner spinner = (Spinner) findViewById(R.id.spinnerEventType);
+		Spinner spinner = (Spinner) findViewById(R.id.spinnerEventType);
 		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 		        R.array.createEventArray, android.R.layout.simple_spinner_item);
@@ -61,7 +61,7 @@ Spinner spinner = (Spinner) findViewById(R.id.spinnerEventType);
 	        cursor.moveToFirst();
 	        return cursor.getString(column_index);
 	    }
-		
+//		
 
 
 }

@@ -69,6 +69,10 @@
             android:name=".EditProfileForm"
             android:label="@string/title_activity_edit_profile_form" >
         </activity>
+        <activity
+            android:name=".ViewEventDetail"
+            android:label="@string/title_activity_view_event_detail" >
+        </activity>
     </application>
 
 </manifest>

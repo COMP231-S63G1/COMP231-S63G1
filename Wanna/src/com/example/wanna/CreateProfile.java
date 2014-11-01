@@ -28,10 +28,10 @@ public class CreateProfile extends Activity{
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
 	
-	UserFunctions userfunctions = new UserFunctions();
+	UserFunctions userFunctions = new UserFunctions();
 	// url to create user profile
-	//private String urlCreateProfile = userfunctions.URL_ROOT + "DB_CreateProfile.php";
-	private String urlCreateProfile = "http://192.168.137.1:80/wanna/DB_CreateProfile.php";
+	private String urlCreateProfile = userFunctions.URL_ROOT + "DB_CreateProfile.php";
+//	private String urlCreateProfile = "http://192.168.137.1:80/wanna/DB_CreateProfile.php";
 	
 	// user profile JSONArray
 	JSONArray userProfileArray = null;
@@ -70,7 +70,7 @@ public class CreateProfile extends Activity{
 	}
 	
 	public void onCreateProfileClick(View view){		
-		new DownloadWebpageTask().execute(urlCreateProfile);
+		new CreateUserProfileTask().execute(urlCreateProfile);
 	}
 	
 	public void onCancleCreateProfileClick(View view){
@@ -78,7 +78,7 @@ public class CreateProfile extends Activity{
 		startActivity(i);
 	}
 	
-	private class DownloadWebpageTask extends AsyncTask<String, Void, String> {
+	private class CreateUserProfileTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
         	String userNickName;
@@ -133,11 +133,15 @@ public class CreateProfile extends Activity{
     				
     				// closing this screen
     				finish();
-    			} else {
-    				// failed to create product
+    			} else {	
+        			Toast.makeText(getApplicationContext(),
+                            "Internet connection failed", Toast.LENGTH_SHORT).show();
     			}
-    		} catch (JSONException e) {
+    		} catch (JSONException e) {	
     			e.printStackTrace();
+//    			Toast.makeText(getApplicationContext(),
+//                        "Internet connection failed", Toast.LENGTH_SHORT).show();
+    			return null;
     		}
 			return null;
         }

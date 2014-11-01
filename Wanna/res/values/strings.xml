@@ -46,6 +46,8 @@
     <string name="searchEvent">Search Event</string>
     <string name="update">Update</string>
     <string name="delete">Delete</string>
+    <string name="eventType">Event Type: </string>
+    <string name="buttonBack">Back</string>
 
     <string-array name="createEventArray">
         <item>Select Event Type</item>
@@ -55,5 +57,6 @@
 
     <string name="title_activity_search_event">Wanna?</string>
     <string name="title_activity_edit_profile_form">EditProfileForm</string>
+    <string name="title_activity_view_event_detail">ViewEventDetail</string>
 
 </resources>
