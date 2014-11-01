@@ -1,0 +1,254 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.7.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 02, 2014 at 12:00 AM
+-- Server version: 5.6.20
+-- PHP Version: 5.5.15
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `wanna`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE IF NOT EXISTS `event` (
+`eventID` int(11) unsigned NOT NULL,
+  `eventType` varchar(50) DEFAULT NULL,
+  `eventName` varchar(225) DEFAULT NULL,
+  `eventImageURI` varchar(225) DEFAULT NULL,
+  `eventDate` date DEFAULT NULL,
+  `eventTime` time DEFAULT NULL,
+  `eventVenue` varchar(225) DEFAULT NULL,
+  `eventAddress` varchar(225) DEFAULT NULL,
+  `eventPriceRange` varchar(225) DEFAULT NULL,
+  `eventDescription` varchar(2000) DEFAULT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`eventID`, `eventType`, `eventName`, `eventImageURI`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES
+(1, NULL, 'basketball', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, NULL, 'dddd', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, NULL, 'dddd', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, NULL, 'cvvv', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, NULL, 'cvvv', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, NULL, 'cvvv', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, NULL, 'nnnjjjj', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, NULL, 'eventName', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, NULL, 'hutJ', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, NULL, 'event name', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, NULL, 'fvbhu', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, NULL, 'play basketball', NULL, '2014-10-22', '11:16:40', 'ddddadaf', 'dagegg', 'ettetere', 'eqtqt'),
+(13, NULL, 'ddd', 'ddddege', '2014-10-08', '12:16:00', 'ddddht ', 'thr gs', '30-60', 'des'),
+(14, 'sport', 'play basketball', NULL, '2014-10-09', '08:38:14', 'venue', 'adress', 'priceRange', 'description'),
+(15, '$eventType', '$eventName', NULL, '0000-00-00', '00:00:00', '$eventVenue', '$eventAddress', '$eventPriceRange', '$eventDescription'),
+(16, 'Sports', 'cbnjdv', NULL, '2014-04-05', '12:11:30', 'dcvh', 'fcbjh', '4885', 'dvbdgb'),
+(17, 'Sports', 'vbsndjb', NULL, '2014-12-01', '12:14:11', 'bdvdhdb', 'bdbdjdb', '36', 'sbdvd'),
+(18, 'Sports', 'fvhhvvb', NULL, '2017-02-27', '19:24:00', 'fghjgvb', 'sfbhygb', '23', 'fgvvjjf'),
+(19, 'Sports', 'xvbvcf', NULL, '2014-02-05', '22:05:00', 'svbyrc', 'scvhydv', '48', 'dcbhy');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventlocation_table`
+--
+
+CREATE TABLE IF NOT EXISTS `eventlocation_table` (
+`eventLocationID` int(11) NOT NULL,
+  `eventID` int(11) NOT NULL,
+  `eventLocationCountry` varchar(45) DEFAULT NULL,
+  `eventLocationCity` varchar(45) DEFAULT NULL,
+  `eventLocationStreet` varchar(45) DEFAULT NULL,
+  `eventLocationProtolCode` varchar(45) DEFAULT NULL,
+  `eventLongtitude` varchar(45) DEFAULT NULL,
+  `eventLatitude` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventtype_table`
+--
+
+CREATE TABLE IF NOT EXISTS `eventtype_table` (
+`eventTypeID` int(11) NOT NULL,
+  `eventTypeName` varchar(45) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `eventtype_table`
+--
+
+INSERT INTO `eventtype_table` (`eventTypeID`, `eventTypeName`) VALUES
+(1, 'Sports'),
+(2, 'Entertainment');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile`
+--
+
+CREATE TABLE IF NOT EXISTS `profile` (
+`profileID` int(11) NOT NULL,
+  `nickName` varchar(225) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `age` int(11) NOT NULL,
+  `description` varchar(225) NOT NULL,
+  `pictureURI` varchar(225) DEFAULT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`profileID`, `nickName`, `gender`, `age`, `description`, `pictureURI`) VALUES
+(2, 'darren', 'male', 25, 'a monkey', NULL),
+(3, 'darren', 'male', 25, 'a monkey', NULL),
+(4, 'eerr', 'Male', 20, 'sfgfx', NULL),
+(5, 'zxcc', 'Male', 35, 'rtyy', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userlocation_table`
+--
+
+CREATE TABLE IF NOT EXISTS `userlocation_table` (
+`userLocation_ID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `userCountry` varchar(45) DEFAULT NULL,
+  `userCity` varchar(45) DEFAULT NULL,
+  `userStreet` varchar(45) DEFAULT NULL,
+  `userProtolCode` varchar(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+`uid` int(11) NOT NULL,
+  `unique_id` varchar(23) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `encrypted_password` varchar(80) NOT NULL,
+  `salt` varchar(10) NOT NULL,
+  `created_at` datetime DEFAULT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`uid`, `unique_id`, `firstname`, `lastname`, `username`, `email`, `encrypted_password`, `salt`, `created_at`) VALUES
+(1, '544aa36dd2f5b5.10466284', 'yonas', 'tecle', 'yonastecle	', 'yonastecle@hotmail.com', '70EYTUPzi2SCkogKvYF8RUn8LhcxNzViYzkyMTQ4', '175bc92148', '2014-10-24 12:07:25'),
+(2, '544aa68d9b1603.02936303', 'Darren', 'Liu', 'DarrenLiu\nDarrenLiu\n', 'gulang15@gmail.com', 'wyo41o0QnJiIbg2Eh2Cpz3XnfBIxZGVjZWZmOTYz', '1deceff963', '2014-10-24 12:20:45'),
+(3, '544ab6475c1872.96860299', 'Yonas', 'Tecle', 'yonastecle', 'yonastecle@gmail.com', 'kfzoQv4YD/S5ytA9izcwrKCEWHY4MDU2NWU3OGE3', '80565e78a7', '2014-10-24 13:27:51'),
+(4, '544aba21dbae41.91059966', 'Ani', 'a', 'aniAb', 'ani.a24@hotmail.com', 'pzBBPtnwfeyNk78+CxAXGXUbtXpjMjZjYWE0ODlm', 'c26caa489f', '2014-10-24 13:44:17'),
+(5, '544abc2b2cb8e8.22649559', 'Kevin', 'Murphy', 'Kevin', 'itsKevinMurphy@gmail.com', 'Brky+raoVR7ethpd8X9ltEiyOAU2OWYyZTdjYTI2', '69f2e7ca26', '2014-10-24 13:52:59'),
+(9, '544ac3cdda56d2.32927884', 'anson', ' kong', 'anson', 'ansonkong1992@gmail.com', 'w8kbqKG8HK5l4ia/NbehhN2kn60wMmQ5MzhkNmQ0', '02d938d6d4', '2014-10-24 14:25:33'),
+(12, '544ad0982b4318.19037393', 'yonas', 'teh', 'yonastecke', 'yonasthebaroon@yahoo.ca', 'Uz7fJn95PWTQiSARWhpgx6YibSM3NmJiNmQxMmYy', '76bb6d12f2', '2014-10-24 15:20:08'),
+(13, '544ad2143de854.27486354', 'Ani', 'Abrahamian', 'aniabrahamian', 'abrahamian10@gmail.com', 'BhDMkQ2bUTosE3tt/xmQ6x8FVIswMDJkZjBiYTkx', '002df0ba91', '2014-10-24 15:26:28'),
+(16, '544c89cc5c8309.83348426', 'yu', 'chang', 'yu chang', 'changyu19882013@gmail.com', 'stQ8uO0AZfdOEBcd7L6Tf2y4Msc1Y2EzNWE3MDA4', '5ca35a7008', '2014-10-25 22:42:36'),
+(17, '544d576e58cb74.42235396', 'candy', 'mcgaw', 'candy', 'mcgawcandice@gmail.com', 'tISrxAaDa+niVClvgG3ulPoYHkI2YmMxNDFlYjQ5', '6bc141eb49', '2014-10-26 13:19:58'),
+(18, '544db21024fdb6.98112978', 'simon', 'tecle', 'simontecle', 'simontecle@hotmail.com', 'r8gsiTEwiZVgkiHZSUH201HZivxlMzZhODcxMmNl', 'e36a8712ce', '2014-10-26 19:46:40');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+ ADD PRIMARY KEY (`eventID`);
+
+--
+-- Indexes for table `eventlocation_table`
+--
+ALTER TABLE `eventlocation_table`
+ ADD PRIMARY KEY (`eventLocationID`);
+
+--
+-- Indexes for table `eventtype_table`
+--
+ALTER TABLE `eventtype_table`
+ ADD PRIMARY KEY (`eventTypeID`);
+
+--
+-- Indexes for table `profile`
+--
+ALTER TABLE `profile`
+ ADD PRIMARY KEY (`profileID`);
+
+--
+-- Indexes for table `userlocation_table`
+--
+ALTER TABLE `userlocation_table`
+ ADD PRIMARY KEY (`userLocation_ID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`uid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+MODIFY `eventID` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `eventlocation_table`
+--
+ALTER TABLE `eventlocation_table`
+MODIFY `eventLocationID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `eventtype_table`
+--
+ALTER TABLE `eventtype_table`
+MODIFY `eventTypeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `profile`
+--
+ALTER TABLE `profile`
+MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `userlocation_table`
+--
+ALTER TABLE `userlocation_table`
+MODIFY `userLocation_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
