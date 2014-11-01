@@ -98,12 +98,13 @@
         android:layout_marginBottom="10dp"
         />
 
-        <EditText
+        <TextView
             android:id="@+id/eventDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date" 
+            android:onClick="showDatePickerDialog"
+            android:clickable="true"
             android:hint="@string/hintEventDate"
             />
         
@@ -119,14 +120,16 @@
             android:layout_marginTop="10dp"
             android:text="@string/eventTime" />
 
-        <EditText
-            android:id="@+id/editText2"
+        <TextView
+            android:id="@+id/eventTimeEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="time" 
+            android:onClick="showTimePickerDialog"
+            android:clickable="true" 
             android:hint="@string/hintEventTime"
             />
+            <!-- android:inputType="time" --> 
     </TableRow>
     
     <TableRow>
@@ -160,7 +163,7 @@
         />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/editAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -199,7 +202,7 @@
         />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/eventDescriptionEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
