@@ -182,8 +182,10 @@ public class Login extends Activity {
 
             inputEmail = (EditText) findViewById(R.id.email);
             inputPassword = (EditText) findViewById(R.id.pword);
-            email = inputEmail.getText().toString();
-            password = inputPassword.getText().toString();
+//            email = inputEmail.getText().toString();
+//            password = inputPassword.getText().toString();
+            email = "gulang15@gmail.com";
+            password = "20120628";
             pDialog = new ProgressDialog(Login.this);
             pDialog.setTitle("Contacting Servers");
             pDialog.setMessage("Logging in ...");

@@ -44,7 +44,14 @@
     <string name="buttonCreateEvent">Create!</string>
     <string name="btnSearch">Search</string>
     <string name="searchEvent">Search Event</string>
+<<<<<<< HEAD
     <string name="buttonSave">Save Changes</string>
+=======
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="eventType">Event Type: </string>
+    <string name="buttonBack">Back</string>
+>>>>>>> origin/createEventXMLAndJava
 
     <string-array name="createEventArray">
         <item>Select Event Type</item>
@@ -53,6 +60,11 @@
     </string-array>
 
     <string name="title_activity_search_event">Wanna?</string>
+<<<<<<< HEAD
     <string name="title_activity_edit_event">Wanna...?</string>
+=======
+    <string name="title_activity_edit_profile_form">EditProfileForm</string>
+    <string name="title_activity_view_event_detail">ViewEventDetail</string>
+>>>>>>> origin/createEventXMLAndJava
 
 </resources>
