@@ -1,8 +1,0 @@
-INDEX VERSION 1.126+C:\Users\Ani\Documents\GitHub\COMP231-S63G1\.metadata\.plugins\org.eclipse.jdt.core
-1284074322.index
-1326915501.index
-1084562271.index
-3068496998.index
-1689617516.index
-4271557776.index
-1978098430.index
