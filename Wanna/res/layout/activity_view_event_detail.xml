@@ -187,11 +187,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvEventDescriptionValue"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
                 android:background="#48D1CC"
                 android:onClick="onViewEventDetailBackClick"
                 android:text="@string/buttonBack" />
+               <Button
+                android:id="@+id/buttonEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/buttonBack"
+                android:layout_below="@id/tvEventDescriptionValue"
+                android:layout_marginLeft="20dp"
+                android:background="#48D1CC"
+                android:onClick="onEditEventDetailButtonClick"
+                android:text="@string/editEvent" />
         </RelativeLayout>
     </ScrollView>
 

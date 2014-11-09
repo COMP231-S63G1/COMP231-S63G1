@@ -1,0 +1,140 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ScrollView
+        android:id="@+id/viewEventScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/tvProfileNickNameLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/name" />
+
+            <TextView
+                android:id="@+id/tvProfileNickNameValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tvProfileNickNameLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tvProfileGenderLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileNickNameLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/gender" />
+
+            <TextView
+                android:id="@+id/tvProfileGenderValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileNickNameValue"
+                android:layout_toRightOf="@id/tvProfileGenderLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+
+            <TextView
+                android:id="@+id/tvProfileAgeLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileGenderLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/age" />
+
+            <TextView
+                android:id="@+id/tvProfileAgeValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileGenderValue"
+                android:layout_toRightOf="@id/tvProfileAgeLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+            
+            <TextView
+                android:id="@+id/tvProfileDescriptionLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileAgeLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/description" />
+            
+            <TextView
+                android:id="@+id/tvProfileDescriptionValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileAgeValue"
+                android:layout_toRightOf="@id/tvProfileDescriptionLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+            <TextView
+                android:id="@+id/tvProfileStatusLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileDescriptionLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/profileStatusString" />
+            
+            <TextView
+                android:id="@+id/tvProfileStatusValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileDescriptionValue"
+                android:layout_toRightOf="@id/tvProfileStatusLabel"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+
+            <Button
+                android:id="@+id/buttonBack"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/tvProfileStatusLabel"
+                android:layout_marginTop="10dp"
+                android:background="#48D1CC"
+                android:onClick="onViewProfileInformationBackClick"
+                android:text="@string/buttonBack" />
+
+            <Button
+                android:id="@+id/buttonEditProfile"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="#48D1CC"
+                android:layout_below="@+id/tvProfileStatusValue"
+                android:layout_toRightOf="@id/buttonBack"
+                android:text="@string/buttonEditProfile"
+                android:onClick="onEditProfileClick" />
+    
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

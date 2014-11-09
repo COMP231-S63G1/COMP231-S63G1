@@ -17,7 +17,7 @@
     
     <EditText
         style="@style/FormTheme"
-        android:id="@+id/editText1"
+        android:id="@+id/etSearchEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:orientation="horizontal"
@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:text="@string/btnSearch" />
+        android:text="@string/btnSearch" 
+        android:onClick="onSearchEventClick"/>
 	
 </LinearLayout>

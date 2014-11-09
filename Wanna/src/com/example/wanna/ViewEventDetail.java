@@ -15,6 +15,7 @@ import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -56,7 +57,11 @@ public class ViewEventDetail extends Activity {
 	private static final String TAG_EventDescription = "eventDescription";
 	
 	JSONObject eventDetail;
-
+	//session variables 
+	public static final String MyPREFERENCES = "Wanna";
+	SharedPreferences sharedpreferences;
+	String sessionID;
+	String userID;
 //	// Profile detail JSONArray
 //	JSONArray eventDetailArray = null;
 
@@ -64,15 +69,16 @@ public class ViewEventDetail extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_event_detail);
-
-		// getting event details from intent
-		Intent i = getIntent();
-
-		// getting event id (pid) from intent
-		eventID = i.getStringExtra(TAG_EventID);
-
-		// // Hashmap for ListView
-		// eventDetailList = new ArrayList<HashMap<String, String>>();
+		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		// Edit Text
+		tvEventType = (TextView) findViewById(R.id.tvEventTypeValue);
+		tvEventName = (TextView) findViewById(R.id.tvEventNameValue);
+		tvEventDate = (TextView) findViewById(R.id.tvEventDateValue);
+		tvEventTime = (TextView) findViewById(R.id.tvEventTimeValue);
+		tvEventVenue = (TextView) findViewById(R.id.tvEventVenueValue);
+		tvEventLocation = (TextView) findViewById(R.id.tvEventLocationValue);
+		tvEventPriceRange = (TextView) findViewById(R.id.tvEventPriceValue);
+		tvEventDescription = (TextView) findViewById(R.id.tvEventDescriptionValue);
 
 		// Loading event in Background Thread
 		new ViewEventDetailTask().execute();
@@ -87,6 +93,8 @@ public class ViewEventDetail extends Activity {
 	private class ViewEventDetailTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
+			sessionID = sharedpreferences.getString("sessionID", "");
+			userID = sharedpreferences.getString("userID", "");
 			// updating UI from Background Thread
 //			runOnUiThread(new Runnable() {
 //				public void run() {
@@ -94,11 +102,14 @@ public class ViewEventDetail extends Activity {
 					int success;
 					try {
 						// Building Parameters
-						List<NameValuePair> ViewEventDatailparams = new ArrayList<NameValuePair>();
-						ViewEventDatailparams.add(new BasicNameValuePair("eventID", eventID));
+						List<NameValuePair> viewEventDatailParams = new ArrayList<NameValuePair>();
+						viewEventDatailParams
+						.add(new BasicNameValuePair("sessionID", sessionID));
+						viewEventDatailParams.add(new BasicNameValuePair("userID", userID));
+//						viewEventDatailParams.add(new BasicNameValuePair("eventID", eventID));
 						// getting event details by making HTTP request
 						JSONObject json = jsonParser.getJSONFromUrl(
-								urlViewEventDetail, ViewEventDatailparams);
+								urlViewEventDetail, viewEventDatailParams);
 						// json success tag
 						success = json.getInt(TAG_SUCCESS);
 						if (success == 1) {
@@ -107,36 +118,39 @@ public class ViewEventDetail extends Activity {
 							// get first event object from JSON Array
 							eventDetail = eventDetailArray.getJSONObject(0);
 							// evnet with this eventID found
-							// Edit Text
-							tvEventType = (TextView) findViewById(R.id.tvEventTypeValue);
-							tvEventName = (TextView) findViewById(R.id.tvEventNameValue);
-							tvEventDate = (TextView) findViewById(R.id.tvEventDateValue);
-							tvEventTime = (TextView) findViewById(R.id.tvEventTimeValue);
-							tvEventVenue = (TextView) findViewById(R.id.tvEventVenueValue);
-							tvEventLocation = (TextView) findViewById(R.id.tvEventLocationValue);
-							tvEventPriceRange = (TextView) findViewById(R.id.tvEventPriceValue);
-							tvEventDescription = (TextView) findViewById(R.id.tvEventDescriptionValue);
-
-
-							// display product data in EditText
-							tvEventType.setText(eventDetail.optString(TAG_EventType));
-							tvEventName.setText(eventDetail.optString(TAG_EventName));
-							tvEventDate.setText(eventDetail.optString(TAG_EventDate));
-							tvEventTime.setText(eventDetail.optString(TAG_EventTime));
-							tvEventVenue.setText(eventDetail.optString(TAG_EventVenue));
-							tvEventLocation.setText(eventDetail.optString(TAG_EventLocation));
-							tvEventPriceRange.setText(eventDetail.optString(TAG_EventPriceRange));
-							tvEventDescription.setText(eventDetail.optString(TAG_EventDescription));
 						}else{
 						}
 
 					} catch (JSONException e) {
 						e.printStackTrace();
+						return null;
 					}
-//				}
-//			});
-
 			return null;
 		}
+		@Override
+		protected void onPostExecute(String result) {
+			// display product data in EditText
+			tvEventType.setText(eventDetail.optString(TAG_EventType));
+			tvEventName.setText(eventDetail.optString(TAG_EventName));
+			tvEventDate.setText(eventDetail.optString(TAG_EventDate));
+			tvEventTime.setText(eventDetail.optString(TAG_EventTime));
+			tvEventVenue.setText(eventDetail.optString(TAG_EventVenue));
+			tvEventLocation.setText(eventDetail.optString(TAG_EventLocation));
+			tvEventPriceRange.setText(eventDetail.optString(TAG_EventPriceRange));
+			tvEventDescription.setText(eventDetail.optString(TAG_EventDescription));
+		}
+	}
+	public void onEditEventDetailButtonClick(View view){
+		Intent intent = new Intent(getApplicationContext(), EditEvent.class);
+	    intent.putExtra("eventID", eventDetail.optString("eventID"));
+		intent.putExtra("eventType", tvEventType.getText().toString());
+	    intent.putExtra("eventName", tvEventName.getText().toString());
+	    intent.putExtra("eventDate", tvEventDate.getText().toString());
+	    intent.putExtra("eventTime", tvEventTime.getText().toString());
+	    intent.putExtra("eventVenue", tvEventVenue.getText().toString());
+	    intent.putExtra("eventLocation", tvEventLocation.getText().toString());
+	    intent.putExtra("eventPriceRange", tvEventPriceRange.getText().toString());
+	    intent.putExtra("eventDescription", tvEventDescription.getText().toString());
+		startActivity(intent);
 	}
 }

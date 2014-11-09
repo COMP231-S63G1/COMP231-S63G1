@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -8,34 +12,28 @@
               >
 
     <TextView
-        android:id="@+id/textwelcome"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:textColor="#48D1CC"
-        android:textSize="25sp" />
+            android:layout_width="300dp"
+            android:textColor="#48D1CC"
+            android:layout_height="40dp"
+            android:id="@+id/textwelcome" 
+            android:textSize="25sp"
+            android:gravity="center"
+            />
+    <TextView
+            android:layout_width="125dp"
+            android:layout_height="40dp"
+            android:id="@+id/lname"
+            android:layout_alignParentTop="true"
+            android:textColor="#000000"
+            android:layout_toRightOf="@+id/textwelcome"
+            android:textSize="20sp"/>
    
 <TableLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 <TableRow>
-<Button
-        android:id="@+id/createProf"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="#48D1CC"
-        android:text="Create Profile"
-        android:textColor="#ffffff"
-        android:textSize="12sp" 
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="50dp"
-        android:onClick="onCreateProfile"
-        
-        />
+
 
       <Button
             android:layout_width="80dp"
@@ -44,9 +42,13 @@
             android:id="@+id/searchEvent"
             android:textSize="12sp"
             android:textColor="#ffffff"
-            android:background="#48D1CC"
+            android:background="#48D1CC"	
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="9dp"
             android:onClick="onSearchEvent"
       />
+      
 </TableRow>
 <TableRow>
     
@@ -58,7 +60,7 @@
             android:textSize="12sp"
             android:textColor="#ffffff"
             android:background="#48D1CC"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="9dp"
             android:onClick="onCreateEvent"
@@ -74,8 +76,10 @@
         android:layout_below="@+id/textwelcome"
         android:text="Change Password"
         android:textColor="#ffffff"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:textSize="12sp" 
-        
+        android:onClick="onChangePasswordClick"
         />
     </TableRow>
     
@@ -88,25 +92,29 @@
             android:textSize="12sp"
             android:textColor="#ffffff"
             android:background="#48D1CC"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="9dp"
+            android:onClick="onLogoutClick"
       />
 
-<<<<<<< HEAD
-
-=======
+    
+   
+</TableRow>
+<TableRow>
     <Button
-        android:id="@+id/editProfile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="Edit Profile"
-        android:textSize="12sp"
-        android:textColor="#ffffff"
-        android:background="#48D1CC"
-        android:layout_marginTop="9dp"
-        android:onClick="onEditProfileClick" />
->>>>>>> origin/createEventXMLAndJava
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="ViewProfile"
+            android:id="@+id/viewProfileInformation"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:background="#48D1CC"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="9dp"
+            android:onClick="onViewProfileClick"
+      />
    
 </TableRow>
 <TableRow>
@@ -124,22 +132,14 @@
             android:onClick="onViewEventClick"
       />
 
-    <EditText
-        android:id="@+id/etEeventID"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
+    
 
 </TableRow>
     
     </TableLayout>
     <TextView
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="25dp"
-            android:text="User Panel"
             android:id="@+id/textView" 
             android:layout_below="@+id/logout" 
             android:layout_alignParentRight="true"
@@ -147,3 +147,4 @@
             android:textAlignment="center"/>
 
 </LinearLayout>
+</ScrollView>

@@ -1,10 +1,19 @@
 package com.example.wanna;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,8 +25,13 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -26,30 +40,31 @@ import android.provider.MediaStore;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.wanna.library.JSONParser;
+import com.example.wanna.library.UserFunctions;
 
 public class CreateEvent extends Activity {
 
 	JSONParser jsonParser = new JSONParser();
-	// url to create new event
-	// private static String url_create_product =
-	// "http://10.0.2.2/wanna/create_event.php";
-	private static String urlCreateEvent = "http://192.168.137.1:80/wanna/DB_CreateEvent.php";
+	UserFunctions userFunctions = new UserFunctions();
+	//php file url in the server 
+	private String urlCreateEvent = userFunctions.URL_ROOT
+			+ "DB_CreateEvent.php";
+	private String urlUploadImage = userFunctions.URL_ROOT+"saveImage.php";
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
 	private static final int SELECT_PICTURE = 1;
+	// tag for check whether the photo is uploaded succeed
+	private static final String TAG = "upload";
 	private Spinner eventTypeSpinner;
 	private EditText eventName;
 	private EditText eventVenue;
@@ -58,48 +73,31 @@ public class CreateEvent extends Activity {
 	private EditText eventAddress;
 	private EditText eventPriceRange;
 	private EditText eventDescription;
-	private String selectedImagePath;
+	private String eventPictureNameStoredIndatabase;
 	private ImageView img;
+	String mCurrentPhotoPath;
 
-	private OnItemSelectedListener itemSelectedListener = new OnItemSelectedListener() {
-
-		@Override
-		public void onItemSelected(AdapterView<?> parent, View view,
-				int position, long arg3) {
-
-		}
-
-		public void onNothingSelected(AdapterView<?> arg0) {
-			// TODO Auto-generated method stub
-
-		}
-	};
+	//session variables 
+	public static final String MyPREFERENCES = "Wanna";
+	SharedPreferences sharedpreferences;
+	String sessionID;
+	String userID;
+	
+	static final int REQUEST_TAKE_PHOTO = 1;
+	File photoFile = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_event);
+		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
 		eventTypeSpinner = (Spinner) findViewById(R.id.spinnerEventType);
-
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.createEventArray,
 				android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		eventTypeSpinner.setAdapter(adapter);
-		eventTypeSpinner.setOnItemSelectedListener(itemSelectedListener);
 		img = (ImageView) findViewById(R.id.imgView);
-
-		((Button) findViewById(R.id.btnSelectImage))
-				.setOnClickListener(new OnClickListener() {
-					public void onClick(View arg0) {
-						Intent intent = new Intent();
-						intent.setType("image/*");
-						intent.setAction(Intent.ACTION_GET_CONTENT);
-						startActivityForResult(
-								Intent.createChooser(intent, "Select Picture"),
-								SELECT_PICTURE);
-					}
-				});
 		eventName = (EditText) findViewById(R.id.eventName);
 		eventVenue = (EditText) findViewById(R.id.eventVenue);
 		eventAddress = (EditText) findViewById(R.id.editAddress);
@@ -109,40 +107,55 @@ public class CreateEvent extends Activity {
 		eventDate = (TextView) findViewById(R.id.eventDate);
 
 	}
-
-	public void onCreateEvent(View view) {
-		new CreateNewEvent().execute(urlCreateEvent);
-	}
-
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	//method for click a button and upload event photo
+    public void onClickPicture(View view){
+    	Intent intent = new Intent();
+		intent.setType("image/*");
+		intent.setAction(Intent.ACTION_GET_CONTENT);
+		startActivityForResult(
+				Intent.createChooser(intent, "Select Picture"),
+				SELECT_PICTURE);
+    }
+    //method when the choose is done and display the photo in the image view 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {
 			if (requestCode == SELECT_PICTURE) {
-				Uri selectedImageUri = data.getData();
-				selectedImagePath = getPath(selectedImageUri);
-				System.out.println("Image Path : " + selectedImagePath);
-				img.setImageURI(selectedImageUri);
+				Bitmap bitmap = getPath(data.getData());
+	    		img.setImageBitmap(bitmap);
 			}
 		}
 	}
-
-	public String getPath(Uri uri) {
+    //method to get the bitmap from the gallery according to the uri
+    private Bitmap getPath(Uri uri) {
+		 
 		String[] projection = { MediaStore.Images.Media.DATA };
+		@SuppressWarnings("deprecation")
 		Cursor cursor = managedQuery(uri, projection, null, null, null);
 		int column_index = cursor
 				.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 		cursor.moveToFirst();
-		return cursor.getString(column_index);
+		String filePath = cursor.getString(column_index);
+		cursor.close();
+		// Convert file path into bitmap image using below line.
+		Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+		
+		return bitmap;
 	}
-
+	public void onCreateEvent(View view) {
+		new CreateNewEvent().execute(urlCreateEvent);
+	}
 	/**
-	 * Background Async Task to Create new product
+	 * Background Async Task to Create new event
 	 * */
 	class CreateNewEvent extends AsyncTask<String, String, String> {
 
 		/**
 		 * Creating event
 		 * */
+
 		protected String doInBackground(String... args) {
+			sessionID = sharedpreferences.getString("sessionID", "");
+			userID = sharedpreferences.getString("userID", "");
 			String eventname = eventName.getText().toString();
 			String eventType = eventTypeSpinner.getSelectedItem().toString();
 			String eventDateString = eventDate.getText().toString();
@@ -152,9 +165,18 @@ public class CreateEvent extends Activity {
 			String eventPriceRangeString = eventPriceRange.getText().toString();
 			String eventDescriptionString = eventDescription.getText()
 					.toString();
-			System.out.println(eventType);
+			try {
+				Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
+				sendPhoto(bitmap);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			params
+			.add(new BasicNameValuePair("sessionID", sessionID));
+			params.add(new BasicNameValuePair("userID", userID));
 			params.add(new BasicNameValuePair("eventName", eventname));
 			params.add(new BasicNameValuePair("eventType", eventType));
 			params.add(new BasicNameValuePair("eventDate", eventDateString));
@@ -166,23 +188,24 @@ public class CreateEvent extends Activity {
 					eventPriceRangeString));
 			params.add(new BasicNameValuePair("eventDescription",
 					eventDescriptionString));
-			System.out.println(params.toString());
+//			 params.add(new
+//			 BasicNameValuePair("eventImageURI",eventPictureNameStoredIndatabase));
+			 System.out.println(params.toString());
 			// getting JSON Object
-			// Note that create product url accepts POST method
+			// Note that create event url accepts POST method
 			JSONObject json = jsonParser.getJSONFromUrl(urlCreateEvent, params);
-			System.out.println(json.toString());
 			// check log cat fro response
 			Log.d("Create Response", json.toString());
-
 			// check for success tag
 			try {
 				int success = json.getInt(TAG_SUCCESS);
 
 				if (success == 1) {
 					// successfully created product
-					Intent i = new Intent(getApplicationContext(),
-							CreateProfile.class);
-					startActivity(i);
+					
+					Intent intent = new Intent(getApplicationContext(),
+							ViewEventDetail.class);
+					startActivity(intent);
 
 					// closing this screen
 					finish();
@@ -192,9 +215,10 @@ public class CreateEvent extends Activity {
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-
+			
 			return null;
 		}
+
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -215,7 +239,7 @@ public class CreateEvent extends Activity {
 
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			// Do something with the time chosen by the user
-			 eventTime.setText(hourOfDay+":"+minute);
+			eventTime.setText(hourOfDay + ":" + minute);
 		}
 	}
 
@@ -224,9 +248,10 @@ public class CreateEvent extends Activity {
 		DialogFragment newFragment = new TimePickerFragment();
 		newFragment.show(getFragmentManager(), "timePicker");
 	}
+
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static class DatePickerFragment extends DialogFragment implements
-	DatePickerDialog.OnDateSetListener {
+			DatePickerDialog.OnDateSetListener {
 
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		@Override
@@ -243,7 +268,15 @@ public class CreateEvent extends Activity {
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			// Do something with the date chosen by the user
-			eventDate.setText(year+"-"+month+"-"+day);
+//			Calendar my = Calendar.getInstance();
+//			my.set(year, month+1, day);
+//			if(my.compareTo(Calendar.getInstance())==1)
+//				{
+//				  eventDate.setText("Please set proper date");
+//				}
+//			else{
+				eventDate.setText(year + "-" + (month+1) + "-" + day);
+//			}
 		}
 	}
 
@@ -251,5 +284,73 @@ public class CreateEvent extends Activity {
 	public void showDatePickerDialog(View v) {
 		DialogFragment newFragment = new DatePickerFragment();
 		newFragment.show(getFragmentManager(), "datePicker");
+	}
+
+	private void sendPhoto(Bitmap bitmap) throws Exception {
+		new UploadTask().execute(bitmap);
+	}
+
+	private class UploadTask extends AsyncTask<Bitmap, Void, Void> {
+
+		protected Void doInBackground(Bitmap... bitmaps) {
+			if (bitmaps[0] == null)
+				return null;
+			setProgress(0);
+
+			Bitmap bitmap = bitmaps[0];
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); 
+			InputStream in = new ByteArrayInputStream(stream.toByteArray()); 
+			DefaultHttpClient httpclient = new DefaultHttpClient();
+			try {
+				HttpPost httppost = new HttpPost(urlUploadImage); 
+				MultipartEntity reqEntity = new MultipartEntity();
+				eventPictureNameStoredIndatabase=System.currentTimeMillis() + ".jpg";
+				reqEntity.addPart("myFile",
+						eventPictureNameStoredIndatabase, in);
+				httppost.setEntity(reqEntity);
+
+				Log.i(TAG, "request " + httppost.getRequestLine());
+				HttpResponse response = null;
+				try {
+					response = httpclient.execute(httppost);
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					if (response != null)
+						Log.i(TAG, "response "
+								+ response.getStatusLine().toString());
+				} finally {
+
+				}
+			} finally {
+
+			}
+
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			if (stream != null) {
+				try {
+					stream.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			return null;
+		}
 	}
 }

@@ -12,7 +12,7 @@
     <string name="login">LOGIN</string>
     <string name="register">REGISTER</string>
     <string name="username">Username</string>
-    <string name="name">Name</string>
+    <string name="name">Name:</string>
     <string name="password">Password</string>
     <string name="forgetPassword">Forgot Password</string>
     <string name="retypePassword">Retype Password</string>
@@ -29,11 +29,11 @@
     <string name="eventLocation">Address: </string>
     <string name="eventPrice">Price range: </string>
     <string name="eventPurchase">Buy tickets now!</string>
-    <string name="gender">Gender</string>
+    <string name="gender">Gender:</string>
     <string name="genderMale">Male</string>
     <string name="genderFemale">Female</string>
-    <string name="age">Age</string>
-    <string name="description">Description</string>
+    <string name="age">Age:</string>
+    <string name="description">Description:</string>
     <string name="done">Done</string>
     <string name="cancel">Cancel</string>
     <string name="activity_profile_form">Profile Form</string>
@@ -44,14 +44,17 @@
     <string name="buttonCreateEvent">Create!</string>
     <string name="btnSearch">Search</string>
     <string name="searchEvent">Search Event</string>
-<<<<<<< HEAD
-    <string name="buttonSave">Save Changes</string>
-=======
     <string name="update">Update</string>
     <string name="delete">Delete</string>
     <string name="eventType">Event Type: </string>
     <string name="buttonBack">Back</string>
->>>>>>> origin/createEventXMLAndJava
+    <string name="buttonEditProfile">Edit Profile</string>
+    <string name="title_activity_editEvent">Edit Event</string>
+    <string name="editEvent">Edit Event</string>
+    <string name="joinEvent">Join Event</string>
+    <string name="profileStatusString">Status</string>
+    <string name="changeImage">Change Image</string>
+    <string name="buttonSaveEvent">Save</string>
 
     <string-array name="createEventArray">
         <item>Select Event Type</item>
@@ -60,11 +63,15 @@
     </string-array>
 
     <string name="title_activity_search_event">Wanna?</string>
-<<<<<<< HEAD
-    <string name="title_activity_edit_event">Wanna...?</string>
-=======
     <string name="title_activity_edit_profile_form">EditProfileForm</string>
     <string name="title_activity_view_event_detail">ViewEventDetail</string>
->>>>>>> origin/createEventXMLAndJava
+    <string name="title_activity_edit_profile">EditProfile</string>
+    <string name="title_activity_profile__form">Profile_Form</string>
+    <string name="title_activity_view_profile_information">ViewProfileInformation</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_view_and_join_event">ViewAndJoinEventActivity</string>
+    <string name="title_activity_try">TryActivity</string>
+    <string name="title_activity_">Activity</string>
+    <string name="title_activity_search_event_result">SearchEventResult</string>
 
 </resources>
