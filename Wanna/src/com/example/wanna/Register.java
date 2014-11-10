@@ -99,7 +99,8 @@ public class Register extends Activity {
 	}
 	
 	public void onBackLoginClick(View view){
-		
+		Intent intent = new Intent(getApplicationContext(), Login.class);
+		startActivity(intent);		
 	}
 	
 	private class RegisterTask extends AsyncTask<String, Void, String> {		

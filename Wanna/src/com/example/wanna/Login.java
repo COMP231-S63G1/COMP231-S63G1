@@ -86,10 +86,10 @@ public class Login extends Activity {
 	private class LoginTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
-			//				loginEmail = etEmail.getText().toString();
-			//				loginPassword = etPassword.getText().toString();
-							 loginEmail = "gulang15@gmail.com";
-							 loginPassword = "123";
+							loginEmail = etEmail.getText().toString();
+							loginPassword = etPassword.getText().toString();
+//							 loginEmail = "gulang15@gmail.com";
+//							 loginPassword = "123";
 							List<NameValuePair> loginParams = new ArrayList<NameValuePair>();
 							loginParams
 									.add(new BasicNameValuePair("loginEmail", loginEmail));
@@ -98,8 +98,8 @@ public class Login extends Activity {
 							JSONObject json = jsonParser.getJSONFromUrl(urlLogin,
 									loginParams);
 							success = json.optInt(TAG_SUCCESS);
+							message = json.optString(TAG_MESSAGE);
 							if (success == 1) {
-								message = json.optString(TAG_MESSAGE);
 								Editor editor = sharedpreferences.edit();
 								editor.putString("sessionID", json.optString(TAG_SESSIONID));
 								editor.putString("userID", json.optString(TAG_USERID));
