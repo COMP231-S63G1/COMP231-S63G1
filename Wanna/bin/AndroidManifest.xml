@@ -97,6 +97,10 @@
             android:name=".SearchEventResult"
             android:label="@string/title_activity_search_event_result" >
         </activity>
+        <activity
+            android:name=".CreateGroup"
+            android:label="@string/title_activity_create_group" >
+        </activity>
     </application>
 
 </manifest>

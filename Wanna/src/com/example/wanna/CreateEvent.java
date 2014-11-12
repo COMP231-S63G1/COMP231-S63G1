@@ -56,7 +56,7 @@ public class CreateEvent extends Activity {
 
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
-	//php file url in the server 
+	//php file url in the server !
 	private String urlCreateEvent = userFunctions.URL_ROOT
 			+ "DB_CreateEvent.php";
 	private String urlUploadImage = userFunctions.URL_ROOT+"saveImage.php";
