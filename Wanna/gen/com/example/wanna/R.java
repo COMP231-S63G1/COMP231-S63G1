@@ -10,6 +10,7 @@ package com.example.wanna;
 public final class R {
     public static final class array {
         public static final int createEventArray=0x7f060000;
+        public static final int createGroupArray=0x7f060001;
     }
     public static final class attr {
     }
@@ -29,11 +30,11 @@ public final class R {
     }
     public static final class id {
         public static final int CustomFontText=0x7f09002e;
-        public static final int action_settings=0x7f090072;
+        public static final int action_settings=0x7f090079;
         public static final int age=0x7f09001b;
-        public static final int alert=0x7f09006a;
+        public static final int alert=0x7f090071;
         public static final int alertpass=0x7f090062;
-        public static final int bktolog=0x7f09006b;
+        public static final int bktolog=0x7f090072;
         public static final int bktologin=0x7f09003a;
         public static final int btcancel=0x7f090061;
         public static final int btchangepass=0x7f090060;
@@ -42,6 +43,7 @@ public final class R {
         public static final int buttonCancel=0x7f090024;
         public static final int buttonCancle=0x7f09001f;
         public static final int buttonCreateEvent=0x7f090012;
+        public static final int buttonCreateGroup=0x7f090069;
         public static final int buttonDelete=0x7f090023;
         public static final int buttonDone=0x7f09001e;
         public static final int buttonEdit=0x7f090052;
@@ -49,7 +51,7 @@ public final class R {
         public static final int buttonEnter=0x7f09002f;
         public static final int buttonUpdate=0x7f090022;
         public static final int confirmPassword=0x7f090037;
-        public static final int createEvent=0x7f090064;
+        public static final int createEvent=0x7f09006b;
         public static final int description=0x7f09001d;
         public static final int editAddress=0x7f09000d;
         public static final int email=0x7f090026;
@@ -63,21 +65,24 @@ public final class R {
         public static final int eventTimeEditText=0x7f090009;
         public static final int eventVenue=0x7f09000b;
         public static final int fname=0x7f090032;
-        public static final int forpas=0x7f090068;
+        public static final int forpas=0x7f09006f;
         public static final int genderFemale=0x7f090019;
         public static final int genderMale=0x7f090018;
+        public static final int groupDescriptionEditText=0x7f090068;
+        public static final int groupName=0x7f090066;
+        public static final int groupTypeSpin=0x7f090064;
         public static final int imgView=0x7f090005;
         public static final int imgViewViewEvent=0x7f090044;
         public static final int lname=0x7f090034;
         public static final int login=0x7f090027;
         public static final int loginErrorMsg=0x7f09002a;
-        public static final int logout=0x7f090065;
+        public static final int logout=0x7f09006c;
         public static final int name=0x7f090015;
         public static final int newpass=0x7f09005f;
         public static final int passres=0x7f09002b;
         public static final int pword=0x7f090029;
         public static final int pworda=0x7f09002d;
-        public static final int regat=0x7f090071;
+        public static final int regat=0x7f090078;
         public static final int register=0x7f090039;
         public static final int registerConfirmPassword=0x7f090038;
         public static final int registerEmail=0x7f090035;
@@ -87,19 +92,20 @@ public final class R {
         public static final int registerTitle=0x7f090030;
         public static final int register_error=0x7f09003b;
         public static final int registerbtn=0x7f090028;
-        public static final int respass=0x7f090069;
+        public static final int respass=0x7f090070;
         public static final int scrollView1=0x7f090000;
+        public static final int scrollView3=0x7f090063;
         public static final int searchBtn=0x7f09003e;
         public static final int searchEvent=0x7f09003c;
         public static final int spinnerEventType=0x7f090001;
         public static final int textView=0x7f090025;
-        public static final int textView11=0x7f090070;
+        public static final int textView11=0x7f090077;
         public static final int textView2=0x7f09002c;
         public static final int textView3=0x7f09005e;
-        public static final int textView5=0x7f09006c;
-        public static final int textView7=0x7f09006d;
-        public static final int textView9=0x7f09006e;
-        public static final int textwelcome=0x7f090063;
+        public static final int textView5=0x7f090073;
+        public static final int textView7=0x7f090074;
+        public static final int textView9=0x7f090075;
+        public static final int textwelcome=0x7f09006a;
         public static final int tvAge=0x7f09001a;
         public static final int tvDescription=0x7f09001c;
         public static final int tvEventDate=0x7f090006;
@@ -126,6 +132,8 @@ public final class R {
         public static final int tvEventVenueLabel=0x7f090049;
         public static final int tvEventVenueValue=0x7f09004a;
         public static final int tvGender=0x7f090016;
+        public static final int tvGroupDescription=0x7f090067;
+        public static final int tvGroupName=0x7f090065;
         public static final int tvName=0x7f090014;
         public static final int tvProfileAgeLabel=0x7f090057;
         public static final int tvProfileAgeValue=0x7f090058;
@@ -137,12 +145,12 @@ public final class R {
         public static final int tvProfileNickNameValue=0x7f090054;
         public static final int tvProfileStatusLabel=0x7f09005b;
         public static final int tvProfileStatusValue=0x7f09005c;
-        public static final int uname=0x7f09006f;
+        public static final int uname=0x7f090076;
         public static final int userGenderGroup=0x7f090017;
         public static final int userPitcure=0x7f090013;
-        public static final int viewEvent=0x7f090067;
+        public static final int viewEvent=0x7f09006e;
         public static final int viewEventScrollView=0x7f09003f;
-        public static final int viewProfileInformation=0x7f090066;
+        public static final int viewProfileInformation=0x7f09006d;
     }
     public static final class layout {
         public static final int activity_create_event=0x7f030000;
@@ -158,9 +166,10 @@ public final class R {
         public static final int activity_view_event_detail=0x7f03000a;
         public static final int activity_view_profile=0x7f03000b;
         public static final int changepassword=0x7f03000c;
-        public static final int login_success=0x7f03000d;
-        public static final int passwordreset=0x7f03000e;
-        public static final int registered=0x7f03000f;
+        public static final int create_group=0x7f03000d;
+        public static final int login_success=0x7f03000e;
+        public static final int passwordreset=0x7f03000f;
+        public static final int registered=0x7f030010;
     }
     public static final class menu {
         public static final int create_event=0x7f080000;
@@ -176,7 +185,9 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int btnSearch=0x7f050029;
         public static final int buttonBack=0x7f05002e;
+        public static final int buttonCancel=0x7f050045;
         public static final int buttonCreateEvent=0x7f050028;
+        public static final int buttonCreateGroup=0x7f050042;
         public static final int buttonEditProfile=0x7f05002f;
         public static final int buttonSaveEvent=0x7f050035;
         public static final int cancel=0x7f050022;
@@ -201,6 +212,8 @@ public final class R {
         public static final int gender=0x7f05001c;
         public static final int genderFemale=0x7f05001e;
         public static final int genderMale=0x7f05001d;
+        public static final int groupDescription=0x7f050044;
+        public static final int groupName=0x7f050043;
         public static final int hello_world=0x7f050001;
         public static final int hintEventDate=0x7f050026;
         public static final int hintEventTime=0x7f050025;
@@ -218,6 +231,7 @@ public final class R {
         public static final int searchEvent=0x7f05002a;
         public static final int title_activity_=0x7f05003f;
         public static final int title_activity_create_event=0x7f050013;
+        public static final int title_activity_create_group=0x7f050041;
         public static final int title_activity_editEvent=0x7f050030;
         public static final int title_activity_edit_profile=0x7f050039;
         public static final int title_activity_edit_profile_form=0x7f050037;
