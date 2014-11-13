@@ -9,30 +9,28 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class SearchEventAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter {
 
-//	String[] searchEventItems;
 	Context ctxt;
-	LayoutInflater searchEventInflater;
-	ArrayList<String[]> eventItemsList;
+	LayoutInflater listViewInflater;
+	ArrayList<String[]> listItemsList;
 	
-	public SearchEventAdapter(ArrayList<String[]> eventItemsList, Context ctxt){
-		this.eventItemsList = eventItemsList;
-//		searchEventItems = eventItemsList.
+	public ListViewAdapter(ArrayList<String[]> listItemsList, Context ctxt){
+		this.listItemsList = listItemsList;
 		this.ctxt = ctxt;
-		searchEventInflater = (LayoutInflater)ctxt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		listViewInflater = (LayoutInflater)ctxt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 	
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return eventItemsList.size();
+		return listItemsList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return eventItemsList.get(position)[0];
+		return listItemsList.get(position)[0];
 	}
 
 	@Override
@@ -45,9 +43,9 @@ public class SearchEventAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		if(convertView==null){
-			convertView = searchEventInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
-			TextView eventItem = (TextView)convertView.findViewById(android.R.id.text1);
-			eventItem.setText(eventItemsList.get(position)[1]);
+			convertView = listViewInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+			TextView listItem = (TextView)convertView.findViewById(android.R.id.text1);
+			listItem.setText(listItemsList.get(position)[1]);
 		}
 		return convertView;
 	}

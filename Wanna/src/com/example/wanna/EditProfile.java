@@ -13,6 +13,7 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -29,6 +30,8 @@ public class EditProfile extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
 
+	private ProgressDialog pDialog;
+	
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
 
@@ -90,6 +93,17 @@ public class EditProfile extends Activity {
 
 	private class UploadNewInformationTask extends
 			AsyncTask<String, Void, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(EditProfile.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
 		@Override
 		protected String doInBackground(String... urls) {
 			sessionID = sharedpreferences.getString("sessionID", "");

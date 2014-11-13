@@ -14,6 +14,7 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -30,6 +31,7 @@ public class ViewAndJoinEvent extends Activity {
 		
 		public static final String MyPREFERENCES = "Wanna";
 		SharedPreferences sharedpreferences;
+		private ProgressDialog pDialog;
 
 		ArrayList<HashMap<String, String>> eventDetailList;
 		TextView tvEventType;
@@ -100,11 +102,18 @@ public class ViewAndJoinEvent extends Activity {
 
 	private class ViewEventDetailTask extends AsyncTask<String, Void, String> {
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(ViewAndJoinEvent.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
+		@Override
 		protected String doInBackground(String... urls) {
-			// updating UI from Background Thread
-//			runOnUiThread(new Runnable() {
-//				public void run() {
-					// Check for success tag
 					int success;
 					try {
 						// Building Parameters
@@ -147,6 +156,17 @@ public class ViewAndJoinEvent extends Activity {
 		new JoinEventTask().execute();
 	}
 	private class JoinEventTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(ViewAndJoinEvent.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
 		@Override
 		protected String doInBackground(String... urls) {
 			sessionID = sharedpreferences.getString("sessionID", "");

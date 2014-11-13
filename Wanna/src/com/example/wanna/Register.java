@@ -13,6 +13,7 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class Register extends Activity {
 
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
+	private ProgressDialog pDialog;
 	
 	UserFunctions userFunctions = new UserFunctions();
 	
@@ -103,7 +105,18 @@ public class Register extends Activity {
 		startActivity(intent);		
 	}
 	
-	private class RegisterTask extends AsyncTask<String, Void, String> {		
+	private class RegisterTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(Register.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
         @Override
         protected String doInBackground(String... urls) {
 

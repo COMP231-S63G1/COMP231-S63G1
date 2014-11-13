@@ -14,6 +14,7 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -26,6 +27,7 @@ public class ViewEventDetail extends Activity {
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
+	private ProgressDialog pDialog;
 
 	ArrayList<HashMap<String, String>> eventDetailList;
 	TextView tvEventType;
@@ -92,12 +94,20 @@ public class ViewEventDetail extends Activity {
 
 	private class ViewEventDetailTask extends AsyncTask<String, Void, String> {
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(ViewEventDetail.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
+		@Override
 		protected String doInBackground(String... urls) {
 			sessionID = sharedpreferences.getString("sessionID", "");
 			userID = sharedpreferences.getString("userID", "");
-			// updating UI from Background Thread
-//			runOnUiThread(new Runnable() {
-//				public void run() {
 					// Check for success tag
 					int success;
 					try {
@@ -106,7 +116,6 @@ public class ViewEventDetail extends Activity {
 						viewEventDatailParams
 						.add(new BasicNameValuePair("sessionID", sessionID));
 						viewEventDatailParams.add(new BasicNameValuePair("userID", userID));
-//						viewEventDatailParams.add(new BasicNameValuePair("eventID", eventID));
 						// getting event details by making HTTP request
 						JSONObject json = jsonParser.getJSONFromUrl(
 								urlViewEventDetail, viewEventDatailParams);

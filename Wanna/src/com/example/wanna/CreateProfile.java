@@ -14,6 +14,7 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -31,6 +32,8 @@ public class CreateProfile extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
+
+	private ProgressDialog pDialog;
 
 	UserFunctions userFunctions = new UserFunctions();
 	// url to create user profile
@@ -127,6 +130,17 @@ public class CreateProfile extends Activity {
 	}
 
 	private class CreateUserProfileTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(CreateProfile.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
 		@Override
 		protected String doInBackground(String... urls) {
 

@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,6 +46,9 @@ public class EditEvent extends Activity {
 
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
+
+	private ProgressDialog pDialog;
+	
 	//php file url in the server 
 	private String urlEditEvent = userFunctions.URL_ROOT
 			+ "DB_UpdateEvent.php";
@@ -209,6 +213,16 @@ public class EditEvent extends Activity {
 			/**
 			 * Creating event
 			 * */
+			@Override
+			protected void onPreExecute() {
+				super.onPreExecute();
+				pDialog = new ProgressDialog(EditEvent.this);
+				pDialog.setTitle("Contacting Servers");
+				pDialog.setMessage("Loading ...");
+				pDialog.setIndeterminate(false);
+				pDialog.setCancelable(true);
+				pDialog.show();
+			}
 
 			protected String doInBackground(String... args) {
 				String eventname = etEventName.getText().toString();
