@@ -48,11 +48,7 @@
             android:layout_marginTop="9dp"
             android:onClick="onSearchEvent"
       />
-      
-</TableRow>
-<TableRow>
-    
-    <Button
+      <Button
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:text="Create Event"
@@ -65,7 +61,12 @@
             android:layout_marginTop="9dp"
             android:onClick="onCreateEvent"
       />
-
+      
+      
+</TableRow>
+<TableRow>
+    
+    
     
 
     <Button
@@ -81,10 +82,8 @@
         android:textSize="12sp" 
         android:onClick="onChangePasswordClick"
         />
-    </TableRow>
     
-<TableRow>
-    <Button
+       <Button
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:text="Logout"
@@ -97,9 +96,15 @@
             android:layout_marginTop="9dp"
             android:onClick="onLogoutClick"
       />
+    
+    </TableRow>
+    
+    
+<TableRow>
+ 
+   
 
     
-   
 </TableRow>
 <TableRow>
     <Button
@@ -115,10 +120,7 @@
             android:layout_marginTop="9dp"
             android:onClick="onViewProfileClick"
       />
-   
-</TableRow>
-<TableRow>
-    <Button
+      <Button
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:text="View Event"
@@ -131,7 +133,36 @@
             android:layout_marginTop="9dp"
             android:onClick="onViewEventClick"
       />
-
+    
+   
+</TableRow>
+<TableRow>
+  <Button
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="Create Group"
+            android:id="@+id/createGroup"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:background="#48D1CC"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="9dp"
+            android:onClick="onCreateGroupClick"
+      />
+  <Button
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="Search Group"
+            android:id="@+id/searchGroup"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:background="#48D1CC"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="9dp"
+            android:onClick="onSearchGroupClick"
+      />
     
 
 </TableRow>
