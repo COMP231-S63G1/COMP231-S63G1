@@ -89,4 +89,17 @@
     </string-array>
     
 
+       <string name="title_activity_search_groups">Search for Groups</string>
+	<string name="search_group_name">Search Group Name</string>
+	<string name="search_group_category">Search Group Category</string>
+	<string name="search_group_instructions">Search by name OR category</string>
+	
+	<string-array name="searchGroupCategory">
+	    <item>Select Group Category</item>
+	    <item>Sports</item>
+	    <item>Music</item>
+	    <item>Video Games</item>
+	    <item>Comics</item>
+	</string-array>
 </resources>
+
