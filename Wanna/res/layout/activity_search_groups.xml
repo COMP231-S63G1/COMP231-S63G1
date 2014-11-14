@@ -42,6 +42,7 @@
         android:text="@string/btnSearch" 
         android:background="#48D1CC"
 		android:textColor="#F5F5F5"
+		android:onClick="onClickSearchGroup"
         />
 
     <EditText

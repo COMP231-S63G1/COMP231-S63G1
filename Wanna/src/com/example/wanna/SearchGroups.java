@@ -26,4 +26,9 @@ public class SearchGroups extends Activity {
 		startActivity(intent);
 		}
 	
+	public void enterApplication(View view){	
+		Intent intent = new Intent(this, SearchGroups.class);
+		startActivity(intent);
+		}
+	
 }
