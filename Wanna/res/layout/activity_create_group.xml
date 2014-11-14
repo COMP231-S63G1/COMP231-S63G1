@@ -8,7 +8,7 @@
     >
      
 <ScrollView 
-        android:id="@+id/scrollView3"
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 </ScrollView>
@@ -39,7 +39,7 @@
          />
 
     <EditText
-        android:id="@+id/groupName"
+        android:id="@+id/etGroupName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp" >
@@ -85,7 +85,7 @@
         />
 
     <EditText
-        android:id="@+id/groupDescriptionEditText"
+        android:id="@+id/etGroupDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="#48D1CC"
-        android:onClick="onCreateGroup"
+        android:onClick="onCreateGroupClick"
         android:text="@string/buttonCreateGroup"
         android:textColor="#F5F5F5"
          />

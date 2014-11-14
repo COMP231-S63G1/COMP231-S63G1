@@ -76,7 +76,6 @@ public class CreateProfile extends Activity {
 		Intent intent = getIntent();
 		// getting user id (userid) from intent
 		userid = intent.getStringExtra("userid");
-		System.out.println(userid);
 		etUserNickName = (EditText) findViewById(R.id.name);
 		rgUserGender = (RadioGroup) findViewById(R.id.userGenderGroup);
 		etUserAge = (EditText) findViewById(R.id.age);
@@ -156,7 +155,6 @@ public class CreateProfile extends Activity {
 					.toString(userAge)));
 			createProfileParams.add(new BasicNameValuePair("userDescription",
 					userDescription));
-			System.out.println(userid);
 			// getting JSON string from URL
 			JSONObject json = jsonParser.getJSONFromUrl(urlCreateProfile,
 					createProfileParams);
@@ -167,7 +165,6 @@ public class CreateProfile extends Activity {
 				editor.putString("sessionID", json.optString(TAG_SESSIONID));
 				editor.putString("userID", json.optString(TAG_USERID));
 				editor.putString("nickName", json.optString(TAG_NICKNAME));
-				System.out.println(json.optString(TAG_NICKNAME));
 				editor.commit();
 			}
 			return null;
