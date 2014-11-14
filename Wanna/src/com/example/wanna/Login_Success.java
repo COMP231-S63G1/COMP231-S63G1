@@ -2,6 +2,7 @@ package com.example.wanna;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -28,6 +29,8 @@ public class Login_Success extends Activity {
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
 
+	private ProgressDialog pDialog;
+	
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
 	
@@ -72,27 +75,8 @@ public class Login_Success extends Activity {
 		startActivity(intent);
 		}
     
-//    public void  onJoinEvent(View view){	
-//    	etEeventID = (EditText) findViewById(R.id.etEeventID);
-//    	String eventID = etEeventID.getText().toString();
-//		Intent intent = new Intent(this, ViewAndJoinEvent.class);
-//		intent.putExtra("eventID", eventID);
-//		startActivity(intent);
-//		}
-    
-//    public void onEditProfileClick(View view){
-////    	etEeventID = (EditText) findViewById(R.id.etEeventID);
-//    	String profileID = "2";
-//		Intent intent = new Intent(this, EditProfile.class);
-//		intent.putExtra("profileID", profileID);
-//		startActivity(intent);    	
-//    }
-    
     public void onViewEventClick(View view){
-//    	etEeventID = (EditText) findViewById(R.id.etEeventID);
-//    	String eventID = etEeventID.getText().toString();
 		Intent intent = new Intent(this, ViewEventDetail.class);
-//		intent.putExtra("eventID", eventID);
 		startActivity(intent);    	
     }
     
@@ -120,6 +104,17 @@ public class Login_Success extends Activity {
 		}
     
     private class LoginSeccessTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(Login_Success.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
 		@Override
 		protected String doInBackground(String... urls) {
 			sessionID = sharedpreferences.getString("sessionID", "");

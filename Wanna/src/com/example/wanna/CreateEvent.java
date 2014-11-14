@@ -56,7 +56,12 @@ public class CreateEvent extends Activity {
 
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
+<<<<<<< HEAD
+	private ProgressDialog pDialog;
+	//php file url in the server 
+=======
 	//php file url in the server !
+>>>>>>> 26cae2b528fad2fa9ee16da006d10d6eaffd3d82
 	private String urlCreateEvent = userFunctions.URL_ROOT
 			+ "DB_CreateEvent.php";
 	private String urlUploadImage = userFunctions.URL_ROOT+"saveImage.php";
@@ -152,7 +157,16 @@ public class CreateEvent extends Activity {
 		/**
 		 * Creating event
 		 * */
-
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(CreateEvent.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
 		protected String doInBackground(String... args) {
 			sessionID = sharedpreferences.getString("sessionID", "");
 			userID = sharedpreferences.getString("userID", "");
@@ -291,6 +305,16 @@ public class CreateEvent extends Activity {
 	}
 
 	private class UploadTask extends AsyncTask<Bitmap, Void, Void> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(CreateEvent.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
 
 		protected Void doInBackground(Bitmap... bitmaps) {
 			if (bitmaps[0] == null)

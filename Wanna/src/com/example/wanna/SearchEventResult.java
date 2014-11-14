@@ -10,11 +10,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.wanna.library.JSONParser;
-import com.example.wanna.library.SearchEventAdapter;
+import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,12 +30,14 @@ public class SearchEventResult extends ListActivity {
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
+	private ProgressDialog pDialog;
+	
 	// url to view event detail
 	private String urlSearchEvent = userFunctions.URL_ROOT + "DB_SearchEvent.php";
 	ListView lvEventItem;
 	
 	ArrayList<String[]> eventItemsList = new ArrayList<String[]>();
-	SearchEventAdapter searchEventAdapter;
+	ListViewAdapter searchEventAdapter;
 	String eventID;
 	String eventName;
 	int success;
@@ -60,7 +63,7 @@ public class SearchEventResult extends ListActivity {
 		searchEventName = intent.getStringExtra(TAG_SEARCHEVENTNAME);
 		new SearchEventTask().execute();
 		lvEventItem = (ListView)findViewById(android.R.id.list);
-		searchEventAdapter = new SearchEventAdapter(eventItemsList, this);
+		searchEventAdapter = new ListViewAdapter(eventItemsList, this);
 		lvEventItem.setAdapter(searchEventAdapter);
 	}
 	
@@ -72,6 +75,17 @@ public class SearchEventResult extends ListActivity {
 	  }
 	
 	private class SearchEventTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(SearchEventResult.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
 		@Override
 		protected String doInBackground(String... urls) {
 			// Building Parameters

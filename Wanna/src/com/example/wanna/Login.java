@@ -7,6 +7,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -26,6 +27,7 @@ public class Login extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	public static final String MyPREFERENCES = "Wanna";
 
+	private ProgressDialog pDialog;
 	EditText etEmail;
 	EditText etPassword;
 
@@ -85,38 +87,48 @@ public class Login extends Activity {
 
 	private class LoginTask extends AsyncTask<String, Void, String> {
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(Login.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Logging in ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+
+		@Override
 		protected String doInBackground(String... urls) {
-							loginEmail = etEmail.getText().toString();
-							loginPassword = etPassword.getText().toString();
-//							 loginEmail = "gulang15@gmail.com";
-//							 loginPassword = "123";
-							List<NameValuePair> loginParams = new ArrayList<NameValuePair>();
-							loginParams
-									.add(new BasicNameValuePair("loginEmail", loginEmail));
-							loginParams.add(new BasicNameValuePair("loginPassword",
-									loginPassword));
-							JSONObject json = jsonParser.getJSONFromUrl(urlLogin,
-									loginParams);
-							success = json.optInt(TAG_SUCCESS);
-							message = json.optString(TAG_MESSAGE);
-							if (success == 1) {
-								Editor editor = sharedpreferences.edit();
-								editor.putString("sessionID", json.optString(TAG_SESSIONID));
-								editor.putString("userID", json.optString(TAG_USERID));
-								editor.putString("nickName", json.optString(TAG_NICKNAME));
-								editor.commit();
-								Intent intent = new Intent(getApplicationContext(),
-										Login_Success.class);
-								startActivity(intent);
-							} else {								
-							}
+			loginEmail = etEmail.getText().toString();
+			loginPassword = etPassword.getText().toString();
+			// loginEmail = "gulang15@gmail.com";
+			// loginPassword = "123";
+			List<NameValuePair> loginParams = new ArrayList<NameValuePair>();
+			loginParams.add(new BasicNameValuePair("loginEmail", loginEmail));
+			loginParams.add(new BasicNameValuePair("loginPassword",
+					loginPassword));
+			JSONObject json = jsonParser.getJSONFromUrl(urlLogin, loginParams);
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
+			if (success == 1) {
+				Editor editor = sharedpreferences.edit();
+				editor.putString("sessionID", json.optString(TAG_SESSIONID));
+				editor.putString("userID", json.optString(TAG_USERID));
+				editor.putString("nickName", json.optString(TAG_NICKNAME));
+				editor.commit();
+				Intent intent = new Intent(getApplicationContext(),
+						Login_Success.class);
+				startActivity(intent);
+			} else {
+			}
 			return null;
 		}
-		
+
 		@Override
 		protected void onPostExecute(String result) {
 			if (success != 1) {
-				Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();				
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

@@ -13,6 +13,7 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -27,6 +28,7 @@ public class ViewProfile extends Activity {
 
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
+	private ProgressDialog pDialog;
 
 	ArrayList<HashMap<String, String>> viewProfileInformationList;
 	TextView tvProfileNickName;
@@ -91,6 +93,17 @@ public class ViewProfile extends Activity {
 	private class ViewProfileInformationTask extends
 			AsyncTask<String, Void, String> {
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(ViewProfile.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
+		@Override
 		protected String doInBackground(String... urls) {
 			sessionID = sharedpreferences.getString("sessionID", "");
 			userID = sharedpreferences.getString("userID", "");
@@ -100,8 +113,6 @@ public class ViewProfile extends Activity {
 			ViewProfileParams
 					.add(new BasicNameValuePair("sessionID", sessionID));
 			ViewProfileParams.add(new BasicNameValuePair("userID", userID));
-//			ViewProfileParams
-//					.add(new BasicNameValuePair("profileID", profileID));
 			// getting profile info by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(
 					urlViewProfileInformation, ViewProfileParams);
