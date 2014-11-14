@@ -73,5 +73,33 @@
     <string name="title_activity_try">TryActivity</string>
     <string name="title_activity_">Activity</string>
     <string name="title_activity_search_event_result">SearchEventResult</string>
+    <string name="title_activity_create_group">Create a New Group</string>
+    <string name="buttonCreateGroup">Create Group</string>
+    <string name="groupName">Group Name:</string>
+    <string name="groupDescription">Description</string>
+    <string name="buttonCancel">Cancel</string>
+   
+    
+     <string-array name="createGroupArray">
+        <item>Select Group Type</item>
+        <item>Sports</item>
+        <item>Music</item>
+        <item>Video Games</item>
+        <item>Comics</item>
+    </string-array>
+    
 
+       <string name="title_activity_search_groups">Search for Groups</string>
+	<string name="search_group_name">Search Group Name</string>
+	<string name="search_group_category">Search Group Category</string>
+	<string name="search_group_instructions">Search by name OR category</string>
+	
+	<string-array name="searchGroupCategory">
+	    <item>Select Group Category</item>
+	    <item>Sports</item>
+	    <item>Music</item>
+	    <item>Video Games</item>
+	    <item>Comics</item>
+	</string-array>
 </resources>
+
