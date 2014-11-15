@@ -55,14 +55,6 @@
     <string name="profileStatusString">Status</string>
     <string name="changeImage">Change Image</string>
     <string name="buttonSaveEvent">Save</string>
-<<<<<<< HEAD
-    <string name="privacyPublic">Public</string>
-    <string name="privacyPrivate">Private</string>
-    <string name="selectGroupType">Select Group Type</string>
-    <string name="selectGroupPrivacy">Select Group Privacy</string>
-=======
-    <string name="btnSave">Save</string>
->>>>>>> 12c2486b6db9b1ee00a93e9bc3aa2579e819842b
 
     <string-array name="createEventArray">
         <item>Select Event Type</item>
@@ -109,7 +101,6 @@
     </string-array>
 
     <string name="title_activity_group_search_result">Search Results</string>
-    <string name="searchResultsTv">Search results for</string>
-    <string name="title_activity_edit_group">Edit Group Information</string>
+	<string name="searchResultsTv">Search results for</string>
 
 </resources>
