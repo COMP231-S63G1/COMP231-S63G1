@@ -25,14 +25,18 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class CreateGroup extends Activity {
-	private Spinner groupTypeSpinner;
-	private ImageView img;
-	private EditText etGroupName;
-	private EditText etGroupDescription;
+	Spinner groupTypeSpinner;
+	RadioButton rbGroupPrivacySelect;
+	RadioGroup rgGroupPrivacy;
+	ImageView img;
+	EditText etGroupName;
+	EditText etGroupDescription;
 
 	private ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
@@ -53,17 +57,18 @@ public class CreateGroup extends Activity {
 	String message;
 	String sessionID;
 	String userID;
+	String groupPrivacy;
 	String groupType;
 	String groupName;
 	String groupDescription;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);		
-
+		super.onCreate(savedInstanceState);	
+		setContentView(R.layout.activity_create_group);	
+		rgGroupPrivacy = (RadioGroup) findViewById(R.id.groupPrivacy);
 		etGroupName = (EditText) findViewById(R.id.etGroupName);
 		etGroupDescription = (EditText) findViewById(R.id.etGroupDescription);
-		setContentView(R.layout.activity_create_group);
 		groupTypeSpinner = (Spinner) findViewById(R.id.groupTypeSpin);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.createGroupArray,
@@ -79,6 +84,9 @@ public class CreateGroup extends Activity {
 	
 	public void onCreateGroupClick(View view){
 		groupType = groupTypeSpinner.getSelectedItem().toString();
+		rbGroupPrivacySelect = (RadioButton) findViewById(rgGroupPrivacy
+				.getCheckedRadioButtonId());
+		groupPrivacy = rbGroupPrivacySelect.getText().toString();
 		groupName = etGroupName.getText().toString();
 		groupDescription = etGroupDescription.getText().toString();
 		if ((!groupName.equals("")) && (!groupDescription.equals(""))) {
@@ -97,6 +105,23 @@ public class CreateGroup extends Activity {
 		startActivity(intent);		
 	}
 	
+	public void onRadioButtonClicked(View view) {
+		// Is the button now checked?
+		boolean checked = ((RadioButton) view).isChecked();
+
+		// Check which radio button was clicked
+		switch (view.getId()) {
+		case R.id.privacyPublic:
+			if (checked)
+				// Pirates are the best
+				break;
+		case R.id.privacyPrivate:
+			if (checked)
+				// Ninjas rule
+				break;
+		}
+	}
+	
 	private class CreateGroupTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected void onPreExecute() {
@@ -110,11 +135,13 @@ public class CreateGroup extends Activity {
 		}
 		
 		@Override
-		protected String doInBackground(String... urls) {// Building Parameters
+		protected String doInBackground(String... urls) {
+			// Building Parameters
 			List<NameValuePair> createGroupParams = new ArrayList<NameValuePair>();
 			createGroupParams.add(new BasicNameValuePair("sessionID", sessionID));
 			createGroupParams.add(new BasicNameValuePair("userID", userID));
 			createGroupParams.add(new BasicNameValuePair("groupType", groupType));
+			createGroupParams.add(new BasicNameValuePair("groupPrivacy", groupPrivacy));
 			createGroupParams.add(new BasicNameValuePair("groupName", groupName));
 			createGroupParams.add(new BasicNameValuePair("groupDescription", groupDescription));
 			
@@ -156,6 +183,7 @@ public class CreateGroup extends Activity {
 				}
 			}
 		}
+	    
 	    //method to get the bitmap from the gallery according to the uri
 	    private Bitmap getPath(Uri uri) {
 			 
@@ -172,6 +200,7 @@ public class CreateGroup extends Activity {
 			
 			return bitmap;
 		}
+	    
 	    public void onClickButtonCancel(View view){	
 			Intent intent = new Intent(this, Login_Success.class);
 			startActivity(intent);

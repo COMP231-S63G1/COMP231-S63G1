@@ -49,15 +49,16 @@ public class CreateProfile extends Activity {
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_SESSIONID = "sessionid";
 	private static final String TAG_USERID = "userid";
+	private static final String TAG_PROFILEID = "profileid";
 	private static final String TAG_NICKNAME = "nickName";
 
 	EditText etUserNickName;
+	RadioButton userGenderSelect;
 	RadioGroup rgUserGender;
 	EditText etUserAge;
 	EditText etUserDescription;
 
 	String userNickName;
-	RadioButton userGenderSelect;
 	String userGender;
 	int userAge;
 	String userDescription;
@@ -165,6 +166,7 @@ public class CreateProfile extends Activity {
 				editor.putString("sessionID", json.optString(TAG_SESSIONID));
 				editor.putString("userID", json.optString(TAG_USERID));
 				editor.putString("nickName", json.optString(TAG_NICKNAME));
+				editor.putString("profileID", json.optString(TAG_PROFILEID));
 				editor.commit();
 			}
 			return null;

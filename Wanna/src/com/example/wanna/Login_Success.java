@@ -105,17 +105,6 @@ public class Login_Success extends Activity {
     
     private class LoginSeccessTask extends AsyncTask<String, Void, String> {
 		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(Login_Success.this);
-			pDialog.setTitle("Contacting Servers");
-			pDialog.setMessage("Loading ...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
-		}
-		
-		@Override
 		protected String doInBackground(String... urls) {
 			sessionID = sharedpreferences.getString("sessionID", "");
 			System.out.println(sessionID);
