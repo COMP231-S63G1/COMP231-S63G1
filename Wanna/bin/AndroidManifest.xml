@@ -109,6 +109,10 @@
             android:name=".GroupSearchResult"
             android:label="@string/title_activity_group_search_result" >
         </activity>
+        <activity
+            android:name=".EditGroup"
+            android:label="@string/title_activity_edit_group" >
+        </activity>
     </application>
 
 </manifest>
