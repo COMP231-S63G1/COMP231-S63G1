@@ -55,7 +55,6 @@
     <string name="profileStatusString">Status</string>
     <string name="changeImage">Change Image</string>
     <string name="buttonSaveEvent">Save</string>
-    <string name="btnSave">Save</string>
 
     <string-array name="createEventArray">
         <item>Select Event Type</item>
@@ -102,7 +101,6 @@
     </string-array>
 
     <string name="title_activity_group_search_result">Search Results</string>
-    <string name="searchResultsTv">Search results for</string>
-    <string name="title_activity_edit_group">Edit Group Information</string>
+	<string name="searchResultsTv">Search results for</string>
 
 </resources>

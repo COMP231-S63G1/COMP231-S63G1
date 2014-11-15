@@ -55,7 +55,6 @@
     <string name="profileStatusString">Status</string>
     <string name="changeImage">Change Image</string>
     <string name="buttonSaveEvent">Save</string>
-    <string name="btnSave">Save</string>
 
     <string-array name="createEventArray">
         <item>Select Event Type</item>
