@@ -55,17 +55,14 @@
     <string name="profileStatusString">Status</string>
     <string name="changeImage">Change Image</string>
     <string name="buttonSaveEvent">Save</string>
-<<<<<<< HEAD
     <string name="privacyPublic">Public</string>
     <string name="privacyPrivate">Private</string>
     <string name="selectGroupType">Select Group Type</string>
     <string name="selectGroupPrivacy">Select Group Privacy</string>
-=======
+    <string name="selectEventType">Select Event Type</string>
     <string name="btnSave">Save</string>
->>>>>>> 12c2486b6db9b1ee00a93e9bc3aa2579e819842b
 
     <string-array name="createEventArray">
-        <item>Select Event Type</item>
         <item>Sports</item>
         <item>Entertainment</item>
     </string-array>
@@ -88,7 +85,6 @@
     <string name="buttonCancel">Cancel</string>
 
     <string-array name="createGroupArray">
-        <item>Select Group Type</item>
         <item>Sports</item>
         <item>Music</item>
         <item>Video Games</item>
@@ -101,7 +97,6 @@
     <string name="search_group_instructions">Search by name OR category</string>
 
     <string-array name="searchGroupCategory">
-        <item>Select Group Category</item>
         <item>Sports</item>
         <item>Music</item>
         <item>Video Games</item>
@@ -111,5 +106,6 @@
     <string name="title_activity_group_search_result">Search Results</string>
     <string name="searchResultsTv">Search results for</string>
     <string name="title_activity_edit_group">Edit Group Information</string>
+    <string name="title_activity_search_group_result">SearchGroupResult</string>
 
 </resources>

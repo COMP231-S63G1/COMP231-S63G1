@@ -20,6 +20,16 @@
     android:padding="15dp"
     >  
     
+    <TextView
+        android:id="@+id/tvSelectEventType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:text="@string/selectEventType"
+        android:textColor="#48D1CC"
+        android:textSize="18sp"
+         />
     <Spinner
         android:layout_marginTop="25dp"
         android:id="@+id/spinnerEventType"
@@ -27,10 +37,7 @@
         android:layout_height="wrap_content" 
         style="@style/SpinnerTextAppearance"
         android:layout_marginBottom="10dp"
-        />
-    
-    
-   
+        />  
     
       <TextView
           android:id="@+id/tvEventName"
