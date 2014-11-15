@@ -4,7 +4,7 @@
 $response = array();
  
 // check for required fields
-if (isset($_POST['userid']) &&isset($_POST['userNickName']) && isset($_POST['userGender']) && isset($_POST['userAge'])&& isset($_POST['userDescription'])) {
+if (isset($_POST['userid']) && isset($_POST['userNickName']) && isset($_POST['userGender']) && isset($_POST['userAge'])&& isset($_POST['userDescription'])) {
 	$userid = $_POST['userid'];
     $userNickName = $_POST['userNickName'];
     $userGender = $_POST['userGender'];
@@ -22,21 +22,42 @@ if (isset($_POST['userid']) &&isset($_POST['userNickName']) && isset($_POST['use
  
     // check if row inserted or not
     if ($result) {
-        // successfully inserted into database
-        $response["success"] = 1;
-		$response["message"] = "Create profile succeed"; 
-		session_start();
-		$_SESSION['userid'] = $userid;
-		$_SESSION['nickName'] = $userNickName;
-		$sessionid=session_id();
-		$_SESSION['$sessionid'] = $sessionid;
-		// success
-		$response["sessionid"] = $sessionid;
-		$response["userid"] = $_SESSION['userid'];
-		$response["nickName"] = $_SESSION['nickName'];
-        // echoing JSON response
-        echo json_encode($response);
-    } else {
+		$selectResult = mysql_query("SELECT profileID FROM profile WHERE userid ='$userid'");
+		if(!empty($selectResult)){
+		if (mysql_num_rows($selectResult) > 0) {
+			// successfully inserted into database
+			$response["success"] = 1;
+			$response["message"] = "Create profile succeed"; 
+			session_start();
+			$_SESSION['userid'] = $userid;
+			$_SESSION['nickName'] = $userNickName;
+			$_SESSION['profileid'] = $selectResult['profileID'];
+			$sessionid=session_id();
+			$_SESSION['$sessionid'] = $sessionid;
+			// success
+			$response["sessionid"] = $sessionid;
+			$response["userid"] = $_SESSION['userid'];
+			$response["nickName"] = $_SESSION['nickName'];
+			$response["profileid"] = $_SESSION['profileid'];
+			// echoing JSON response
+			echo json_encode($response);
+			}else{
+				// required field is missing
+				$response["success"] = 0;
+				$response["message"] = "Create user profile failed.";
+				// echoing JSON response
+				echo json_encode($response);
+				}
+				}
+				else{	
+				// required field is missing
+				$response["success"] = 0;
+				$response["message"] = "Database connection failed";
+				// echoing JSON response
+				echo json_encode($response);
+				}
+				}
+				else {
         // failed to insert row
         $response["success"] = 0;
 		$response["message"] = "Create profile failed."; 

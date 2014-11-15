@@ -55,6 +55,10 @@
     <string name="profileStatusString">Status</string>
     <string name="changeImage">Change Image</string>
     <string name="buttonSaveEvent">Save</string>
+    <string name="privacyPublic">Public</string>
+    <string name="privacyPrivate">Private</string>
+    <string name="selectGroupType">Select Group Type</string>
+    <string name="selectGroupPrivacy">Select Group Privacy</string>
 
     <string-array name="createEventArray">
         <item>Select Event Type</item>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2014 at 08:40 AM
+-- Generation Time: Nov 15, 2014 at 06:10 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `event` (
-`eventID` int(11) unsigned NOT NULL,
+`eventID` int(11) NOT NULL,
   `eventCreaterID` int(11) NOT NULL,
   `eventType` varchar(50) DEFAULT NULL,
   `eventName` varchar(225) DEFAULT NULL,
@@ -103,6 +103,17 @@ INSERT INTO `event` (`eventID`, `eventCreaterID`, `eventType`, `eventName`, `eve
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `eventjoinin`
+--
+
+CREATE TABLE IF NOT EXISTS `eventjoinin` (
+  `joinedProfileID` int(11) NOT NULL,
+  `joinedEventID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `eventlocation_table`
 --
 
@@ -139,6 +150,41 @@ INSERT INTO `eventtype_table` (`eventTypeID`, `eventTypeName`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `group`
+--
+
+CREATE TABLE IF NOT EXISTS `group` (
+`groupID` int(11) NOT NULL,
+  `groupCreaterID` int(11) NOT NULL,
+  `groupType` varchar(50) NOT NULL,
+  `groupPrivacy` varchar(10) NOT NULL,
+  `groupName` varchar(50) NOT NULL,
+  `groupImageURI` varchar(225) NOT NULL,
+  `groupDescription` varchar(2000) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `group`
+--
+
+INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupType`, `groupPrivacy`, `groupName`, `groupImageURI`, `groupDescription`) VALUES
+(4, 15, 'Sports', 'Public', 'qwe', '', 'dfg'),
+(5, 15, 'Sports', 'Public', 'wer', '', 'fbhh');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groupjoinin`
+--
+
+CREATE TABLE IF NOT EXISTS `groupjoinin` (
+  `profileID` int(11) NOT NULL,
+  `groupID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `profile`
 --
 
@@ -149,20 +195,20 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `age` int(11) NOT NULL,
   `description` varchar(225) NOT NULL,
   `pictureURI` varchar(225) DEFAULT NULL,
-  `userid` int(11) NOT NULL,
-  `eventID` int(11) unsigned DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `userid` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`profileID`, `nickName`, `gender`, `age`, `description`, `pictureURI`, `userid`, `eventID`) VALUES
-(8, 'AK', 'Male', 22, 'cool', NULL, 23, NULL),
-(10, 'yonastecle', 'Male', 31, 'rfgh', NULL, 25, 1),
-(13, 'yu', 'Female', 26, 'yu', NULL, 28, NULL),
-(14, 'yu', 'Female', 26, 'des', NULL, 29, NULL),
-(15, 'Darren', 'Male', 25, 'Darren is a big pig @', NULL, 31, 54);
+INSERT INTO `profile` (`profileID`, `nickName`, `gender`, `age`, `description`, `pictureURI`, `userid`) VALUES
+(8, 'AK', 'Male', 22, 'cool', NULL, 23),
+(10, 'yonastecle', 'Male', 31, 'rfgh', NULL, 25),
+(13, 'yu', 'Female', 26, 'yu', NULL, 28),
+(14, 'yu', 'Female', 26, 'des', NULL, 29),
+(15, 'Darren', 'Male', 25, 'Darren is a big pig @', NULL, 31),
+(16, 'Darren Liu', 'Male', 24, 'so handsome', NULL, 32);
 
 -- --------------------------------------------------------
 
@@ -172,9 +218,9 @@ INSERT INTO `profile` (`profileID`, `nickName`, `gender`, `age`, `description`, 
 
 CREATE TABLE IF NOT EXISTS `uploads` (
 `id` int(11) NOT NULL,
-  `filename` varchar(255) NOT NULL,
-  `path` varchar(255) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
+  `filename` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `uploads`
@@ -252,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastname` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varbinary(80) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `users`
@@ -265,7 +311,8 @@ INSERT INTO `users` (`userid`, `firstname`, `lastname`, `email`, `password`) VAL
 (28, 'yu', 'chang', 'changyu19882013@gmail.com', 0x2a39434334433138463939383735334437444641324438383038433044423732414441323543314230),
 (29, 'yulisa', 'chang', '584287240@qq.com', 0x2a36424234383337454237343332393130354545343536384444413744433637454432434132414439),
 (30, 'yu', 'chang', 'changyu@gmail.com', 0x2a36424234383337454237343332393130354545343536384444413744433637454432434132414439),
-(31, 'Darren', 'liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537);
+(31, 'Darren', 'liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537),
+(32, 'Darren', 'Liu', 'gulang15@hotmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537);
 
 --
 -- Indexes for dumped tables
@@ -275,7 +322,13 @@ INSERT INTO `users` (`userid`, `firstname`, `lastname`, `email`, `password`) VAL
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
- ADD PRIMARY KEY (`eventID`);
+ ADD PRIMARY KEY (`eventID`), ADD KEY `eventID` (`eventID`);
+
+--
+-- Indexes for table `eventjoinin`
+--
+ALTER TABLE `eventjoinin`
+ ADD PRIMARY KEY (`joinedProfileID`,`joinedEventID`), ADD KEY `joinedProfileID` (`joinedProfileID`), ADD KEY `joinedEventID` (`joinedEventID`);
 
 --
 -- Indexes for table `eventlocation_table`
@@ -290,10 +343,22 @@ ALTER TABLE `eventtype_table`
  ADD PRIMARY KEY (`eventTypeID`);
 
 --
+-- Indexes for table `group`
+--
+ALTER TABLE `group`
+ ADD PRIMARY KEY (`groupID`), ADD KEY `groupCreaterID` (`groupCreaterID`);
+
+--
+-- Indexes for table `groupjoinin`
+--
+ALTER TABLE `groupjoinin`
+ ADD PRIMARY KEY (`profileID`,`groupID`), ADD KEY `profileID` (`profileID`), ADD KEY `groupID` (`groupID`);
+
+--
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
- ADD PRIMARY KEY (`profileID`), ADD UNIQUE KEY `eventID_2` (`eventID`), ADD KEY `userid` (`userid`), ADD KEY `eventID` (`eventID`);
+ ADD PRIMARY KEY (`profileID`), ADD KEY `userid` (`userid`), ADD KEY `userid_2` (`userid`), ADD KEY `userid_3` (`userid`);
 
 --
 -- Indexes for table `uploads`
@@ -321,7 +386,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-MODIFY `eventID` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `eventlocation_table`
 --
@@ -333,10 +398,15 @@ MODIFY `eventLocationID` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `eventtype_table`
 MODIFY `eventTypeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `group`
+--
+ALTER TABLE `group`
+MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `uploads`
 --
@@ -351,17 +421,36 @@ MODIFY `userLocation_ID` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `eventjoinin`
+--
+ALTER TABLE `eventjoinin`
+ADD CONSTRAINT `eventjoinin_ibfk_1` FOREIGN KEY (`joinedProfileID`) REFERENCES `profile` (`profileID`),
+ADD CONSTRAINT `eventjoinin_ibfk_2` FOREIGN KEY (`joinedEventID`) REFERENCES `event` (`eventID`);
+
+--
+-- Constraints for table `group`
+--
+ALTER TABLE `group`
+ADD CONSTRAINT `group_ibfk_1` FOREIGN KEY (`groupCreaterID`) REFERENCES `profile` (`profileID`);
+
+--
+-- Constraints for table `groupjoinin`
+--
+ALTER TABLE `groupjoinin`
+ADD CONSTRAINT `groupjoinin_ibfk_1` FOREIGN KEY (`profileID`) REFERENCES `profile` (`profileID`),
+ADD CONSTRAINT `groupjoinin_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `group` (`groupID`);
+
+--
 -- Constraints for table `profile`
 --
 ALTER TABLE `profile`
-ADD CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`),
-ADD CONSTRAINT `profile_ibfk_2` FOREIGN KEY (`eventID`) REFERENCES `event` (`eventID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

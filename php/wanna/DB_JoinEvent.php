@@ -25,7 +25,7 @@ if($sessionSuccess == 1){
  
     	// get event name from event detail page and put in database under status
 
-	$result = mysql_query("UPDATE WANNA.PROFILE SET PROFILE.EVENTID = $eventID WHERE PROFILE.USERID = $userID");
+	$result = mysql_query("UPDATE WANNA.PROFILE SET PROFILE.EVENTID = '$eventID' WHERE PROFILE.USERID = '$userID'");
 		if ($result) {	
 		// successfully inserted into database	
         	$response["success"] = 1;
@@ -37,7 +37,7 @@ if($sessionSuccess == 1){
 		else{
         	// inserted into database failed
         	$response["success"] = 0;
-		$response["message"] = "Updata event id into user profile failed";
+		$response["message"] = $eventID;
  
         	// echoing JSON response
         	echo json_encode($response);

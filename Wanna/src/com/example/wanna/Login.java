@@ -45,6 +45,7 @@ public class Login extends Activity {
 	private static final String TAG_SESSIONID = "sessionid";
 	private static final String TAG_USERID = "userid";
 	private static final String TAG_NICKNAME = "nickName";
+	private static final String TAG_PROFILEID = "profileid";
 	private static final String TAG_MESSAGE = "message";
 
 	@Override
@@ -99,10 +100,10 @@ public class Login extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-			loginEmail = etEmail.getText().toString();
-			loginPassword = etPassword.getText().toString();
-			// loginEmail = "gulang15@gmail.com";
-			// loginPassword = "123";
+//			loginEmail = etEmail.getText().toString();
+//			loginPassword = etPassword.getText().toString();
+			 loginEmail = "gulang15@gmail.com";
+			 loginPassword = "123";
 			List<NameValuePair> loginParams = new ArrayList<NameValuePair>();
 			loginParams.add(new BasicNameValuePair("loginEmail", loginEmail));
 			loginParams.add(new BasicNameValuePair("loginPassword",
@@ -115,6 +116,7 @@ public class Login extends Activity {
 				editor.putString("sessionID", json.optString(TAG_SESSIONID));
 				editor.putString("userID", json.optString(TAG_USERID));
 				editor.putString("nickName", json.optString(TAG_NICKNAME));
+				editor.putString("profileID", json.optString(TAG_PROFILEID));
 				editor.commit();
 				Intent intent = new Intent(getApplicationContext(),
 						Login_Success.class);
