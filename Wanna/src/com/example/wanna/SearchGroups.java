@@ -5,10 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class SearchGroups extends Activity {
-	private Spinner groupCategorySpinner;
+	EditText etSearchGroupName;
+	Spinner groupCategorySpinner;
+	
+	String searchType;
+	String searchGroupName;
+	String searchGroupCategory;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,16 +26,32 @@ public class SearchGroups extends Activity {
 				android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		groupCategorySpinner.setAdapter(adapter);
+		
+		etSearchGroupName = (EditText) findViewById(R.id.searchGroupName);
+	}
+	
+	public void onSearchByNameClick(View view){
+		searchType = "Name";
+		searchGroupName = etSearchGroupName.getText().toString();	
+		Intent intent = new Intent(this, SearchGroupResult.class);
+		intent.putExtra("searchType", searchType);
+		intent.putExtra("searchGroupName", searchGroupName);
+		startActivity(intent);
+	}
+	
+	public void onSearchByCategoryClick(View view){
+		searchType = "Category";
+		searchGroupCategory = groupCategorySpinner.getSelectedItem().toString();	
+		Intent intent = new Intent(this, SearchGroupResult.class);
+		intent.putExtra("searchType", searchType);
+		intent.putExtra("searchGroupCategory", searchGroupCategory);
+		startActivity(intent);		
 	}
 
-	public void onClickCancel(View view){	
+	public void onCancelClick(View view){	
 		Intent intent = new Intent(this, Login_Success.class);
 		startActivity(intent);
 		}
 	
-	public void enterApplication(View view){	
-		Intent intent = new Intent(this, SearchGroups.class);
-		startActivity(intent);
-		}
 	
 }
