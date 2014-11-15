@@ -85,16 +85,6 @@ public class SearchGroupResult extends ListActivity {
 	}
 
 	private class SearchGroupTask extends AsyncTask<String, Void, String> {
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(SearchGroupResult.this);
-			pDialog.setTitle("Contacting Servers");
-			pDialog.setMessage("Loading ...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
-		}
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -102,10 +92,10 @@ public class SearchGroupResult extends ListActivity {
 			List<NameValuePair> searchGroupParams = new ArrayList<NameValuePair>();
 			searchGroupParams.add(new BasicNameValuePair("searchType",
 					searchType));
-			if (searchType == "Name") {
+			if (searchType.equals("Name")) {
 				searchGroupParams.add(new BasicNameValuePair("searchGroupName",
 						searchGroupName));
-			} else if (searchType == "Category") {
+			} else if (searchType.equals("Category")) {
 				searchGroupParams.add(new BasicNameValuePair(
 						"searchGroupCategory", searchGroupCategory));
 			}
