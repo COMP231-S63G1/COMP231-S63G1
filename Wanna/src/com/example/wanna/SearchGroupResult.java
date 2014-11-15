@@ -64,9 +64,9 @@ public class SearchGroupResult extends ListActivity {
 		setContentView(R.layout.activity_search_group_result);
 		Intent intent = getIntent();
 		searchType = intent.getStringExtra(TAG_SEARCHGROUPTYPE);
-		if (searchType == "Name") {
+		if (searchType.equals( "Name")) {
 			searchGroupName = intent.getStringExtra(TAG_SEARCHGROUPNAME);
-		} else if (searchType == "Category") {
+		} else if (searchType.equals("Category")) {
 			searchGroupCategory = intent
 					.getStringExtra(TAG_SEARCHGROUPCATEGORY);
 		}
