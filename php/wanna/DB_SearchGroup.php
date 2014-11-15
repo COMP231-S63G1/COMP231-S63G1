@@ -14,7 +14,7 @@ $result = mysql_query("SELECT `groupID`, `groupName` FROM `group` where `groupNa
 }
 else if($searchType == "Category" && isset($_POST["searchGroupCategory"])){
 $searchGroupCategory = $_POST["searchGroupCategory"];	
-$result = mysql_query("SELECT `groupID`, `groupName` FROM `group` where `groupType`='$searchGroupName'");
+$result = mysql_query("SELECT `groupID`, `groupName` FROM `group` where `groupType`='$searchGroupCategory'");
 }
 else{
 	// failed
