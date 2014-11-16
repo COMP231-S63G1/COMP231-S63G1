@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 public class ViewEventDetail extends Activity {
 
-	// Creating JSON Parser object
+	// Creating JSON Parser object.
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
 	private ProgressDialog pDialog;
