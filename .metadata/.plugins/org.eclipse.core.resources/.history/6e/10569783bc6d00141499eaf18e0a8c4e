@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.wanna"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Allow to connect with Internet and to know the current network state -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Registered"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Login_Success"
+            android:label="Wanna..? USER PANEL" >
+        </activity>
+        <activity
+            android:name=".PasswordReset"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ChangePassword"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".CreateProfile"
+            android:label="@string/activity_profile_form" >
+        </activity>
+        <activity
+            android:name=".CreateEvent"
+            android:label="@string/title_activity_create_event" >
+        </activity>
+        <activity
+            android:name=".EditEvent"
+            android:label="@string/title_activity_editEvent" >
+        </activity>
+        <activity
+            android:name=".SearchEvent"
+            android:label="@string/title_activity_search_event" >
+        </activity>
+        <activity
+            android:name=".EditProfileForm"
+            android:label="@string/title_activity_edit_profile_form" >
+        </activity>
+        <activity
+            android:name=".ViewEventDetail"
+            android:label="@string/title_activity_view_event_detail" >
+        </activity>
+        <activity
+            android:name=".EditProfile"
+            android:label="@string/title_activity_edit_profile" >
+        </activity>
+        <activity
+            android:name=".Profile_Form"
+            android:label="@string/title_activity_profile__form" >
+        </activity>
+        <activity
+            android:name=".ViewProfile"
+            android:label="@string/title_activity_view_profile_information" >
+        </activity>
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".ViewAndJoinEvent"
+            android:label="@string/title_activity_view_and_join_event" >
+        </activity>
+        <activity
+            android:name=".SearchEventResult"
+            android:label="@string/title_activity_search_event_result" >
+        </activity>
+        <activity
+            android:name=".CreateGroup"
+            android:label="@string/title_activity_create_group" >
+        </activity>
+        <activity
+            android:name=".SearchGroups"
+            android:label="@string/title_activity_search_groups" >
+        </activity>
+        <activity
+            android:name=".GroupSearchResult"
+            android:label="@string/title_activity_group_search_result" >
+        </activity>
+        <activity
+            android:name=".EditGroup"
+            android:label="@string/title_activity_edit_group" >
+        </activity>
+        <activity
+            android:name=".SearchGroupResult"
+            android:label="@string/title_activity_search_group_result" >
+        </activity>
+        <activity
+            android:name=".ViewPublicGroup"
+            android:label="@string/title_activity_view_public_group" >
+        </activity>
+    </application>
+
+</manifest>

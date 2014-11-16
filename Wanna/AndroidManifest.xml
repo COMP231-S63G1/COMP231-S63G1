@@ -117,6 +117,14 @@
             android:name=".SearchGroupResult"
             android:label="@string/title_activity_search_group_result" >
         </activity>
+        <activity
+            android:name=".ViewPublicGroup"
+            android:label="@string/title_activity_view_public_group" >
+        </activity>
+        <activity
+            android:name=".ViewPrivateGroup"
+            android:label="@string/title_activity_view_private_group" >
+        </activity>
     </application>
 
 </manifest>

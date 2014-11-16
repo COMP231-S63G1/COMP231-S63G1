@@ -107,5 +107,7 @@
     <string name="searchResultsTv">Search results for</string>
     <string name="title_activity_edit_group">Edit Group Information</string>
     <string name="title_activity_search_group_result">SearchGroupResult</string>
+    <string name="title_activity_view_public_group">Wanna...?</string>
+    <string name="title_activity_view_private_group">Wanna...?</string>
 
 </resources>
