@@ -29,7 +29,6 @@ public class SearchGroupResult extends ListActivity {
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
-	private ProgressDialog pDialog;
 
 	private String urlSearchGroup = userFunctions.URL_ROOT
 			+ "DB_SearchGroup.php";
@@ -55,6 +54,8 @@ public class SearchGroupResult extends ListActivity {
 	private static final String TAG_GROUPID = "groupID";
 	private static final String TAG_GROUPNAME = "groupName";
 	private static final String TAG_SEARCHGROUPTYPE = "searchType";
+	private static final String TAG_SEARCHGROUPTYPENAME = "Name";
+	private static final String TAG_SEARCHGROUPTYPECATEGORY = "Category";
 	private static final String TAG_SEARCHGROUPNAME = "searchGroupName";
 	private static final String TAG_SEARCHGROUPCATEGORY = "searchGroupCategory";
 
@@ -64,9 +65,9 @@ public class SearchGroupResult extends ListActivity {
 		setContentView(R.layout.activity_search_group_result);
 		Intent intent = getIntent();
 		searchType = intent.getStringExtra(TAG_SEARCHGROUPTYPE);
-		if (searchType.equals( "Name")) {
+		if (searchType.equals(TAG_SEARCHGROUPTYPENAME)) {
 			searchGroupName = intent.getStringExtra(TAG_SEARCHGROUPNAME);
-		} else if (searchType.equals("Category")) {
+		} else if (searchType.equals(TAG_SEARCHGROUPTYPECATEGORY)) {
 			searchGroupCategory = intent
 					.getStringExtra(TAG_SEARCHGROUPCATEGORY);
 		}
@@ -90,14 +91,14 @@ public class SearchGroupResult extends ListActivity {
 		protected String doInBackground(String... urls) {
 			// Building Parameters
 			List<NameValuePair> searchGroupParams = new ArrayList<NameValuePair>();
-			searchGroupParams.add(new BasicNameValuePair("searchType",
+			searchGroupParams.add(new BasicNameValuePair(TAG_SEARCHGROUPTYPE,
 					searchType));
-			if (searchType.equals("Name")) {
-				searchGroupParams.add(new BasicNameValuePair("searchGroupName",
+			if (searchType.equals(TAG_SEARCHGROUPTYPENAME)) {
+				searchGroupParams.add(new BasicNameValuePair(TAG_SEARCHGROUPNAME,
 						searchGroupName));
-			} else if (searchType.equals("Category")) {
+			} else if (searchType.equals(TAG_SEARCHGROUPTYPECATEGORY)) {
 				searchGroupParams.add(new BasicNameValuePair(
-						"searchGroupCategory", searchGroupCategory));
+						TAG_SEARCHGROUPCATEGORY, searchGroupCategory));
 			}
 			JSONObject json = jsonParser.getJSONFromUrl(urlSearchGroup,
 					searchGroupParams);
