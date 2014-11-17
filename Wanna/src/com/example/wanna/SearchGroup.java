@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class SearchGroups extends Activity {
+public class SearchGroup extends Activity {
 	EditText etSearchGroupName;
 	Spinner groupCategorySpinner;
 	
@@ -19,7 +19,7 @@ public class SearchGroups extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_groups);
+		setContentView(R.layout.activity_search_group);
 		groupCategorySpinner = (Spinner) findViewById(R.id.spinnerGroupCategories);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.searchGroupCategory,

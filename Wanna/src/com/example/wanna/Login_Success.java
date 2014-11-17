@@ -95,7 +95,7 @@ public class Login_Success extends Activity {
 		startActivity(intent);    	
     }
     public void onSearchGroupClick(View view){	
-		Intent intent = new Intent(this, SearchGroups.class);
+		Intent intent = new Intent(this, SearchGroup.class);
 		startActivity(intent);
 		}
     public void onCreateGroupClick(View view){	

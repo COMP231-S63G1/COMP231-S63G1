@@ -198,15 +198,16 @@ public final class R {
         public static final int activity_register=0x7f03000b;
         public static final int activity_search_event=0x7f03000c;
         public static final int activity_search_event_result=0x7f03000d;
-        public static final int activity_search_group_result=0x7f03000e;
-        public static final int activity_search_groups=0x7f03000f;
-        public static final int activity_view_and_join_event=0x7f030010;
-        public static final int activity_view_event_detail=0x7f030011;
-        public static final int activity_view_profile=0x7f030012;
-        public static final int changepassword=0x7f030013;
-        public static final int login_success=0x7f030014;
-        public static final int passwordreset=0x7f030015;
-        public static final int registered=0x7f030016;
+        public static final int activity_search_group=0x7f03000e;
+        public static final int activity_search_group_result=0x7f03000f;
+        public static final int activity_search_user_result=0x7f030010;
+        public static final int activity_view_and_join_event=0x7f030011;
+        public static final int activity_view_event_detail=0x7f030012;
+        public static final int activity_view_profile=0x7f030013;
+        public static final int changepassword=0x7f030014;
+        public static final int login_success=0x7f030015;
+        public static final int passwordreset=0x7f030016;
+        public static final int registered=0x7f030017;
     }
     public static final class menu {
         public static final int create_event=0x7f080000;
@@ -294,6 +295,7 @@ public final class R {
         public static final int title_activity_search_event_result=0x7f050046;
         public static final int title_activity_search_group_result=0x7f050053;
         public static final int title_activity_search_groups=0x7f05004c;
+        public static final int title_activity_search_user_result=0x7f050056;
         public static final int title_activity_try=0x7f050044;
         public static final int title_activity_view_and_join_event=0x7f050043;
         public static final int title_activity_view_event_detail=0x7f05003e;
