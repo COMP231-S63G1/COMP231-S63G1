@@ -130,6 +130,14 @@
             android:name=".SearchUserResult"
             android:label="@string/title_activity_search_user_result" >
         </activity>
+        <activity
+            android:name=".SearchUserName"
+            android:label="@string/title_activity_search_user_name" >
+        </activity>
+        <activity
+            android:name=".SearchUsername"
+            android:label="@string/title_activity_search_username" >
+        </activity>
     </application>
 
 </manifest>
