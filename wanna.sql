@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2014 at 06:10 AM
+-- Generation Time: Nov 20, 2014 at 04:08 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -38,67 +38,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `eventAddress` varchar(225) DEFAULT NULL,
   `eventPriceRange` varchar(225) DEFAULT NULL,
   `eventDescription` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
-
---
--- Dumping data for table `event`
---
-
-INSERT INTO `event` (`eventID`, `eventCreaterID`, `eventType`, `eventName`, `eventImageURI`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES
-(1, 0, NULL, 'basketball', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 0, NULL, 'dddd', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 0, NULL, 'dddd', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 0, NULL, 'cvvv', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 0, NULL, 'cvvv', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 0, NULL, 'cvvv', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 0, NULL, 'nnnjjjj', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 0, NULL, 'eventName', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 0, NULL, 'hutJ', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 0, NULL, 'event name', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 0, NULL, 'fvbhu', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 0, NULL, 'play basketball', NULL, '2014-10-22', '11:16:40', 'ddddadaf', 'dagegg', 'ettetere', 'eqtqt'),
-(13, 0, NULL, 'ddd', 'ddddege', '2014-10-08', '12:16:00', 'ddddht ', 'thr gs', '30-60', 'des'),
-(14, 0, 'sport', 'play basketball', NULL, '2014-10-09', '08:38:14', 'venue', 'adress', 'priceRange', 'description'),
-(15, 0, '$eventType', '$eventName', NULL, '0000-00-00', '00:00:00', '$eventVenue', '$eventAddress', '$eventPriceRange', '$eventDescription'),
-(16, 0, 'Sports', 'cbnjdv', NULL, '2014-04-05', '12:11:30', 'dcvh', 'fcbjh', '4885', 'dvbdgb'),
-(17, 0, 'Sports', 'vbsndjb', NULL, '2014-12-01', '12:14:11', 'bdvdhdb', 'bdbdjdb', '36', 'sbdvd'),
-(18, 0, 'Sports', 'fvhhvvb', NULL, '2017-02-27', '19:24:00', 'fghjgvb', 'sfbhygb', '23', 'fgvvjjf'),
-(19, 0, 'Sports', 'xvbvcf', NULL, '2014-02-05', '22:05:00', 'svbyrc', 'scvhydv', '48', 'dcbhy'),
-(20, 0, 'Sports', 'dvbb ', NULL, '2014-01-01', '23:16:00', 'dcbj', 'dcvgg', '25', 'fcbhddv'),
-(21, 0, 'Sports', 'fgjk', NULL, '2014-10-06', '23:42:00', 'ghji', 'ghjkk', '25', 'hvvhjn'),
-(22, 0, 'Entertainment', 'fgbvc', NULL, '2014-02-01', '23:45:00', 'fvsdcvb', 'dcbhh', '25', 'tgbjjjv'),
-(23, 0, 'Entertainment', 'rfvbcxg', NULL, '2014-02-01', '02:42:00', 'fvbj', 'fvnyfc', '458', 'gv xdg '),
-(24, 0, 'Entertainment', 'Jis', NULL, '2014-02-03', '14:16:00', 'fdvv', 'cvddv', '25', 'dgvv'),
-(25, 0, 'Entertainment', 'go swim', NULL, '2014-10-03', '10:14:00', 'lee center', 'progress avenue', '25', 'bring swim glass'),
-(26, 0, 'Sports', 'fghv', NULL, '2014-10-07', '20:05:00', 'ddcvh', 'ddcggc', '2', 'tfcvhhv'),
-(27, 0, 'Sports', 'fgbvv', NULL, '2014-10-07', '21:10:00', 'gvbff', 'gvbffh', '2', 'gbnj'),
-(28, 0, 'Entertainment', 'see a movie', NULL, '2014-02-03', '22:53:00', 'ndndnp', 'dndbbd', '25', 'bebdbxj'),
-(29, 0, 'Entertainment', 'see a movie', NULL, '2014-03-03', '22:56:00', 'gbbjjtg', 'ggbjjt', '98', 'ggvvvn'),
-(30, 0, 'Sports', 'ghjj', NULL, '2014-10-08', '17:09:00', 'hhj', 'hjj', '36', 'uhhjj'),
-(31, 0, 'Entertainment', 'gdhrn', NULL, '2014-10-04', '17:07:00', 'bdndj', 'hdndjd', '25', 'djdbdn'),
-(32, 0, 'Entertainment', 'hdhdj', NULL, '2014-10-04', '17:09:00', 'jdjsj', 'jejej', '25', 'jejsj'),
-(33, 0, 'Entertainment', 'see movie', NULL, '2014-10-04', '17:24:00', 'jjj', 'ggg', '36', 'uip'),
-(34, 0, 'Entertainment', 'ttt', NULL, '2014-10-04', '17:26:00', 'hhhh', 'tghh', '2', 'hhh'),
-(35, 0, 'Entertainment', 'fghhj', NULL, '2014-10-04', '17:33:00', 'vvhj', 'ghjkl', '69', 'tghj'),
-(36, 0, 'Entertainment', 'dghj', NULL, '2014-10-04', '17:54:00', '', '', '', ''),
-(37, 0, 'Entertainment', 'tgghh', NULL, '2014-10-04', '18:02:00', 'vvbj', 'vbjjj', '36', 'ujjn'),
-(38, 0, 'Sports', 'ujj', NULL, '2014-10-04', '18:04:00', 'jjj', '', '', ''),
-(39, 0, 'Entertainment', 'fghh', NULL, '2014-10-04', '18:05:00', 'bbggh', 'vgjjk', '98', 'hvbj'),
-(40, 0, 'Select Event Type', '', NULL, '0000-00-00', '00:00:00', '', '', '', ''),
-(41, 0, 'Entertainment', 'bhj', NULL, '2014-10-04', '18:32:00', 'gjjkhh', 'hjjkk', '36', 'ikjhbh'),
-(42, 0, 'Sports', 'dfg', NULL, '2014-10-04', '18:34:00', '', '', '', ''),
-(43, 0, 'Sports', 'tfgjj', NULL, '2014-10-04', '18:35:00', 'hjjj', '', '', ''),
-(44, 0, 'Entertainment', 'dfgh', NULL, '2014-10-04', '18:38:00', 'dfg', 'dffg', '8', 'ffgh'),
-(45, 0, 'Sports', 'ddfgh', NULL, '2014-10-04', '18:39:00', 'rrtty', 'dfggh', '25', 'ggghh'),
-(46, 0, 'Entertainment', 'ghjj', NULL, '2014-10-04', '19:02:00', 'hhj', 'hhjk', '25', 'ghji'),
-(47, 0, 'Entertainment', 'see movie', '', '2014-10-06', '21:54:00', 'k', 'j', '3', 'k'),
-(48, 0, 'Sports', 'g', '', '2014-10-07', '01:26:00', 'g', 'b', '36', 'h'),
-(49, 0, 'Entertainment', 'see mohsena', '', '2014-10-07', '17:56:00', 'Jake', 'upload', '36', 'will'),
-(50, 31, 'Sports', 'bb', '', '2014-11-08', '14:51:00', 'jghjj', 'jhjj', '62', 'shhj'),
-(51, 31, 'Entertainment', 'cvh', '', '2014-11-08', '14:55:00', 'f', 'h', '68', 'j'),
-(52, 31, 'Sports', 'fgh', NULL, '2014-11-08', '14:57:00', 'cvb', 'ghhj', '65', 'ggh'),
-(53, 31, 'Entertainment', 'vbn', NULL, '2014-11-08', '15:05:00', 'jn', 'jj', '58', 'hjj'),
-(54, 31, 'Select Event Type', 'basketball', NULL, '2014-11-09', '01:30:00', 'ggg', 'hhh', '20', 'jjj');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
 
 -- --------------------------------------------------------
 
@@ -156,20 +96,11 @@ INSERT INTO `eventtype_table` (`eventTypeID`, `eventTypeName`) VALUES
 CREATE TABLE IF NOT EXISTS `group` (
 `groupID` int(11) NOT NULL,
   `groupCreaterID` int(11) NOT NULL,
-  `groupType` varchar(50) NOT NULL,
-  `groupPrivacy` varchar(10) NOT NULL,
-  `groupName` varchar(50) NOT NULL,
-  `groupImageURI` varchar(225) NOT NULL,
-  `groupDescription` varchar(2000) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `group`
---
-
-INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupType`, `groupPrivacy`, `groupName`, `groupImageURI`, `groupDescription`) VALUES
-(4, 15, 'Sports', 'Public', 'qwe', '', 'dfg'),
-(5, 15, 'Sports', 'Public', 'wer', '', 'fbhh');
+  `groupType` varchar(50) DEFAULT NULL,
+  `groupName` varchar(225) DEFAULT NULL,
+  `groupImageURI` varchar(225) DEFAULT NULL,
+  `groupDescription` varchar(2000) DEFAULT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -196,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `description` varchar(225) NOT NULL,
   `pictureURI` varchar(225) DEFAULT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `profile`
@@ -207,8 +138,7 @@ INSERT INTO `profile` (`profileID`, `nickName`, `gender`, `age`, `description`, 
 (10, 'yonastecle', 'Male', 31, 'rfgh', NULL, 25),
 (13, 'yu', 'Female', 26, 'yu', NULL, 28),
 (14, 'yu', 'Female', 26, 'des', NULL, 29),
-(15, 'Darren', 'Male', 25, 'Darren is a big pig @', NULL, 31),
-(16, 'Darren Liu', 'Male', 24, 'so handsome', NULL, 32);
+(15, 'Darren', 'Male', 25, 'monkey', NULL, 31);
 
 -- --------------------------------------------------------
 
@@ -220,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `uploads` (
 `id` int(11) NOT NULL,
   `filename` varchar(255) CHARACTER SET utf8 NOT NULL,
   `path` varchar(255) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `uploads`
@@ -269,7 +199,11 @@ INSERT INTO `uploads` (`id`, `filename`, `path`) VALUES
 (40, '', '1415464925216.jpg'),
 (41, 'C:xampp	mpphpB380.tmp', '1415475550830.jpg'),
 (42, '', '1415475799527.jpg'),
-(43, 'C:xampp	mpphpE7EA.tmp', '1415475957383.jpg');
+(43, 'C:xampp	mpphpE7EA.tmp', '1415475957383.jpg'),
+(44, 'C:xampp	mpphp182B.tmp', '1415937113746.jpg'),
+(45, '', '1415937302420.jpg'),
+(46, '', '1415937810259.jpg'),
+(47, 'C:xampp	mpphp6968.tmp', '1416192686635.jpg');
 
 -- --------------------------------------------------------
 
@@ -298,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastname` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varbinary(80) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `users`
@@ -311,8 +245,7 @@ INSERT INTO `users` (`userid`, `firstname`, `lastname`, `email`, `password`) VAL
 (28, 'yu', 'chang', 'changyu19882013@gmail.com', 0x2a39434334433138463939383735334437444641324438383038433044423732414441323543314230),
 (29, 'yulisa', 'chang', '584287240@qq.com', 0x2a36424234383337454237343332393130354545343536384444413744433637454432434132414439),
 (30, 'yu', 'chang', 'changyu@gmail.com', 0x2a36424234383337454237343332393130354545343536384444413744433637454432434132414439),
-(31, 'Darren', 'liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537),
-(32, 'Darren', 'Liu', 'gulang15@hotmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537);
+(31, 'Darren', 'liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537);
 
 --
 -- Indexes for dumped tables
@@ -322,7 +255,7 @@ INSERT INTO `users` (`userid`, `firstname`, `lastname`, `email`, `password`) VAL
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
- ADD PRIMARY KEY (`eventID`), ADD KEY `eventID` (`eventID`);
+ ADD PRIMARY KEY (`eventID`), ADD KEY `eventID` (`eventID`), ADD KEY `eventCreaterID` (`eventCreaterID`);
 
 --
 -- Indexes for table `eventjoinin`
@@ -346,7 +279,7 @@ ALTER TABLE `eventtype_table`
 -- Indexes for table `group`
 --
 ALTER TABLE `group`
- ADD PRIMARY KEY (`groupID`), ADD KEY `groupCreaterID` (`groupCreaterID`);
+ ADD PRIMARY KEY (`groupID`), ADD KEY `groupID` (`groupID`), ADD KEY `groupCreaterID` (`groupCreaterID`);
 
 --
 -- Indexes for table `groupjoinin`
@@ -358,7 +291,7 @@ ALTER TABLE `groupjoinin`
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
- ADD PRIMARY KEY (`profileID`), ADD KEY `userid` (`userid`), ADD KEY `userid_2` (`userid`), ADD KEY `userid_3` (`userid`);
+ ADD PRIMARY KEY (`profileID`), ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `uploads`
@@ -386,7 +319,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `eventlocation_table`
 --
@@ -401,17 +334,17 @@ MODIFY `eventTypeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `group`
 --
 ALTER TABLE `group`
-MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `uploads`
 --
 ALTER TABLE `uploads`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `userlocation_table`
 --
@@ -421,10 +354,16 @@ MODIFY `userLocation_ID` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `event`
+--
+ALTER TABLE `event`
+ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`eventCreaterID`) REFERENCES `profile` (`profileID`);
 
 --
 -- Constraints for table `eventjoinin`
