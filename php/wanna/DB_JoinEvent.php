@@ -18,18 +18,28 @@ require_once '/DB_CheckLogin.php';
 
 if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
+        $profileID=$_SESSION['profileid'];
 	// check for post data
 
 	if (isset($_POST["eventID"])) {
-  		  $eventID= $_POST['eventID'];
- 
-    	// get event name from event detail page and put in database under status
+            $eventID= $_POST['eventID'];
 
-	$result = mysql_query("UPDATE WANNA.PROFILE SET PROFILE.EVENTID = '$eventID' WHERE PROFILE.USERID = '$userID'");
+
+	$result = mysql_query("SELECT joinedProfileID ,joinedEventID FROM eventjoinin where joinedProfileID = $profileID AND joinedEventID = $eventID");
+        if (mysql_num_rows($result) > 0) {
+	    $response["success"] = 0;
+            $response["message"] = "You already join this event";
+	    echo json_encode($response);
+        }else{
+
+
+        //insert the profileID and eventID into the child table
+
+	$result = mysql_query("INSERT INTO eventjoinin (joinedProfileID, joinedEventID) VALUES ($profileID, $eventID);");
 		if ($result) {	
 		// successfully inserted into database	
         	$response["success"] = 1;
-		$response["message"] = "Update event id into user profile success";
+		$response["message"] = "Join this event succeed";
  
         	// echoing JSON response
         	echo json_encode($response);
@@ -37,12 +47,14 @@ if($sessionSuccess == 1){
 		else{
         	// inserted into database failed
         	$response["success"] = 0;
-		$response["message"] = $eventID;
+		$response["message"] = "Join this event failed";
  
         	// echoing JSON response
         	echo json_encode($response);
 		}
-	}
+        }
+    
+}
 	else{
         // pass data failed
         $response["success"] = 0;
