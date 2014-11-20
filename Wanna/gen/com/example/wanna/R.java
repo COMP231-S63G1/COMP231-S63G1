@@ -202,8 +202,8 @@ public final class R {
         public static final int activity_search_event_result=0x7f03000d;
         public static final int activity_search_group=0x7f03000e;
         public static final int activity_search_group_result=0x7f03000f;
-        public static final int activity_search_user_result=0x7f030010;
-        public static final int activity_search_username=0x7f030011;
+        public static final int activity_search_user_name=0x7f030010;
+        public static final int activity_search_user_result=0x7f030011;
         public static final int activity_view_and_join_event=0x7f030012;
         public static final int activity_view_event_detail=0x7f030013;
         public static final int activity_view_profile=0x7f030014;
