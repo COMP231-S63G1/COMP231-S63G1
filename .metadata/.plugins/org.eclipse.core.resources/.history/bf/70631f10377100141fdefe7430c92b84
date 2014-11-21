@@ -15,9 +15,37 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
-        android:text="Enter User Status"
+        android:text="Enter User Status" 
         android:textColor="#48D1CC"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/EditText01"
+        android:layout_alignRight="@+id/textView1"
+        android:text="-" />
+
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView4"
+        android:layout_toRightOf="@+id/radioButton2"
+        android:ems="10"
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/textView4"
@@ -36,9 +64,22 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView4"
         android:layout_alignLeft="@+id/textView4"
-        android:text="Age"
+        android:text="Age" 
         android:textColor="#48D1CC"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioButton3"
+        android:layout_marginTop="36dp"
+        android:layout_toRightOf="@+id/textView4"
+        android:text="Search" 
+        android:background="#48D1CC"
+        android:textColor="#ffffff"
+        />
 
     <EditText
         android:id="@+id/editText1"
@@ -48,37 +89,11 @@
         android:layout_toRightOf="@+id/textView3"
         android:ems="10" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="76dp"
-        android:background="#48D1CC"
-        android:text="Search"
-        android:textColor="#ffffff" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_centerVertical="true"
-        android:text="Female"
-        android:textColor="#48D1CC" />
-
     <RadioButton
         android:id="@+id/radioButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/textView4"
         android:layout_centerVertical="true"
         android:text="Male"
         android:textColor="#48D1CC" />
@@ -87,40 +102,18 @@
         android:id="@+id/radioButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText1"
         android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView2"
         android:text="Both"
         android:textColor="#48D1CC" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="50sp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView4"
-        android:layout_toRightOf="@+id/textView1"
-        android:ems="10"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/textView2"
+    <RadioButton
+        android:id="@+id/radioButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText2"
-        android:layout_alignBottom="@+id/editText2"
-        android:layout_alignLeft="@+id/radioButton3"
-        android:text="-" />
-
-    <EditText
-        android:id="@+id/EditText01"
-        android:layout_width="50sp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="23dp"
-        android:layout_toLeftOf="@+id/textView2"
-        android:ems="10"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
+        android:layout_above="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:text="Female"
+        android:textColor="#48D1CC" />
 
 </RelativeLayout>

@@ -19,6 +19,16 @@
         android:textColor="#48D1CC"
         android:textSize="18sp" />
 
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="number" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -52,6 +62,15 @@
         android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toRightOf="@+id/radioButton2"
+            android:text="----" />
     </RadioGroup>
 
     <Button
@@ -96,27 +115,9 @@
         android:id="@+id/editText2"
         android:layout_width="50sp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView4"
-        android:layout_toRightOf="@+id/textView1"
-        android:ems="10"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText2"
-        android:layout_alignBottom="@+id/editText2"
-        android:layout_alignLeft="@+id/radioButton3"
-        android:text="-" />
-
-    <EditText
-        android:id="@+id/EditText01"
-        android:layout_width="50sp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="23dp"
-        android:layout_toLeftOf="@+id/textView2"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignRight="@+id/editText1"
         android:ems="10"
         android:inputType="number" >
 
