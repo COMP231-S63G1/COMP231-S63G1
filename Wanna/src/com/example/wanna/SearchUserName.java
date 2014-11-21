@@ -5,19 +5,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class SearchUserName extends Activity {
 	EditText etSearchUserName;
 	String searchUserName;
+	String searchType;
+	
+	private static final String TAG_SEARCHTYPE = "searchType";
 	private static final String TAG_SEARCHUSERNAME = "searchUserName";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_user_name);
-		etSearchUserName = (EditText)findViewById(R.id.etSearchUserName);
+		etSearchUserName = (EditText)findViewById(R.id.etSearchUserName);	
+		searchType = "Name";
+	}
+	
+	public void onSearchEventClick(View view){
 		searchUserName = etSearchUserName.getText().toString();
 		if(searchUserName.equals("")){
 			Toast.makeText(getApplicationContext(), "User name field empty",
@@ -25,7 +33,8 @@ public class SearchUserName extends Activity {
 		}else{
 			Intent intent = new Intent(getApplicationContext(),
 					SearchUserResult.class);
-			intent.putExtra("searchUserName", searchUserName);
+			intent.putExtra(TAG_SEARCHTYPE, searchType);
+			intent.putExtra(TAG_SEARCHUSERNAME, searchUserName);
 			startActivity(intent);
 		}
 	}
