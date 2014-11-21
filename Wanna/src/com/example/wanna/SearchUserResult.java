@@ -38,9 +38,10 @@ public class SearchUserResult extends Activity {
 	String message;
 	String searchType;
 	String searchName;
-	String searchGender;
-	String searchMaxAge;
+	String searchStatus;
 	String searchMinAge;
+	String searchMaxAge;
+	String searchGender;
 
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
@@ -52,6 +53,7 @@ public class SearchUserResult extends Activity {
 	private static final String TAG_SEARCHTYPENAME = "Name";
 	private static final String TAG_SEARCHTYPEFILTRATION = "Filtration";
 	private static final String TAG_SEARCHNAME = "searchName";
+	private static final String TAG_SEARCHSTATUS = "searchStatus";
 	private static final String TAG_SEARCHGENDER = "searchGender";
 	private static final String TAG_SEARCHMAXAGE = "searchMaxAge";
 	private static final String TAG_SEARCHMINAGE = "searchMinAge";
@@ -67,9 +69,10 @@ public class SearchUserResult extends Activity {
 		if (searchType.equals( TAG_SEARCHTYPENAME)) {
 			searchName = intent.getStringExtra(TAG_SEARCHNAME);
 		} else if (searchType.equals(TAG_SEARCHTYPEFILTRATION)) {
-			searchGender = intent.getStringExtra(TAG_SEARCHGENDER);
+			searchStatus = intent.getStringExtra(TAG_SEARCHSTATUS);
 			searchMaxAge = intent.getStringExtra(TAG_SEARCHMAXAGE);
 			searchMinAge = intent.getStringExtra(TAG_SEARCHMINAGE);
+			searchGender = intent.getStringExtra(TAG_SEARCHGENDER);
 		}
 		new SearchUserTask().execute();
 		lvUserItem = (ListView) findViewById(android.R.id.list);
@@ -89,12 +92,14 @@ public class SearchUserResult extends Activity {
 				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHNAME,
 						searchName));
 			} else if (searchType.equals(TAG_SEARCHTYPEFILTRATION)) {
-				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHGENDER,
-						searchGender));		
-				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHMAXAGE,
-						searchMaxAge));		
+				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHSTATUS,
+						searchStatus));		
 				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHMINAGE,
 						searchMinAge));	
+				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHMAXAGE,
+						searchMaxAge));		
+				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHGENDER,
+						searchGender));		
 			}			
 			JSONObject json = jsonParser.getJSONFromUrl(urlSearchUser,
 					searchUserParams);
