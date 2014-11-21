@@ -1,6 +1,5 @@
 <?php
-$response = array();
- 
+$response = array(); 
 // include db connect class
 require_once __DIR__ . '/include/DB_Connect.php';
  
