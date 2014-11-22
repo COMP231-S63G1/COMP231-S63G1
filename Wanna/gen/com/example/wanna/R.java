@@ -40,7 +40,7 @@ public final class R {
         public static final int btcancel=0x7f090090;
         public static final int btchangepass=0x7f09008f;
         public static final int btnSaveChanges=0x7f090031;
-        public static final int btnSearch=0x7f09006d;
+        public static final int btnSearch=0x7f090069;
         public static final int btnSearchGroupByCategory=0x7f09005e;
         public static final int btnSearchGroupByName=0x7f09005c;
         public static final int btnSelectImage=0x7f090005;
@@ -105,9 +105,9 @@ public final class R {
         public static final int publicGroupMembers=0x7f09004c;
         public static final int pword=0x7f09003f;
         public static final int pworda=0x7f090043;
-        public static final int rbtnBoth=0x7f09006c;
-        public static final int rbtnFemale=0x7f09006b;
-        public static final int rbtnMale=0x7f09006a;
+        public static final int rbtnBoth=0x7f09006d;
+        public static final int rbtnFemale=0x7f09006c;
+        public static final int rbtnMale=0x7f09006b;
         public static final int regat=0x7f0900a2;
         public static final int register=0x7f090056;
         public static final int registerConfirmPassword=0x7f090055;
@@ -119,7 +119,7 @@ public final class R {
         public static final int register_error=0x7f090058;
         public static final int registerbtn=0x7f09003e;
         public static final int respass=0x7f09009a;
-        public static final int rgFilterGender=0x7f090069;
+        public static final int rgFilterGender=0x7f09006a;
         public static final int scrollView=0x7f090014;
         public static final int scrollView1=0x7f090000;
         public static final int scrollView3=0x7f09002e;
