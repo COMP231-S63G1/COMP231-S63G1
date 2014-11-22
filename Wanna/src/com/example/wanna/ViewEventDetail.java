@@ -43,7 +43,7 @@ public class ViewEventDetail extends Activity {
 
 	// url to view event detail
 	private String urlViewEventDetail = userFunctions.URL_ROOT
-			+ "DB_ViewEventDetail.php";
+			+ "DB_ViewEvent.php";
 
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
@@ -72,6 +72,11 @@ public class ViewEventDetail extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_event_detail);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		// getting event details from intent
+				Intent i = getIntent();
+
+				// getting event id (pid) from intent
+				eventID = i.getStringExtra(TAG_EventID);
 		// Edit Text
 		tvEventType = (TextView) findViewById(R.id.tvEventTypeValue);
 		tvEventName = (TextView) findViewById(R.id.tvEventNameValue);
@@ -116,6 +121,7 @@ public class ViewEventDetail extends Activity {
 						viewEventDatailParams
 						.add(new BasicNameValuePair("sessionID", sessionID));
 						viewEventDatailParams.add(new BasicNameValuePair("userID", userID));
+						viewEventDatailParams.add(new BasicNameValuePair("eventID", eventID));
 						// getting event details by making HTTP request
 						JSONObject json = jsonParser.getJSONFromUrl(
 								urlViewEventDetail, viewEventDatailParams);
@@ -139,6 +145,7 @@ public class ViewEventDetail extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			// display product data in EditText
+			pDialog.dismiss();
 			tvEventType.setText(eventDetail.optString(TAG_EventType));
 			tvEventName.setText(eventDetail.optString(TAG_EventName));
 			tvEventDate.setText(eventDetail.optString(TAG_EventDate));

@@ -82,6 +82,7 @@ public class CreateEvent extends Activity {
 	SharedPreferences sharedpreferences;
 	String sessionID;
 	String userID;
+	String profileID;
 	
 	static final int REQUEST_TAKE_PHOTO = 1;
 	File photoFile = null;
@@ -165,6 +166,7 @@ public class CreateEvent extends Activity {
 		protected String doInBackground(String... args) {
 			sessionID = sharedpreferences.getString("sessionID", "");
 			userID = sharedpreferences.getString("userID", "");
+			profileID = sharedpreferences.getString("profileID","");
 			String eventname = eventName.getText().toString();
 			String eventType = eventTypeSpinner.getSelectedItem().toString();
 			String eventDateString = eventDate.getText().toString();
@@ -186,6 +188,7 @@ public class CreateEvent extends Activity {
 			params
 			.add(new BasicNameValuePair("sessionID", sessionID));
 			params.add(new BasicNameValuePair("userID", userID));
+			params.add(new BasicNameValuePair("profileID", profileID));
 			params.add(new BasicNameValuePair("eventName", eventname));
 			params.add(new BasicNameValuePair("eventType", eventType));
 			params.add(new BasicNameValuePair("eventDate", eventDateString));
@@ -213,7 +216,7 @@ public class CreateEvent extends Activity {
 					// successfully created product
 					
 					Intent intent = new Intent(getApplicationContext(),
-							ViewEventDetail.class);
+							ViewProfile.class);
 					startActivity(intent);
 
 					// closing this screen

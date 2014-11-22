@@ -146,6 +146,7 @@ public class ViewAndJoinEvent extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			// display product data in EditText
+			pDialog.dismiss();
 			tvEventType.setText(eventDetail.optString(TAG_EventType));
 			tvEventName.setText(eventDetail.optString(TAG_EventName));
 			tvEventDate.setText(eventDetail.optString(TAG_EventDate));
@@ -197,6 +198,7 @@ public class ViewAndJoinEvent extends Activity {
 		} 
 		@Override
 		protected void onPostExecute(String result) {
+			    pDialog.dismiss();
 			    System.out.println(message);
 			    Toast.makeText(getApplicationContext(), message,
 					Toast.LENGTH_SHORT).show();

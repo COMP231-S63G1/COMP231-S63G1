@@ -31,21 +31,8 @@ if($sessionSuccess == 1){
             $profileInformation["nickName"] = $result["nickName"];
             $profileInformation["age"] = $result["age"];
             $profileInformation["gender"] = $result["gender"];
-            $profileInformation["description"] = $result["description"];
-	    $eventID = $result["eventID"];
-	    $eventName = "";
-	    if($eventID!=NULL){
-		$resultForEventName = mysql_query("SELECT eventName FROM wanna.event WHERE eventID = $eventID");
-		if (!empty($resultForEventName)) {
-        		// check for empty result
-       			 if (mysql_num_rows($resultForEventName) > 0) {
- 
-         			   $resultForEventName = mysql_fetch_array($resultForEventName);
-					$eventName =  $resultForEventName["eventName"];
-			}
-                }
-            }
-            $profileInformation["eventName"] = $eventName;           
+            $profileInformation["description"] = $result["description"]; 
+         
             // success
             $response["success"] = 1;
 			$response["message"] = "Get user profile information";
