@@ -138,6 +138,10 @@
             android:name=".SearchUsername"
             android:label="@string/title_activity_search_username" >
         </activity>
+        <activity
+            android:name=".SearchUserFiltration"
+            android:label="@string/title_activity_search_user_status" >
+        </activity>
     </application>
 
 </manifest>

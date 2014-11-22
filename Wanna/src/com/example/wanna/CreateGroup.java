@@ -123,16 +123,6 @@ public class CreateGroup extends Activity {
 	}
 	
 	private class CreateGroupTask extends AsyncTask<String, Void, String> {
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(CreateGroup.this);
-			pDialog.setTitle("Contacting Servers");
-			pDialog.setMessage("Loading ...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
-		}
 		
 		@Override
 		protected String doInBackground(String... urls) {
