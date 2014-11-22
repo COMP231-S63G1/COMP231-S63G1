@@ -13,12 +13,12 @@ public class UserFunctions {
     private JSONParser jsonParser;
 
     //URL of the PHP API
-    public static String URL_ROOT = "http://192.168.137.1:80/wanna/";
+//    public static String URL_ROOT = "http://192.168.137.1:80/wanna/";
 //    private static String registerURL = "http://192.168.137.1:80/wanna/";
 //    private static String forpassURL = "http://192.168.137.1:80/wanna/";
 //    private static String chgpassURL = "http://192.168.137.1:80/wanna/";
     
-//    public static final String URL_ROOT = "http://192.168.43.19:80/wanna/";
+    public static final String URL_ROOT = "http://192.168.43.19:80/wanna/";
 //    public static final String URL_ROOT = "http://10.0.2.2:80/wanna/";
     private static String loginURL = URL_ROOT;
     private static String registerURL = URL_ROOT;

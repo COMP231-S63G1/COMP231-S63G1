@@ -60,6 +60,7 @@ public class ViewAndJoinEvent extends Activity {
 		private static final String TAG_EventLocation = "eventLocation";
 		private static final String TAG_EventPriceRange = "eventPriceRange";
 		private static final String TAG_EventDescription = "eventDescription";
+		private static final String TAG_MESSAGE = "message";
 		
 		JSONObject eventDetail;
 		
@@ -67,6 +68,9 @@ public class ViewAndJoinEvent extends Activity {
 		String sessionID;
 		String userID;
 		String eventID;
+		String profileID;
+		String message;
+		int success;
 		
 
 	@Override
@@ -142,6 +146,7 @@ public class ViewAndJoinEvent extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			// display product data in EditText
+			pDialog.dismiss();
 			tvEventType.setText(eventDetail.optString(TAG_EventType));
 			tvEventName.setText(eventDetail.optString(TAG_EventName));
 			tvEventDate.setText(eventDetail.optString(TAG_EventDate));
@@ -171,38 +176,35 @@ public class ViewAndJoinEvent extends Activity {
 		protected String doInBackground(String... urls) {
 			sessionID = sharedpreferences.getString("sessionID", "");
 			userID = sharedpreferences.getString("userID", "");
-					int success;
+			profileID = sharedpreferences.getString("profileID", "");
+			System.out.println(profileID);
 					try {
 						// Building Parameters
 						List<NameValuePair> joinEventDatailParams = new ArrayList<NameValuePair>();
 						joinEventDatailParams.add(new BasicNameValuePair("eventID", eventID));
 						joinEventDatailParams.add(new BasicNameValuePair("sessionID", sessionID));
 						joinEventDatailParams.add(new BasicNameValuePair("userID", userID));
+						joinEventDatailParams.add(new BasicNameValuePair("profileID",profileID));
 						JSONObject json = jsonParser.getJSONFromUrl(
 								urlJoinEvent, joinEventDatailParams);
 						// json success tag
 						success = json.getInt(TAG_SUCCESS);
-						if (success == 1) {
-//							Toast.makeText(getApplicationContext(),
-//				                    "Join event succeed", Toast.LENGTH_SHORT).show(); 
-						}else{
-//							Toast.makeText(getApplicationContext(),
-//				                    "Join event fail", Toast.LENGTH_SHORT).show();
-						}
-
+						message = json.optString(TAG_MESSAGE);
 					} catch (JSONException e) {
 						e.printStackTrace();
 						return null;
 					}
 			return null;
-		}
+		} 
 		@Override
 		protected void onPostExecute(String result) {
-			Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-			startActivity(intent);
-			
+			    pDialog.dismiss();
+			    System.out.println(message);
+			    Toast.makeText(getApplicationContext(), message,
+					Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(getApplicationContext(),
+						Login_Success.class);
+				startActivity(intent);
 		}
 	}
-	
-
 }

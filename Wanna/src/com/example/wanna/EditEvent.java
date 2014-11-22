@@ -263,7 +263,7 @@ public class EditEvent extends Activity {
 						// successfully created product
 						
 						Intent intent = new Intent(getApplicationContext(),
-								ViewEventDetail.class);
+							ViewProfile.class);
 						startActivity(intent);
 
 						// closing this screen
