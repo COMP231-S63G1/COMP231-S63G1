@@ -12,6 +12,7 @@ $response = array();
 require_once '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
     $userID=$_SESSION['userid'];
+    $profileID = $_SESSION['profileid'];
  
 // check for required fields
 if (isset($_POST['eventName']) && isset($_POST['eventType'])) {
@@ -30,7 +31,7 @@ if (isset($_POST['eventName']) && isset($_POST['eventType'])) {
     // mysql inserting a new row
 		
   
-     $result = mysql_query("INSERT INTO wanna.event (eventID,eventCreaterID,eventType, eventName, eventDate, eventTime, eventVenue, eventAddress, eventPriceRange, eventDescription) VALUES (NULL,$userID, '$eventType', '$eventName','$eventDate', '$eventTime', '$eventVenue', '$eventAddress', '$eventPriceRange', '$eventDescription');");
+     $result = mysql_query("INSERT INTO wanna.event (eventID,eventCreaterID,eventType, eventName, eventDate, eventTime, eventVenue, eventAddress, eventPriceRange, eventDescription) VALUES (NULL,$profileID, '$eventType', '$eventName','$eventDate', '$eventTime', '$eventVenue', '$eventAddress', '$eventPriceRange', '$eventDescription');");
     // check if row inserted or not
     if ($result) {
         // successfully inserted into database
