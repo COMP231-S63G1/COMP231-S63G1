@@ -21,6 +21,7 @@
     
     <EditText
         android:id="@+id/etStatus"
+        android:inputType="text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvSearchUserStatus"
@@ -91,7 +92,8 @@
         android:layout_marginBottom="76dp"
         android:background="#48D1CC"
         android:text="Search"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:onClick="onSearchClick" />
 
     <RadioGroup
         android:id="@+id/rgFilterGender"

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2014 at 04:08 AM
+-- Generation Time: Nov 22, 2014 at 07:10 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -38,7 +38,15 @@ CREATE TABLE IF NOT EXISTS `event` (
   `eventAddress` varchar(225) DEFAULT NULL,
   `eventPriceRange` varchar(225) DEFAULT NULL,
   `eventDescription` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`eventID`, `eventCreaterID`, `eventType`, `eventName`, `eventImageURI`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES
+(59, 10, 'Sport', 'basketball', NULL, '2014-11-25', '03:25:23', 'Progress', '941', '20', 'basketball game'),
+(60, 15, 'Sport', 'Jog', NULL, '2014-11-29', '13:16:19', 'Yonge', '100', '30', 'Jogging');
 
 -- --------------------------------------------------------
 
@@ -50,6 +58,16 @@ CREATE TABLE IF NOT EXISTS `eventjoinin` (
   `joinedProfileID` int(11) NOT NULL,
   `joinedEventID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `eventjoinin`
+--
+
+INSERT INTO `eventjoinin` (`joinedProfileID`, `joinedEventID`) VALUES
+(8, 59),
+(10, 59),
+(13, 60),
+(14, 60);
 
 -- --------------------------------------------------------
 
@@ -96,11 +114,20 @@ INSERT INTO `eventtype_table` (`eventTypeID`, `eventTypeName`) VALUES
 CREATE TABLE IF NOT EXISTS `group` (
 `groupID` int(11) NOT NULL,
   `groupCreaterID` int(11) NOT NULL,
+  `groupPrivacy` varchar(10) NOT NULL,
   `groupType` varchar(50) DEFAULT NULL,
   `groupName` varchar(225) DEFAULT NULL,
   `groupImageURI` varchar(225) DEFAULT NULL,
   `groupDescription` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `group`
+--
+
+INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupPrivacy`, `groupType`, `groupName`, `groupImageURI`, `groupDescription`) VALUES
+(1, 15, 'Public', 'Sports', 'aaaaa', NULL, 'bbbbb'),
+(2, 15, 'Public', 'Sports', 'aaaaaaaa', NULL, 'bbbbbbbb');
 
 -- --------------------------------------------------------
 
@@ -319,7 +346,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `eventlocation_table`
 --
