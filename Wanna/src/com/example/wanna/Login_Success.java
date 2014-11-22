@@ -101,6 +101,16 @@ public class Login_Success extends Activity {
     public void onCreateGroupClick(View view){	
 		Intent intent = new Intent(this, CreateGroup.class);
 		startActivity(intent);
+		}    
+
+    public void onSearchUserClick(View view){	
+		Intent intent = new Intent(this, SearchUserName.class);
+		startActivity(intent);
+		}
+
+    public void onFiltrationUserClick(View view){	
+		Intent intent = new Intent(this, SearchUserFiltration.class);
+		startActivity(intent);
 		}
     
     private class LoginSeccessTask extends AsyncTask<String, Void, String> {

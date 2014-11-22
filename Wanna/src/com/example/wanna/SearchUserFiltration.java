@@ -11,7 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class SearchUserStatus extends Activity {
+public class SearchUserFiltration extends Activity {
 	UserFunctions userFunctions = new UserFunctions();
 
 	private static final String TAG_SEARCHTYPE = "searchType";
@@ -35,7 +35,7 @@ public class SearchUserStatus extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_user_status);
+		setContentView(R.layout.activity_search_user_filtration);
 		searchType = "Filtration";
 		etStatus = (EditText) findViewById(R.id.etStatus);
 		etMinAge = (EditText) findViewById(R.id.etMinAge);
@@ -46,13 +46,13 @@ public class SearchUserStatus extends Activity {
 	public void onSearchClick(View view) {
 		searchStatus = etStatus.getText().toString();
 		try {
-			searchMinAge = Integer.parseInt(etStatus.getText().toString());
+			searchMinAge = Integer.parseInt(etMinAge.getText().toString());
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(), "Minimum age invalid",
 					Toast.LENGTH_SHORT).show();
 		}
 		try {
-			searchMaxAge = Integer.parseInt(etStatus.getText().toString());
+			searchMaxAge = Integer.parseInt(etMaxAge.getText().toString());
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(), "Maximum age invalid",
 					Toast.LENGTH_SHORT).show();

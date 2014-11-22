@@ -139,7 +139,7 @@
             android:label="@string/title_activity_search_username" >
         </activity>
         <activity
-            android:name=".SearchUserStatus"
+            android:name=".SearchUserFiltration"
             android:label="@string/title_activity_search_user_status" >
         </activity>
     </application>

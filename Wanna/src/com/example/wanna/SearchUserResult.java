@@ -70,9 +70,10 @@ public class SearchUserResult extends Activity {
 			searchName = intent.getStringExtra(TAG_SEARCHNAME);
 		} else if (searchType.equals(TAG_SEARCHTYPEFILTRATION)) {
 			searchStatus = intent.getStringExtra(TAG_SEARCHSTATUS);
-			searchMaxAge = intent.getStringExtra(TAG_SEARCHMAXAGE);
-			searchMinAge = intent.getStringExtra(TAG_SEARCHMINAGE);
+			searchMaxAge = String.valueOf(intent.getIntExtra(TAG_SEARCHMAXAGE, 0));
+			searchMinAge = String.valueOf(intent.getIntExtra(TAG_SEARCHMINAGE, 0));
 			searchGender = intent.getStringExtra(TAG_SEARCHGENDER);
+
 		}
 		new SearchUserTask().execute();
 		lvUserItem = (ListView) findViewById(android.R.id.list);
