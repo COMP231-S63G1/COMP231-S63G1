@@ -38,6 +38,7 @@ public class SearchGroupResult extends ListActivity {
 	ListViewAdapter searchGroupAdapter;
 	String groupID;
 	String groupName;
+	String groupPrivacy;
 	int success;
 	String message;
 	String searchType;
@@ -53,6 +54,7 @@ public class SearchGroupResult extends ListActivity {
 	private static final String TAG_GROUPLIST = "groupList";
 	private static final String TAG_GROUPID = "groupID";
 	private static final String TAG_GROUPNAME = "groupName";
+	private static final String TAG_GROUPPRIVACY = "groupPrivacy";
 	private static final String TAG_SEARCHGROUPTYPE = "searchType";
 	private static final String TAG_SEARCHGROUPTYPENAME = "Name";
 	private static final String TAG_SEARCHGROUPTYPECATEGORY = "Category";
@@ -78,13 +80,21 @@ public class SearchGroupResult extends ListActivity {
 	}
 
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		String groupID = (String) searchGroupAdapter.getItem(position);
-		Intent intent = new Intent(getApplicationContext(),
-				ViewAndJoinEvent.class);
-		intent.putExtra("groupID", groupID);
-		startActivity(intent);
+		groupID = (String) searchGroupAdapter.getItem(position);
+		groupPrivacy = (String) searchGroupAdapter.getItemPrivacy(position);
+		if (groupPrivacy.equals("Public")) {
+			Intent intent = new Intent(getApplicationContext(),
+					ViewPublicGroup.class);
+			intent.putExtra(TAG_GROUPID, groupID);
+			startActivity(intent);
+		}else if(groupPrivacy.equals("Private")){
+			Intent intent = new Intent(getApplicationContext(),
+					ViewPrivateGroup.class);
+			intent.putExtra(TAG_GROUPID, groupID);
+			startActivity(intent);
+		}
 	}
-
+	
 	private class SearchGroupTask extends AsyncTask<String, Void, String> {
 
 		@Override
@@ -112,7 +122,8 @@ public class SearchGroupResult extends ListActivity {
 					JSONObject event = groupList.optJSONObject(i);
 					groupID = event.optString(TAG_GROUPID);
 					groupName = event.optString(TAG_GROUPNAME);
-					String[] groupItems = { groupID, groupName };
+					groupPrivacy = event.optString(TAG_GROUPPRIVACY);
+					String[] groupItems = { groupID, groupName, groupPrivacy};
 					groupItemsList.add(groupItems);
 				}
 			} else {

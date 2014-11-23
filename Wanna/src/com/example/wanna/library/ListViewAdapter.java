@@ -33,6 +33,9 @@ public class ListViewAdapter extends BaseAdapter {
 		return listItemsList.get(position)[0];
 	}
 
+	public Object getItemPrivacy(int position){
+		return listItemsList.get(position)[2];
+	}
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub

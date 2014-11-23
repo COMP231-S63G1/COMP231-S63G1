@@ -83,7 +83,10 @@ public class ViewPublicGroup extends ListActivity {
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_view_public_group);
-			sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+			sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);			
+
+			Intent intent = getIntent();
+			groupID=intent.getStringExtra(TAG_GroupID);
 			// Edit Text
 			tvGroupTitle = (TextView) findViewById(R.id.tvGroupNameValue);
 			tvGroupType = (TextView) findViewById(R.id.tvGroupTypeValue);
