@@ -87,7 +87,7 @@
             android:label="@string/title_activity_view_profile_information" >
         </activity>
         <activity
-            android:name=".Register"
+            android:name=".RegisterPerson"
             android:label="@string/title_activity_register" >
         </activity>
         <activity
@@ -142,13 +142,17 @@
             android:name=".SearchUserFiltration"
             android:label="@string/title_activity_search_user_status" >
         </activity>
-         <activity
+        <activity
             android:name=".GetCreatedEvent"
             android:label="@string/title_activity_get_created_event" >
         </activity>
         <activity
             android:name=".GetJoinedEvent"
             android:label="@string/title_activity_get_joined_event" >
+        </activity>
+        <activity
+            android:name=".RegisterOrganization"
+            android:label="@string/title_activity_register_organization" >
         </activity>
     </application>
 

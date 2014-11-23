@@ -213,7 +213,7 @@ public final class R {
         public static final int activity_main=0x7f03000a;
         public static final int activity_private_group=0x7f03000b;
         public static final int activity_public_group=0x7f03000c;
-        public static final int activity_register=0x7f03000d;
+        public static final int activity_register_person=0x7f03000d;
         public static final int activity_search_event=0x7f03000e;
         public static final int activity_search_event_result=0x7f03000f;
         public static final int activity_search_group=0x7f030010;
@@ -317,6 +317,7 @@ public final class R {
         public static final int title_activity_profile__form=0x7f050040;
         public static final int title_activity_register=0x7f050042;
         public static final int title_activity_register_login=0x7f050006;
+        public static final int title_activity_register_organization=0x7f05005e;
         public static final int title_activity_search_event=0x7f05003c;
         public static final int title_activity_search_event_result=0x7f050046;
         public static final int title_activity_search_group_result=0x7f050053;

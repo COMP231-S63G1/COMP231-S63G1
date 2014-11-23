@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Register extends Activity {
+public class RegisterPerson extends Activity {
 
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
@@ -61,7 +61,7 @@ public class Register extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register);		
+		setContentView(R.layout.activity_register_person);		
 
 		etFirstName = (EditText) findViewById(R.id.fname);
 		etLastName = (EditText) findViewById(R.id.lname);
@@ -77,7 +77,7 @@ public class Register extends Activity {
 		password = etPassword.getText().toString();
 		confirmPassword = etConfirmPassword.getText().toString(); 
 		
-		if((!firstName.equals(""))&(!lastName.equals(""))&&(!email.equals(""))&&(!password.equals(""))&&(!confirmPassword.equals(""))&&(password.equals(confirmPassword))){
+		if((!firstName.equals(""))&&(!lastName.equals(""))&&(!email.equals(""))&&(!password.equals(""))&&(!confirmPassword.equals(""))&&(password.equals(confirmPassword))){
 			new RegisterTask().execute();
 		}else if(firstName.equals("")){
 			Toast.makeText(getApplicationContext(),
@@ -109,7 +109,7 @@ public class Register extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pDialog = new ProgressDialog(Register.this);
+			pDialog = new ProgressDialog(RegisterPerson.this);
 			pDialog.setTitle("Contacting Servers");
 			pDialog.setMessage("Loading ...");
 			pDialog.setIndeterminate(false);
