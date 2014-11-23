@@ -77,7 +77,7 @@ public class Login extends Activity {
 	}
 
 	public void onRegisterClick(View view) {
-		Intent intent = new Intent(getApplicationContext(), Register.class);
+		Intent intent = new Intent(getApplicationContext(), RegisterPerson.class);
 		startActivity(intent);
 	}
 

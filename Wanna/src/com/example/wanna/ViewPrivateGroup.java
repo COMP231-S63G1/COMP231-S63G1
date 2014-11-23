@@ -67,7 +67,10 @@ public class ViewPrivateGroup extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_private_group);
-		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);		
+
+		Intent intent = getIntent();
+		groupID=intent.getStringExtra(TAG_GroupID);
 		// Edit Text
 		tvGroupTitle = (TextView) findViewById(R.id.tvGroupNameValue);
 		tvGroupType = (TextView) findViewById(R.id.tvGroupTypeValue);
@@ -78,16 +81,6 @@ public class ViewPrivateGroup extends Activity {
 	}
 	
 	private class ViewGroupDetailTask extends AsyncTask<String, Void, String> {
-//		@Override
-//		protected void onPreExecute() {
-//			super.onPreExecute();
-//			pDialog = new ProgressDialog(ViewPrivateGroup.this);
-//			pDialog.setTitle("Contacting Servers");
-//			pDialog.setMessage("Loading ...");
-//			pDialog.setIndeterminate(false);
-//			pDialog.setCancelable(true);
-//			pDialog.show();
-//		}
 		
 		@Override
 		protected String doInBackground(String... urls) {

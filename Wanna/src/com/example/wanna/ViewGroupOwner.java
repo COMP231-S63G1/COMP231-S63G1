@@ -84,7 +84,10 @@ public class ViewGroupOwner extends ListActivity {
 			protected void onCreate(Bundle savedInstanceState) {
 				super.onCreate(savedInstanceState);
 				setContentView(R.layout.activity_view_group_owner);
-				sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+				sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);				
+
+				Intent intent = getIntent();
+				groupID=intent.getStringExtra(TAG_GroupID);
 				// Edit Text
 				tvGroupTitle = (TextView) findViewById(R.id.tvGroupNameValue);
 				tvGroupType = (TextView) findViewById(R.id.tvGroupTypeValue);
@@ -146,16 +149,6 @@ public class ViewGroupOwner extends ListActivity {
 			}
 			
 			private class DisplayGroupMemberTask extends AsyncTask<String, Void, String> {
-//				@Override
-//				protected void onPreExecute() {
-//					super.onPreExecute();
-//					pDialog = new ProgressDialog(SearchEventResult.this);
-//					pDialog.setTitle("Contacting Servers");
-//					pDialog.setMessage("Loading ...");
-//					pDialog.setIndeterminate(false);
-//					pDialog.setCancelable(true);
-//					pDialog.show();
-//				}
 
 				@Override
 				protected String doInBackground(String... urls) {

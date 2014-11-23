@@ -109,21 +109,6 @@ public class SearchEventResult extends ListActivity {
 					eventName = event.optString(TAG_EVENTNAME);
 					String[] eventItems = { eventID, eventName };
 					eventItemsList.add(eventItems);
-					// // successfully received event details
-					// JSONArray searchEventArray =
-					// json.optJSONArray(TAG_EVENTLIST);
-					// List<String> eventArrayList = new ArrayList<String>();
-					// for(int i = 0; i < searchEventArray.length(); i++){
-					// try {
-					// JSONObject jsonObject =
-					// searchEventArray.getJSONObject(i);
-					// eventArrayList.add(jsonObject.toString());
-					// } catch (JSONException e) {
-					// // TODO Auto-generated catch block
-					// e.printStackTrace();
-					// }
-					// testEventItems = eventArrayList.toArray(new
-					// String[eventArrayList.size()]);
 				}
 			} else {
 			}

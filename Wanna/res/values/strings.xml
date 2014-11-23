@@ -113,8 +113,10 @@
     <string name="title_activity_search_user_name">Wanna...?</string>
     <string name="title_activity_search_username">Wanna...?</string>
     <string name="title_activity_search_user_status">Wanna...?</string>
-	 <string name="title_activity_get_created_event">GetCreatedEvent</string>
+    <string name="title_activity_get_created_event">GetCreatedEvent</string>
     <string name="title_activity_get_joined_event">GetJoinedEvent</string>
-     <string name="profileGetCreatEventTextView">Created Event</string>
+    <string name="profileGetCreatEventTextView">Created Event</string>
     <string name="profileGetJoinEventTextView">Joined Event</string>
+    <string name="title_activity_register_organization">RegisterOrganization</string>
+
 </resources>
