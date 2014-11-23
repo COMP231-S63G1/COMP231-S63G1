@@ -8,7 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class SearchGroup extends Activity {
+public class SearchGroup extends Activity {	
+
+	private static final String TAG_SEARCHTYPE = "searchType";
+	private static final String TAG_SEARCHGROUPNAME = "searchGroupName";
+	private static final String TAG_SEARCHGROUPCATEGORY = "searchGroupCategory";
+	
 	EditText etSearchGroupName;
 	Spinner groupCategorySpinner;
 	
@@ -34,8 +39,8 @@ public class SearchGroup extends Activity {
 		searchType = "Name";
 		searchGroupName = etSearchGroupName.getText().toString();	
 		Intent intent = new Intent(this, SearchGroupResult.class);
-		intent.putExtra("searchType", searchType);
-		intent.putExtra("searchGroupName", searchGroupName);
+		intent.putExtra(TAG_SEARCHTYPE, searchType);
+		intent.putExtra(TAG_SEARCHGROUPNAME, searchGroupName);
 		startActivity(intent);
 	}
 	
@@ -43,8 +48,8 @@ public class SearchGroup extends Activity {
 		searchType = "Category";
 		searchGroupCategory = groupCategorySpinner.getSelectedItem().toString();	
 		Intent intent = new Intent(this, SearchGroupResult.class);
-		intent.putExtra("searchType", searchType);
-		intent.putExtra("searchGroupCategory", searchGroupCategory);
+		intent.putExtra(TAG_SEARCHTYPE, searchType);
+		intent.putExtra(TAG_SEARCHGROUPCATEGORY, searchGroupCategory);
 		startActivity(intent);		
 	}
 
