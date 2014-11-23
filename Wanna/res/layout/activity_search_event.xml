@@ -1,39 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.wanna.SearchGroup" >
 
     <TextView
-        android:layout_marginTop="90dp"
-        android:id="@+id/searchEvent"
+        android:id="@+id/tvEventName"
+        android:text="@string/searchEventName" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/searchEvent" 
-        style="@style/FormTheme"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#48D1CC"
+        android:textSize="17sp"
         />
     
-    <EditText
-        style="@style/FormTheme"
-        android:id="@+id/etSearchEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:orientation="horizontal"
-        >
+      <EditText
+        android:id="@+id/etSearchEventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvEventName"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_toLeftOf="@+id/btnSearchEventByName"
+        android:ems="10" />
+    
+        <Button
+        android:id="@+id/btnSearchEventByName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/etSearchEventName"
+        android:layout_alignBottom="@+id/etSearchEventName"
+        android:layout_alignParentRight="true"
+        android:text="@string/btnSearch" 
+      	android:background="#48D1CC"
+      	android:textColor="#F5F5F5"
+      	android:layout_marginLeft="10dp"
+      	android:onClick="onSearchByNameClick"
+        />
 
-    </EditText>
+        <TextView
+        android:id="@+id/tvEventCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvEventName"
+        android:layout_below="@+id/btnSearchEventByName"
+        android:layout_marginTop="60dp"
+        android:text="@string/search_event_category"
+        android:textColor="#48D1CC"
+        android:textSize="17sp" />
+
+        <Spinner
+        android:id="@+id/spinnerEventCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/etSearchEventName"
+        android:layout_below="@+id/tvEventCat"
+        android:layout_marginTop="18dp" />       
 
     <Button
-        android:background="#48D1CC"
-        android:layout_marginTop="20dp"
-        android:id="@+id/searchBtn"
-        android:layout_width="100dp"
+        android:id="@+id/btnSearchEventByCategory"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
+        android:layout_alignBottom="@+id/spinnerEventCategories"
+        android:layout_alignLeft="@+id/btnSearchEventByName"
         android:text="@string/btnSearch" 
-        android:onClick="onSearchEventClick"/>
+        android:background="#48D1CC"
+		android:textColor="#F5F5F5"
+		android:onClick="onSearchByCategoryClick"
+        /> 
+
+    <Button
+        android:id="@+id/Cancle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinnerEventCategories"
+        android:layout_below="@+id/btnSearchEventByCategory"
+        android:layout_marginTop="60dp"
+        android:background="#48D1CC"
+        android:onClick="onCancelClick"
+        android:text="@string/buttonCancel"
+        android:textColor="#F5F5F5" />
 	
-</LinearLayout>
+</RelativeLayout>

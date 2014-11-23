@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2014 at 07:10 AM
+-- Generation Time: Nov 24, 2014 at 12:11 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `event` (
 --
 
 INSERT INTO `event` (`eventID`, `eventCreaterID`, `eventType`, `eventName`, `eventImageURI`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES
-(59, 10, 'Sport', 'basketball', NULL, '2014-11-25', '03:25:23', 'Progress', '941', '20', 'basketball game'),
-(60, 15, 'Sport', 'Jog', NULL, '2014-11-29', '13:16:19', 'Yonge', '100', '30', 'Jogging');
+(59, 10, 'Sports', 'basketball', NULL, '2014-11-25', '03:25:23', 'Progress', '941', '20', 'basketball game'),
+(60, 15, 'Sports', 'Jog', NULL, '2014-11-29', '13:16:19', 'Yonge', '100', '30', 'Jogging');
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `group` (
   `groupName` varchar(225) DEFAULT NULL,
   `groupImageURI` varchar(225) DEFAULT NULL,
   `groupDescription` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `group`
@@ -127,7 +127,8 @@ CREATE TABLE IF NOT EXISTS `group` (
 
 INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupPrivacy`, `groupType`, `groupName`, `groupImageURI`, `groupDescription`) VALUES
 (1, 15, 'Public', 'Sports', 'aaaaa', NULL, 'bbbbb'),
-(2, 15, 'Public', 'Sports', 'aaaaaaaa', NULL, 'bbbbbbbb');
+(2, 15, 'Private', 'Sports', 'bbbbbb', NULL, 'bbbbbbbb'),
+(3, 15, 'Public', 'Sports', 'sports', NULL, 'sksks');
 
 -- --------------------------------------------------------
 
@@ -139,6 +140,19 @@ CREATE TABLE IF NOT EXISTS `groupjoinin` (
   `profileID` int(11) NOT NULL,
   `groupID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `groupjoinin`
+--
+
+INSERT INTO `groupjoinin` (`profileID`, `groupID`) VALUES
+(8, 1),
+(10, 1),
+(10, 2),
+(13, 1),
+(13, 2),
+(14, 1),
+(15, 2);
 
 -- --------------------------------------------------------
 
@@ -361,7 +375,7 @@ MODIFY `eventTypeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `group`
 --
 ALTER TABLE `group`
-MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `profile`
 --

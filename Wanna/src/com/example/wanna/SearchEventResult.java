@@ -43,7 +43,9 @@ public class SearchEventResult extends ListActivity {
 	String eventName;
 	int success;
 	String message;
+	String searchType;
 	String searchEventName;
+	String searchEventCategory;
 
 	// event JSONArray
 	JSONArray eventList = null;
@@ -54,46 +56,52 @@ public class SearchEventResult extends ListActivity {
 	private static final String TAG_EVENTLIST = "eventList";
 	private static final String TAG_EVENTID = "eventID";
 	private static final String TAG_EVENTNAME = "eventName";
+	private static final String TAG_SEARCHEVENTTYPE = "searchType";
 	private static final String TAG_SEARCHEVENTNAME = "searchEventName";
+	private static final String TAG_SEARCHEVENTCATEGORY = "searchEventCategory";
+	private static final String TAG_SEARCHEVENTTYPENAME = "Name";
+	private static final String TAG_SEARCHEVENTTYPECATEGORY = "Category";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_event_result);
 		Intent intent = getIntent();
-		searchEventName = intent.getStringExtra(TAG_SEARCHEVENTNAME);
+		searchType = intent.getStringExtra(TAG_SEARCHEVENTTYPE);
+		if (searchType.equals(TAG_SEARCHEVENTTYPENAME)) {
+			searchEventName = intent.getStringExtra(TAG_SEARCHEVENTNAME);
+		} else if (searchType.equals(TAG_SEARCHEVENTTYPECATEGORY)) {
+			searchEventCategory = intent
+					.getStringExtra(TAG_SEARCHEVENTCATEGORY);
+		}		
 		new SearchEventTask().execute();
 		lvEventItem = (ListView) findViewById(android.R.id.list);
 		searchEventAdapter = new ListViewAdapter(eventItemsList, this);
-		lvEventItem.setAdapter(searchEventAdapter);
 	}
 
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		String eventID = (String) searchEventAdapter.getItem(position);
 		Intent intent = new Intent(getApplicationContext(),
 				ViewAndJoinEvent.class);
-		intent.putExtra("eventID", eventID);
-		startActivity(intent);
+		intent.putExtra(TAG_EVENTID, eventID);
+		startActivity(intent);		
 	}
 
 	private class SearchEventTask extends AsyncTask<String, Void, String> {
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(SearchEventResult.this);
-			pDialog.setTitle("Contacting Servers");
-			pDialog.setMessage("Loading ...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
-		}
 
 		@Override
 		protected String doInBackground(String... urls) {
 			// Building Parameters
 			List<NameValuePair> searchEventParams = new ArrayList<NameValuePair>();
-			searchEventParams.add(new BasicNameValuePair("searchEventName",
-					searchEventName));
+			searchEventParams.add(new BasicNameValuePair(TAG_SEARCHEVENTTYPE,
+					searchType));
+			if (searchType.equals(TAG_SEARCHEVENTTYPENAME)) {
+				searchEventParams.add(new BasicNameValuePair(TAG_SEARCHEVENTNAME,
+						searchEventName));
+			} else if (searchType.equals(TAG_SEARCHEVENTTYPECATEGORY)) {
+				searchEventParams.add(new BasicNameValuePair(
+						TAG_SEARCHEVENTCATEGORY, searchEventCategory));
+			}
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlSearchEvent,
 					searchEventParams);
@@ -117,7 +125,10 @@ public class SearchEventResult extends ListActivity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			if (success != 1) {
+			if(success == 1){
+				lvEventItem.setAdapter(searchEventAdapter);
+			}
+			else if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 			}

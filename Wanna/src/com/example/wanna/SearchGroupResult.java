@@ -76,7 +76,6 @@ public class SearchGroupResult extends ListActivity {
 		new SearchGroupTask().execute();
 		lvGroupItem = (ListView) findViewById(android.R.id.list);
 		searchGroupAdapter = new ListViewAdapter(groupItemsList, this);
-		lvGroupItem.setAdapter(searchGroupAdapter);
 	}
 
 	public void onListItemClick(ListView l, View v, int position, long id) {
@@ -133,7 +132,10 @@ public class SearchGroupResult extends ListActivity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			if (success != 1) {
+			if(success == 1){
+				lvGroupItem.setAdapter(searchGroupAdapter);
+			}
+			else if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 			}

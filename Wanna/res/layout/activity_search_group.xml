@@ -19,7 +19,18 @@
         android:textColor="#48D1CC"
         android:textSize="17sp"
         />
-
+    
+    <EditText
+        android:id="@+id/searchGroupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvGroupName"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_toLeftOf="@+id/btnSearchGroupByName"
+        android:ems="10" />
+    
     <Button
         android:id="@+id/btnSearchGroupByName"
         android:layout_width="wrap_content"
@@ -33,7 +44,27 @@
       	android:layout_marginLeft="10dp"
       	android:onClick="onSearchByNameClick"
         />
-
+    
+    <TextView
+        android:id="@+id/tvGroupCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvGroupName"
+        android:layout_below="@+id/btnSearchGroupByName"
+        android:layout_marginTop="60dp"
+        android:text="@string/search_group_category"
+        android:textColor="#48D1CC"
+        android:textSize="17sp" />
+    
+    <Spinner
+        android:id="@+id/spinnerGroupCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/searchGroupName"
+        android:layout_below="@+id/tvGroupCat"
+        android:layout_marginTop="18dp" />
+    
     <Button
         android:id="@+id/btnSearchGroupByCategory"
         android:layout_width="wrap_content"
@@ -44,27 +75,7 @@
         android:background="#48D1CC"
 		android:textColor="#F5F5F5"
 		android:onClick="onSearchByCategoryClick"
-        />
-
-    <EditText
-        android:id="@+id/searchGroupName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvGroupName"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_toLeftOf="@+id/btnSearchGroupByName"
-        android:ems="10" />
-
-    <Spinner
-        android:id="@+id/spinnerGroupCategories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/searchGroupName"
-        android:layout_below="@+id/tvGroupCat"
-        android:layout_marginTop="18dp" />
+        />    
 
     <Button
         android:id="@+id/button3"
@@ -77,16 +88,5 @@
         android:onClick="onCancelClick"
         android:text="@string/buttonCancel"
         android:textColor="#F5F5F5" />
-
-    <TextView
-        android:id="@+id/tvGroupCat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvGroupName"
-        android:layout_below="@+id/btnSearchGroupByName"
-        android:layout_marginTop="60dp"
-        android:text="@string/search_group_category"
-        android:textColor="#48D1CC"
-        android:textSize="17sp" />
 
 </RelativeLayout>

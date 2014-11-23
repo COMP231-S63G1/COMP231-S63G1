@@ -43,7 +43,7 @@
     <string name="hintPrice">Ex. $35-$45</string>
     <string name="buttonCreateEvent">Create!</string>
     <string name="btnSearch">Search</string>
-    <string name="searchEvent">Search Event</string>
+    <string name="searchEventName">Search Event Name</string>
     <string name="update">Update</string>
     <string name="delete">Delete</string>
     <string name="eventType">Event Type: </string>
@@ -61,6 +61,7 @@
     <string name="selectGroupPrivacy">Select Group Privacy</string>
     <string name="selectEventType">Select Event Type</string>
     <string name="btnSave">Save</string>
+    <string name="search_event_category">Search Event Category</string>
 
     <string-array name="createEventArray">
         <item>Sports</item>
