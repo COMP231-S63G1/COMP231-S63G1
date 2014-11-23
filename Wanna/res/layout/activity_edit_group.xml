@@ -12,12 +12,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-
 <TableLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp"
     android:stretchColumns="1" >
+    
+    <TextView
+        android:id="@+id/tvSelectGroupType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:text="@string/selectGroupType"
+        android:textColor="#48D1CC"
+        android:textSize="18sp"
+         />
     
     <Spinner
         android:id="@+id/groupTypeSpin"
@@ -41,7 +51,7 @@
          />
 
     <EditText
-        android:id="@+id/groupName"
+        android:id="@+id/etGroupName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp" >
@@ -70,11 +80,7 @@
             android:layout_marginBottom="30dp" />
     </TableRow>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-    </LinearLayout>
+   
 
     <TextView
         android:id="@+id/tvGroupDescription"
@@ -87,7 +93,7 @@
         />
 
     <EditText
-        android:id="@+id/groupDescriptionEditText"
+        android:id="@+id/etGroupDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -104,16 +110,6 @@
         android:textColor="#F5F5F5"
          />
 
-    <Button
-        android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#48D1CC"
-        android:onClick="onClickButtonCancel"
-        android:text="@string/buttonCancel" 
-        android:textColor="#F5F5F5"
-        />
 </TableLayout>
 </ScrollView>
 </LinearLayout>
