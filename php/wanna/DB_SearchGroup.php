@@ -10,11 +10,11 @@ if (isset($_POST["searchType"])) {
 $searchType = $_POST["searchType"];
 if($searchType == "Name" && isset($_POST["searchGroupName"])){	
 $searchGroupName = $_POST["searchGroupName"];
-$result = mysql_query("SELECT `groupID`, `groupName` FROM `group` where `groupName` LIKE '%$searchGroupName%'");
+$result = mysql_query("SELECT `groupID`, `groupName`, `groupPrivacy` FROM `group` where `groupName` LIKE '%$searchGroupName%'");
 }
 else if($searchType == "Category" && isset($_POST["searchGroupCategory"])){
 $searchGroupCategory = $_POST["searchGroupCategory"];	
-$result = mysql_query("SELECT `groupID`, `groupName` FROM `group` where `groupType`='$searchGroupCategory'");
+$result = mysql_query("SELECT `groupID`, `groupName`, `groupPrivacy` FROM `group` where `groupType`='$searchGroupCategory'");
 }
 else{
 	// failed
@@ -30,6 +30,7 @@ else{
 			while ($row = mysql_fetch_array($result)) {
 				// temp user array
 				$group = array();
+				$group["groupPrivacy"] = $row["groupPrivacy"];
 				$group["groupID"] = $row["groupID"];
 				$group["groupName"] = $row["groupName"];
 				// push single group into final response array
