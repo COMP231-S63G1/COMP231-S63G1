@@ -154,6 +154,14 @@
             android:name=".RegisterOrganization"
             android:label="@string/title_activity_register_organization" >
         </activity>
+              <activity
+            android:name=".GetCreatedGroup"
+            android:label="@string/title_activity_get_created_group" >
+        </activity>
+        <activity
+            android:name=".GetJoinedGroup"
+            android:label="@string/title_activity_get_joined_group" >
+        </activity>
     </application>
 
 </manifest>

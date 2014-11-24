@@ -118,6 +118,10 @@
     <string name="title_activity_get_joined_event">GetJoinedEvent</string>
     <string name="profileGetCreatEventTextView">Created Event</string>
     <string name="profileGetJoinEventTextView">Joined Event</string>
+    <string name="profileGetCreatGroupTextView">Created Group</string>
+    <string name="profileGetJoinGroupTextView">Joined Group</string>
     <string name="title_activity_register_organization">RegisterOrganization</string>
+    <string name="title_activity_get_created_group">GetCreatedGroup</string>
+    <string name="title_activity_get_joined_group">GetJoinedGroup</string>
 
 </resources>

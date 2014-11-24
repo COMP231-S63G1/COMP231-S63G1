@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ViewPrivateGroup extends Activity {
 	
@@ -135,7 +136,10 @@ public class ViewPrivateGroup extends Activity {
 		startActivity(intent);
 		}
 	public void onJoinGroupClick(View view){	
-		new JoinGroupTask().execute();
+		Toast.makeText(getApplicationContext(),"Your Join Group Request Have Been Send!!",
+				Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(getApplicationContext(),ViewProfile.class);
+		startActivity(intent);
 		}
 	private class JoinGroupTask extends AsyncTask<String, Void, String> {
 		
