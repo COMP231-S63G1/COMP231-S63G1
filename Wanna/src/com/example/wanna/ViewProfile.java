@@ -43,6 +43,8 @@ public class ViewProfile extends Activity {
 	ArrayList<HashMap<String, String>> viewProfileInformationList;
 	ArrayList<String[]> createdEventItemsList = new ArrayList<String[]>();
 	ArrayList<String[]> joinedEventItemsList = new ArrayList<String[]>();
+	ArrayList<String[]> createdGroupItemsList = new ArrayList<String[]>();
+	ArrayList<String[]> joinedGroupItemsList = new ArrayList<String[]>();
 	TextView tvProfileNickName;
 	TextView tvProfileGender;
 	TextView tvProfileAge;
@@ -52,6 +54,8 @@ public class ViewProfile extends Activity {
 	ListView joinedEventListView;
 	TextView tvGetCreatedEventTextView;
 	TextView tvGetJoinedEventTextView;
+	TextView tvGetCreatedGroupTextView;
+	TextView tvGetJoinedGroupTextView;
 	String profileID;
 	String sessionID;
 	String userID;
@@ -71,7 +75,11 @@ public class ViewProfile extends Activity {
 	// url to get user created event
 	private String urlJoinedEventList = userFunctions.URL_ROOT
 			+ "DB_GetJoinedEventList.php";
-
+	private String urlCreatedGroupList = userFunctions.URL_ROOT
+			+ "DB_GetCreatedGroupList.php";
+	// url to get user created event
+	private String urlJoinedGroupList = userFunctions.URL_ROOT
+			+ "DB_GetJoinedGroupList.php";
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_ProfileInformation = "profileInformation";
@@ -83,16 +91,17 @@ public class ViewProfile extends Activity {
 	private static final String TAG_Status = "eventName";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_EVENTLIST = "eventList";
+	private static final String TAG_GROUPLIST = "groupList";
 	private static final String TAG_JOINEDEVENTLIST = "joinedEventList";
 	private static final String TAG_EVENTID = "eventID";
 	private static final String TAG_EVENTNAME = "eventName";
-
+	private static final String TAG_GROUPID = "groupID";
+	private static final String TAG_GROUPNAME = "groupName";
 	JSONObject profileInformation;
-
 	JSONArray createdEventList = null;
 	JSONArray joinedEventList = null;
-	private ListAdapter getCreatedEventAdapter;
-	private ListAdapter getJoinedEventAdapter;
+	JSONArray createdGroupList = null;
+	JSONArray joinedGroupList = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -106,9 +115,13 @@ public class ViewProfile extends Activity {
 		tvProfileDescription = (TextView) findViewById(R.id.tvProfileDescriptionValue);
 		tvGetCreatedEventTextView =(TextView) findViewById(R.id.tvProfileGetCreateEventValue);
 		tvGetJoinedEventTextView =(TextView) findViewById(R.id.tvProfileGetJoinEventValue);
+		tvGetCreatedGroupTextView =(TextView) findViewById(R.id.tvProfileGetCreateGroupValue);
+		tvGetJoinedGroupTextView =(TextView) findViewById(R.id.tvProfileGetJoinGroupValue);
 		new ViewProfileInformationTask().execute();
 		new GetCreatedEventTask().execute();
 		new GetJoinedEventTask().execute();
+		new GetCreatedGroupTask().execute();
+		new GetJoinedGroupTask().execute();
 		// tvStatus = (TextView) findViewById(R.id.tvProfileStatusValue);
 		
 
@@ -305,52 +318,119 @@ public class ViewProfile extends Activity {
 			
 		}
 	}
-	private class ListAdapter extends BaseAdapter {
-
-		Context ctxt;
-		LayoutInflater listViewInflater;
-		ArrayList<String[]> listItemsList;
-		
-		public ListAdapter(ArrayList<String[]> listItemsList, Context ctxt){
-			this.listItemsList = listItemsList;
-			this.ctxt = ctxt;
-			listViewInflater = (LayoutInflater)ctxt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		}
-		
-		@Override
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return listItemsList.size();
-		}
-
-		@Override
-		public Object getItem(int position) {
-			// TODO Auto-generated method stub
-			return listItemsList.get(position)[0];
-		}
-
-		@Override
-		public long getItemId(int position) {
-			// TODO Auto-generated method stub
-			return position;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
-			if(convertView==null){
-				convertView = listViewInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
-				TextView listItem = (TextView)convertView.findViewById(android.R.id.text1);
-				listItem.setText(listItemsList.get(position)[1]);
-			}
-			return convertView;
-		}
-		public void setItemList(ArrayList<String[]> itemList){
-			listItemsList = itemList;
-		}
-
-	}
 	
+	private class GetCreatedGroupTask extends AsyncTask<String, Void, String> {
+		private String groupID;
+		private String groupName;
+		@Override
+		protected String doInBackground(String... urls) {
+			sessionID = sharedpreferences.getString("sessionID", "");
+			userID = sharedpreferences.getString("userID", "");
+			profileID = sharedpreferences.getString("profileID","");
+			// Building Parameters
+			List<NameValuePair> getCreatedGroupListParams = new ArrayList<NameValuePair>();
+			getCreatedGroupListParams.add(new BasicNameValuePair("profileID",
+					profileID));
+			getCreatedGroupListParams.add(new BasicNameValuePair("sessionID",
+					sessionID));
+			getCreatedGroupListParams.add(new BasicNameValuePair("userID",
+					userID));
+			// getting event details by making HTTP request
+			JSONObject json = jsonParser.getJSONFromUrl(urlCreatedGroupList,
+					getCreatedGroupListParams);
+			// json success tag
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
+			if (success == 1) {
+				createdGroupList = json.optJSONArray(TAG_GROUPLIST);
+				// looping through All Products
+				for (int i = 0; i < createdGroupList.length(); i++) {
+					JSONObject event = createdGroupList.optJSONObject(i);
+					groupID = event.optString(TAG_GROUPID);
+					groupName = event.optString(TAG_GROUPNAME);
+					String[] groupItems = { groupID, groupName };
+					createdGroupItemsList.add(groupItems);
+				}
+			} else {
+				
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			if (success == 0) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
+			else{
+//				getCreatedEventAdapter.setItemList(createdEventItemsList);
+//				createdEventListView.setAdapter(getCreatedEventAdapter);
+				String textShowed="";
+				for(String[] arr : createdGroupItemsList){
+					textShowed+=arr[1]+"\n";
+					System.out.println(textShowed);
+				}
+				tvGetCreatedGroupTextView.setText(textShowed);
+				}
+		}
+	}
+	private class GetJoinedGroupTask extends AsyncTask<String, Void, String> {
+		private String groupID;
+		private String groupName;
+		@Override
+		protected String doInBackground(String... urls) {
+			sessionID = sharedpreferences.getString("sessionID", "");
+			userID = sharedpreferences.getString("userID", "");
+			profileID = sharedpreferences.getString("profileID","");
+			// Building Parameters
+			List<NameValuePair> getJoinedGroupListParams = new ArrayList<NameValuePair>();
+			getJoinedGroupListParams.add(new BasicNameValuePair("profileID",
+					profileID));
+			getJoinedGroupListParams.add(new BasicNameValuePair("sessionID",
+					sessionID));
+			getJoinedGroupListParams.add(new BasicNameValuePair("userID",
+					userID));
+			// getting event details by making HTTP request
+			JSONObject json = jsonParser.getJSONFromUrl(urlJoinedGroupList,
+					getJoinedGroupListParams);
+			// json success tag
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
+			if (success == 1) {
+				joinedGroupList = json.optJSONArray(TAG_GROUPLIST);
+				// looping through All Products
+				for (int i = 0; i < joinedGroupList.length(); i++) {
+					JSONObject event = joinedGroupList.optJSONObject(i);
+					groupID = event.optString(TAG_GROUPID);
+					groupName = event.optString(TAG_GROUPNAME);
+					String[] groupItems = { groupID, groupName };
+					joinedGroupItemsList.add(groupItems);
+				}
+			} else {
+				
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			if (success == 0) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
+			else{
+//				getCreatedEventAdapter.setItemList(createdEventItemsList);
+//				createdEventListView.setAdapter(getCreatedEventAdapter);
+				String textShowed="";
+				for(String[] arr : joinedGroupItemsList){
+					textShowed+=arr[1]+"\n";
+					System.out.println(textShowed);
+				}
+				tvGetJoinedGroupTextView.setText(textShowed);
+				}
+		}
+	}
 	public void GetJoinEventValueOnClick(View view){
 		Intent intent= new Intent(getApplicationContext(),GetJoinedEvent.class);
 		startActivity(intent);
@@ -358,6 +438,17 @@ public class ViewProfile extends Activity {
 	}
 	public void GetCreateEventValueOnClick(View view){
 		Intent intent= new Intent(getApplicationContext(),GetCreatedEvent.class);
+		startActivity(intent);
+		
+	}
+	
+	public void GetCreateGroupValueOnClick(View view){
+		Intent intent= new Intent(getApplicationContext(),GetCreatedGroup.class);
+		startActivity(intent);
+		
+	}
+	public void GetJoinGroupValueOnClick(View view){
+		Intent intent= new Intent(getApplicationContext(),GetJoinedGroup.class);
 		startActivity(intent);
 		
 	}

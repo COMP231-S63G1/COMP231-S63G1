@@ -40,12 +40,14 @@ public class ViewPublicGroup extends ListActivity {
 			ListView lvGroupMember;
 			
 			String groupID;
+			String profileID;
 
 			// url to view event detail
 			private String urlViewGroupDetail = userFunctions.URL_ROOT
 					+ "DB_ViewGroup.php";
 			private String urlDisplayGroupMember = userFunctions.URL_ROOT
 					+ "DB_DisplayGroupMember.php";
+			private String urlJoinGroup = userFunctions.URL_ROOT + "DB_JoinPublicGroup.php";
 
 			// JSON Node names
 			private static final String TAG_SUCCESS = "success";
@@ -202,7 +204,54 @@ public class ViewPublicGroup extends ListActivity {
 			Intent intent = new Intent(this, Login_Success.class);
 			startActivity(intent);
 			}
-		public void onJoinGrup(View view){
+		public void onJoinGroupClick(View view){
+			new JoinGroupTask().execute();
+		}
+		private class JoinGroupTask extends AsyncTask<String, Void, String> {
+			@Override
+			protected void onPreExecute() {
+				super.onPreExecute();
+				pDialog = new ProgressDialog(ViewPublicGroup.this);
+				pDialog.setTitle("Contacting Servers");
+				pDialog.setMessage("Loading ...");
+				pDialog.setIndeterminate(false);
+				pDialog.setCancelable(true);
+				pDialog.show();
+			}
 			
+			@Override
+			protected String doInBackground(String... urls) {
+				sessionID = sharedpreferences.getString("sessionID", "");
+				userID = sharedpreferences.getString("userID", "");
+				profileID = sharedpreferences.getString("profileID", "");
+				System.out.println(profileID);
+						try {
+							// Building Parameters
+							List<NameValuePair> joinGroupParams = new ArrayList<NameValuePair>();
+							joinGroupParams.add(new BasicNameValuePair("groupID", groupID));
+							joinGroupParams.add(new BasicNameValuePair("sessionID", sessionID));
+							joinGroupParams.add(new BasicNameValuePair("userID", userID));
+							joinGroupParams.add(new BasicNameValuePair("profileID",profileID));
+							JSONObject json = jsonParser.getJSONFromUrl(
+									urlJoinGroup, joinGroupParams);
+							// json success tag
+							success = json.getInt(TAG_SUCCESS);
+							message = json.optString(TAG_MESSAGE);
+						} catch (JSONException e) {
+							e.printStackTrace();
+							return null;
+						}
+				return null;
+			} 
+			@Override
+			protected void onPostExecute(String result) {
+				    pDialog.dismiss();
+				    System.out.println(message);
+				    Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(getApplicationContext(),
+							Login_Success.class);
+					startActivity(intent);
+			}
 		}
 }
