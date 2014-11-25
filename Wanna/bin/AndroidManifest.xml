@@ -154,7 +154,7 @@
             android:name=".RegisterOrganization"
             android:label="@string/title_activity_register_organization" >
         </activity>
-              <activity
+        <activity
             android:name=".GetCreatedGroup"
             android:label="@string/title_activity_get_created_group" >
         </activity>
