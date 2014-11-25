@@ -41,13 +41,19 @@ public class RegisterPerson extends Activity {
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
+	private static final String TAG_FIRSTNAME = "firstName";
+	private static final String TAG_LASTNAME = "lastName";
+	private static final String TAG_EMAIL = "email";
+	private static final String TAG_PASSWORD = "password";
+
 
 	EditText etFirstName;
 	EditText etLastName;
 	EditText etEmail;
 	EditText etPassword;
 	EditText etConfirmPassword;	
-
+	String userType;
 	String firstName;
 	String lastName;
 	String email;
@@ -61,8 +67,8 @@ public class RegisterPerson extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register_person);		
-
+		setContentView(R.layout.activity_register_person);				
+		userType = "Person";
 		etFirstName = (EditText) findViewById(R.id.fname);
 		etLastName = (EditText) findViewById(R.id.lname);
 		etEmail = (EditText) findViewById(R.id.email);
@@ -106,26 +112,17 @@ public class RegisterPerson extends Activity {
 	}
 	
 	private class RegisterTask extends AsyncTask<String, Void, String> {
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(RegisterPerson.this);
-			pDialog.setTitle("Contacting Servers");
-			pDialog.setMessage("Loading ...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
-		}
 		
         @Override
         protected String doInBackground(String... urls) {
 
     		// Building Parameters
     		List<NameValuePair> registerParams = new ArrayList<NameValuePair>();
-			registerParams.add(new BasicNameValuePair("firstName", firstName));    			
-			registerParams.add(new BasicNameValuePair("lastName", lastName));    			
-			registerParams.add(new BasicNameValuePair("email", email));    			
-			registerParams.add(new BasicNameValuePair("password", password)); 
+			registerParams.add(new BasicNameValuePair(TAG_USERTYPE, userType)); 
+			registerParams.add(new BasicNameValuePair(TAG_FIRSTNAME, firstName));    			
+			registerParams.add(new BasicNameValuePair(TAG_LASTNAME, lastName));    			
+			registerParams.add(new BasicNameValuePair(TAG_EMAIL, email));    			
+			registerParams.add(new BasicNameValuePair(TAG_PASSWORD, password)); 
 
     		// getting JSON string from URL
     		JSONObject json = jsonParser.getJSONFromUrl(urlRegister, registerParams);
