@@ -154,6 +154,14 @@
             android:name=".RegisterOrganization"
             android:label="@string/title_activity_register_organization" >
         </activity>
+        <activity
+            android:name=".DisplayOwnedGroup"
+            android:label="@string/title_activity_display_owned_group" >
+        </activity>
+        <activity
+            android:name=".ViewGroupOwner"
+            android:label="@string/title_activity_display_group_owner" >
+        </activity>
     </application>
 
 </manifest>

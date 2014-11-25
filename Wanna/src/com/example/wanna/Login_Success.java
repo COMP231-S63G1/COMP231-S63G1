@@ -85,6 +85,11 @@ public class Login_Success extends Activity {
 		startActivity(intent);
 		}
     
+    public void onDisplayOwnedGroup(View view){	
+		Intent intent = new Intent(this, DisplayOwnedGroup.class);
+		startActivity(intent);
+		}
+    
     public void onChangePasswordClick(View view){	
 		Intent intent = new Intent(this, ChangePassword.class);
 		startActivity(intent);    	

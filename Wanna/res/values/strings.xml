@@ -119,5 +119,7 @@
     <string name="profileGetCreatEventTextView">Created Event</string>
     <string name="profileGetJoinEventTextView">Joined Event</string>
     <string name="title_activity_register_organization">RegisterOrganization</string>
+    <string name="title_activity_display_owned_group">DisplayOwnedGroup</string>
+    <string name="title_activity_display_group_owner">DisplayGroupOwner</string>
 
 </resources>

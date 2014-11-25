@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.example.wanna.DispalyOwnedGroup&apos; to &apos;DisplayOwnedGroup&apos;&#x0D;&#x0A;- Original project: &apos;Wanna&apos;&#x0D;&#x0A;- Original element: &apos;com.example.wanna.DispalyOwnedGroup&apos;&#x0D;&#x0A;- Renamed element: &apos;com.example.wanna.DisplayOwnedGroup&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Rename similarly named elements&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;DispalyOwnedGroup&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.example.wanna{DispalyOwnedGroup.java[DispalyOwnedGroup" matchStrategy="1" name="DisplayOwnedGroup" qualified="false" references="true" similarDeclarations="true" stamp="1416798674756" textual="false" version="1.0"/>
+</session>
