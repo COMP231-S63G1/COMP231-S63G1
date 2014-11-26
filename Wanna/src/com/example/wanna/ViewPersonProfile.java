@@ -145,7 +145,7 @@ public class ViewPersonProfile extends Activity {
 
 	public void onEditProfileClick(View view) {
 		Intent intent = new Intent(getApplicationContext(),
-				EditPersonProfile.class);
+				EditProfile.class);
 		intent.putExtra("nickName", nickName);
 		intent.putExtra("description", description);
 		startActivity(intent);
