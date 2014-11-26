@@ -201,7 +201,7 @@ public class ViewPublicGroup extends ListActivity {
 		}
 		
 		public void onCancel(View view){	
-			Intent intent = new Intent(this, Login_Success.class);
+			Intent intent = new Intent(this, PersonLoginSuccess.class);
 			startActivity(intent);
 			}
 		public void onJoinGroupClick(View view){
@@ -250,7 +250,7 @@ public class ViewPublicGroup extends ListActivity {
 				    Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(getApplicationContext(),
-							Login_Success.class);
+							PersonLoginSuccess.class);
 					startActivity(intent);
 			}
 		}

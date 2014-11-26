@@ -93,7 +93,7 @@ public class ViewEventDetail extends Activity {
 	}
 	
 	public void onViewEventDetailBackClick(View view){
-		Intent i = new Intent(getApplicationContext(), Login_Success.class);
+		Intent i = new Intent(getApplicationContext(), PersonLoginSuccess.class);
 		startActivity(i);		
 	}
 

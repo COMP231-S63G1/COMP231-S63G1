@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -39,14 +38,17 @@ public class Login extends Activity {
 	SharedPreferences sharedpreferences;
 
 	UserFunctions userFunctions = new UserFunctions();
-	private String urlLogin = userFunctions.URL_ROOT + "DB_Login.php";
+	private String urlLogin = UserFunctions.URL_ROOT + "DB_Login.php";
 
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_SESSIONID = "sessionid";
 	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_PROFILEID = "profileid";
 	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_LOGINEMAIL = "loginEmail";
+	private static final String TAG_LOGINPASSWORD = "loginPassword";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -76,8 +78,13 @@ public class Login extends Activity {
 		}
 	}
 
-	public void onRegisterClick(View view) {
+	public void onPersonRegisterClick(View view) {
 		Intent intent = new Intent(getApplicationContext(), RegisterPerson.class);
+		startActivity(intent);
+	}
+	
+	public void onOrganizationRegisterClick(View view) {
+		Intent intent = new Intent(getApplicationContext(), RegisterOrganization.class);
 		startActivity(intent);
 	}
 
@@ -105,26 +112,28 @@ public class Login extends Activity {
 			 loginEmail = "gulang15@gmail.com";
 			 loginPassword = "123";
 			List<NameValuePair> loginParams = new ArrayList<NameValuePair>();
-			loginParams.add(new BasicNameValuePair("loginEmail", loginEmail));
-			loginParams.add(new BasicNameValuePair("loginPassword",
+			loginParams.add(new BasicNameValuePair(TAG_LOGINEMAIL, loginEmail));
+			loginParams.add(new BasicNameValuePair(TAG_LOGINPASSWORD,
 					loginPassword));
 			JSONObject json = jsonParser.getJSONFromUrl(urlLogin, loginParams);
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
 			if (success == 1) {
 				Editor editor = sharedpreferences.edit();
-				editor.putString("sessionID", json.optString(TAG_SESSIONID));
-				editor.putString("userID", json.optString(TAG_USERID));
-				editor.putString("nickName", json.optString(TAG_NICKNAME));
-				editor.putString("profileID", json.optString(TAG_PROFILEID));
+				editor.putString(TAG_SESSIONID, json.optString(TAG_SESSIONID));
+				editor.putString(TAG_USERID, json.optString(TAG_USERID));
+				editor.putString(TAG_USERTYPE, json.optString(TAG_USERTYPE));
+				editor.putString(TAG_PROFILEID, json.optString(TAG_PROFILEID));
+				editor.putString(TAG_NICKNAME, json.optString(TAG_NICKNAME));
 				editor.commit();
 				Intent intent = new Intent(getApplicationContext(),
-						Login_Success.class);
+						PersonLoginSuccess.class);
 				startActivity(intent);
 			} else {
 			}
 			return null;
 		}
+		
 
 		@Override
 		protected void onPostExecute(String result) {

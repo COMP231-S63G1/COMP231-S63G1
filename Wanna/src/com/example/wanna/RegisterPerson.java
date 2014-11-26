@@ -6,19 +6,15 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,12 +23,11 @@ public class RegisterPerson extends Activity {
 
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
-	private ProgressDialog pDialog;
 	
 	UserFunctions userFunctions = new UserFunctions();
 	
 	// url to create user profile
-	private String urlRegister = userFunctions.URL_ROOT + "DB_Register.php";
+	private String urlRegister = UserFunctions.URL_ROOT + "DB_Register.php";
 	
 	// user profile JSONArray
 	JSONArray RegisterArray = null;
@@ -41,9 +36,8 @@ public class RegisterPerson extends Activity {
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERNAME = "username";
 	private static final String TAG_USERTYPE = "userType";
-	private static final String TAG_FIRSTNAME = "firstName";
-	private static final String TAG_LASTNAME = "lastName";
 	private static final String TAG_EMAIL = "email";
 	private static final String TAG_PASSWORD = "password";
 
@@ -56,6 +50,7 @@ public class RegisterPerson extends Activity {
 	String userType;
 	String firstName;
 	String lastName;
+	String userName;
 	String email;
 	String password;
 	String confirmPassword; 
@@ -84,6 +79,7 @@ public class RegisterPerson extends Activity {
 		confirmPassword = etConfirmPassword.getText().toString(); 
 		
 		if((!firstName.equals(""))&&(!lastName.equals(""))&&(!email.equals(""))&&(!password.equals(""))&&(!confirmPassword.equals(""))&&(password.equals(confirmPassword))){
+			userName = firstName + " " + lastName;
 			new RegisterTask().execute();
 		}else if(firstName.equals("")){
 			Toast.makeText(getApplicationContext(),
@@ -119,8 +115,7 @@ public class RegisterPerson extends Activity {
     		// Building Parameters
     		List<NameValuePair> registerParams = new ArrayList<NameValuePair>();
 			registerParams.add(new BasicNameValuePair(TAG_USERTYPE, userType)); 
-			registerParams.add(new BasicNameValuePair(TAG_FIRSTNAME, firstName));    			
-			registerParams.add(new BasicNameValuePair(TAG_LASTNAME, lastName));    			
+			registerParams.add(new BasicNameValuePair(TAG_USERNAME, userName));     			
 			registerParams.add(new BasicNameValuePair(TAG_EMAIL, email));    			
 			registerParams.add(new BasicNameValuePair(TAG_PASSWORD, password)); 
 
@@ -136,8 +131,9 @@ public class RegisterPerson extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 		if(success == 1){
-			Intent intent = new Intent(getApplicationContext(), CreateProfile.class);
-			intent.putExtra("userid", userid);
+			Intent intent = new Intent(getApplicationContext(), CreatePersonProfile.class);
+			intent.putExtra(TAG_USERID, userid);
+			intent.putExtra(TAG_USERTYPE, userType);
 			startActivity(intent);					
 		}else{
 			Toast.makeText(getApplicationContext(),

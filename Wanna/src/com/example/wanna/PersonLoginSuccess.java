@@ -2,52 +2,49 @@ package com.example.wanna;
 
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
-import com.example.wanna.library.DatabaseHandler;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Login_Success extends Activity {
+public class PersonLoginSuccess extends Activity {
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
 
-	private ProgressDialog pDialog;
 	
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
-	
-	//For test purpose!!!
-//    EditText etEeventID;    
+
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
+	private static final String TAG_NICKNAME = "nickName";
+	private static final String TAG_SUCCESS = "success";
+  
     TextView tvSessionID;
     TextView tvTextwelcome;
     
 	String sessionID;
 	String userID;
+	String userType;
 	String nickName;     
 	int success;
     
 	UserFunctions userFunctions = new UserFunctions();
-	private String urlCheckLogin = userFunctions.URL_ROOT + "DB_LoginSuccess.php";
+	private String urlCheckLogin = UserFunctions.URL_ROOT + "DB_LoginSuccess.php";
 
-	private static final String TAG_SUCCESS = "success";
 
     /**
      * Called when the activity is first created.
@@ -55,10 +52,15 @@ public class Login_Success extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_success);        
+        setContentView(R.layout.activity_person_login_success);        
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
-        
+
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
+		nickName = sharedpreferences.getString(TAG_NICKNAME, "");
+		
         tvTextwelcome = (TextView) findViewById(R.id.textwelcome);
         tvSessionID = (TextView) findViewById(R.id.textView);
         
@@ -81,7 +83,7 @@ public class Login_Success extends Activity {
     }
     
     public void onViewProfileClick(View view){	
-		Intent intent = new Intent(this, ViewProfile.class);
+		Intent intent = new Intent(this, ViewPersonProfile.class);
 		startActivity(intent);
 		}
     
@@ -94,10 +96,12 @@ public class Login_Success extends Activity {
 		Intent intent = new Intent(this, Login.class);
 		startActivity(intent);    	
     }
+    
     public void onSearchGroupClick(View view){	
 		Intent intent = new Intent(this, SearchGroup.class);
 		startActivity(intent);
 		}
+    
     public void onCreateGroupClick(View view){	
 		Intent intent = new Intent(this, CreateGroup.class);
 		startActivity(intent);
@@ -116,21 +120,17 @@ public class Login_Success extends Activity {
     private class LoginSeccessTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			System.out.println(sessionID);
-			userID = sharedpreferences.getString("userID", "");
-			nickName = sharedpreferences.getString("nickName", "");
 			List<NameValuePair> checkLoginParams = new ArrayList<NameValuePair>();
 			checkLoginParams
-					.add(new BasicNameValuePair("sessionID", sessionID));
-			checkLoginParams.add(new BasicNameValuePair("userID",
+					.add(new BasicNameValuePair(TAG_SESSIONID, sessionID));
+			checkLoginParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
 			JSONObject json = jsonParser.getJSONFromUrl(urlCheckLogin,
 					checkLoginParams);
 			success = json.optInt(TAG_SUCCESS);
 			if (success != 1) {
 				Intent intent = new Intent(getApplicationContext(),
-						Login_Success.class);
+						PersonLoginSuccess.class);
 				startActivity(intent);					
 			}
 			return null;			

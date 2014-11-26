@@ -190,7 +190,7 @@ public class ViewGroupOwner extends ListActivity {
 			}
 			
 			public void onCancel(View view){	
-				Intent intent = new Intent(this, Login_Success.class);
+				Intent intent = new Intent(this, PersonLoginSuccess.class);
 				startActivity(intent);
 				}
 			public void onEditGroupDetailButtonClick(View view){

@@ -7,12 +7,13 @@
  
 // connecting to db
 //$db = new DB_Connect();
-if (isset($_POST["sessionID"])&& isset($_POST["userID"])) {
+if (isset($_POST["sessionID"]) && isset($_POST["userID"]) && isset($_POST["userType"])) {
 	$sessionID = $_POST['sessionID'];
 	$userID = $_POST['userID'];
+	$userType = $_POST['userType'];
 	session_id($sessionID);
 	session_start();
-	if($userID==$_SESSION['userid']){
+	if($userID == $_SESSION['userid'] && $userType == $_SESSION['userType']){
 		$sessionSuccess = 1;
 		$sessionMessage = "session exist";
 		

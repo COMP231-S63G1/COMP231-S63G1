@@ -13,12 +13,9 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,12 +23,11 @@ import android.widget.Toast;
 public class RegisterOrganization extends Activity {
 	// Creating JSON Parser object
 		JSONParser jsonParser = new JSONParser();
-		private ProgressDialog pDialog;
 		
 		UserFunctions userFunctions = new UserFunctions();
 		
 		// url to create user profile
-		private String urlRegister = userFunctions.URL_ROOT + "DB_Register.php";
+		private String urlRegister = UserFunctions.URL_ROOT + "DB_Register.php";
 		
 		// user profile JSONArray
 		JSONArray RegisterArray = null;
@@ -41,7 +37,7 @@ public class RegisterOrganization extends Activity {
 		private static final String TAG_MESSAGE = "message";
 		private static final String TAG_USERID = "userid";
 		private static final String TAG_USERTYPE = "userType";
-    	private static final String TAG_ORGANIZATIONNAME = "OrganizationName";
+		private static final String TAG_USERNAME = "username";
     	private static final String TAG_EMAIL = "email";
     	private static final String TAG_PASSWORD = "password";
 
@@ -50,7 +46,7 @@ public class RegisterOrganization extends Activity {
 		EditText etPassword;
 		EditText etConfirmPassword;	
 		String userType;
-		String organizationName;
+		String userName;
 		String email;
 		String password;
 		String confirmPassword; 
@@ -71,14 +67,14 @@ public class RegisterOrganization extends Activity {
 		}
 		
 		public void onRegisterClick(View view){
-			organizationName = etOrganizationName.getText().toString();
+			userName = etOrganizationName.getText().toString();
 			email = etEmail.getText().toString();
 			password = etPassword.getText().toString();
 			confirmPassword = etConfirmPassword.getText().toString(); 
 			
-			if((!organizationName.equals(""))&&(!email.equals(""))&&(!password.equals(""))&&(!confirmPassword.equals(""))&&(password.equals(confirmPassword))){
+			if((!userName.equals(""))&&(!email.equals(""))&&(!password.equals(""))&&(!confirmPassword.equals(""))&&(password.equals(confirmPassword))){
 				new RegisterTask().execute();
-			}else if(organizationName.equals("")){
+			}else if(userName.equals("")){
 				Toast.makeText(getApplicationContext(),
 	                    "Organization name field empty", Toast.LENGTH_SHORT).show(); 
 			}else if(email.equals("")){
@@ -108,7 +104,7 @@ public class RegisterOrganization extends Activity {
 	    		// Building Parameters
 	    		List<NameValuePair> registerParams = new ArrayList<NameValuePair>();  			
 				registerParams.add(new BasicNameValuePair(TAG_USERTYPE, userType)); 
-				registerParams.add(new BasicNameValuePair(TAG_ORGANIZATIONNAME, organizationName));    			
+				registerParams.add(new BasicNameValuePair(TAG_USERNAME, userName));    			
 				registerParams.add(new BasicNameValuePair(TAG_EMAIL, email));    			
 				registerParams.add(new BasicNameValuePair(TAG_PASSWORD, password)); 
 
@@ -124,8 +120,9 @@ public class RegisterOrganization extends Activity {
 			@Override
 			protected void onPostExecute(String result) {
 			if(success == 1){
-				Intent intent = new Intent(getApplicationContext(), CreateProfile.class);
-				intent.putExtra("userid", userid);
+				Intent intent = new Intent(getApplicationContext(), CreatePersonProfile.class);
+				intent.putExtra(TAG_USERID, userid);
+				intent.putExtra(TAG_USERTYPE, userType);
 				startActivity(intent);					
 			}else{
 				Toast.makeText(getApplicationContext(),

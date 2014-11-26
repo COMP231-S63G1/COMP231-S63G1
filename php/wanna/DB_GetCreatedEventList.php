@@ -10,9 +10,8 @@ require_once '/DB_CheckLogin.php';
 
 if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
-	$profileID = $_SESSION['profileid'];
 
-        $result = mysql_query("SELECT eventID, eventName FROM event where eventCreaterID = $profileID");	
+        $result = mysql_query("SELECT `eventID`, `eventName` FROM `event` where eventCreaterID = $userID");	
 	if (!empty($result)) {
         // check for empty result
         if (mysql_num_rows($result) > 0) {

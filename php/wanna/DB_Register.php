@@ -4,9 +4,9 @@
 $response = array();
  
 // check for required fields
-if (isset($_POST['firstName']) && isset($_POST['lastName'])&& isset($_POST['email'])&& isset($_POST['password'])) {
-	$firstName = $_POST['firstName'];
-	$lastName = $_POST['lastName'];
+if (isset($_POST['userType']) && isset($_POST['userName']) && isset($_POST['email'])&& isset($_POST['password'])) {
+	$userType = $_POST['userType'];
+	$userName = $_POST['userName'];
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	
@@ -28,12 +28,12 @@ if (isset($_POST['firstName']) && isset($_POST['lastName'])&& isset($_POST['emai
             echo json_encode($response);
         } else {
 			// mysql inserting a new row
-			$insertResult = mysql_query("INSERT INTO users (firstname, lastname, email, password) VALUES('$firstName', '$lastName', '$email', PASSWORD('$password'))");
+			$insertResult = mysql_query("INSERT INTO `users` (`userType`, `userName`, `email`, `password`) VALUES('$userType', '$userName', '$email', PASSWORD('$password'))");
 			// check if row inserted or not
 			if ($insertResult) {
 				//insert succeed
 				//get new userid
-				$getResult = mysql_query("SELECT userid FROM users WHERE email='$email'");
+				$getResult = mysql_query("SELECT `userid` FROM `users` WHERE `email` = '$email'");
 				$getResult = mysql_fetch_array($getResult);
 				$response["success"] = 1; 
 				$response["userid"] = $getResult["userid"]; 

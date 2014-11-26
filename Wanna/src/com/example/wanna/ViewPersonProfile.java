@@ -10,28 +10,20 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.example.wanna.library.JSONParser;
-import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
 
-
 import android.app.Activity;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ViewProfile extends Activity {
+public class ViewPersonProfile extends Activity {
 
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
@@ -59,6 +51,7 @@ public class ViewProfile extends Activity {
 	String profileID;
 	String sessionID;
 	String userID;
+	String userType;
 	String nickName;
 	String age;
 	String gender;
@@ -67,23 +60,26 @@ public class ViewProfile extends Activity {
 	int success;
 
 	// url to view profile info
-	private String urlViewProfileInformation = userFunctions.URL_ROOT
-			+ "DB_ViewProfileInformation.php";
+	private String urlViewProfileInformation = UserFunctions.URL_ROOT
+			+ "DB_ViewPersonProfile.php";
 	// url to get user created event
-	private String urlCreatedEventList = userFunctions.URL_ROOT
+	private String urlCreatedEventList = UserFunctions.URL_ROOT
 			+ "DB_GetCreatedEventList.php";
 	// url to get user created event
-	private String urlJoinedEventList = userFunctions.URL_ROOT
+	private String urlJoinedEventList = UserFunctions.URL_ROOT
 			+ "DB_GetJoinedEventList.php";
-	private String urlCreatedGroupList = userFunctions.URL_ROOT
+	private String urlCreatedGroupList = UserFunctions.URL_ROOT
 			+ "DB_GetCreatedGroupList.php";
 	// url to get user created event
-	private String urlJoinedGroupList = userFunctions.URL_ROOT
+	private String urlJoinedGroupList = UserFunctions.URL_ROOT
 			+ "DB_GetJoinedGroupList.php";
 	// JSON Node names
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_ProfileInformation = "profileInformation";
-	private static final String TAG_ProfileNickName = "nickName";
+	private static final String TAG_PROFILENICKNAME = "nickName";
 	private static final String TAG_ProfileID = "profileID";
 	private static final String TAG_ProfileAge = "age";
 	private static final String TAG_ProfileGender = "gender";
@@ -106,42 +102,50 @@ public class ViewProfile extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_view_profile);
+		setContentView(R.layout.activity_view_person_profile);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
+		nickName = sharedpreferences.getString(TAG_PROFILENICKNAME, "");
+
 		// Edit Text
 		tvProfileNickName = (TextView) findViewById(R.id.tvProfileNickNameValue);
 		tvProfileGender = (TextView) findViewById(R.id.tvProfileGenderValue);
 		tvProfileAge = (TextView) findViewById(R.id.tvProfileAgeValue);
 		tvProfileDescription = (TextView) findViewById(R.id.tvProfileDescriptionValue);
-		tvGetCreatedEventTextView =(TextView) findViewById(R.id.tvProfileGetCreateEventValue);
-		tvGetJoinedEventTextView =(TextView) findViewById(R.id.tvProfileGetJoinEventValue);
-		tvGetCreatedGroupTextView =(TextView) findViewById(R.id.tvProfileGetCreateGroupValue);
-		tvGetJoinedGroupTextView =(TextView) findViewById(R.id.tvProfileGetJoinGroupValue);
+		tvGetCreatedEventTextView = (TextView) findViewById(R.id.tvProfileGetCreateEventValue);
+		tvGetJoinedEventTextView = (TextView) findViewById(R.id.tvProfileGetJoinEventValue);
+		tvGetCreatedGroupTextView = (TextView) findViewById(R.id.tvProfileGetCreateGroupValue);
+		tvGetJoinedGroupTextView = (TextView) findViewById(R.id.tvProfileGetJoinGroupValue);
 		new ViewProfileInformationTask().execute();
 		new GetCreatedEventTask().execute();
 		new GetJoinedEventTask().execute();
 		new GetCreatedGroupTask().execute();
 		new GetJoinedGroupTask().execute();
 		// tvStatus = (TextView) findViewById(R.id.tvProfileStatusValue);
-		
 
-		
-//		createdEventListView = (ListView) findViewById(R.id.createdEventList);
-//		getCreatedEventAdapter = new ListAdapter(createdEventItemsList, this);
-//		new GetCreatedEventTask().execute();
-//		
-//		joinedEventListView = (ListView) findViewById(R.id.joinedEventList);
-//		getJoinedEventAdapter = new ListAdapter(joinedEventItemsList, this);
-//		new GetJoinedEventTask().execute();
+		// createdEventListView = (ListView)
+		// findViewById(R.id.createdEventList);
+		// getCreatedEventAdapter = new ListAdapter(createdEventItemsList,
+		// this);
+		// new GetCreatedEventTask().execute();
+		//
+		// joinedEventListView = (ListView) findViewById(R.id.joinedEventList);
+		// getJoinedEventAdapter = new ListAdapter(joinedEventItemsList, this);
+		// new GetJoinedEventTask().execute();
 
 	}
+
 	public void onViewProfileInformationBackClick(View view) {
-		Intent intent = new Intent(getApplicationContext(), Login_Success.class);
+		Intent intent = new Intent(getApplicationContext(),
+				PersonLoginSuccess.class);
 		startActivity(intent);
 	}
 
 	public void onEditProfileClick(View view) {
-		Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+		Intent intent = new Intent(getApplicationContext(),
+				EditPersonProfile.class);
 		intent.putExtra("nickName", nickName);
 		intent.putExtra("description", description);
 		startActivity(intent);
@@ -152,7 +156,7 @@ public class ViewProfile extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pDialog = new ProgressDialog(ViewProfile.this);
+			pDialog = new ProgressDialog(ViewPersonProfile.this);
 			pDialog.setTitle("Contacting Servers");
 			pDialog.setMessage("Loading ...");
 			pDialog.setIndeterminate(false);
@@ -162,14 +166,13 @@ public class ViewProfile extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-			nickName = sharedpreferences.getString("nickName", "");
 			// Building Parameters
 			List<NameValuePair> ViewProfileParams = new ArrayList<NameValuePair>();
+			ViewProfileParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
+			ViewProfileParams.add(new BasicNameValuePair(TAG_USERID, userID));
 			ViewProfileParams
-					.add(new BasicNameValuePair("sessionID", sessionID));
-			ViewProfileParams.add(new BasicNameValuePair("userID", userID));
+					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			// getting profile info by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(
 					urlViewProfileInformation, ViewProfileParams);
@@ -181,7 +184,7 @@ public class ViewProfile extends Activity {
 						.optJSONArray(TAG_ProfileInformation); // JSON Array
 				// get first profile object from JSON Array
 				profileInformation = profileInformationArray.optJSONObject(0);
-				nickName = profileInformation.optString(TAG_ProfileNickName);
+				nickName = profileInformation.optString(TAG_PROFILENICKNAME);
 				age = profileInformation.optString(TAG_ProfileAge);
 				gender = profileInformation.optString(TAG_ProfileGender);
 				description = profileInformation
@@ -211,16 +214,13 @@ public class ViewProfile extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
 			// Building Parameters
 			List<NameValuePair> getCreatedEventListParams = new ArrayList<NameValuePair>();
-			getCreatedEventListParams.add(new BasicNameValuePair("profileID",
-					profileID));
-			getCreatedEventListParams.add(new BasicNameValuePair("sessionID",
+			getCreatedEventListParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
-			getCreatedEventListParams.add(new BasicNameValuePair("userID",
+			getCreatedEventListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			getCreatedEventListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlCreatedEventList,
 					getCreatedEventListParams);
@@ -238,7 +238,7 @@ public class ViewProfile extends Activity {
 					createdEventItemsList.add(eventItems);
 				}
 			} else {
-				
+
 			}
 			return null;
 		}
@@ -248,17 +248,16 @@ public class ViewProfile extends Activity {
 			if (success == 0) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			}
-			else{
-//				getCreatedEventAdapter.setItemList(createdEventItemsList);
-//				createdEventListView.setAdapter(getCreatedEventAdapter);
-				String textShowed="";
-				for(String[] arr : createdEventItemsList){
-					textShowed+=arr[1]+"\n";
+			} else {
+				// getCreatedEventAdapter.setItemList(createdEventItemsList);
+				// createdEventListView.setAdapter(getCreatedEventAdapter);
+				String textShowed = "";
+				for (String[] arr : createdEventItemsList) {
+					textShowed += arr[1] + "\n";
 					System.out.println(textShowed);
 				}
 				tvGetCreatedEventTextView.setText(textShowed);
-				}
+			}
 		}
 	}
 
@@ -268,16 +267,13 @@ public class ViewProfile extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
 			// Building Parameters
 			List<NameValuePair> getJoinedEventListParams = new ArrayList<NameValuePair>();
-			getJoinedEventListParams.add(new BasicNameValuePair("profileID",
-					profileID));
-			getJoinedEventListParams.add(new BasicNameValuePair("sessionID",
+			getJoinedEventListParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
-			getJoinedEventListParams.add(new BasicNameValuePair("userID",
+			getJoinedEventListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			getJoinedEventListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlJoinedEventList,
 					getJoinedEventListParams);
@@ -291,7 +287,7 @@ public class ViewProfile extends Activity {
 					JSONObject event = joinedEventList.optJSONObject(i);
 					eventID = event.optString(TAG_EVENTID);
 					eventName = event.optString(TAG_EVENTNAME);
-					String[] eventItems =  { eventID, eventName };
+					String[] eventItems = { eventID, eventName };
 					joinedEventItemsList.add(eventItems);
 				}
 			} else {
@@ -304,37 +300,34 @@ public class ViewProfile extends Activity {
 			if (success == 0) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			}else{
-//				System.out.println();
-//				getJoinedEventAdapter.setItemList(joinedEventItemsList);
-//				joinedEventListView.setAdapter(getJoinedEventAdapter);
-				String textShowed="";
-				for(String[] arr : joinedEventItemsList){
-					textShowed+=arr[1]+"\n";
+			} else {
+				// System.out.println();
+				// getJoinedEventAdapter.setItemList(joinedEventItemsList);
+				// joinedEventListView.setAdapter(getJoinedEventAdapter);
+				String textShowed = "";
+				for (String[] arr : joinedEventItemsList) {
+					textShowed += arr[1] + "\n";
 					System.out.println(textShowed);
 				}
 				tvGetJoinedEventTextView.setText(textShowed);
 			}
-			
+
 		}
 	}
-	
+
 	private class GetCreatedGroupTask extends AsyncTask<String, Void, String> {
 		private String groupID;
 		private String groupName;
+
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-			profileID = sharedpreferences.getString("profileID","");
 			// Building Parameters
 			List<NameValuePair> getCreatedGroupListParams = new ArrayList<NameValuePair>();
-			getCreatedGroupListParams.add(new BasicNameValuePair("profileID",
-					profileID));
-			getCreatedGroupListParams.add(new BasicNameValuePair("sessionID",
+			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
-			getCreatedGroupListParams.add(new BasicNameValuePair("userID",
+			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlCreatedGroupList,
 					getCreatedGroupListParams);
@@ -352,7 +345,7 @@ public class ViewProfile extends Activity {
 					createdGroupItemsList.add(groupItems);
 				}
 			} else {
-				
+
 			}
 			return null;
 		}
@@ -362,35 +355,32 @@ public class ViewProfile extends Activity {
 			if (success == 0) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			}
-			else{
-//				getCreatedEventAdapter.setItemList(createdEventItemsList);
-//				createdEventListView.setAdapter(getCreatedEventAdapter);
-				String textShowed="";
-				for(String[] arr : createdGroupItemsList){
-					textShowed+=arr[1]+"\n";
+			} else {
+				// getCreatedEventAdapter.setItemList(createdEventItemsList);
+				// createdEventListView.setAdapter(getCreatedEventAdapter);
+				String textShowed = "";
+				for (String[] arr : createdGroupItemsList) {
+					textShowed += arr[1] + "\n";
 					System.out.println(textShowed);
 				}
 				tvGetCreatedGroupTextView.setText(textShowed);
-				}
+			}
 		}
 	}
+
 	private class GetJoinedGroupTask extends AsyncTask<String, Void, String> {
 		private String groupID;
 		private String groupName;
+
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-			profileID = sharedpreferences.getString("profileID","");
 			// Building Parameters
 			List<NameValuePair> getJoinedGroupListParams = new ArrayList<NameValuePair>();
-			getJoinedGroupListParams.add(new BasicNameValuePair("profileID",
-					profileID));
-			getJoinedGroupListParams.add(new BasicNameValuePair("sessionID",
+			getJoinedGroupListParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
-			getJoinedGroupListParams.add(new BasicNameValuePair("userID",
+			getJoinedGroupListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			getJoinedGroupListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlJoinedGroupList,
 					getJoinedGroupListParams);
@@ -408,7 +398,7 @@ public class ViewProfile extends Activity {
 					joinedGroupItemsList.add(groupItems);
 				}
 			} else {
-				
+
 			}
 			return null;
 		}
@@ -418,38 +408,44 @@ public class ViewProfile extends Activity {
 			if (success == 0) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			}
-			else{
-//				getCreatedEventAdapter.setItemList(createdEventItemsList);
-//				createdEventListView.setAdapter(getCreatedEventAdapter);
-				String textShowed="";
-				for(String[] arr : joinedGroupItemsList){
-					textShowed+=arr[1]+"\n";
+			} else {
+				// getCreatedEventAdapter.setItemList(createdEventItemsList);
+				// createdEventListView.setAdapter(getCreatedEventAdapter);
+				String textShowed = "";
+				for (String[] arr : joinedGroupItemsList) {
+					textShowed += arr[1] + "\n";
 					System.out.println(textShowed);
 				}
 				tvGetJoinedGroupTextView.setText(textShowed);
-				}
+			}
 		}
 	}
-	public void GetJoinEventValueOnClick(View view){
-		Intent intent= new Intent(getApplicationContext(),GetJoinedEvent.class);
+
+	public void GetJoinEventValueOnClick(View view) {
+		Intent intent = new Intent(getApplicationContext(),
+				GetJoinedEvent.class);
 		startActivity(intent);
-		
+
 	}
-	public void GetCreateEventValueOnClick(View view){
-		Intent intent= new Intent(getApplicationContext(),GetCreatedEvent.class);
+
+	public void GetCreateEventValueOnClick(View view) {
+		Intent intent = new Intent(getApplicationContext(),
+				GetCreatedEvent.class);
 		startActivity(intent);
-		
+
 	}
-	
-	public void GetCreateGroupValueOnClick(View view){
-		Intent intent= new Intent(getApplicationContext(),GetCreatedGroup.class);
+
+	public void GetCreateGroupValueOnClick(View view) {
+		Intent intent = new Intent(getApplicationContext(),
+				GetCreatedGroup.class);
 		startActivity(intent);
-		
+
 	}
-	public void GetJoinGroupValueOnClick(View view){
-		Intent intent= new Intent(getApplicationContext(),GetJoinedGroup.class);
+
+	public void GetJoinGroupValueOnClick(View view) {
+		Intent intent = new Intent(getApplicationContext(),
+				GetJoinedGroup.class);
 		startActivity(intent);
-		
+
 	}
 }
