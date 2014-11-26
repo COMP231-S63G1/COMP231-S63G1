@@ -24,7 +24,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EditPersonProfile extends Activity {
+public class EditProfile extends Activity {
 
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
@@ -60,7 +60,7 @@ public class EditPersonProfile extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_person_profile);
+		setContentView(R.layout.activity_edit_profile);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
 		Intent intent = getIntent();
 		// getting user nick name and description from intent
@@ -96,7 +96,7 @@ public class EditPersonProfile extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pDialog = new ProgressDialog(EditPersonProfile.this);
+			pDialog = new ProgressDialog(EditProfile.this);
 			pDialog.setTitle("Contacting Servers");
 			pDialog.setMessage("Loading ...");
 			pDialog.setIndeterminate(false);

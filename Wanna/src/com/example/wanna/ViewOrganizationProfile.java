@@ -105,7 +105,7 @@ public class ViewOrganizationProfile extends Activity {
 	}
 
 	public void onEditProfileClick(View view) {
-		Intent intent = new Intent(getApplicationContext(), EditOrganizationProfile.class);
+		Intent intent = new Intent(getApplicationContext(), EditProfile.class);
 		intent.putExtra(TAG_PROFILENICKNAME, nickName);
 		intent.putExtra(TAG_PROFILEDESCRIPTION, description);
 		startActivity(intent);
