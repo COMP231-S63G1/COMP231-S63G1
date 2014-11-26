@@ -18,7 +18,7 @@ require_once '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
 	// get profile from profile table
-    $result = mysql_query("SELECT * FROM profile WHERE userid = $userID");
+    $result = mysql_query("SELECT * FROM `organizationprofile` WHERE `userid` = $userID");
 	
 	if (!empty($result)) {
         // check for empty result
@@ -29,8 +29,6 @@ if($sessionSuccess == 1){
             $profileInformation = array();
             $profileInformation["profileID"] = $result["profileID"];
             $profileInformation["nickName"] = $result["nickName"];
-            $profileInformation["age"] = $result["age"];
-            $profileInformation["gender"] = $result["gender"];
             $profileInformation["description"] = $result["description"]; 
          
             // success

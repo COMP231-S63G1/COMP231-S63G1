@@ -4,8 +4,9 @@
 $response = array();
  
 // check for required fields
-if (isset($_POST['userid']) && isset($_POST['userNickName']) && isset($_POST['userGender']) && isset($_POST['userAge'])&& isset($_POST['userDescription'])) {
+if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['userNickName']) && isset($_POST['userGender']) && isset($_POST['userAge']) && isset($_POST['userDescription'])) {
 	$userid = $_POST['userid'];
+	$userType = $_POST['userType'];
     $userNickName = $_POST['userNickName'];
     $userGender = $_POST['userGender'];
     $userAge = $_POST['userAge'];
@@ -18,7 +19,7 @@ if (isset($_POST['userid']) && isset($_POST['userNickName']) && isset($_POST['us
     $db = new DB_Connect();
  
     // mysql inserting a new row
-    $result = mysql_query("INSERT INTO profile(nickName, gender, age, description, userid) VALUES('$userNickName', '$userGender', '$userAge', '$userDescription', '$userid')");
+    $result = mysql_query("INSERT INTO `personprofile `(`nickName`, `gender`, `age`, `description`, `userid`) VALUES('$userNickName', '$userGender', '$userAge', '$userDescription', '$userid')");
  
     // check if row inserted or not
     if ($result) {
@@ -30,6 +31,7 @@ if (isset($_POST['userid']) && isset($_POST['userNickName']) && isset($_POST['us
 			$response["message"] = "Create profile succeed"; 
 			session_start();
 			$_SESSION['userid'] = $userid;
+			$_SESSION['userType'] = $userType;
 			$_SESSION['nickName'] = $userNickName;
 			$_SESSION['profileid'] = $selectResult['profileID'];
 			$sessionid=session_id();

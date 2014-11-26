@@ -100,7 +100,7 @@ public class ViewAndJoinEvent extends Activity {
 	}
 	
 	public void onViewEventDetailBackClick(View view){
-		Intent i = new Intent(getApplicationContext(), Login_Success.class);
+		Intent i = new Intent(getApplicationContext(), PersonLoginSuccess.class);
 		startActivity(i);		
 	}
 
@@ -203,7 +203,7 @@ public class ViewAndJoinEvent extends Activity {
 			    Toast.makeText(getApplicationContext(), message,
 					Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(getApplicationContext(),
-						Login_Success.class);
+						PersonLoginSuccess.class);
 				startActivity(intent);
 		}
 	}

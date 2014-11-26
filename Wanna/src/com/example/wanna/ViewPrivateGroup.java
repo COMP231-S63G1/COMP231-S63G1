@@ -132,13 +132,13 @@ public class ViewPrivateGroup extends Activity {
 	}
 	
 	public void onCancel(View view){	
-		Intent intent = new Intent(this, Login_Success.class);
+		Intent intent = new Intent(this, PersonLoginSuccess.class);
 		startActivity(intent);
 		}
 	public void onJoinGroupClick(View view){	
 		Toast.makeText(getApplicationContext(),"Your Join Group Request Have Been Send!!",
 				Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(getApplicationContext(),ViewProfile.class);
+		Intent intent = new Intent(getApplicationContext(),ViewPersonProfile.class);
 		startActivity(intent);
 		}
 	private class JoinGroupTask extends AsyncTask<String, Void, String> {
@@ -184,7 +184,7 @@ public class ViewPrivateGroup extends Activity {
 		}
 		@Override
 		protected void onPostExecute(String result) {
-			Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
+			Intent intent = new Intent(getApplicationContext(), ViewPersonProfile.class);
 			startActivity(intent);
 			
 		}

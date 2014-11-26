@@ -10,9 +10,8 @@ require_once '/DB_CheckLogin.php';
 
 if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
-	$profileID = $_SESSION['profileid'];
 
-        $result = mysql_query("SELECT `groupID`, `groupName` FROM `group` where `groupCreaterID` = $profileID ");	
+        $result = mysql_query("SELECT `groupID`, `groupName` FROM `group` where `groupCreaterID` = $userID ");	
 	if (!empty($result)) {
         // check for empty result
         if (mysql_num_rows($result) > 0) {

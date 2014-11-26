@@ -216,7 +216,7 @@ public class CreateEvent extends Activity {
 					// successfully created product
 					
 					Intent intent = new Intent(getApplicationContext(),
-							ViewProfile.class);
+							ViewPersonProfile.class);
 					startActivity(intent);
 
 					// closing this screen

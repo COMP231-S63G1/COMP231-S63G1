@@ -10,17 +10,16 @@ require_once '/DB_CheckLogin.php';
 
 if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
-	$profileID = $_SESSION['profileid'];
 
-        $result = mysql_query("SELECT joinedEventID FROM EVENTJOININ WHERE JOINEDPROFILEID = $profileID");	
+        $result = mysql_query("SELECT `eventID` FROM `eventjoinin` WHERE `userID` = $userID");	
 	if (!empty($result)) {
         // check for empty result
         if (mysql_num_rows($result) > 0) {
 			// looping through all results
 			$response["eventList"] = array();
 			while ($row = mysql_fetch_array($result)) {
-                                $eventID = $row["joinedEventID"];
-                                $resultForEventName = mysql_query("SELECT eventID ,eventName FROM event where eventid = $eventID");
+                                $eventID = $row["eventID"];
+                                $resultForEventName = mysql_query("SELECT `eventID`, `eventName` FROM `event` where `eventid` = $eventID");
 				if (!empty($resultForEventName)) {
         			// check for empty result
      				   if (mysql_num_rows($resultForEventName) > 0) {

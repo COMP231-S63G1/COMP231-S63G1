@@ -101,7 +101,7 @@ public class CreateGroup extends Activity {
 	}
 	
 	public void onCancelClick(View view){
-		Intent intent = new Intent(getApplicationContext(), Login_Success.class);
+		Intent intent = new Intent(getApplicationContext(), PersonLoginSuccess.class);
 		startActivity(intent);		
 	}
 	
@@ -147,7 +147,7 @@ public class CreateGroup extends Activity {
 			if (success == 1) {
 				// successfully created profile
 				Intent intent = new Intent(getApplicationContext(),
-						Login_Success.class);
+						PersonLoginSuccess.class);
 				startActivity(intent);
 			} else {
 				Toast.makeText(getApplicationContext(), message,
@@ -192,7 +192,7 @@ public class CreateGroup extends Activity {
 		}
 	    
 	    public void onClickButtonCancel(View view){	
-			Intent intent = new Intent(this, Login_Success.class);
+			Intent intent = new Intent(this, PersonLoginSuccess.class);
 			startActivity(intent);
 			}
 }

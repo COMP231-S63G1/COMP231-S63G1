@@ -54,7 +54,7 @@ public class SearchGroup extends Activity {
 	}
 
 	public void onCancelClick(View view){	
-		Intent intent = new Intent(this, Login_Success.class);
+		Intent intent = new Intent(this, PersonLoginSuccess.class);
 		startActivity(intent);
 		}
 	
