@@ -127,5 +127,10 @@
     <string name="title_activity_organization_login_success">OrganizationLoginSuccess</string>
     <string name="title_activity_view_organization_profile">ViewOrganizationProfile</string>
     <string name="title_activity_edit_organization_profile">EditOrganizationProfile</string>
-
+<string-array name="locationRangeOptions">
+        <item>2km </item>
+        <item>5km </item>
+        <item>10km </item>
+        <item>15km </item>
+    </string-array>
 </resources>

@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.wanna.SearchByStatus" >
+
+    <TextView
+        android:id="@+id/tvSearchUserStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Enter User Status"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="#48D1CC"
+        android:onClick="onSearchClick"
+        android:text="Search"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/tvAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/tvSearchUserStatus"
+        android:layout_marginTop="54dp"
+        android:text="Age:"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvdash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/etMinAge"
+        android:text="-"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/etMaxAge"
+        android:text="Gender:"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/rgFilterGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/textView1"
+        android:orientation="vertical" >
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSearchUserStatus"
+        android:layout_toRightOf="@+id/tvAge"
+        android:ems="10"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etMinAge"
+        android:layout_width="75sp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvAge"
+        android:layout_toRightOf="@+id/rbtnFemale"
+        android:ems="10"
+        android:hint="Min Age"
+        android:inputType="number"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/etMaxAge"
+        android:layout_width="75sp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvdash"
+        android:layout_toRightOf="@+id/tvSearchUserStatus"
+        android:ems="10"
+        android:hint="Max Age"
+        android:inputType="number"
+        android:textSize="12sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSearch"
+        android:layout_marginBottom="36dp"
+        android:layout_toRightOf="@+id/tvdash"
+        android:text="Location Range:" />
+
+    <RadioButton
+        android:id="@+id/rbtnFemale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/tvdash"
+        android:text="Female"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/rbtnMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Male"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rbtnFemale"
+        android:layout_alignBottom="@+id/rbtnFemale"
+        android:layout_toRightOf="@+id/rbtnFemale"
+        android:text="Male" 
+        android:textColor="#48D1CC"
+        />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButton1"
+        android:layout_alignBottom="@+id/radioButton1"
+        android:layout_alignRight="@+id/etMaxAge"
+        android:text="Both" 
+        android:textColor="#48D1CC"
+        />
+
+</RelativeLayout>
