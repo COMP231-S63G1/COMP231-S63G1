@@ -29,6 +29,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class EditGroup extends Activity {
 
@@ -43,6 +44,7 @@ public class EditGroup extends Activity {
 	private String urlUploadImage = UserFunctions.URL_ROOT + "saveImage.php";
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_MESSAGE = "message";
 	private static final int SELECT_PICTURE = 1;
 	private Spinner groupTypeSpinner;
 	private ImageView img;
@@ -62,6 +64,8 @@ public class EditGroup extends Activity {
 	String groupName;
 	String groupDescription;
 	String groupNumber;
+	int success;
+	String message;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,35 +115,24 @@ public class EditGroup extends Activity {
 				params.add(new BasicNameValuePair("groupType", groupType));
 				params.add(new BasicNameValuePair("groupDescription",
 						groupDescriptionString));
-//				 params.add(new
-//				 BasicNameValuePair("eventImageURI",eventPictureNameStoredIndatabase));
-				 System.out.println(params.toString());
 				// getting JSON Object
 				// Note that create event url accepts POST method
 				JSONObject json = jsonParser.getJSONFromUrl(urlUpdateGroup, params);
-				// check log cat fro response
-				Log.d("Create Response", json.toString());
-				// check for success tag
-				try {
-					int success = json.getInt(TAG_SUCCESS);
-
-					if (success == 1) {
-						// successfully created product
-						
-						Intent intent = new Intent(getApplicationContext(),
-								ViewPublicGroup.class);
-						startActivity(intent);
-
-						// closing this screen
-						finish();
-					} else {
-						// failed to create product
-					}
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-				
+				success = json.optInt(TAG_SUCCESS);
+				message = json.optString(TAG_MESSAGE);				
 				return null;
+			}
+			@Override
+			protected void onPostExecute(String result) {
+				if (success == 1) {
+					Intent intent = new Intent(getApplicationContext(),
+							ViewPublicGroup.class);
+					startActivity(intent);
+				} 
+				if (success != 1) {
+					Toast.makeText(getApplicationContext(), message,
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 
 		}
