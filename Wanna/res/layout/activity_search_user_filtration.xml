@@ -8,126 +8,148 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.wanna.SearchByStatus" >
 
-  <TextView
+    <TextView
         android:id="@+id/tvSearchUserStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="16dp"
         android:text="Enter User Status"
         android:textColor="#48D1CC"
         android:textSize="18sp" />
-    
-    <EditText
-        android:id="@+id/etStatus"
-        android:inputType="text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvSearchUserStatus"
-        android:layout_toRightOf="@id/tvAge"
-        android:ems="10" />
-    
+
     <TextView
         android:id="@+id/tvAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/tvGender"
-        android:layout_alignLeft="@id/tvGender"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/tvSearchUserStatus"
+        android:layout_marginTop="54dp"
         android:text="Age:"
         android:textColor="#48D1CC"
         android:textSize="18sp" />
-    
-    <EditText
-        android:id="@+id/etMinAge"
-        android:layout_width="75sp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etStatus"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textSize="12sp"
-        android:hint="Min Age"
-        android:inputType="number" />
-    
+
     <TextView
         android:id="@+id/tvdash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etStatus"
-        android:layout_marginTop="30dp"
-        android:layout_toRightOf="@id/etMinAge"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/etMinAge"
         android:text="-"
         android:textColor="#48D1CC"
         android:textSize="18sp" />
-    
-    <EditText
-        android:id="@+id/etMaxAge"
-        android:layout_width="75sp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etStatus"
-        android:layout_toRightOf="@id/tvdash"
-        android:hint="Max Age"
-        android:textSize="12sp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:inputType="number" />
-    
+
     <TextView
         android:id="@+id/tvGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etMinAge"
-        android:layout_marginTop="26dp"
-        android:layout_toLeftOf="@+id/tvSearchUserStatus"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/etMaxAge"
         android:text="Gender:"
         android:textColor="#48D1CC"
-        android:textSize="18sp" />    
-
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="76dp"
-        android:background="#48D1CC"
-        android:text="Search"
-        android:textColor="#ffffff"
-        android:onClick="onSearchClick" />
+        android:textSize="18sp" />
 
     <RadioGroup
         android:id="@+id/rgFilterGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etMinAge"
-        android:layout_alignTop="@+id/tvGender"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/textView1"
         android:orientation="vertical" >
-
-        <RadioButton
-            android:id="@+id/rbtnMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Male"
-            android:textColor="#48D1CC"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/rbtnFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Female"
-            android:textColor="#48D1CC"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/rbtnBoth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="Both"
-            android:textColor="#48D1CC"
-            android:textSize="18sp" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/etMaxAge"
+        android:layout_width="75sp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvdash"
+        android:layout_toRightOf="@+id/tvSearchUserStatus"
+        android:ems="10"
+        android:hint="Max Age"
+        android:inputType="number"
+        android:textSize="12sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <RadioButton
+        android:id="@+id/rbtnFemale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/tvdash"
+        android:text="Female"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/rbtnMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rbtnFemale"
+        android:layout_alignBottom="@+id/rbtnFemale"
+        android:layout_centerHorizontal="true"
+        android:text="Male"
+        android:textColor="#48D1CC" />
+
+     <Spinner
+         android:id="@+id/locationRange"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/rgFilterGender"
+         android:layout_toLeftOf="@+id/etMinAge"
+         android:layout_toRightOf="@+id/tvdash" />
+
+     <RadioButton
+         android:id="@+id/rbtnBoth"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/tvGender"
+         android:layout_toRightOf="@+id/tvSearchUserStatus"
+         android:text="Both"
+         android:textColor="#48D1CC" />
+
+     <EditText
+         android:id="@+id/etMinAge"
+         android:layout_width="75sp"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/tvAge"
+         android:layout_toRightOf="@+id/textView1"
+         android:ems="10"
+         android:hint="Min Age"
+         android:inputType="number"
+         android:textSize="12sp" />
+
+     <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/rgFilterGender"
+         android:layout_below="@+id/rbtnMale"
+         android:text="Location Range:"
+         android:textColor="#48D1CC"
+         android:textSize="17sp" />
+
+     <EditText
+         android:id="@+id/etStatus"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/tvSearchUserStatus"
+         android:layout_below="@+id/tvSearchUserStatus"
+         android:ems="10"
+         android:inputType="text" />
+
+     <Button
+         android:id="@+id/btnSearch"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/etMaxAge"
+         android:layout_below="@+id/locationRange"
+         android:layout_marginTop="22dp"
+         android:background="#48D1CC"
+         android:onClick="onSearchClick"
+         android:text="Search"
+         android:textColor="#ffffff" />
 
 </RelativeLayout>

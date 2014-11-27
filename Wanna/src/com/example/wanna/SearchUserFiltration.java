@@ -6,9 +6,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class SearchUserFiltration extends Activity {
@@ -25,6 +27,7 @@ public class SearchUserFiltration extends Activity {
 	EditText etMaxAge;
 	RadioButton searchGenderSelect;
 	RadioGroup rgFilterGender;
+	Spinner locationRangeSpinner;
 
 	String searchType;
 	String searchStatus;
@@ -41,6 +44,13 @@ public class SearchUserFiltration extends Activity {
 		etMinAge = (EditText) findViewById(R.id.etMinAge);
 		etMaxAge = (EditText) findViewById(R.id.etMaxAge);
 		rgFilterGender = (RadioGroup) findViewById(R.id.rgFilterGender);
+		
+		locationRangeSpinner = (Spinner) findViewById(R.id.locationRange);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.locationRangeOptions,
+				android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		locationRangeSpinner.setAdapter(adapter);
 	}
 
 	public void onSearchClick(View view) {
