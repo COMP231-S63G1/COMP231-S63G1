@@ -81,7 +81,7 @@ public final class R {
         public static final int etName=0x7f090030;
         public static final int etSearchEventName=0x7f090065;
         public static final int etSearchUserName=0x7f09007d;
-        public static final int etStatus=0x7f090077;
+        public static final int etStatus=0x7f09007b;
         public static final int eventDate=0x7f090008;
         public static final int eventDescriptionEditText=0x7f090012;
         public static final int eventName=0x7f090004;
@@ -101,7 +101,7 @@ public final class R {
         public static final int imgViewViewEvent=0x7f090084;
         public static final int listView1=0x7f090054;
         public static final int lname=0x7f090046;
-        public static final int locationRange=0x7f09007a;
+        public static final int locationRange=0x7f090079;
         public static final int login=0x7f09003b;
         public static final int loginErrorMsg=0x7f09003f;
         public static final int logout=0x7f090049;
@@ -115,9 +115,9 @@ public final class R {
         public static final int publicGroupMembers=0x7f090055;
         public static final int pword=0x7f090042;
         public static final int pworda=0x7f09003c;
-        public static final int rbtnBoth=0x7f09007b;
-        public static final int rbtnFemale=0x7f090078;
-        public static final int rbtnMale=0x7f090079;
+        public static final int rbtnBoth=0x7f09007a;
+        public static final int rbtnFemale=0x7f090077;
+        public static final int rbtnMale=0x7f090078;
         public static final int regat=0x7f0900bd;
         public static final int register=0x7f09005f;
         public static final int registerConfirmPassword=0x7f09005e;
