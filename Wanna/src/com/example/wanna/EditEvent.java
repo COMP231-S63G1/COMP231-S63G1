@@ -40,6 +40,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 public class EditEvent extends Activity {
@@ -55,6 +56,7 @@ public class EditEvent extends Activity {
 	private String urlUploadImage = UserFunctions.URL_ROOT+"saveImage.php";
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_MESSAGE = "message";
 	private static final int SELECT_PICTURE = 1;
 	// tag for check whether the photo is uploaded succeed
 	private static final String TAG = "upload";
@@ -76,6 +78,8 @@ public class EditEvent extends Activity {
 		String sessionID;
 		String userID;
 		String eventID;
+		int success;
+		String message;
 
 	static final int REQUEST_TAKE_PHOTO = 1;
 	File photoFile = null;
@@ -247,35 +251,28 @@ public class EditEvent extends Activity {
 						eventPriceRangeString));
 				params.add(new BasicNameValuePair("eventDescription",
 						eventDescriptionString));
-//				 params.add(new
-//				 BasicNameValuePair("eventImageURI",eventPictureNameStoredIndatabase));
-				 System.out.println(params.toString());
 				// getting JSON Object
 				// Note that create event url accepts POST method
 				JSONObject json = jsonParser.getJSONFromUrl(urlEditEvent, params);
-				// check log cat fro response
-				Log.d("Create Response", json.toString());
-				// check for success tag
-				try {
-					int success = json.getInt(TAG_SUCCESS);
-
-					if (success == 1) {
-						// successfully created product
-						
-						Intent intent = new Intent(getApplicationContext(),
-							ViewPersonProfile.class);
-						startActivity(intent);
-
-						// closing this screen
-						finish();
-					} else {
-						// failed to create product
-					}
-				} catch (JSONException e) {
-					e.printStackTrace();
+				success = json.optInt(TAG_SUCCESS);
+				message = json.optString(TAG_MESSAGE);
+				if (success == 1) {
+					// successfully created product						
+					Intent intent = new Intent(getApplicationContext(),
+						ViewPersonProfile.class);
+					startActivity(intent);
+				} else {
+					// failed to create product
 				}
 				
 				return null;
+			}
+			@Override
+			protected void onPostExecute(String result) {
+				if (success != 1) {
+					Toast.makeText(getApplicationContext(), message,
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 
 		}

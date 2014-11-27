@@ -162,7 +162,8 @@ public class ViewPublicGroup extends ListActivity {
 		}
 	}
 
-	private class DisplayGroupMemberTask extends AsyncTask<String, Void, String> {
+	private class DisplayGroupMemberTask extends
+			AsyncTask<String, Void, String> {
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -170,9 +171,9 @@ public class ViewPublicGroup extends ListActivity {
 			List<NameValuePair> groupMemberParams = new ArrayList<NameValuePair>();
 			groupMemberParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
-			groupMemberParams.add(new BasicNameValuePair(TAG_USERID,
-					userID));
-			groupMemberParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+			groupMemberParams.add(new BasicNameValuePair(TAG_USERID, userID));
+			groupMemberParams
+					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			groupMemberParams.add(new BasicNameValuePair("groupID", groupID));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlDisplayGroupMember,
@@ -231,40 +232,36 @@ public class ViewPublicGroup extends ListActivity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-			profileID = sharedpreferences.getString("profileID", "");
-			System.out.println(profileID);
-			try {
-				// Building Parameters
-				List<NameValuePair> joinGroupParams = new ArrayList<NameValuePair>();
-				joinGroupParams.add(new BasicNameValuePair("groupID", groupID));
-				joinGroupParams.add(new BasicNameValuePair("sessionID",
-						sessionID));
-				joinGroupParams.add(new BasicNameValuePair("userID", userID));
-				joinGroupParams.add(new BasicNameValuePair("profileID",
-						profileID));
-				JSONObject json = jsonParser.getJSONFromUrl(urlJoinGroup,
-						joinGroupParams);
-				// json success tag
-				success = json.getInt(TAG_SUCCESS);
-				message = json.optString(TAG_MESSAGE);
-			} catch (JSONException e) {
-				e.printStackTrace();
-				return null;
-			}
+			// Building Parameters
+			List<NameValuePair> joinGroupParams = new ArrayList<NameValuePair>();
+			joinGroupParams.add(new BasicNameValuePair("groupID", groupID));
+			joinGroupParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
+			joinGroupParams.add(new BasicNameValuePair(TAG_USERID, userID));
+			joinGroupParams.add(new BasicNameValuePair(TAG_USERTYPE,
+					userType));
+			JSONObject json = jsonParser.getJSONFromUrl(urlJoinGroup,
+					joinGroupParams);
+			// json success tag
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
 			pDialog.dismiss();
-			System.out.println(message);
-			Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
-					.show();
-			Intent intent = new Intent(getApplicationContext(),
-					PersonLoginSuccess.class);
-			startActivity(intent);
+			if (success == 1) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(getApplicationContext(),
+						PersonLoginSuccess.class);
+				startActivity(intent);
+			}
+			if (success != 1) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 }
