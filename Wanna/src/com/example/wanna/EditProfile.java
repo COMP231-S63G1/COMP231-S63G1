@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.wanna.library.JSONParser;
@@ -21,7 +20,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditProfile extends Activity {
@@ -35,7 +33,7 @@ public class EditProfile extends Activity {
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
 
-	private String urlUploadProfile = userFunctions.URL_ROOT + "DB_UploadProfile.php";
+	private String urlUploadProfile = UserFunctions.URL_ROOT + "DB_UpdateProfile.php";
 
 	// user profile JSONArray
 	JSONArray userProfileArray = null;

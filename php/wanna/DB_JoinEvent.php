@@ -24,22 +24,18 @@ if($sessionSuccess == 1){
 	if (isset($_POST["eventID"])) {
             $eventID= $_POST['eventID'];
 
-
-	$result = mysql_query("SELECT joinedProfileID ,joinedEventID FROM eventjoinin where joinedProfileID = $profileID AND joinedEventID = $eventID");
+	$result = mysql_query("SELECT `userid`, `eventID` FROM `eventjoinin` where `userID` = $userID AND `eventID` = $eventID");
         if (mysql_num_rows($result) > 0) {
 	    $response["success"] = 0;
-            $response["message"] = "You already join this event";
+		$response["message"] = "You already join this event";
 	    echo json_encode($response);
         }else{
-
-
         //insert the profileID and eventID into the child table
-
-	$result = mysql_query("INSERT INTO eventjoinin (joinedProfileID, joinedEventID) VALUES ($profileID, $eventID);");
+		$result = mysql_query("INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES ($userID, $eventID);");
 		if ($result) {	
 		// successfully inserted into database	
         	$response["success"] = 1;
-		$response["message"] = "Join this event succeed";
+			$response["message"] = "Join this event succeed";
  
         	// echoing JSON response
         	echo json_encode($response);

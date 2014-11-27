@@ -34,7 +34,7 @@ public class DisplayOwnedGroup extends ListActivity {
 	SharedPreferences sharedpreferences;
 	private ProgressDialog pDialog;
 
-	private String urlDisplayOwnedGroups = userFunctions.URL_ROOT
+	private String urlDisplayOwnedGroups = UserFunctions.URL_ROOT
 			+ "DB_DisplayOwnedGroups.php";
 	ListView lvOwnedGroup;
 
@@ -121,7 +121,7 @@ public class DisplayOwnedGroup extends ListActivity {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		groupID = (String) ownedGroupAdapter.getItem(position);
 		Intent intent = new Intent(getApplicationContext(),
-				ViewGroupOwner.class);
+				ViewCreatedGroup.class);
 		intent.putExtra("groupID", groupID);
 		startActivity(intent);
 	}

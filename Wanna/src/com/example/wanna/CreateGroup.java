@@ -11,7 +11,6 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -38,15 +37,17 @@ public class CreateGroup extends Activity {
 	EditText etGroupName;
 	EditText etGroupDescription;
 
-	private ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
 
 	//php file url in the server 
-	private String urlCreateGroup = userFunctions.URL_ROOT
+	private String urlCreateGroup = UserFunctions.URL_ROOT
 			+ "DB_CreateGroup.php";
 	
 	private static final int SELECT_PICTURE = 1;
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";	
 	private static final String TAG_MESSAGE = "message";
 
@@ -57,6 +58,7 @@ public class CreateGroup extends Activity {
 	String message;
 	String sessionID;
 	String userID;
+	String userType;
 	String groupPrivacy;
 	String groupType;
 	String groupName;
@@ -78,8 +80,9 @@ public class CreateGroup extends Activity {
 		img = (ImageView) findViewById(R.id.imgView);
 		
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
-		sessionID = sharedpreferences.getString("sessionID", "");
-		userID = sharedpreferences.getString("userID", "");
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 	}
 	
 	public void onCreateGroupClick(View view){
@@ -128,8 +131,11 @@ public class CreateGroup extends Activity {
 		protected String doInBackground(String... urls) {
 			// Building Parameters
 			List<NameValuePair> createGroupParams = new ArrayList<NameValuePair>();
-			createGroupParams.add(new BasicNameValuePair("sessionID", sessionID));
-			createGroupParams.add(new BasicNameValuePair("userID", userID));
+			createGroupParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
+			createGroupParams.add(new BasicNameValuePair(TAG_USERID,
+					userID));
+			createGroupParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			createGroupParams.add(new BasicNameValuePair("groupType", groupType));
 			createGroupParams.add(new BasicNameValuePair("groupPrivacy", groupPrivacy));
 			createGroupParams.add(new BasicNameValuePair("groupName", groupName));

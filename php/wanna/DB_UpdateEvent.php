@@ -2,9 +2,9 @@
  
 // array for JSON response
 $response = array();
- 
-// check for required fields 
 
+// check for required fields
+if (isset($_POST['eventID']) && isset($_POST['eventName']) && isset($_POST['eventType']) && isset($_POST['eventDate']) && isset($_POST['eventTime']) && isset($_POST['eventVenue']) && isset($_POST['eventAddress']) && isset($_POST['eventPriceRange']) && isset($_POST['eventDescription'])) {
     $eventID = $_POST['eventID'];
     $eventType = $_POST['eventType'];
     $eventName = $_POST['eventName'];
@@ -28,14 +28,22 @@ $response = array();
     if ($result) {
         // successfully inserted into database
         $response["success"] = 1;
+		$response["message"] = "Update event success.";
  
         // echoing JSON response
         echo json_encode($response);
     } else {
         // failed to insert row
         $response["success"] = 0;
+		$response["message"] = "Update event failed.";
  
         // echoing JSON response
         echo json_encode($response);
     }
+	}else{
+	// failed
+	$response["success"] = 0;
+	$response["message"] = "Pass search type failed";
+	echo json_encode($response);
+}
 ?>

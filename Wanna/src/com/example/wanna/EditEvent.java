@@ -50,9 +50,9 @@ public class EditEvent extends Activity {
 	private ProgressDialog pDialog;
 	
 	//php file url in the server 
-	private String urlEditEvent = userFunctions.URL_ROOT
+	private String urlEditEvent = UserFunctions.URL_ROOT
 			+ "DB_UpdateEvent.php";
-	private String urlUploadImage = userFunctions.URL_ROOT+"saveImage.php";
+	private String urlUploadImage = UserFunctions.URL_ROOT+"saveImage.php";
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
 	private static final int SELECT_PICTURE = 1;

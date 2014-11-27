@@ -19,7 +19,7 @@ if (isset($_POST['groupType']) && isset($_POST['groupPrivacy']) && isset($_POST[
 	$groupPrivacy = $_POST['groupPrivacy'];
 	$groupName = $_POST['groupName'];
 	$groupDescription = $_POST['groupDescription'];
-	$groupCreaterID=$_SESSION['profileid'];
+	$groupCreaterID=$_SESSION['userid'];
 	// mysql inserting a new row
     $result = mysql_query("INSERT INTO `group`(`groupCreaterID`, `groupType`, `groupPrivacy`, `groupName`, `groupDescription`) VALUES($groupCreaterID, '$groupType', '$groupPrivacy', '$groupName', '$groupDescription')");
 	if ($result) {

@@ -41,13 +41,17 @@ public class ViewPrivateGroup extends Activity {
 		String groupID;
 
 		// url to view event detail
-		private String urlViewGroupDetail = userFunctions.URL_ROOT
+		private String urlViewGroupDetail = UserFunctions.URL_ROOT
 				+ "DB_ViewGroup.php";
-		private String urlJoinGroup = userFunctions.URL_ROOT
+		private String urlJoinGroup = UserFunctions.URL_ROOT
 				+ "DB_JoinGroup.php";
 
 		// JSON Node names
+		private static final String TAG_SESSIONID = "sessionid";
+		private static final String TAG_USERID = "userid";
+		private static final String TAG_USERTYPE = "userType";
 		private static final String TAG_SUCCESS = "success";
+		private static final String TAG_MESSAGE = "message";
 		private static final String TAG_GroupDetail = "groupDetail";
 		private static final String TAG_GroupID = "groupID";
 		private static final String TAG_GroupType = "groupType";
@@ -60,15 +64,21 @@ public class ViewPrivateGroup extends Activity {
 		SharedPreferences sharedpreferences;
 		String sessionID;
 		String userID;
+		String userType;
 		String description;
 		String name;
 		String type;
+		int success;
+		String message;
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_private_group);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);		
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");	
 
 		Intent intent = getIntent();
 		groupID=intent.getStringExtra(TAG_GroupID);
@@ -85,49 +95,48 @@ public class ViewPrivateGroup extends Activity {
 		
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-					// Check for success tag
-					int success;
-					try {
-						// Building Parameters
-						List<NameValuePair> viewGroupDatailParams = new ArrayList<NameValuePair>();
-						viewGroupDatailParams
-						.add(new BasicNameValuePair("sessionID", sessionID));
-						viewGroupDatailParams.add(new BasicNameValuePair("userID", userID));
-						viewGroupDatailParams.add(new BasicNameValuePair("groupID",groupID));
-						// getting event details by making HTTP request
-						JSONObject json = jsonParser.getJSONFromUrl(
-								urlViewGroupDetail, viewGroupDatailParams);
-						// json success tag
-						success = json.getInt(TAG_SUCCESS);
-						if (success == 1) {
-							// successfully received event details
-							JSONArray groupDetailArray = json.optJSONArray(TAG_GroupDetail); // JSON Array
-							// get first group object from JSON Array
-							groupDetail = groupDetailArray.getJSONObject(0);
-							// group with this goupID found
-							description = groupDetail.optString(TAG_GroupDescription);
-							System.out.println(description);
-							name=groupDetail.optString(TAG_GroupName);
-							System.out.println(name);
-							type=groupDetail.optString(TAG_GroupType);
-							System.out.println(type);
-						}else{
-						}
-
-					} catch (JSONException e) {
-						e.printStackTrace();
-						return null;
+					// Building Parameters
+					List<NameValuePair> viewGroupDatailParams = new ArrayList<NameValuePair>();
+					viewGroupDatailParams.add(new BasicNameValuePair(TAG_SESSIONID,
+							sessionID));
+					viewGroupDatailParams.add(new BasicNameValuePair(TAG_USERID,
+							userID));
+					viewGroupDatailParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+					viewGroupDatailParams.add(new BasicNameValuePair("groupID",groupID));
+					// getting event details by making HTTP request
+					JSONObject json = jsonParser.getJSONFromUrl(
+							urlViewGroupDetail, viewGroupDatailParams);
+					// json success tag
+					success = json.optInt(TAG_SUCCESS);
+					message = json.optString(TAG_MESSAGE);
+					if (success == 1) {
+						// successfully received event details
+						JSONArray groupDetailArray = json.optJSONArray(TAG_GroupDetail); // JSON Array
+						// get first group object from JSON Array
+						groupDetail = groupDetailArray.optJSONObject(0);
+						// group with this goupID found
+						description = groupDetail.optString(TAG_GroupDescription);
+						System.out.println(description);
+						name=groupDetail.optString(TAG_GroupName);
+						System.out.println(name);
+						type=groupDetail.optString(TAG_GroupType);
+						System.out.println(type);
+					}else{
 					}
 			return null;
 		}
 		@Override
 		protected void onPostExecute(String result) {
+			if(success == 1){
 			// display product data in EditText
 			tvGroupTitle.setText(name);
 			tvGroupType.setText(type);
-			tvGroupDescription.setText(description);			
+			tvGroupDescription.setText(description);	
+		}
+			if (success != 1) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 	
@@ -135,6 +144,7 @@ public class ViewPrivateGroup extends Activity {
 		Intent intent = new Intent(this, PersonLoginSuccess.class);
 		startActivity(intent);
 		}
+	
 	public void onJoinGroupClick(View view){	
 		Toast.makeText(getApplicationContext(),"Your Join Group Request Have Been Send!!",
 				Toast.LENGTH_SHORT).show();

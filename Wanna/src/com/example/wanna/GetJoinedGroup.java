@@ -46,21 +46,30 @@ public class GetJoinedGroup extends Activity {
 	String profileID;
 	String sessionID;
 	String userID;
+	String userType;
 
 	// products JSONArray
 	JSONArray groupList = null;
 	JSONArray joinedGroupList;
 	// JSON Node names
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_GROUPLIST = "groupList";
 	private static final String TAG_GROUPID = "groupID";
 	private static final String TAG_GROUPNAME = "groupName";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_get_joined_group);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
+		
 		joinedGroupListView = (ListView) findViewById(android.R.id.list);
 		new GetJoinedGroupTask().execute();
 	}
@@ -69,17 +78,13 @@ public class GetJoinedGroup extends Activity {
 		private String groupName;
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-			profileID = sharedpreferences.getString("profileID","");
 			// Building Parameters
 			List<NameValuePair> getJoinedGroupListParams = new ArrayList<NameValuePair>();
-			getJoinedGroupListParams.add(new BasicNameValuePair("profileID",
-					profileID));
-			getJoinedGroupListParams.add(new BasicNameValuePair("sessionID",
+			getJoinedGroupListParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
-			getJoinedGroupListParams.add(new BasicNameValuePair("userID",
+			getJoinedGroupListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			getJoinedGroupListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlJoinedGroupList,
 					getJoinedGroupListParams);
@@ -97,7 +102,7 @@ public class GetJoinedGroup extends Activity {
 					joinedGroupItemsList.add(groupItems);
 				}
 			} else {
-				
+
 			}
 			return null;
 		}

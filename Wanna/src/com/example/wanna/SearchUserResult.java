@@ -16,8 +16,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,7 +25,7 @@ public class SearchUserResult extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
 
-	private String urlSearchUser = userFunctions.URL_ROOT + "DB_SearchUser.php";
+	private String urlSearchUser = UserFunctions.URL_ROOT + "DB_SearchUser.php";
 	ListView lvUserItem;
 
 	ArrayList<String[]> userItemsList = new ArrayList<String[]>();

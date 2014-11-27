@@ -9,14 +9,14 @@ if (isset($_POST["searchType"])) {
 $searchType = $_POST["searchType"];
 	if ($searchType== "Name" && isset($_POST["searchName"])) {
 		$searchName = $_POST["searchName"];
-		$result = mysql_query("SELECT `profileID`, `nickName` FROM `profile` WHERE `nickName` LIKE '%$searchName%'");
+		$result = mysql_query("SELECT `profileID`, `nickName` FROM `personprofile` WHERE `nickName` LIKE '%$searchName%'");
 		}
 	elseif($searchType== "Filtration" && isset($_POST["searchStatus"]) && isset($_POST["searchMinAge"]) && isset($_POST["searchMaxAge"]) && isset($_POST["searchGender"])){
 		$searchStatus = $_POST["searchStatus"];
 		$searchGender = $_POST["searchGender"];
 		$searchMaxAge = $_POST["searchMaxAge"];
 		$searchMinAge = $_POST["searchMinAge"];		
-		$result = mysql_query("SELECT `profileID`, `nickName` FROM `profile` WHERE `profileID` = (SELECT DISTINCT(`profileID`) FROM `eventjoinin` WHERE `joinedEventID` =  (SELECT DISTINCT(`eventID`) FROM `event` WHERE `eventName` LIKE '%$searchStatus%' AND `gender` LIKE '$searchGender%' AND `age` BETWEEN $searchMinAge AND $searchMaxAge))");	
+		$result = mysql_query("SELECT `profileID`, `nickName` FROM `personprofile` WHERE `profileID` = (SELECT `profileID` FROM `users` WHERE `userID` = (SELECT DISTINCT(`userID`) FROM `eventjoinin` WHERE `eventID` =  (SELECT DISTINCT(`eventID`) FROM `event` WHERE `eventName` LIKE '%$searchStatus%' AND `gender` LIKE '$searchGender%' AND `age` BETWEEN $searchMinAge AND $searchMaxAge)))");	
 		}else{
 			// failed
 			$response["success"] = 0;

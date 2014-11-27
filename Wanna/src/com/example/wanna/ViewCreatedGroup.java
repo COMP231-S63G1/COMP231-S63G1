@@ -27,12 +27,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ViewGroupOwner extends ListActivity {
+public class ViewCreatedGroup extends ListActivity {
 
 	// Creating JSON Parser object
 				JSONParser jsonParser = new JSONParser();
 				UserFunctions userFunctions = new UserFunctions();
-				private ProgressDialog pDialog;
 				
 				ArrayList<HashMap<String, String>> groupDetailList;
 				TextView tvGroupTitle;
@@ -43,12 +42,15 @@ public class ViewGroupOwner extends ListActivity {
 				String groupID;
 
 				// url to view event detail
-				private String urlViewGroupDetail = userFunctions.URL_ROOT
+				private String urlViewGroupDetail = UserFunctions.URL_ROOT
 						+ "DB_ViewGroup.php";
-				private String urlDisplayGroupMember = userFunctions.URL_ROOT
+				private String urlDisplayGroupMember = UserFunctions.URL_ROOT
 						+ "DB_DisplayGroupMember.php";
 
 				// JSON Node names
+				private static final String TAG_SESSIONID = "sessionid";
+				private static final String TAG_USERID = "userid";
+				private static final String TAG_USERTYPE = "userType";
 				private static final String TAG_SUCCESS = "success";
 				private static final String TAG_GroupDetail = "groupDetail";
 				private static final String TAG_GroupID = "groupID";
@@ -69,6 +71,7 @@ public class ViewGroupOwner extends ListActivity {
 				SharedPreferences sharedpreferences;			
 				String sessionID;
 				String userID;
+				String userType;
 				String description;
 				String name;
 				String type;
@@ -83,8 +86,11 @@ public class ViewGroupOwner extends ListActivity {
 			@Override
 			protected void onCreate(Bundle savedInstanceState) {
 				super.onCreate(savedInstanceState);
-				setContentView(R.layout.activity_view_group_owner);
-				sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);				
+				setContentView(R.layout.activity_view_created_group);
+				sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);	
+				sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+				userID = sharedpreferences.getString(TAG_USERID, "");
+				userType = sharedpreferences.getString(TAG_USERTYPE, "");			
 
 				Intent intent = getIntent();
 				groupID=intent.getStringExtra(TAG_GroupID);
@@ -105,37 +111,32 @@ public class ViewGroupOwner extends ListActivity {
 				
 				@Override
 				protected String doInBackground(String... urls) {
-					sessionID = sharedpreferences.getString("sessionID", "");
-					userID = sharedpreferences.getString("userID", "");
 							// Check for success tag
 							int success;
-							try {
-								// Building Parameters
-								List<NameValuePair> viewGroupDatailParams = new ArrayList<NameValuePair>();
-								viewGroupDatailParams
-								.add(new BasicNameValuePair("sessionID", sessionID));
-								viewGroupDatailParams.add(new BasicNameValuePair("userID", userID));
-								viewGroupDatailParams.add(new BasicNameValuePair("groupID",groupID));
-								// getting event details by making HTTP request
-								JSONObject json = jsonParser.getJSONFromUrl(
-										urlViewGroupDetail, viewGroupDatailParams);
-								// json success tag
-								success = json.getInt(TAG_SUCCESS);
-								if (success == 1) {
-									// successfully received event details
-									JSONArray groupDetailArray = json.optJSONArray(TAG_GroupDetail); // JSON Array
-									// get first group object from JSON Array
-									groupDetail = groupDetailArray.getJSONObject(0);
-									// group with this goupID found
-									description = groupDetail.optString(TAG_GroupDescription);
-									name=groupDetail.optString(TAG_GroupName);
-									type=groupDetail.optString(TAG_GroupType);
-								}else{
-								}
-
-							} catch (JSONException e) {
-								e.printStackTrace();
-								return null;
+							// Building Parameters
+							List<NameValuePair> viewGroupDatailParams = new ArrayList<NameValuePair>();
+							viewGroupDatailParams.add(new BasicNameValuePair(TAG_SESSIONID,
+									sessionID));
+							viewGroupDatailParams.add(new BasicNameValuePair(TAG_USERID,
+									userID));
+							viewGroupDatailParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+							viewGroupDatailParams.add(new BasicNameValuePair("groupID",groupID));
+							// getting event details by making HTTP request
+							JSONObject json = jsonParser.getJSONFromUrl(
+									urlViewGroupDetail, viewGroupDatailParams);
+							// json success tag
+							success = json.optInt(TAG_SUCCESS);
+							message = json.optString(TAG_MESSAGE);
+							if (success == 1) {
+								// successfully received event details
+								JSONArray groupDetailArray = json.optJSONArray(TAG_GroupDetail); // JSON Array
+								// get first group object from JSON Array
+								groupDetail = groupDetailArray.optJSONObject(0);
+								// group with this goupID found
+								description = groupDetail.optString(TAG_GroupDescription);
+								name=groupDetail.optString(TAG_GroupName);
+								type=groupDetail.optString(TAG_GroupType);
+							}else{
 							}
 					return null;
 				}
@@ -154,6 +155,11 @@ public class ViewGroupOwner extends ListActivity {
 				protected String doInBackground(String... urls) {
 					// Building Parameters
 					List<NameValuePair> groupMemberParams = new ArrayList<NameValuePair>();
+					groupMemberParams.add(new BasicNameValuePair(TAG_SESSIONID,
+							sessionID));
+					groupMemberParams.add(new BasicNameValuePair(TAG_USERID,
+							userID));
+					groupMemberParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 					groupMemberParams.add(new BasicNameValuePair("groupID",
 							groupID));
 					// getting event details by making HTTP request
