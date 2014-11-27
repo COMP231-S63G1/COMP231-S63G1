@@ -43,8 +43,7 @@ public class ViewPrivateGroup extends Activity {
 		// url to view event detail
 		private String urlViewGroupDetail = UserFunctions.URL_ROOT
 				+ "DB_ViewGroup.php";
-		private String urlJoinGroup = UserFunctions.URL_ROOT
-				+ "DB_JoinGroup.php";
+
 
 		// JSON Node names
 		private static final String TAG_SESSIONID = "sessionid";
@@ -151,52 +150,5 @@ public class ViewPrivateGroup extends Activity {
 		Intent intent = new Intent(getApplicationContext(),ViewPersonProfile.class);
 		startActivity(intent);
 		}
-	private class JoinGroupTask extends AsyncTask<String, Void, String> {
-		
-//		protected void onPreExecute() {
-//			super.onPreExecute();
-//			pDialog = new ProgressDialog(ViewAndJoinEvent.this);
-//			pDialog.setTitle("Contacting Servers");
-//			pDialog.setMessage("Loading ...");
-//			pDialog.setIndeterminate(false);
-//			pDialog.setCancelable(true);
-//			pDialog.show();
-//		}
-		
-		@Override
-		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-					int success;
-					try {
-						// Building Parameters
-						List<NameValuePair> joinGroupDatailParams = new ArrayList<NameValuePair>();
-						joinGroupDatailParams.add(new BasicNameValuePair("eventID", groupID));
-						joinGroupDatailParams.add(new BasicNameValuePair("sessionID", sessionID));
-						joinGroupDatailParams.add(new BasicNameValuePair("userID", userID));
-						JSONObject json = jsonParser.getJSONFromUrl(
-								urlJoinGroup, joinGroupDatailParams);
-						// json success tag
-						success = json.getInt(TAG_SUCCESS);
-						if (success == 1) {
-//							Toast.makeText(getApplicationContext(),
-//				                    "Join event succeed", Toast.LENGTH_SHORT).show(); 
-						}else{
-//							Toast.makeText(getApplicationContext(),
-//				                    "Join event fail", Toast.LENGTH_SHORT).show();
-						}
 
-					} catch (JSONException e) {
-						e.printStackTrace();
-						return null;
-					}
-			return null;
-		}
-		@Override
-		protected void onPostExecute(String result) {
-			Intent intent = new Intent(getApplicationContext(), ViewPersonProfile.class);
-			startActivity(intent);
-			
-		}
-	}
 }
