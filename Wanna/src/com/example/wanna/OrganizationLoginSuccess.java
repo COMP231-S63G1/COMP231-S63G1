@@ -73,7 +73,7 @@ public class OrganizationLoginSuccess extends Activity {
 
     
     public void onViewEventClick(View view){
-		Intent intent = new Intent(this, ViewEventDetail.class);
+		Intent intent = new Intent(this, ViewCreatedEvent.class);
 		startActivity(intent);    	
     }
     

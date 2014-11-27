@@ -13,13 +13,9 @@ import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,10 +26,9 @@ public class GetCreatedGroup extends Activity {
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
-	private ProgressDialog pDialog;
 
 	// url to view event detail
-	private String urlCreatedGroupList = userFunctions.URL_ROOT
+	private String urlCreatedGroupList = UserFunctions.URL_ROOT
 			+ "DB_GetCreatedGroupList.php";
 	ListView lvEventItem;
 	ListView createdGroupListView;
@@ -45,11 +40,15 @@ public class GetCreatedGroup extends Activity {
 	String profileID;
 	String sessionID;
 	String userID;
+	String userType;
 
 	// products JSONArray
 	JSONArray groupList = null;
 	JSONArray createdGroupList;
 	// JSON Node names
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_GROUPLIST = "groupList";
@@ -61,6 +60,10 @@ public class GetCreatedGroup extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_get_created_group);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
+		
 		createdGroupListView = (ListView) findViewById(android.R.id.list);
 		new GetCreatedGroupTask().execute();
 	}
@@ -69,17 +72,13 @@ public class GetCreatedGroup extends Activity {
 		private String groupName;
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-			profileID = sharedpreferences.getString("profileID","");
 			// Building Parameters
 			List<NameValuePair> getCreatedGroupListParams = new ArrayList<NameValuePair>();
-			getCreatedGroupListParams.add(new BasicNameValuePair("profileID",
-					profileID));
-			getCreatedGroupListParams.add(new BasicNameValuePair("sessionID",
+			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
-			getCreatedGroupListParams.add(new BasicNameValuePair("userID",
+			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlCreatedGroupList,
 					getCreatedGroupListParams);

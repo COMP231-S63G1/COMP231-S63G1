@@ -50,6 +50,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.wanna.library.JSONParser;
+import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
 
 public class CreateEvent extends Activity {
@@ -61,10 +62,23 @@ public class CreateEvent extends Activity {
 			+ "DB_CreateEvent.php";
 	private String urlUploadImage = userFunctions.URL_ROOT+"saveImage.php";
 	// JSON Node names
-	private static final String TAG_SUCCESS = "success";
 	private static final int SELECT_PICTURE = 1;
-	// tag for check whether the photo is uploaded succeed
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
+	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_MESSAGE = "message";
 	private static final String TAG = "upload";
+	private static final String TAG_EVENTNAME = "eventName";
+	private static final String TAG_EVENTTYPE = "eventType";
+	private static final String TAG_EVENTDATE = "eventDate";
+	private static final String TAG_EVENTTIME = "eventTime";
+	private static final String TAG_EVENTVENUE = "eventVenue";
+	private static final String TAG_EVENTADDRESS = "eventAddress";
+	private static final String TAG_PRICERANGE = "eventPriceRange";
+	private static final String TAG_DESCRIPTION = "eventDescription";
+	
+	// tag for check whether the photo is uploaded succeed
 	private Spinner eventTypeSpinner;
 	private EditText eventName;
 	private EditText eventVenue;
@@ -83,6 +97,17 @@ public class CreateEvent extends Activity {
 	String sessionID;
 	String userID;
 	String profileID;
+	String userType;
+	String eventname;
+	String eventType;
+	String eventDateString;
+	String eventTimeString;
+	String eventVenueString;
+	String eventAddressString;
+	String eventPriceRangeString;
+	String eventDescriptionString;
+	int success;
+	String message;
 	
 	static final int REQUEST_TAKE_PHOTO = 1;
 	File photoFile = null;
@@ -92,6 +117,10 @@ public class CreateEvent extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_event);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
+		
 		eventTypeSpinner = (Spinner) findViewById(R.id.spinnerEventType);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.createEventArray,
@@ -143,39 +172,23 @@ public class CreateEvent extends Activity {
 		return bitmap;
 	}
 	public void onCreateEvent(View view) {
+
+		eventname = eventName.getText().toString();
+		eventType = eventTypeSpinner.getSelectedItem().toString();
+		eventDateString = eventDate.getText().toString();
+		eventTimeString = eventTime.getText().toString();
+		eventVenueString = eventVenue.getText().toString();
+		eventAddressString = eventAddress.getText().toString();
+		eventPriceRangeString = eventPriceRange.getText().toString();
+		eventDescriptionString = eventDescription.getText()
+				.toString();
 		new CreateNewEvent().execute(urlCreateEvent);
 	}
 	/**
 	 * Background Async Task to Create new event
 	 * */
 	class CreateNewEvent extends AsyncTask<String, String, String> {
-
-		/**
-		 * Creating event
-		 * */
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(CreateEvent.this);
-			pDialog.setTitle("Contacting Servers");
-			pDialog.setMessage("Loading ...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
-		}
 		protected String doInBackground(String... args) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-			profileID = sharedpreferences.getString("profileID","");
-			String eventname = eventName.getText().toString();
-			String eventType = eventTypeSpinner.getSelectedItem().toString();
-			String eventDateString = eventDate.getText().toString();
-			String eventTimeString = eventTime.getText().toString();
-			String eventVenueString = eventVenue.getText().toString();
-			String eventAddressString = eventAddress.getText().toString();
-			String eventPriceRangeString = eventPriceRange.getText().toString();
-			String eventDescriptionString = eventDescription.getText()
-					.toString();
 			try {
 				Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
 				sendPhoto(bitmap);
@@ -184,53 +197,45 @@ public class CreateEvent extends Activity {
 				e.printStackTrace();
 			}
 			// Building Parameters
-			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params
-			.add(new BasicNameValuePair("sessionID", sessionID));
-			params.add(new BasicNameValuePair("userID", userID));
-			params.add(new BasicNameValuePair("profileID", profileID));
-			params.add(new BasicNameValuePair("eventName", eventname));
-			params.add(new BasicNameValuePair("eventType", eventType));
-			params.add(new BasicNameValuePair("eventDate", eventDateString));
-			params.add(new BasicNameValuePair("eventTime", eventTimeString));
-			params.add(new BasicNameValuePair("eventVenue", eventVenueString));
-			params.add(new BasicNameValuePair("eventAddress",
+			List<NameValuePair> createEventParams = new ArrayList<NameValuePair>();
+			createEventParams.add(new BasicNameValuePair(TAG_SESSIONID,	sessionID));
+			createEventParams.add(new BasicNameValuePair(TAG_USERID, userID));
+			createEventParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+			createEventParams.add(new BasicNameValuePair(TAG_EVENTNAME, eventname));
+			createEventParams.add(new BasicNameValuePair(TAG_EVENTTYPE, eventType));
+			createEventParams.add(new BasicNameValuePair(TAG_EVENTDATE, eventDateString));
+			createEventParams.add(new BasicNameValuePair(TAG_EVENTTIME, eventTimeString));
+			createEventParams.add(new BasicNameValuePair(TAG_EVENTVENUE, eventVenueString));
+			createEventParams.add(new BasicNameValuePair(TAG_EVENTADDRESS,
 					eventAddressString));
-			params.add(new BasicNameValuePair("eventPriceRange",
+			createEventParams.add(new BasicNameValuePair(TAG_PRICERANGE,
 					eventPriceRangeString));
-			params.add(new BasicNameValuePair("eventDescription",
+			createEventParams.add(new BasicNameValuePair(TAG_DESCRIPTION,
 					eventDescriptionString));
-//			 params.add(new
-//			 BasicNameValuePair("eventImageURI",eventPictureNameStoredIndatabase));
-			 System.out.println(params.toString());
+
 			// getting JSON Object
 			// Note that create event url accepts POST method
-			JSONObject json = jsonParser.getJSONFromUrl(urlCreateEvent, params);
-			// check log cat fro response
-			Log.d("Create Response", json.toString());
-			// check for success tag
-			try {
-				int success = json.getInt(TAG_SUCCESS);
+			JSONObject json = jsonParser.getJSONFromUrl(urlCreateEvent, createEventParams);
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
 
-				if (success == 1) {
-					// successfully created product
-					
-					Intent intent = new Intent(getApplicationContext(),
-							ViewPersonProfile.class);
-					startActivity(intent);
-
-					// closing this screen
-					finish();
-				} else {
-					// failed to create product
-				}
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-			
+			if (success == 1) {
+				// successfully created product					
+				Intent intent = new Intent(getApplicationContext(),
+						ViewPersonProfile.class);
+				startActivity(intent);
+			} else {
+				// failed to create product
+			}			
 			return null;
 		}
-
+		@Override
+		protected void onPostExecute(String result) {
+			if (success == 0) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)

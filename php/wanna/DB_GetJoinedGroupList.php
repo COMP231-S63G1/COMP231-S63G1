@@ -47,7 +47,7 @@ if($sessionSuccess == 1){
 	}else{          
             // failed
             $response["success"] = 0;
-	    $response["message"] = "Database conncetion failed";
+			$response["message"] = "Database conncetion failed";
             // echo no users JSON
             echo json_encode($response);
 	}

@@ -6,21 +6,16 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
 
-import android.app.Activity;
 import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -30,10 +25,9 @@ public class SearchEventResult extends ListActivity {
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
-	private ProgressDialog pDialog;
 
 	// url to view event detail
-	private String urlSearchEvent = userFunctions.URL_ROOT
+	private String urlSearchEvent = UserFunctions.URL_ROOT
 			+ "DB_SearchEvent.php";
 	ListView lvEventItem;
 

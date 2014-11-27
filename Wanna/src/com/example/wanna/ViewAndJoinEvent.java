@@ -44,11 +44,14 @@ public class ViewAndJoinEvent extends Activity {
 		TextView tvEventDescription;
 
 		// url to view event detail
-		private String urlViewEvent = userFunctions.URL_ROOT
+		private String urlViewEvent = UserFunctions.URL_ROOT
 				+ "DB_ViewEvent.php";
-		private String urlJoinEvent = userFunctions.URL_ROOT
+		private String urlJoinEvent = UserFunctions.URL_ROOT
 				+ "DB_JoinEvent.php";
 		// JSON Node names
+		private static final String TAG_SESSIONID = "sessionid";
+		private static final String TAG_USERID = "userid";
+		private static final String TAG_USERTYPE = "userType";
 		private static final String TAG_SUCCESS = "success";
 		private static final String TAG_EventDetail = "eventDetail";
 		private static final String TAG_EventID = "eventID";
@@ -67,6 +70,7 @@ public class ViewAndJoinEvent extends Activity {
 		//session
 		String sessionID;
 		String userID;
+		String userType;
 		String eventID;
 		String profileID;
 		String message;
@@ -78,6 +82,9 @@ public class ViewAndJoinEvent extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_and_join_event);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 
 		// getting event details from intent
 		Intent i = getIntent();
@@ -119,27 +126,22 @@ public class ViewAndJoinEvent extends Activity {
 		@Override
 		protected String doInBackground(String... urls) {
 					int success;
-					try {
-						// Building Parameters
-						List<NameValuePair> viewEventDatailParams = new ArrayList<NameValuePair>();
-						viewEventDatailParams.add(new BasicNameValuePair("eventID", eventID));
-						// getting event details by making HTTP request
-						JSONObject json = jsonParser.getJSONFromUrl(
-								urlViewEvent, viewEventDatailParams);
-						// json success tag
-						success = json.getInt(TAG_SUCCESS);
-						if (success == 1) {
-							// successfully received event details
-							JSONArray eventDetailArray = json.optJSONArray(TAG_EventDetail); // JSON Array
-							// get first event object from JSON Array
-							eventDetail = eventDetailArray.getJSONObject(0);
-							// evnet with this eventID found
-						}else{
-						}
-
-					} catch (JSONException e) {
-						e.printStackTrace();
-						return null;
+					// Building Parameters
+					List<NameValuePair> viewEventDatailParams = new ArrayList<NameValuePair>();
+					viewEventDatailParams.add(new BasicNameValuePair(TAG_EventID, eventID));
+					// getting event details by making HTTP request
+					JSONObject json = jsonParser.getJSONFromUrl(
+							urlViewEvent, viewEventDatailParams);
+					// json success tag
+					success = json.optInt(TAG_SUCCESS);
+					message = json.optString(TAG_MESSAGE);
+					if (success == 1) {
+						// successfully received event details
+						JSONArray eventDetailArray = json.optJSONArray(TAG_EventDetail); // JSON Array
+						// get first event object from JSON Array
+						eventDetail = eventDetailArray.optJSONObject(0);
+						// evnet with this eventID found
+					}else{
 					}
 			return null;
 		}
@@ -161,39 +163,20 @@ public class ViewAndJoinEvent extends Activity {
 		new JoinEventTask().execute();
 	}
 	private class JoinEventTask extends AsyncTask<String, Void, String> {
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(ViewAndJoinEvent.this);
-			pDialog.setTitle("Contacting Servers");
-			pDialog.setMessage("Loading ...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
-		}
 		
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
-			profileID = sharedpreferences.getString("profileID", "");
-			System.out.println(profileID);
-					try {
-						// Building Parameters
-						List<NameValuePair> joinEventDatailParams = new ArrayList<NameValuePair>();
-						joinEventDatailParams.add(new BasicNameValuePair("eventID", eventID));
-						joinEventDatailParams.add(new BasicNameValuePair("sessionID", sessionID));
-						joinEventDatailParams.add(new BasicNameValuePair("userID", userID));
-						joinEventDatailParams.add(new BasicNameValuePair("profileID",profileID));
-						JSONObject json = jsonParser.getJSONFromUrl(
-								urlJoinEvent, joinEventDatailParams);
-						// json success tag
-						success = json.getInt(TAG_SUCCESS);
-						message = json.optString(TAG_MESSAGE);
-					} catch (JSONException e) {
-						e.printStackTrace();
-						return null;
-					}
+					// Building Parameters
+					List<NameValuePair> joinEventDatailParams = new ArrayList<NameValuePair>();
+					joinEventDatailParams.add(new BasicNameValuePair("eventID", eventID));
+					joinEventDatailParams.add(new BasicNameValuePair(TAG_SESSIONID,	sessionID));
+					joinEventDatailParams.add(new BasicNameValuePair(TAG_USERID,	userID));
+					joinEventDatailParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+					JSONObject json = jsonParser.getJSONFromUrl(
+							urlJoinEvent, joinEventDatailParams);
+					// json success tag
+					success = json.optInt(TAG_SUCCESS);
+					message = json.optString(TAG_MESSAGE);
 			return null;
 		} 
 		@Override

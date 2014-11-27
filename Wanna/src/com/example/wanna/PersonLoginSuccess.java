@@ -78,7 +78,7 @@ public class PersonLoginSuccess extends Activity {
 		}
     
     public void onViewEventClick(View view){
-		Intent intent = new Intent(this, ViewEventDetail.class);
+		Intent intent = new Intent(this, ViewCreatedEvent.class);
 		startActivity(intent);    	
     }
     
@@ -121,10 +121,11 @@ public class PersonLoginSuccess extends Activity {
 		@Override
 		protected String doInBackground(String... urls) {
 			List<NameValuePair> checkLoginParams = new ArrayList<NameValuePair>();
-			checkLoginParams
-					.add(new BasicNameValuePair(TAG_SESSIONID, sessionID));
+			checkLoginParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
 			checkLoginParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			checkLoginParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			JSONObject json = jsonParser.getJSONFromUrl(urlCheckLogin,
 					checkLoginParams);
 			success = json.optInt(TAG_SUCCESS);

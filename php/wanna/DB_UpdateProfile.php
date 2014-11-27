@@ -19,9 +19,15 @@ if (isset($_POST['sessionID']) &&isset($_POST['userID']) && isset($_POST['userNi
 require_once '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
+	$userType=$_SESSION['userType'];
+	if($userType == "Person"){
     // mysql inserting a new row
-    $result = mysql_query("UPDATE profile SET nickName = '$userNickName', description = '$userDescription' WHERE userid = $userID;");
- 
+    $result = mysql_query("UPDATE `personprofile` SET `nickName` = '$userNickName', `description` = '$userDescription' WHERE `userid` = $userID;");		
+	}
+	else if($userType == "Organization"){
+    // mysql inserting a new row
+    $result = mysql_query("UPDATE `organizationprofile` SET `nickName` = '$userNickName', `description` = '$userDescription' WHERE `userid` = $userID;");
+	} 
     // check if row inserted or not
     if ($result) {
         // successfully inserted into database	

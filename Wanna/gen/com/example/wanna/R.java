@@ -250,8 +250,8 @@ public final class R {
         public static final int activity_search_user_name=0x7f030019;
         public static final int activity_search_user_result=0x7f03001a;
         public static final int activity_view_and_join_event=0x7f03001b;
-        public static final int activity_view_event_detail=0x7f03001c;
-        public static final int activity_view_group_owner=0x7f03001d;
+        public static final int activity_view_created_event=0x7f03001c;
+        public static final int activity_view_created_group=0x7f03001d;
         public static final int activity_view_organization_profile=0x7f03001e;
         public static final int activity_view_person_profile=0x7f03001f;
         public static final int activity_view_private_group=0x7f030020;

@@ -52,12 +52,16 @@ public class GetCreatedEvent extends ListActivity {
 	String profileID;
 	String sessionID;
 	String userID;
+	String userType;
 
 	// products JSONArray
 	JSONArray eventList = null;
 	JSONArray createdEventList;
 	private ListAdapter getCreatedEventAdapter;
 	// JSON Node names
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_EVENTLIST = "eventList";
@@ -70,33 +74,36 @@ public class GetCreatedEvent extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_get_created_event);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
+		
 		createdEventListView = (ListView) findViewById(android.R.id.list);
 		new GetCreatedEventTask().execute();
 		
 	}
+	
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		String eventID = (String) getCreatedEventAdapter.getItem(position);
 		Intent intent = new Intent(getApplicationContext(),
-				ViewEventDetail.class);
+				ViewCreatedEvent.class);
 		intent.putExtra("eventID", eventID);
 		startActivity(intent);
 	}
+	
 	private class GetCreatedEventTask extends AsyncTask<String, Void, String> {
 		private String eventID;
 		private String eventName;
 	    private String profileID;
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
 			// Building Parameters
 			List<NameValuePair> getCreatedEventListParams = new ArrayList<NameValuePair>();
-			getCreatedEventListParams.add(new BasicNameValuePair("profileID",
-					profileID));
-			getCreatedEventListParams.add(new BasicNameValuePair("sessionID",
+			getCreatedEventListParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
-			getCreatedEventListParams.add(new BasicNameValuePair("userID",
+			getCreatedEventListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			getCreatedEventListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlCreatedEventList,
 					getCreatedEventListParams);
@@ -114,7 +121,7 @@ public class GetCreatedEvent extends ListActivity {
 					createdEventItemsList.add(eventItems);
 				}
 			} else {
-
+				
 			}
 			return null;
 		}

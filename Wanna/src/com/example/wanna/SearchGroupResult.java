@@ -30,7 +30,7 @@ public class SearchGroupResult extends ListActivity {
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
 
-	private String urlSearchGroup = userFunctions.URL_ROOT
+	private String urlSearchGroup = UserFunctions.URL_ROOT
 			+ "DB_SearchGroup.php";
 	ListView lvGroupItem;
 

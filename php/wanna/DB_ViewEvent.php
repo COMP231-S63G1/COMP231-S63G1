@@ -35,7 +35,7 @@ if (isset($_POST['eventID'])) {
             $eventDetail["eventDescription"] = $result["eventDescription"];
             // success
             $response["success"] = 1;
- 
+			$response["message"] = "Get event success."; 
             // user node
             $response["eventDetail"] = array();
  
@@ -46,6 +46,7 @@ if (isset($_POST['eventID'])) {
         } else {
             // no event found
             $response["success"] = 0;
+			$response["message"] = "Get event failed.";
  
             // echo no users JSON
             echo json_encode($response);
@@ -53,6 +54,7 @@ if (isset($_POST['eventID'])) {
     } else {
         // no event found
         $response["success"] = 0;
+	    $response["message"] = "Database conncetion failed";
  
         // echo no users JSON
         echo json_encode($response);
@@ -60,6 +62,7 @@ if (isset($_POST['eventID'])) {
 } else {
     // required field is missing
     $response["success"] = 0;
+	$response["message"] = "Pass data failed.";
  
     // echoing JSON response
     echo json_encode($response);
