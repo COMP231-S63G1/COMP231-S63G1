@@ -36,7 +36,7 @@ public class RegisterPerson extends Activity {
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_USERID = "userid";
-	private static final String TAG_USERNAME = "username";
+	private static final String TAG_USERNAME = "userName";
 	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_EMAIL = "email";
 	private static final String TAG_PASSWORD = "password";

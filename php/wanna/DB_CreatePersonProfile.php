@@ -4,10 +4,10 @@
 $response = array();
  
 // check for required fields
-if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['userNickName']) && isset($_POST['userGender']) && isset($_POST['userAge']) && isset($_POST['userDescription'])) {
+if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['nickName']) && isset($_POST['userGender']) && isset($_POST['userAge']) && isset($_POST['userDescription'])) {
 	$userid = $_POST['userid'];
 	$userType = $_POST['userType'];
-    $userNickName = $_POST['userNickName'];
+    $nickName = $_POST['nickName'];
     $userGender = $_POST['userGender'];
     $userAge = $_POST['userAge'];
     $userDescription = $_POST['userDescription'];
@@ -19,11 +19,11 @@ if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['userNi
     $db = new DB_Connect();
  
     // mysql inserting a new row
-    $result = mysql_query("INSERT INTO `personprofile `(`nickName`, `gender`, `age`, `description`, `userid`) VALUES('$userNickName', '$userGender', '$userAge', '$userDescription', '$userid')");
+    $result = mysql_query("INSERT INTO `personprofile`(`nickName`, `gender`, `age`, `description`, `userid`) VALUES('$nickName', '$userGender', '$userAge', '$userDescription', '$userid')");
  
     // check if row inserted or not
     if ($result) {
-		$selectResult = mysql_query("SELECT profileID FROM profile WHERE userid ='$userid'");
+		$selectResult = mysql_query("SELECT `profileID` FROM `personprofile` WHERE `userid` ='$userid'");
 		if(!empty($selectResult)){
 		if (mysql_num_rows($selectResult) > 0) {
 			// successfully inserted into database
@@ -32,15 +32,13 @@ if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['userNi
 			session_start();
 			$_SESSION['userid'] = $userid;
 			$_SESSION['userType'] = $userType;
-			$_SESSION['nickName'] = $userNickName;
-			$_SESSION['profileid'] = $selectResult['profileID'];
+			$_SESSION['nickName'] = $nickName;
 			$sessionid=session_id();
 			$_SESSION['$sessionid'] = $sessionid;
 			// success
 			$response["sessionid"] = $sessionid;
 			$response["userid"] = $_SESSION['userid'];
 			$response["nickName"] = $_SESSION['nickName'];
-			$response["profileid"] = $_SESSION['profileid'];
 			// echoing JSON response
 			echo json_encode($response);
 			}else{
@@ -61,9 +59,8 @@ if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['userNi
 				}
 				else {
         // failed to insert row
-        $response["success"] = 0;
-		$response["message"] = "Create profile failed."; 
- 
+        $response["success"] = 1;
+		$response["message"] = "Create profile success.";  
         // echoing JSON response
         echo json_encode($response);
     }

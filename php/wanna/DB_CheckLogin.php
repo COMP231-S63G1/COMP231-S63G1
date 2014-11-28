@@ -7,9 +7,9 @@
  
 // connecting to db
 //$db = new DB_Connect();
-if (isset($_POST["sessionID"]) && isset($_POST["userID"]) && isset($_POST["userType"])) {
-	$sessionID = $_POST['sessionID'];
-	$userID = $_POST['userID'];
+if (isset($_POST["sessionid"]) && isset($_POST["userid"]) && isset($_POST["userType"])) {
+	$sessionID = $_POST['sessionid'];
+	$userID = $_POST['userid'];
 	$userType = $_POST['userType'];
 	session_id($sessionID);
 	session_start();

@@ -151,12 +151,11 @@ public class CreatePersonProfile extends Activity {
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
 			if (success == 1) {
-				Editor editor = sharedpreferences.edit();
-				editor.putString("TAG_SESSIONID", json.optString(TAG_SESSIONID));
-				editor.putString("TAG_USERID", json.optString(TAG_USERID));
-				editor.putString(TAG_USERTYPE, userType);
-				editor.putString("TAG_NICKNAME", json.optString(TAG_NICKNAME));
-				editor.putString("TAG_PROFILEID", json.optString(TAG_PROFILEID));
+				Editor editor = sharedpreferences.edit();				
+				editor.putString(TAG_SESSIONID, json.optString(TAG_SESSIONID));				
+				editor.putString(TAG_USERID, json.optString(TAG_USERID));				
+				editor.putString(TAG_USERTYPE, userType);								
+				editor.putString(TAG_NICKNAME, json.optString(TAG_NICKNAME));				
 				editor.commit();
 			}
 			return null;

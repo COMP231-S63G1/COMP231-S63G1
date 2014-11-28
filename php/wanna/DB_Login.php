@@ -28,7 +28,6 @@ if (isset($_POST["loginEmail"])&& isset($_POST["loginPassword"])) {
 					$profileResult = mysql_fetch_array($profileResult);
 					$_SESSION['userid'] = $result['userid'];
 					$_SESSION['userType'] = $result['userType'];
-					$_SESSION['profileid'] = $profileResult['profileID'];
 					$_SESSION['nickName'] = $profileResult['nickName'];
 					$sessionid=session_id();
 					$_SESSION['$sessionid'] = $sessionid;
@@ -37,7 +36,6 @@ if (isset($_POST["loginEmail"])&& isset($_POST["loginPassword"])) {
 					$response["sessionid"] = $sessionid;
 					$response["userid"] = $_SESSION['userid'];
 					$response["userType"] = $_SESSION['userType'];
-					$response["profileid"] = $_SESSION['profileid'];
 					$response["nickName"] = $_SESSION['nickName'];
 					// echoing JSON response
 					echo json_encode($response);
@@ -56,20 +54,6 @@ if (isset($_POST["loginEmail"])&& isset($_POST["loginPassword"])) {
 				// echoing JSON response
 				echo json_encode($response);
 			}			
-				
-			$_SESSION['nickName'] = $result['nickName'];
-			$_SESSION['profileid'] = $result['profileID'];
-			$sessionid=session_id();
-			$_SESSION['$sessionid'] = $sessionid;			
-			// success
-			$response["success"] = 1;
-			$response["message"] = "Login success";
-			$response["sessionid"] = $sessionid;
-			$response["userid"] = $_SESSION['userid'];
-			$response["nickName"] = $_SESSION['nickName'];
-			$response["profileid"] = $_SESSION['profileid'];
-			// echoing JSON response
-            echo json_encode($response);
 			}else{				
     // required field is missing
     $response["success"] = 0;
