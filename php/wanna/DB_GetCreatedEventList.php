@@ -31,13 +31,13 @@ if($sessionSuccess == 1){
 			//$response["eventList"] = $result;           
             // success
             $response["success"] = 1;
-			$response["message"] = "Get event name";
+			$response["message"] = "Get created event";
             // echo no users JSON
             echo json_encode($response);
 			}else{          
             // failed
             $response["success"] = 0;
-			$response["message"] = "No event name";
+			$response["message"] = "No created event";
             // echo no users JSON
             echo json_encode($response);
 			}

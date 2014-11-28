@@ -34,7 +34,7 @@ if (isset($_POST["sessionid"]) && isset($_POST["userid"]) && isset($_POST["userT
 }
 else{
 	$sessionSuccess = 0;
-	$sessionMessage = "pass data failed";
+	$sessionMessage = "Check login pass data failed";
 				
     // required field is missing
     //$response["success"] = 0; 
