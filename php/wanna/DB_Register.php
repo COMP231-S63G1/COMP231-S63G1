@@ -17,7 +17,7 @@ if (isset($_POST['userType']) && isset($_POST['userName']) && isset($_POST['emai
     $db = new DB_Connect();
 	
 	// mysql check email existing
-    $checkResult = mysql_query("SELECT userid FROM users WHERE email='$email'");
+    $checkResult = mysql_query("SELECT `userid` FROM `users` WHERE `email`='$email'");
 	if (!empty($checkResult)) {
         // check for empty result
         if (mysql_num_rows($checkResult) > 0) {

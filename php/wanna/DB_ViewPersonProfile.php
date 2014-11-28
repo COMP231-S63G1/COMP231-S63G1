@@ -47,7 +47,7 @@ if($sessionSuccess == 1){
         } else {
             // no profile found
             $response["success"] = 0;
-			$response["message"] = "No user profile from database";
+			$response["message"] = "Get user profile information failed";
  
             // echo no users JSON
             echo json_encode($response);

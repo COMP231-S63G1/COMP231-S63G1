@@ -42,7 +42,7 @@
     <Button
             android:layout_width="155dp"
             android:layout_height="40dp"
-            android:text="@string/register"
+            android:text="@string/personRegister"
             android:id="@+id/personRegisterbtn"
             android:textSize="13sp"
             android:textColor="#48D1CC"
@@ -55,7 +55,7 @@
         <Button
             android:layout_width="155dp"
             android:layout_height="40dp"
-            android:text="@string/register"
+            android:text="@string/organizationRegister"
             android:id="@+id/OrganizationRegisterbtn"
             android:textSize="13sp"
             android:textColor="#48D1CC"
