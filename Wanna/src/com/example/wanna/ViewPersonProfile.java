@@ -56,8 +56,6 @@ public class ViewPersonProfile extends Activity {
 	String age;
 	String gender;
 	String description;
-	String message;
-	int success;
 
 	// url to view profile info
 	private String urlViewProfileInformation = UserFunctions.URL_ROOT
@@ -79,11 +77,11 @@ public class ViewPersonProfile extends Activity {
 	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_ProfileInformation = "profileInformation";
-	private static final String TAG_PROFILENICKNAME = "nickName";
+	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_ProfileID = "profileID";
 	private static final String TAG_ProfileAge = "age";
 	private static final String TAG_ProfileGender = "gender";
-	private static final String TAG_ProfileDescription = "description";
+	private static final String TAG_DESCRIPTION = "description";
 	private static final String TAG_Status = "eventName";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_EVENTLIST = "eventList";
@@ -106,12 +104,14 @@ public class ViewPersonProfile extends Activity {
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
 		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
 		userID = sharedpreferences.getString(TAG_USERID, "");
-		System.out.println("View: " + userID);
 		userType = sharedpreferences.getString(TAG_USERTYPE, "");
-		nickName = sharedpreferences.getString(TAG_PROFILENICKNAME, "");
+		nickName = sharedpreferences.getString(TAG_NICKNAME, "");
 
 		// Edit Text
-		
+		tvProfileNickName = (TextView) findViewById(R.id.tvProfileNickNameValue);
+		tvProfileGender = (TextView) findViewById(R.id.tvProfileGenderValue);
+		tvProfileAge = (TextView) findViewById(R.id.tvProfileAgeValue);
+		tvProfileDescription = (TextView) findViewById(R.id.tvProfileDescriptionValue);
 		tvGetCreatedEventTextView = (TextView) findViewById(R.id.tvProfileGetCreateEventValue);
 		tvGetJoinedEventTextView = (TextView) findViewById(R.id.tvProfileGetJoinEventValue);
 		tvGetCreatedGroupTextView = (TextView) findViewById(R.id.tvProfileGetCreateGroupValue);
@@ -131,13 +131,15 @@ public class ViewPersonProfile extends Activity {
 
 	public void onEditProfileClick(View view) {
 		Intent intent = new Intent(getApplicationContext(), EditProfile.class);
-		intent.putExtra("nickName", nickName);
-		intent.putExtra("description", description);
+		intent.putExtra(TAG_NICKNAME, nickName);
+		intent.putExtra(TAG_DESCRIPTION, description);
 		startActivity(intent);
 	}
 
 	private class ViewProfileInformationTask extends
 			AsyncTask<String, Void, String> {
+		int success;
+		String message;
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -170,11 +172,11 @@ public class ViewPersonProfile extends Activity {
 						.optJSONArray(TAG_ProfileInformation); // JSON Array
 				// get first profile object from JSON Array
 				profileInformation = profileInformationArray.optJSONObject(0);
-				nickName = profileInformation.optString(TAG_PROFILENICKNAME);
+				nickName = profileInformation.optString(TAG_NICKNAME);
 				age = profileInformation.optString(TAG_ProfileAge);
 				gender = profileInformation.optString(TAG_ProfileGender);
 				description = profileInformation
-						.optString(TAG_ProfileDescription);
+						.optString(TAG_DESCRIPTION);
 			} else {
 			}
 			return null;
@@ -185,10 +187,6 @@ public class ViewPersonProfile extends Activity {
 			// display product data in EditText
 			pDialog.dismiss();
 			if (success == 1) {
-				tvProfileNickName = (TextView) findViewById(R.id.tvProfileNickNameValue);
-				tvProfileGender = (TextView) findViewById(R.id.tvProfileGenderValue);
-				tvProfileAge = (TextView) findViewById(R.id.tvProfileAgeValue);
-				tvProfileDescription = (TextView) findViewById(R.id.tvProfileDescriptionValue);
 				tvProfileNickName.setText(nickName);
 				tvProfileGender.setText(gender);
 				tvProfileAge.setText(age);
@@ -205,6 +203,8 @@ public class ViewPersonProfile extends Activity {
 	private class GetCreatedEventTask extends AsyncTask<String, Void, String> {
 		private String eventID;
 		private String eventName;
+		int success;
+		String message;
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -233,30 +233,36 @@ public class ViewPersonProfile extends Activity {
 					createdEventItemsList.add(eventItems);
 				}
 			} else {
-
 			}
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
-			if (success == 0) {
+			if(success == 1){
+				tvGetCreatedEventTextView.setText("Created Event");
+			}
+			if (success != 1) {
+				tvGetCreatedEventTextView.setText("No Created Event");
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			} else {
-				String textShowed = "";
-				for (String[] arr : createdEventItemsList) {
-					textShowed += arr[1] + "\n";
-					System.out.println(textShowed);
-				}
-				tvGetCreatedEventTextView.setText(textShowed);
-			}
+			} 
+//			else {
+//				String textShowed = "";
+//				for (String[] arr : createdEventItemsList) {
+//					textShowed += arr[1] + "\n";
+//					System.out.println(textShowed);
+//				}
+//				tvGetCreatedEventTextView.setText(textShowed);
+//			}
 		}
 	}
 
 	private class GetJoinedEventTask extends AsyncTask<String, Void, String> {
 		private String eventID;
 		private String eventName;
+		int success;
+		String message;
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -291,17 +297,25 @@ public class ViewPersonProfile extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			if (success == 0) {
+			if(success == 1){
+				tvGetCreatedEventTextView.setText("Joined Event");
+			}
+			if (success != 1) {
+				tvGetCreatedEventTextView.setText("No Joined Event");
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			} else {
-				String textShowed = "";
-				for (String[] arr : joinedEventItemsList) {
-					textShowed += arr[1] + "\n";
-					System.out.println(textShowed);
-				}
-				tvGetJoinedEventTextView.setText(textShowed);
 			}
+//			if (success == 0) {
+//				Toast.makeText(getApplicationContext(), message,
+//						Toast.LENGTH_SHORT).show();
+//			} else {
+//				String textShowed = "";
+//				for (String[] arr : joinedEventItemsList) {
+//					textShowed += arr[1] + "\n";
+//					System.out.println(textShowed);
+//				}
+//				tvGetJoinedEventTextView.setText(textShowed);
+//			}
 
 		}
 	}
@@ -309,6 +323,8 @@ public class ViewPersonProfile extends Activity {
 	private class GetCreatedGroupTask extends AsyncTask<String, Void, String> {
 		private String groupID;
 		private String groupName;
+		int success;
+		String message;
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -344,25 +360,35 @@ public class ViewPersonProfile extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			if (success == 0) {
+			if(success == 1){
+				tvGetCreatedEventTextView.setText("Created Group");
+			}
+			if (success != 1) {
+				tvGetCreatedEventTextView.setText("No Created Group");
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			} else {
-				// getCreatedEventAdapter.setItemList(createdEventItemsList);
-				// createdEventListView.setAdapter(getCreatedEventAdapter);
-				String textShowed = "";
-				for (String[] arr : createdGroupItemsList) {
-					textShowed += arr[1] + "\n";
-					System.out.println(textShowed);
-				}
-				tvGetCreatedGroupTextView.setText(textShowed);
 			}
+//			if (success == 0) {
+//				Toast.makeText(getApplicationContext(), message,
+//						Toast.LENGTH_SHORT).show();
+//			} else {
+//				// getCreatedEventAdapter.setItemList(createdEventItemsList);
+//				// createdEventListView.setAdapter(getCreatedEventAdapter);
+//				String textShowed = "";
+//				for (String[] arr : createdGroupItemsList) {
+//					textShowed += arr[1] + "\n";
+//					System.out.println(textShowed);
+//				}
+//				tvGetCreatedGroupTextView.setText(textShowed);
+//			}
 		}
 	}
 
 	private class GetJoinedGroupTask extends AsyncTask<String, Void, String> {
 		private String groupID;
 		private String groupName;
+		int success;
+		String message;
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -398,19 +424,27 @@ public class ViewPersonProfile extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			if (success == 0) {
+			if(success == 1){
+				tvGetCreatedEventTextView.setText("Joined Group");
+			}
+			if (success != 1) {
+				tvGetCreatedEventTextView.setText("No Joined Group");
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			} else {
-				// getCreatedEventAdapter.setItemList(createdEventItemsList);
-				// createdEventListView.setAdapter(getCreatedEventAdapter);
-				String textShowed = "";
-				for (String[] arr : joinedGroupItemsList) {
-					textShowed += arr[1] + "\n";
-					System.out.println(textShowed);
-				}
-				tvGetJoinedGroupTextView.setText(textShowed);
 			}
+//			if (success == 0) {
+//				Toast.makeText(getApplicationContext(), message,
+//						Toast.LENGTH_SHORT).show();
+//			} else {
+//				// getCreatedEventAdapter.setItemList(createdEventItemsList);
+//				// createdEventListView.setAdapter(getCreatedEventAdapter);
+//				String textShowed = "";
+//				for (String[] arr : joinedGroupItemsList) {
+//					textShowed += arr[1] + "\n";
+//					System.out.println(textShowed);
+//				}
+//				tvGetJoinedGroupTextView.setText(textShowed);
+//			}
 		}
 	}
 

@@ -33,14 +33,16 @@ public class EditProfile extends Activity {
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
 
-	private String urlUploadProfile = UserFunctions.URL_ROOT + "DB_UpdateProfile.php";
+	private String urlUpdateProfile = UserFunctions.URL_ROOT + "DB_UpdateProfile.php";
 
 	// user profile JSONArray
 	JSONArray userProfileArray = null;
 	// JSON Node names
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_NickName = "nickName";
-	private static final String TAG_ProfileDescription = "description";
+	private static final String TAG_DESCRIPTION = "description";
 	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_MESSAGE = "message";
 
@@ -49,6 +51,7 @@ public class EditProfile extends Activity {
 
 	String sessionID;
 	String userID;
+	String userType;
 	String userNickName;
 	String userDescription;
 	int success;
@@ -60,10 +63,13 @@ public class EditProfile extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profile);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 		Intent intent = getIntent();
 		// getting user nick name and description from intent
-		userNickName = intent.getStringExtra(TAG_NickName);
-		userDescription = intent.getStringExtra(TAG_ProfileDescription);
+		userNickName = intent.getStringExtra(TAG_NICKNAME);
+		userDescription = intent.getStringExtra(TAG_DESCRIPTION);
 
 		txtUserNickName = (EditText) findViewById(R.id.etName);
 		txtUserDescription = (EditText) findViewById(R.id.etDescription);
@@ -75,13 +81,13 @@ public class EditProfile extends Activity {
 	public void onUpdateClick(View view) {
 		userNickName = txtUserNickName.getText().toString();
 		userDescription = txtUserDescription.getText().toString();
-		new UploadNewInformationTask().execute(urlUploadProfile);
+		new UploadNewInformationTask().execute(urlUpdateProfile);
 	}
 
 	public void onDeleteClick(View view) {
 		userNickName = "";
 		userDescription = "";
-		new UploadNewInformationTask().execute(urlUploadProfile);
+		new UploadNewInformationTask().execute(urlUpdateProfile);
 	}
 
 	public void onCancelClick(View view) {
@@ -104,20 +110,19 @@ public class EditProfile extends Activity {
 		
 		@Override
 		protected String doInBackground(String... urls) {
-			sessionID = sharedpreferences.getString("sessionID", "");
-			userID = sharedpreferences.getString("userID", "");
 			// Building Parameters
-			List<NameValuePair> uploadProfileParams = new ArrayList<NameValuePair>();
-			uploadProfileParams.add(new BasicNameValuePair("sessionID", sessionID));
-			uploadProfileParams.add(new BasicNameValuePair("userID", userID));
-			uploadProfileParams.add(new BasicNameValuePair("userNickName", userNickName));
-			uploadProfileParams.add(new BasicNameValuePair("userDescription", userDescription));
-			JSONObject json = jsonParser.getJSONFromUrl(urlUploadProfile, uploadProfileParams);
+			List<NameValuePair> updateProfileParams = new ArrayList<NameValuePair>();
+			updateProfileParams.add(new BasicNameValuePair(TAG_SESSIONID, sessionID));
+			updateProfileParams.add(new BasicNameValuePair(TAG_USERID, userID));
+			updateProfileParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+			updateProfileParams.add(new BasicNameValuePair(TAG_NICKNAME, userNickName));
+			updateProfileParams.add(new BasicNameValuePair(TAG_DESCRIPTION, userDescription));
+			JSONObject json = jsonParser.getJSONFromUrl(urlUpdateProfile, updateProfileParams);
 			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
 			if (success == 1) {
-				message = json.optString(TAG_MESSAGE);
 				Editor editor = sharedpreferences.edit();
-				editor.putString("nickName", json.optString(TAG_NICKNAME));
+				editor.putString(TAG_NICKNAME, json.optString(TAG_NICKNAME));
 				editor.commit();
 				Intent intent = new Intent(getApplicationContext(),
 						ViewPersonProfile.class);
