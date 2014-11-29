@@ -51,7 +51,7 @@ public class EditGroup extends Activity {
 	EditText etGroupName;
 	EditText etGroupDescription;
 	
-	private static final String TAG_GroupID = "groupID";
+	private static final String TAG_GROUPID = "groupID";
 
 	// session variables
 	public static final String MyPREFERENCES = "Wanna";
@@ -72,7 +72,7 @@ public class EditGroup extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_group);
 		Intent intent = getIntent();
-		groupID = intent.getStringExtra(TAG_GroupID);
+		groupID = intent.getStringExtra(TAG_GROUPID);
 		groupType = intent.getStringExtra("groupType");
 		groupName = intent.getStringExtra("groupName");
 		groupDescription = intent.getStringExtra("groupDescription");
@@ -126,7 +126,8 @@ public class EditGroup extends Activity {
 			protected void onPostExecute(String result) {
 				if (success == 1) {
 					Intent intent = new Intent(getApplicationContext(),
-							ViewPublicGroup.class);
+							ViewCreatedGroup.class);
+					intent.putExtra(TAG_GROUPID, groupID);
 					startActivity(intent);
 				} 
 				if (success != 1) {

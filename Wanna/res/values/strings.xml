@@ -117,10 +117,10 @@
     <string name="title_activity_search_user_status">Wanna...?</string>
     <string name="title_activity_get_created_event">GetCreatedEvent</string>
     <string name="title_activity_get_joined_event">GetJoinedEvent</string>
-    <string name="profileGetCreatEventTextView">Created Event</string>
-    <string name="profileGetJoinEventTextView">Joined Event</string>
-    <string name="profileGetCreatGroupTextView">Created Group</string>
-    <string name="profileGetJoinGroupTextView">Joined Group</string>
+    <string name="profileGetCreatEventTextView">Created Event: </string>
+    <string name="profileGetJoinEventTextView">Joined Event: </string>
+    <string name="profileGetCreatGroupTextView">Created Group: </string>
+    <string name="profileGetJoinGroupTextView">Joined Group: </string>
     <string name="title_activity_register_organization">RegisterOrganization</string>
     <string name="title_activity_get_created_group">GetCreatedGroup</string>
     <string name="title_activity_get_joined_group">GetJoinedGroup</string>
@@ -128,10 +128,14 @@
     <string name="title_activity_organization_login_success">OrganizationLoginSuccess</string>
     <string name="title_activity_view_organization_profile">ViewOrganizationProfile</string>
     <string name="title_activity_edit_organization_profile">EditOrganizationProfile</string>
-<string-array name="locationRangeOptions">
+
+    <string-array name="locationRangeOptions">
         <item>2km </item>
         <item>5km </item>
         <item>10km </item>
         <item>15km </item>
     </string-array>
+
+    <string name="title_activity_view_created_group">ViewCreatedGroup</string>
+
 </resources>

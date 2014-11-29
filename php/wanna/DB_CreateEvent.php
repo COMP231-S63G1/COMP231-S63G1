@@ -38,14 +38,14 @@ if (isset($_POST['eventName']) && isset($_POST['eventType']) && isset($_POST['ev
 		 else{
         // failed to insert row
         $response["success"] = 0;
-		$response["message"] = "Create and join group failed."; 
+		$response["message"] = "Create and join event failed."; 
         // echoing JSON response
         echo json_encode($response); 
 		 }
 }else{
         // failed to insert row
         $response["success"] = 0;
-		$response["message"] = "Create group failed."; 
+		$response["message"] = "Create event failed."; 
         // echoing JSON response
         echo json_encode($response); 
 	}

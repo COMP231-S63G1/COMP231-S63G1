@@ -13,17 +13,20 @@ import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class GetJoinedGroup extends Activity {
+public class GetJoinedGroup extends ListActivity {
 
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
@@ -73,6 +76,15 @@ public class GetJoinedGroup extends Activity {
 		joinedGroupListView = (ListView) findViewById(android.R.id.list);
 		new GetJoinedGroupTask().execute();
 	}
+	
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		String groupID = (String) getJoinedGroupAdapter.getItem(position);
+		Intent intent = new Intent(getApplicationContext(),
+				ViewPrivateGroup.class);
+		intent.putExtra(TAG_GROUPID, groupID);
+		startActivity(intent);
+	}
+	
 	private class GetJoinedGroupTask extends AsyncTask<String, Void, String> {
 		private String groupID;
 		private String groupName;

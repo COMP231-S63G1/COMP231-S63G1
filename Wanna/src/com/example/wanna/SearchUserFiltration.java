@@ -26,6 +26,7 @@ public class SearchUserFiltration extends Activity {
 	EditText etMinAge;
 	EditText etMaxAge;
 	RadioButton searchGenderSelect;
+	RadioButton defaultRadio;
 	RadioGroup rgFilterGender;
 	Spinner locationRangeSpinner;
 
@@ -44,7 +45,8 @@ public class SearchUserFiltration extends Activity {
 		etMinAge = (EditText) findViewById(R.id.etMinAge);
 		etMaxAge = (EditText) findViewById(R.id.etMaxAge);
 		rgFilterGender = (RadioGroup) findViewById(R.id.rgFilterGender);
-		
+		defaultRadio = (RadioButton)findViewById(R.id.rbtnBoth);
+		defaultRadio.setChecked(true);
 		locationRangeSpinner = (Spinner) findViewById(R.id.locationRange);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.locationRangeOptions,
@@ -55,17 +57,25 @@ public class SearchUserFiltration extends Activity {
 
 	public void onSearchClick(View view) {
 		searchStatus = etStatus.getText().toString();
-		try {
-			searchMinAge = Integer.parseInt(etMinAge.getText().toString());
-		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "Minimum age invalid",
-					Toast.LENGTH_SHORT).show();
+		if (etMinAge.getText().toString().equals("")) {
+			searchMinAge = 18;
+		} else {
+			try {
+				searchMinAge = Integer.parseInt(etMinAge.getText().toString());
+			} catch (Exception e) {
+				Toast.makeText(getApplicationContext(), "Minimum age invalid",
+						Toast.LENGTH_SHORT).show();
+			}
 		}
-		try {
-			searchMaxAge = Integer.parseInt(etMaxAge.getText().toString());
-		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "Maximum age invalid",
-					Toast.LENGTH_SHORT).show();
+		if (etMaxAge.getText().toString().equals("")) {
+			searchMaxAge = 99;
+		} else {
+			try {
+				searchMaxAge = Integer.parseInt(etMaxAge.getText().toString());
+			} catch (Exception e) {
+				Toast.makeText(getApplicationContext(), "Maximum age invalid",
+						Toast.LENGTH_SHORT).show();
+			}
 		}
 		if (searchMinAge < 18) {
 			searchMinAge = 18;
