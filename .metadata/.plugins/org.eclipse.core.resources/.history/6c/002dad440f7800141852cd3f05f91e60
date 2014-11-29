@@ -1,0 +1,238 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="#48D1CC"
+    >
+
+    <ScrollView
+        android:id="@+id/viewEventScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/tvProfileNickNameLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/name" 
+                android:textColor="#ffffff"
+                />
+
+            <TextView
+                android:id="@+id/tvProfileNickNameValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tvProfileNickNameLabel" 
+                android:textColor="#ffffff"
+                />
+
+            <TextView
+                android:id="@+id/tvProfileGenderLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileNickNameLabel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/gender" 
+                android:textColor="#ffffff"
+                />
+
+            <TextView
+                android:id="@+id/tvProfileGenderValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileNickNameValue"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tvProfileGenderLabel" 
+                android:textColor="#ffffff"
+                />
+
+            <TextView
+                android:id="@+id/tvProfileAgeLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileGenderLabel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/age" 
+                android:textColor="#fffffff"
+                />
+
+            <TextView
+                android:id="@+id/tvProfileAgeValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileGenderValue"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tvProfileAgeLabel" 
+                android:textColor="#ffffff"
+                />
+
+            <TextView
+                android:id="@+id/tvProfileDescriptionLabel"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileAgeLabel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/description" 
+                android:textColor="#ffffff"
+                />
+
+            <TextView
+                android:id="@+id/tvProfileDescriptionValue"
+                style="@style/FormTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileAgeValue"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tvProfileDescriptionLabel" 
+                android:textColor="#ffffff"
+                />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tvProfileDescriptionLabel" >
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tvProfileGetCreateEvent"
+                        style="@style/FormTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvProfileDescriptionLabel"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/profileGetCreatEventTextView" 
+                        android:textColor="#ffffff"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvProfileGetCreateEventValue"
+                        style="@style/FormTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:onClick="GetCreateEventValueOnClick" 
+                        android:textColor="#ffffff"
+                        />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tvProfileGetJoinEvent"
+                        style="@style/FormTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/profileGetJoinEventTextView" />
+
+                    <TextView
+                        android:id="@+id/tvProfileGetJoinEventValue"
+                        style="@style/FormTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:onClick="GetJoinEventValueOnClick" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tvProfileGetCreateGroup"
+                        style="@style/FormTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/profileGetCreatGroupTextView" />
+
+                    <TextView
+                        android:id="@+id/tvProfileGetCreateGroupValue"
+                        style="@style/FormTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:onClick="GetCreateGroupValueOnClick" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tvProfileGetJoinGroup"
+                        style="@style/FormTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/profileGetJoinGroupTextView" />
+
+                    <TextView
+                        android:id="@+id/tvProfileGetJoinGroupValue"
+                        style="@style/FormTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:onClick="GetJoinGroupValueOnClick" />
+                </TableRow>
+
+                <TableRow>
+
+                    <Button
+                        android:id="@+id/buttonBack"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#48D1CC"
+                        android:onClick="onViewProfileInformationBackClick"
+                        android:text="@string/buttonBack" />
+
+                    <Button
+                        android:id="@+id/buttonEditProfile"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#48D1CC"
+                        android:onClick="onEditProfileClick"
+                        android:text="@string/buttonEditProfile" />
+                </TableRow>
+            </TableLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

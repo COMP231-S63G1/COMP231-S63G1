@@ -52,17 +52,25 @@
 
     <Button
         android:id="@+id/buttonDone"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/done"
-        android:onClick="onCreateProfileClick" />
+        android:onClick="onCreateProfileClick" 
+        android:background="#48D1CC"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
 
     <Button
         android:id="@+id/buttonCancle"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/cancel"
-        android:onClick="onCancleCreateProfileClick" />
+        android:onClick="onCancleCreateProfileClick" 
+        android:background="#48D1CC"
+        android:textColor="#ffffff"
+        />
 
 </LinearLayout>
 </ScrollView>
