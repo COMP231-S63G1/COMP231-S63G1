@@ -12,7 +12,6 @@ $response = array();
 require_once '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
     $userID=$_SESSION['userid'];
-    $profileID = $_SESSION['profileid'];
  
 // check for required fields
 if (isset($_POST['eventName']) && isset($_POST['eventType']) && isset($_POST['eventDate']) && isset($_POST['eventTime']) && isset($_POST['eventVenue']) && isset($_POST['eventAddress']) && isset($_POST['eventPriceRange']) && isset($_POST['eventDescription'])) {
@@ -27,23 +26,29 @@ if (isset($_POST['eventName']) && isset($_POST['eventType']) && isset($_POST['ev
     $eventDescription = $_POST['eventDescription'];
     // mysql inserting a new row
   
-     $result = mysql_query("INSERT INTO wanna.event (eventID,eventCreaterID,eventType, eventName, eventDate, eventTime, eventVenue, eventAddress, eventPriceRange, eventDescription) VALUES (NULL,$profileID, '$eventType', '$eventName','$eventDate', '$eventTime', '$eventVenue', '$eventAddress', '$eventPriceRange', '$eventDescription');");
-    // check if row inserted or not
-    if ($result) {
-        // successfully inserted into database
+     $result = mysql_query("INSERT INTO `event` (`eventCreaterID`, `eventType`, `eventName`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES ('$userID', '$eventType', '$eventName', '$eventDate', '$eventTime', '$eventVenue', '$eventAddress', '$eventPriceRange', '$eventDescription')");
+	 if ($result) {
+		 $joinResult = mysql_query("INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES ($userID, (SELECT `eventID` FROM `event` WHERE `eventCreaterID` = '$userID' AND `eventType` = '$eventType' AND `eventName` = '$eventName' AND `eventDate` = '$eventDate' AND `eventTime` = '$eventTime' AND `eventVenue` = '$eventVenue' AND `eventAddress` = '$eventAddress' AND `eventPriceRange` = '$eventPriceRange'))");
+		 if($joinResult){
         $response["success"] = 1;
-		$response["message"] = "Create event success.";
- 
+		$response["message"] = "Create and event success."; 
         // echoing JSON response
         echo json_encode($response);
-    } else {
+		 }
+		 else{
         // failed to insert row
         $response["success"] = 0;
-		$response["message"] = "Create event failed.";
- 
+		$response["message"] = "Create and join group failed."; 
         // echoing JSON response
-        echo json_encode($response);
-    }
+        echo json_encode($response); 
+		 }
+}else{
+        // failed to insert row
+        $response["success"] = 0;
+		$response["message"] = "Create group failed."; 
+        // echoing JSON response
+        echo json_encode($response); 
+	}
 } else {
     // required field is missing
     $response["success"] = 0;

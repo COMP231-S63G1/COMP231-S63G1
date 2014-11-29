@@ -31,7 +31,7 @@ if($sessionSuccess == 1){
 	    echo json_encode($response);
         }else{
         //insert the profileID and eventID into the child table
-		$result = mysql_query("INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES ($userID, $eventID);");
+		$result = mysql_query("INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES ($userID, $eventID)");
 		if ($result) {	
 		// successfully inserted into database	
         	$response["success"] = 1;

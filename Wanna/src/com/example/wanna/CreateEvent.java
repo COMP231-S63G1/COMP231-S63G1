@@ -189,13 +189,13 @@ public class CreateEvent extends Activity {
 	 * */
 	class CreateNewEvent extends AsyncTask<String, String, String> {
 		protected String doInBackground(String... args) {
-			try {
-				Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
-				sendPhoto(bitmap);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//				Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
+//				sendPhoto(bitmap);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			// Building Parameters
 			List<NameValuePair> createEventParams = new ArrayList<NameValuePair>();
 			createEventParams.add(new BasicNameValuePair(TAG_SESSIONID,	sessionID));
