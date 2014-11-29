@@ -178,6 +178,10 @@
             android:name=".EditOrganizationProfile"
             android:label="@string/title_activity_edit_organization_profile" >
         </activity>
+        <activity
+            android:name=".ViewCreatedGroup"
+            android:label="@string/title_activity_view_created_group" >
+        </activity>
     </application>
 
 </manifest>

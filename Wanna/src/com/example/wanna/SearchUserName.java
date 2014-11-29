@@ -15,7 +15,7 @@ public class SearchUserName extends Activity {
 	String searchType;
 	
 	private static final String TAG_SEARCHTYPE = "searchType";
-	private static final String TAG_SEARCHUSERNAME = "searchUserName";
+	private static final String TAG_SEARCHNAME = "searchName";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class SearchUserName extends Activity {
 			Intent intent = new Intent(getApplicationContext(),
 					SearchUserResult.class);
 			intent.putExtra(TAG_SEARCHTYPE, searchType);
-			intent.putExtra(TAG_SEARCHUSERNAME, searchUserName);
+			intent.putExtra(TAG_SEARCHNAME, searchUserName);
 			startActivity(intent);
 		}
 	}

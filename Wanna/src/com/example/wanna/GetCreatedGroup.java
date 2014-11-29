@@ -13,13 +13,16 @@ import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class GetCreatedGroup extends Activity {
+public class GetCreatedGroup extends ListActivity {
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
 
@@ -67,6 +70,15 @@ public class GetCreatedGroup extends Activity {
 		createdGroupListView = (ListView) findViewById(android.R.id.list);
 		new GetCreatedGroupTask().execute();
 	}
+	
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		String groupID = (String) getCreatedGroupAdapter.getItem(position);
+		Intent intent = new Intent(getApplicationContext(),
+				ViewCreatedGroup.class);
+		intent.putExtra(TAG_GROUPID, groupID);
+		startActivity(intent);
+	}
+	
 	private class GetCreatedGroupTask extends AsyncTask<String, Void, String> {
 		private String groupID;
 		private String groupName;

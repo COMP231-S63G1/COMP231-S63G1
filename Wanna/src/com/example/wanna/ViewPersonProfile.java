@@ -32,9 +32,6 @@ public class ViewPersonProfile extends Activity {
 	SharedPreferences sharedpreferences;
 	private ProgressDialog pDialog;
 
-	ArrayList<HashMap<String, String>> viewProfileInformationList;
-	ArrayList<String[]> createdGroupItemsList = new ArrayList<String[]>();
-	ArrayList<String[]> joinedGroupItemsList = new ArrayList<String[]>();
 	TextView tvProfileNickName;
 	TextView tvProfileGender;
 	TextView tvProfileAge;
@@ -64,11 +61,11 @@ public class ViewPersonProfile extends Activity {
 	// url to get user created event
 	private String urlCountJoinedEvent = UserFunctions.URL_ROOT
 			+ "DB_CountJoinedEvent.php";
-	private String urlCreatedGroupList = UserFunctions.URL_ROOT
-			+ "DB_GetCreatedGroupList.php";
+	private String urlCountCreatedGroup = UserFunctions.URL_ROOT
+			+ "DB_CountCreatedGroup.php";
 	// url to get user created event
-	private String urlJoinedGroupList = UserFunctions.URL_ROOT
-			+ "DB_GetJoinedGroupList.php";
+	private String urlCountJoinedGroup = UserFunctions.URL_ROOT
+			+ "DB_CountJoinedGroup.php";
 	// JSON Node names
 	private static final String TAG_SESSIONID = "sessionid";
 	private static final String TAG_USERID = "userid";
@@ -90,9 +87,9 @@ public class ViewPersonProfile extends Activity {
 	private static final String TAG_GROUPID = "groupID";
 	private static final String TAG_GROUPNAME = "groupName";
 	private static final String TAG_COUNTEVENT = "countEvent";
+	private static final String TAG_COUNTGROUP = "countGroup";
 	
 	JSONObject profileInformation;
-	JSONArray createdGroupList = null;
 	JSONArray joinedGroupList = null;
 
 	@Override
@@ -173,8 +170,7 @@ public class ViewPersonProfile extends Activity {
 				nickName = profileInformation.optString(TAG_NICKNAME);
 				age = profileInformation.optString(TAG_ProfileAge);
 				gender = profileInformation.optString(TAG_ProfileGender);
-				description = profileInformation
-						.optString(TAG_DESCRIPTION);
+				description = profileInformation.optString(TAG_DESCRIPTION);
 			} else {
 			}
 			return null;
@@ -230,20 +226,12 @@ public class ViewPersonProfile extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			if(success == 1){
-				tvGetCreatedEventTextView.setText(countEvent + " Created Event");
+				tvGetCreatedEventTextView.setText(countEvent + " Created Events");
 			}
 			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 			} 
-//			else {
-//				String textShowed = "";
-//				for (String[] arr : createdEventItemsList) {
-//					textShowed += arr[1] + "\n";
-//					System.out.println(textShowed);
-//				}
-//				tvGetCreatedEventTextView.setText(textShowed);
-//			}
 		}
 	}
 
@@ -278,32 +266,20 @@ public class ViewPersonProfile extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			if(success == 1){
-				tvGetJoinedEventTextView.setText(countEvent + " Joined Event");
+				tvGetJoinedEventTextView.setText(countEvent + " Joined Events");
 			}
 			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 			}
-//			if (success == 0) {
-//				Toast.makeText(getApplicationContext(), message,
-//						Toast.LENGTH_SHORT).show();
-//			} else {
-//				String textShowed = "";
-//				for (String[] arr : joinedEventItemsList) {
-//					textShowed += arr[1] + "\n";
-//					System.out.println(textShowed);
-//				}
-//				tvGetJoinedEventTextView.setText(textShowed);
-//			}
 
 		}
 	}
 
 	private class GetCreatedGroupTask extends AsyncTask<String, Void, String> {
-		private String groupID;
-		private String groupName;
 		int success;
 		String message;
+		private int countGroup;
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -316,22 +292,14 @@ public class ViewPersonProfile extends Activity {
 			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_USERTYPE,
 					userType));
 			// getting event details by making HTTP request
-			JSONObject json = jsonParser.getJSONFromUrl(urlCreatedGroupList,
+			JSONObject json = jsonParser.getJSONFromUrl(urlCountCreatedGroup,
 					getCreatedGroupListParams);
 			// json success tag
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
-			if (success == 1) {
-				createdGroupList = json.optJSONArray(TAG_GROUPLIST);
-				// looping through All Products
-				for (int i = 0; i < createdGroupList.length(); i++) {
-					JSONObject event = createdGroupList.optJSONObject(i);
-					groupID = event.optString(TAG_GROUPID);
-					groupName = event.optString(TAG_GROUPNAME);
-					String[] groupItems = { groupID, groupName };
-					createdGroupItemsList.add(groupItems);
-				}
-			} else {
+			if(success == 1){
+				countGroup = json.optInt(TAG_COUNTGROUP);
+			}else {
 
 			}
 			return null;
@@ -340,34 +308,19 @@ public class ViewPersonProfile extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			if(success == 1){
-//				tvGetCreatedEventTextView.setText("Created Group");
+				tvGetCreatedGroupTextView.setText(countGroup + " Created Groups");
 			}
 			if (success != 1) {
-//				tvGetCreatedEventTextView.setText("No Created Group");
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 			}
-//			if (success == 0) {
-//				Toast.makeText(getApplicationContext(), message,
-//						Toast.LENGTH_SHORT).show();
-//			} else {
-//				// getCreatedEventAdapter.setItemList(createdEventItemsList);
-//				// createdEventListView.setAdapter(getCreatedEventAdapter);
-//				String textShowed = "";
-//				for (String[] arr : createdGroupItemsList) {
-//					textShowed += arr[1] + "\n";
-//					System.out.println(textShowed);
-//				}
-//				tvGetCreatedGroupTextView.setText(textShowed);
-//			}
 		}
 	}
 
 	private class GetJoinedGroupTask extends AsyncTask<String, Void, String> {
-		private String groupID;
-		private String groupName;
 		int success;
 		String message;
+		private int countGroup;
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -380,22 +333,14 @@ public class ViewPersonProfile extends Activity {
 			getJoinedGroupListParams.add(new BasicNameValuePair(TAG_USERTYPE,
 					userType));
 			// getting event details by making HTTP request
-			JSONObject json = jsonParser.getJSONFromUrl(urlJoinedGroupList,
+			JSONObject json = jsonParser.getJSONFromUrl(urlCountJoinedGroup,
 					getJoinedGroupListParams);
 			// json success tag
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
-			if (success == 1) {
-				joinedGroupList = json.optJSONArray(TAG_GROUPLIST);
-				// looping through All Products
-				for (int i = 0; i < joinedGroupList.length(); i++) {
-					JSONObject event = joinedGroupList.optJSONObject(i);
-					groupID = event.optString(TAG_GROUPID);
-					groupName = event.optString(TAG_GROUPNAME);
-					String[] groupItems = { groupID, groupName };
-					joinedGroupItemsList.add(groupItems);
-				}
-			} else {
+			if(success == 1){
+				countGroup = json.optInt(TAG_COUNTGROUP);
+			}else {
 
 			}
 			return null;
@@ -404,26 +349,12 @@ public class ViewPersonProfile extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			if(success == 1){
-//				tvGetCreatedEventTextView.setText("Joined Group");
+				tvGetJoinedGroupTextView.setText(countGroup + " Joined Groups");
 			}
 			if (success != 1) {
-//				tvGetCreatedEventTextView.setText("No Joined Group");
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 			}
-//			if (success == 0) {
-//				Toast.makeText(getApplicationContext(), message,
-//						Toast.LENGTH_SHORT).show();
-//			} else {
-//				// getCreatedEventAdapter.setItemList(createdEventItemsList);
-//				// createdEventListView.setAdapter(getCreatedEventAdapter);
-//				String textShowed = "";
-//				for (String[] arr : joinedGroupItemsList) {
-//					textShowed += arr[1] + "\n";
-//					System.out.println(textShowed);
-//				}
-//				tvGetJoinedGroupTextView.setText(textShowed);
-//			}
 		}
 	}
 
