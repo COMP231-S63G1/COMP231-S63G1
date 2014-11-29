@@ -43,8 +43,13 @@ public class EditGroup extends Activity {
 	private String urlUpdateGroup = UserFunctions.URL_ROOT + "DB_UpdateGroup.php";
 	private String urlUploadImage = UserFunctions.URL_ROOT + "saveImage.php";
 	// JSON Node names
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_PERSON = "Person";
+	private static final String TAG_ORGANIZATION = "Organization";
 	private static final int SELECT_PICTURE = 1;
 	private Spinner groupTypeSpinner;
 	private ImageView img;
@@ -58,6 +63,7 @@ public class EditGroup extends Activity {
 	SharedPreferences sharedpreferences;
 	String sessionID;
 	String userID;
+	String userType;
 	String groupID;
 	String groupPrivacy;
 	String groupType;
@@ -71,6 +77,10 @@ public class EditGroup extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_group);
+		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 		Intent intent = getIntent();
 		groupID = intent.getStringExtra(TAG_GROUPID);
 		groupType = intent.getStringExtra("groupType");
@@ -125,10 +135,15 @@ public class EditGroup extends Activity {
 			@Override
 			protected void onPostExecute(String result) {
 				if (success == 1) {
-					Intent intent = new Intent(getApplicationContext(),
-							ViewCreatedGroup.class);
-					intent.putExtra(TAG_GROUPID, groupID);
-					startActivity(intent);
+					if(userType.equals(TAG_PERSON)){
+						Intent intent = new Intent(getApplicationContext(),
+								ViewPersonProfile.class);		
+						startActivity(intent);			
+					}else if(userType.equals(TAG_ORGANIZATION)){
+						Intent intent = new Intent(getApplicationContext(),
+								ViewOrganizationProfile.class);
+						startActivity(intent);						
+					}
 				} 
 				if (success != 1) {
 					Toast.makeText(getApplicationContext(), message,

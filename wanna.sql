@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2014 at 09:56 PM
+-- Generation Time: Nov 29, 2014 at 10:00 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -38,7 +38,18 @@ CREATE TABLE IF NOT EXISTS `event` (
   `eventAddress` varchar(225) DEFAULT NULL,
   `eventPriceRange` varchar(225) DEFAULT NULL,
   `eventDescription` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`eventID`, `eventCreaterID`, `eventType`, `eventName`, `eventImageURI`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES
+(2, 14, 'Sports', 'swiming', NULL, '2014-12-10', '15:59:00', 'Centennial', 'Progress', '10', 'swim'),
+(6, 14, 'Sports', 'basketball', NULL, '2014-12-04', '18:32:00', 'STC', 'stc', '10', 'basketball'),
+(12, 14, 'Sports', 'basketball', NULL, '2014-12-23', '18:32:00', 'STC', 'stc', '10', 'basketball'),
+(13, 18, 'Sports', 'football', NULL, '2014-12-23', '15:38:00', 'downtown', 'yonge', '20', 'football'),
+(14, 18, 'Sports', 'jog', NULL, '2015-02-19', '21:40:00', 'scarborough', 'progress', '5', 'jog');
 
 -- --------------------------------------------------------
 
@@ -50,6 +61,17 @@ CREATE TABLE IF NOT EXISTS `eventjoinin` (
   `userID` int(11) NOT NULL,
   `eventID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `eventjoinin`
+--
+
+INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES
+(14, 2),
+(14, 6),
+(14, 12),
+(18, 13),
+(18, 14);
 
 -- --------------------------------------------------------
 
@@ -103,6 +125,15 @@ CREATE TABLE IF NOT EXISTS `group` (
   `groupDescription` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
+--
+-- Dumping data for table `group`
+--
+
+INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupPrivacy`, `groupType`, `groupName`, `groupImageURI`, `groupDescription`) VALUES
+(1, 14, 'Public', 'Sports', 'games', NULL, 'games'),
+(2, 14, 'Public', 'Sports', 'movie', NULL, 'movies'),
+(3, 18, 'Public', 'Sports', 'camping', NULL, 'camping');
+
 -- --------------------------------------------------------
 
 --
@@ -113,6 +144,15 @@ CREATE TABLE IF NOT EXISTS `groupjoinin` (
   `userID` int(11) NOT NULL,
   `groupID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `groupjoinin`
+--
+
+INSERT INTO `groupjoinin` (`userID`, `groupID`) VALUES
+(14, 1),
+(14, 2),
+(18, 3);
 
 -- --------------------------------------------------------
 
@@ -126,7 +166,14 @@ CREATE TABLE IF NOT EXISTS `organizationprofile` (
   `description` varchar(225) NOT NULL,
   `pictureURI` varchar(225) DEFAULT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `organizationprofile`
+--
+
+INSERT INTO `organizationprofile` (`profileID`, `nickName`, `description`, `pictureURI`, `userid`) VALUES
+(7, 'CIPS', 'cips', NULL, 18);
 
 -- --------------------------------------------------------
 
@@ -142,18 +189,15 @@ CREATE TABLE IF NOT EXISTS `personprofile` (
   `description` varchar(225) NOT NULL,
   `pictureURI` varchar(225) DEFAULT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `personprofile`
 --
 
 INSERT INTO `personprofile` (`profileID`, `nickName`, `gender`, `age`, `description`, `pictureURI`, `userid`) VALUES
-(8, 'AK', 'Male', 22, 'cool', NULL, 23),
-(10, 'yonastecle', 'Male', 31, 'rfgh', NULL, 25),
-(13, 'yu', 'Female', 26, 'yu', NULL, 28),
-(14, 'yu', 'Female', 26, 'des', NULL, 29),
-(15, 'Darren', 'Male', 25, 'monkey', NULL, 31);
+(12, 'DL', 'Male', 24, 'so cool', NULL, 14),
+(13, 'AK', 'Male', 22, 'handsome', NULL, 15);
 
 -- --------------------------------------------------------
 
@@ -245,21 +289,18 @@ CREATE TABLE IF NOT EXISTS `users` (
 `userid` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varbinary(80) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+  `password` varbinary(80) NOT NULL,
+  `userType` varchar(12) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userid`, `username`, `email`, `password`) VALUES
-(23, 'Anson', 'ansonkong1992@gmail.com', 0x2a36424234383337454237343332393130354545343536384444413744433637454432434132414439),
-(24, 'Yu', 'changyu19982013@gmail.com', 0x2a36424234383337454237343332393130354545343536384444413744433637454432434132414439),
-(25, 'yonas', 'yonastecle@hotmail.com', 0x2a32413536413432344333443733463237373938464641303532323031443433393038463045323941),
-(28, 'yu', 'changyu19882013@gmail.com', 0x2a39434334433138463939383735334437444641324438383038433044423732414441323543314230),
-(29, 'yulisa', '584287240@qq.com', 0x2a36424234383337454237343332393130354545343536384444413744433637454432434132414439),
-(30, 'yu', 'changyu@gmail.com', 0x2a36424234383337454237343332393130354545343536384444413744433637454432434132414439),
-(31, 'Darren', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537);
+INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`) VALUES
+(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person'),
+(15, 'Anson Kong', 'ansonkong1992@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person'),
+(18, 'CIPS', 'gulang15@hotmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Organization');
 
 --
 -- Indexes for dumped tables
@@ -269,7 +310,7 @@ INSERT INTO `users` (`userid`, `username`, `email`, `password`) VALUES
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
- ADD PRIMARY KEY (`eventID`), ADD KEY `eventID` (`eventID`), ADD KEY `eventCreaterID` (`eventCreaterID`);
+ ADD PRIMARY KEY (`eventID`), ADD UNIQUE KEY `eventCreaterID_2` (`eventCreaterID`,`eventType`,`eventName`,`eventImageURI`,`eventDate`,`eventTime`,`eventVenue`,`eventAddress`,`eventPriceRange`), ADD KEY `eventID` (`eventID`), ADD KEY `eventCreaterID` (`eventCreaterID`);
 
 --
 -- Indexes for table `eventjoinin`
@@ -293,25 +334,25 @@ ALTER TABLE `eventtype_table`
 -- Indexes for table `group`
 --
 ALTER TABLE `group`
- ADD PRIMARY KEY (`groupID`), ADD KEY `groupID` (`groupID`), ADD KEY `groupCreaterID` (`groupCreaterID`);
+ ADD PRIMARY KEY (`groupID`), ADD UNIQUE KEY `groupCreaterID_2` (`groupCreaterID`,`groupPrivacy`,`groupType`,`groupName`,`groupImageURI`), ADD KEY `groupID` (`groupID`), ADD KEY `groupCreaterID` (`groupCreaterID`);
 
 --
 -- Indexes for table `groupjoinin`
 --
 ALTER TABLE `groupjoinin`
- ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `profileID` (`userID`), ADD KEY `groupID` (`groupID`);
+ ADD PRIMARY KEY (`userID`,`groupID`), ADD UNIQUE KEY `groupID_2` (`groupID`), ADD KEY `profileID` (`userID`), ADD KEY `groupID` (`groupID`);
 
 --
 -- Indexes for table `organizationprofile`
 --
 ALTER TABLE `organizationprofile`
- ADD PRIMARY KEY (`profileID`), ADD KEY `userid` (`userid`);
+ ADD PRIMARY KEY (`profileID`), ADD UNIQUE KEY `userid_2` (`userid`), ADD UNIQUE KEY `userid_3` (`userid`), ADD UNIQUE KEY `pictureURI` (`pictureURI`), ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `personprofile`
 --
 ALTER TABLE `personprofile`
- ADD PRIMARY KEY (`profileID`), ADD KEY `userid` (`userid`);
+ ADD PRIMARY KEY (`profileID`), ADD UNIQUE KEY `userid_2` (`userid`), ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `uploads`
@@ -339,7 +380,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `eventlocation_table`
 --
@@ -359,12 +400,12 @@ MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `organizationprofile`
 --
 ALTER TABLE `organizationprofile`
-MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `personprofile`
 --
 ALTER TABLE `personprofile`
-MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `uploads`
 --
@@ -379,7 +420,7 @@ MODIFY `userLocation_ID` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- Constraints for dumped tables
 --

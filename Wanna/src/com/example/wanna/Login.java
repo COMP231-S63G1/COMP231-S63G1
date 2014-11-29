@@ -34,6 +34,7 @@ public class Login extends Activity {
 	String loginPassword;
 	int success;
 	String message;
+	String userType;
 
 	SharedPreferences sharedpreferences;
 
@@ -49,6 +50,8 @@ public class Login extends Activity {
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_LOGINEMAIL = "loginEmail";
 	private static final String TAG_LOGINPASSWORD = "loginPassword";
+	private static final String TAG_PERSON = "Person";
+	private static final String TAG_ORGANIZATION = "Organization";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -109,7 +112,7 @@ public class Login extends Activity {
 		protected String doInBackground(String... urls) {
 //			loginEmail = etEmail.getText().toString();
 //			loginPassword = etPassword.getText().toString();
-			 loginEmail = "gulang15@gmail.com";
+			 loginEmail = "gulang15@hotmail.com";
 			 loginPassword = "123";
 			List<NameValuePair> loginParams = new ArrayList<NameValuePair>();
 			loginParams.add(new BasicNameValuePair(TAG_LOGINEMAIL, loginEmail));
@@ -126,9 +129,16 @@ public class Login extends Activity {
 				editor.putString(TAG_PROFILEID, json.optString(TAG_PROFILEID));
 				editor.putString(TAG_NICKNAME, json.optString(TAG_NICKNAME));
 				editor.commit();
-				Intent intent = new Intent(getApplicationContext(),
-						PersonLoginSuccess.class);
-				startActivity(intent);
+				userType = json.optString(TAG_USERTYPE);
+				if(userType.equals(TAG_PERSON)){
+					Intent intent = new Intent(getApplicationContext(),
+							PersonLoginSuccess.class);		
+					startActivity(intent);			
+				}else if(userType.equals(TAG_ORGANIZATION)){
+					Intent intent = new Intent(getApplicationContext(),
+							OrganizationLoginSuccess.class);
+					startActivity(intent);						
+				}
 			} else {
 			}
 			return null;

@@ -55,8 +55,13 @@ public class EditEvent extends Activity {
 			+ "DB_UpdateEvent.php";
 	private String urlUploadImage = UserFunctions.URL_ROOT+"saveImage.php";
 	// JSON Node names
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_PERSON = "Person";
+	private static final String TAG_ORGANIZATION = "Organization";
 	private static final int SELECT_PICTURE = 1;
 	// tag for check whether the photo is uploaded succeed
 	private static final String TAG = "upload";
@@ -77,6 +82,7 @@ public class EditEvent extends Activity {
 		SharedPreferences sharedpreferences;
 		String sessionID;
 		String userID;
+		String userType;
 		String eventID;
 		int success;
 		String message;
@@ -87,6 +93,10 @@ public class EditEvent extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_event);
+		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 		Intent intent = getIntent();
 		eventID=intent.getStringExtra("eventID");
 		String eventType = intent.getStringExtra("eventType");
@@ -258,9 +268,15 @@ public class EditEvent extends Activity {
 				message = json.optString(TAG_MESSAGE);
 				if (success == 1) {
 					// successfully created product						
-					Intent intent = new Intent(getApplicationContext(),
-						ViewPersonProfile.class);
-					startActivity(intent);
+					if(userType.equals(TAG_PERSON)){
+						Intent intent = new Intent(getApplicationContext(),
+								ViewPersonProfile.class);		
+						startActivity(intent);			
+					}else if(userType.equals(TAG_ORGANIZATION)){
+						Intent intent = new Intent(getApplicationContext(),
+								ViewOrganizationProfile.class);
+						startActivity(intent);						
+					}
 				} else {
 					// failed to create product
 				}

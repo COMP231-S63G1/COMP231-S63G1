@@ -37,7 +37,7 @@ public class RegisterOrganization extends Activity {
 		private static final String TAG_MESSAGE = "message";
 		private static final String TAG_USERID = "userid";
 		private static final String TAG_USERTYPE = "userType";
-		private static final String TAG_USERNAME = "username";
+		private static final String TAG_USERNAME = "userName";
     	private static final String TAG_EMAIL = "email";
     	private static final String TAG_PASSWORD = "password";
 
@@ -112,15 +112,14 @@ public class RegisterOrganization extends Activity {
 	    		JSONObject json = jsonParser.getJSONFromUrl(urlRegister, registerParams);
 	    		success = json.optInt(TAG_SUCCESS);
 				message = json.optString(TAG_MESSAGE);
-				userid = json.optString(TAG_USERID);
-				System.out.println("PHP¡¡Message " + message);    		
+				userid = json.optString(TAG_USERID);   		
 				return null;
 	        }        
 
 			@Override
 			protected void onPostExecute(String result) {
 			if(success == 1){
-				Intent intent = new Intent(getApplicationContext(), CreatePersonProfile.class);
+				Intent intent = new Intent(getApplicationContext(), CreateOrganizationProfile.class);
 				intent.putExtra(TAG_USERID, userid);
 				intent.putExtra(TAG_USERTYPE, userType);
 				startActivity(intent);					

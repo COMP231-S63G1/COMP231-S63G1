@@ -4,10 +4,10 @@
 $response = array();
  
 // check for required fields
-if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['userNickName']) && isset($_POST['userDescription'])) {
+if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['nickName']) && isset($_POST['userDescription'])) {
 	$userid = $_POST['userid'];	
 	$userType = $_POST['userType'];
-    $userNickName = $_POST['userNickName'];
+    $nickName = $_POST['nickName'];
     $userDescription = $_POST['userDescription'];
 
     // include db connect class
@@ -17,11 +17,11 @@ if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['userNi
     $db = new DB_Connect();
  
     // mysql inserting a new row
-    $result = mysql_query("INSERT INTO `organizationprofile `(`nickName`, `description`, `userid`) VALUES('$userNickName', '$userDescription', '$userid')");
+    $result = mysql_query("INSERT INTO `organizationprofile` (`nickName`, `description`, `userid`) VALUES('$nickName', '$userDescription', '$userid')");
  
     // check if row inserted or not
     if ($result) {
-		$selectResult = mysql_query("SELECT profileID FROM profile WHERE userid ='$userid'");
+		$selectResult = mysql_query("SELECT `profileID` FROM `organizationprofile` WHERE `userid` ='$userid'");
 		if(!empty($selectResult)){
 		if (mysql_num_rows($selectResult) > 0) {
 			// successfully inserted into database
@@ -30,7 +30,7 @@ if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['userNi
 			session_start();
 			$_SESSION['userid'] = $userid;
 			$_SESSION['userType'] = $userType;
-			$_SESSION['nickName'] = $userNickName;
+			$_SESSION['nickName'] = $nickName;
 			$_SESSION['profileid'] = $selectResult['profileID'];
 			$sessionid=session_id();
 			$_SESSION['$sessionid'] = $sessionid;
