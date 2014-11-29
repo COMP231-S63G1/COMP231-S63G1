@@ -77,6 +77,8 @@ public class CreateEvent extends Activity {
 	private static final String TAG_EVENTADDRESS = "eventAddress";
 	private static final String TAG_PRICERANGE = "eventPriceRange";
 	private static final String TAG_DESCRIPTION = "eventDescription";
+	private static final String TAG_PERSON = "Person";
+	private static final String TAG_ORGANIZATION = "Organization";
 	
 	// tag for check whether the photo is uploaded succeed
 	private Spinner eventTypeSpinner;
@@ -221,9 +223,15 @@ public class CreateEvent extends Activity {
 
 			if (success == 1) {
 				// successfully created product					
-				Intent intent = new Intent(getApplicationContext(),
-						ViewPersonProfile.class);
-				startActivity(intent);
+				if(userType.equals(TAG_PERSON)){
+					Intent intent = new Intent(getApplicationContext(),
+							ViewPersonProfile.class);		
+					startActivity(intent);			
+				}else if(userType.equals(TAG_ORGANIZATION)){
+					Intent intent = new Intent(getApplicationContext(),
+							ViewOrganizationProfile.class);
+					startActivity(intent);						
+				}
 			} else {
 				// failed to create product
 			}			

@@ -60,6 +60,8 @@ public class ViewCreatedGroup extends ListActivity {
 				private static final String TAG_MESSAGE = "message";
 				private static final String TAG_GroupList = "groupMemberList";
 				private static final String TAG_MEMBERNAME = "groupMemberName";
+				private static final String TAG_PERSON = "Person";
+				private static final String TAG_ORGANIZATION = "Organization";
 
 				JSONObject groupDetail;
 				
@@ -196,8 +198,15 @@ public class ViewCreatedGroup extends ListActivity {
 			}
 			
 			public void onCancel(View view){	
-				Intent intent = new Intent(this, PersonLoginSuccess.class);
-				startActivity(intent);
+				if(userType.equals(TAG_PERSON)){
+					Intent intent = new Intent(getApplicationContext(),
+							PersonLoginSuccess.class);		
+					startActivity(intent);			
+				}else if(userType.equals(TAG_ORGANIZATION)){
+					Intent intent = new Intent(getApplicationContext(),
+							OrganizationLoginSuccess.class);
+					startActivity(intent);						
+				}
 				}
 			public void onEditGroupDetailButtonClick(View view){
 				Intent intent = new Intent(getApplicationContext(), EditGroup.class);

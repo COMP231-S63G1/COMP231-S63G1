@@ -34,23 +34,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/tvProfileNickNameLabel" />
 
-            <TextView
-                android:id="@+id/tvProfileGenderValue"
-                style="@style/FormTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvProfileNickNameValue"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp" />
-
-            <TextView
-                android:id="@+id/tvProfileAgeValue"
-                style="@style/FormTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvProfileGenderValue"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/tvProfileDescriptionLabel"
@@ -67,7 +50,7 @@
                 style="@style/FormTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvProfileAgeValue"
+                android:layout_below="@id/tvProfileNickNameValue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/tvProfileDescriptionLabel" />
@@ -97,10 +80,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:clickable="true"
-                        android:onClick="GetCreateGroupValueOnClick" />
-                </TableRow>
-
-                <TableRow>
+                        android:onClick="GetCreateEventValueOnClick" />
                 </TableRow>
 
                 <TableRow>
@@ -123,9 +103,6 @@
                         android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:onClick="GetCreateGroupValueOnClick" />
-                </TableRow>
-
-                <TableRow>
                 </TableRow>
 
                 <TableRow>

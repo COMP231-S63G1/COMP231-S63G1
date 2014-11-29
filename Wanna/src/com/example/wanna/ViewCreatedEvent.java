@@ -47,6 +47,9 @@ public class ViewCreatedEvent extends Activity {
 			+ "DB_ViewEvent.php";
 
 	// JSON Node names
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_EventDetail = "eventDetail";
@@ -59,6 +62,8 @@ public class ViewCreatedEvent extends Activity {
 	private static final String TAG_EventLocation = "eventLocation";
 	private static final String TAG_EventPriceRange = "eventPriceRange";
 	private static final String TAG_EventDescription = "eventDescription";
+	private static final String TAG_PERSON = "Person";
+	private static final String TAG_ORGANIZATION = "Organization";
 
 	JSONObject eventDetail;
 	// session variables
@@ -66,6 +71,7 @@ public class ViewCreatedEvent extends Activity {
 	SharedPreferences sharedpreferences;
 	String sessionID;
 	String userID;
+	String userType;
 	int success;
 	String message;
 
@@ -77,6 +83,9 @@ public class ViewCreatedEvent extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_created_event);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 		// getting event details from intent
 		Intent intent = getIntent();
 
@@ -98,8 +107,15 @@ public class ViewCreatedEvent extends Activity {
 	}
 
 	public void onViewEventDetailBackClick(View view) {
-		Intent i = new Intent(getApplicationContext(), PersonLoginSuccess.class);
-		startActivity(i);
+		if (userType.equals(TAG_PERSON)) {
+			Intent intent = new Intent(getApplicationContext(),
+					PersonLoginSuccess.class);
+			startActivity(intent);
+		} else if (userType.equals(TAG_ORGANIZATION)) {
+			Intent intent = new Intent(getApplicationContext(),
+					OrganizationLoginSuccess.class);
+			startActivity(intent);
+		}
 	}
 
 	private class ViewEventDetailTask extends AsyncTask<String, Void, String> {
@@ -154,10 +170,9 @@ public class ViewCreatedEvent extends Activity {
 						.optString(TAG_EventPriceRange));
 				tvEventDescription.setText(eventDetail
 						.optString(TAG_EventDescription));
-			}
-			else{
+			} else {
 				Toast.makeText(getApplicationContext(), message,
-						Toast.LENGTH_SHORT).show();				
+						Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

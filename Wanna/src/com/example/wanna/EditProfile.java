@@ -45,6 +45,8 @@ public class EditProfile extends Activity {
 	private static final String TAG_DESCRIPTION = "description";
 	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_PERSON = "Person";
+	private static final String TAG_ORGANIZATION = "Organization";
 
 	EditText txtUserNickName;
 	EditText txtUserDescription;
@@ -124,9 +126,15 @@ public class EditProfile extends Activity {
 				Editor editor = sharedpreferences.edit();
 				editor.putString(TAG_NICKNAME, json.optString(TAG_NICKNAME));
 				editor.commit();
-				Intent intent = new Intent(getApplicationContext(),
-						ViewPersonProfile.class);
-				startActivity(intent);
+				if(userType.equals(TAG_PERSON)){
+					Intent intent = new Intent(getApplicationContext(),
+							ViewPersonProfile.class);		
+					startActivity(intent);			
+				}else if(userType.equals(TAG_ORGANIZATION)){
+					Intent intent = new Intent(getApplicationContext(),
+							ViewOrganizationProfile.class);
+					startActivity(intent);						
+				}
 			} else {
 			}
 			return null;

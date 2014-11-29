@@ -125,7 +125,7 @@ public class CreateOrganizationProfile extends Activity {
 				if (success == 1) {
 					// successfully created profile
 					Intent intent = new Intent(getApplicationContext(),
-							ViewPersonProfile.class);
+							ViewOrganizationProfile.class);
 					startActivity(intent);
 				} else {
 					Toast.makeText(getApplicationContext(), message,

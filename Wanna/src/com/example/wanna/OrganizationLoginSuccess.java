@@ -31,6 +31,7 @@ public class OrganizationLoginSuccess extends Activity {
 	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_PERSON = "Person";
   
     TextView tvSessionID;
     TextView tvTextwelcome;
@@ -59,7 +60,11 @@ public class OrganizationLoginSuccess extends Activity {
 		userID = sharedpreferences.getString(TAG_USERID, "");
 		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 		nickName = sharedpreferences.getString(TAG_NICKNAME, "");
-		
+		if (userType.equals(TAG_PERSON)) {
+			Intent intent = new Intent(getApplicationContext(),
+					PersonLoginSuccess.class);
+			startActivity(intent);
+		} 
         tvTextwelcome = (TextView) findViewById(R.id.textwelcome);
         tvSessionID = (TextView) findViewById(R.id.textView);
         
@@ -72,7 +77,7 @@ public class OrganizationLoginSuccess extends Activity {
 		}
     
     public void onViewProfileClick(View view){	
-		Intent intent = new Intent(this, ViewPersonProfile.class);
+		Intent intent = new Intent(this, ViewOrganizationProfile.class);
 		startActivity(intent);
 		}
     
@@ -95,10 +100,11 @@ public class OrganizationLoginSuccess extends Activity {
 		@Override
 		protected String doInBackground(String... urls) {
 			List<NameValuePair> checkLoginParams = new ArrayList<NameValuePair>();
-			checkLoginParams
-					.add(new BasicNameValuePair(TAG_SESSIONID, sessionID));
+			checkLoginParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
 			checkLoginParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
+			checkLoginParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			JSONObject json = jsonParser.getJSONFromUrl(urlCheckLogin,
 					checkLoginParams);
 			success = json.optInt(TAG_SUCCESS);

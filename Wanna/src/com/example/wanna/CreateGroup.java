@@ -50,6 +50,8 @@ public class CreateGroup extends Activity {
 	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";	
 	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_PERSON = "Person";
+	private static final String TAG_ORGANIZATION = "Organization";
 
 	//session variables 
 	public static final String MyPREFERENCES = "Wanna";
@@ -152,9 +154,15 @@ public class CreateGroup extends Activity {
 		protected void onPostExecute(String result) {
 			if (success == 1) {
 				// successfully created profile
-				Intent intent = new Intent(getApplicationContext(),
-						PersonLoginSuccess.class);
-				startActivity(intent);
+				if(userType.equals(TAG_PERSON)){
+					Intent intent = new Intent(getApplicationContext(),
+							ViewPersonProfile.class);		
+					startActivity(intent);			
+				}else if(userType.equals(TAG_ORGANIZATION)){
+					Intent intent = new Intent(getApplicationContext(),
+							ViewOrganizationProfile.class);
+					startActivity(intent);						
+				}
 			} else {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();

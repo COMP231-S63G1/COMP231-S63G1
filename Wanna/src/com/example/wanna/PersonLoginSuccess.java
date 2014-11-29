@@ -32,6 +32,7 @@ public class PersonLoginSuccess extends Activity {
 	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_ORGANIZATION = "Organization";
   
     TextView tvSessionID;
     TextView tvTextwelcome;
@@ -60,7 +61,11 @@ public class PersonLoginSuccess extends Activity {
 		userID = sharedpreferences.getString(TAG_USERID, "");
 		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 		nickName = sharedpreferences.getString(TAG_NICKNAME, "");
-		
+		if (userType.equals(TAG_ORGANIZATION)) {
+			Intent intent = new Intent(getApplicationContext(),
+					OrganizationLoginSuccess.class);
+			startActivity(intent);
+		}
         tvTextwelcome = (TextView) findViewById(R.id.textwelcome);
         tvSessionID = (TextView) findViewById(R.id.textView);
         

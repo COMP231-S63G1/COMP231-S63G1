@@ -48,17 +48,15 @@ public class ViewOrganizationProfile extends Activity {
 	String userType;
 	String nickName;
 	String description;
-	String message;
-	int success;
 
 	// url to view profile info
 	private String urlViewProfileInformation = UserFunctions.URL_ROOT
 			+ "DB_ViewOrganizationProfile.php";
 	// url to get user created event
-	private String urlCreatedEventList = UserFunctions.URL_ROOT
-			+ "DB_GetCreatedEventList.php";
-	private String urlCreatedGroupList = UserFunctions.URL_ROOT
-			+ "DB_GetCreatedGroupList.php";
+	private String urlCountCreatedEvent = UserFunctions.URL_ROOT
+			+ "DB_CountCreatedEvent.php";
+	private String urlCountCreatedGroup = UserFunctions.URL_ROOT
+			+ "DB_CountCreatedGroup.php";
 	// JSON Node names
 	private static final String TAG_SESSIONID = "sessionid";
 	private static final String TAG_USERID = "userid";
@@ -76,6 +74,9 @@ public class ViewOrganizationProfile extends Activity {
 	private static final String TAG_EVENTNAME = "eventName";
 	private static final String TAG_GROUPID = "groupID";
 	private static final String TAG_GROUPNAME = "groupName";
+	private static final String TAG_COUNTEVENT = "countEvent";
+	private static final String TAG_COUNTGROUP = "countGroup";
+	
 	JSONObject profileInformation;
 	JSONArray createdEventList = null;
 	JSONArray createdGroupList = null;
@@ -99,6 +100,7 @@ public class ViewOrganizationProfile extends Activity {
 		new GetCreatedEventTask().execute();
 		new GetCreatedGroupTask().execute();
 	}
+	
 	public void onViewProfileInformationBackClick(View view) {
 		Intent intent = new Intent(getApplicationContext(), OrganizationLoginSuccess.class);
 		startActivity(intent);
@@ -113,6 +115,8 @@ public class ViewOrganizationProfile extends Activity {
 
 	private class ViewProfileInformationTask extends
 			AsyncTask<String, Void, String> {
+		int success;
+		String message;
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -164,8 +168,9 @@ public class ViewOrganizationProfile extends Activity {
 	}
 
 	private class GetCreatedEventTask extends AsyncTask<String, Void, String> {
-		private String eventID;
-		private String eventName;
+		private int success;
+		private String message;
+		private int countEvent;
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -175,49 +180,39 @@ public class ViewOrganizationProfile extends Activity {
 					sessionID));
 			getCreatedEventListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
-			getCreatedEventListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+			getCreatedEventListParams.add(new BasicNameValuePair(TAG_USERTYPE,
+					userType));
 			// getting event details by making HTTP request
-			JSONObject json = jsonParser.getJSONFromUrl(urlCreatedEventList,
+			JSONObject json = jsonParser.getJSONFromUrl(urlCountCreatedEvent,
 					getCreatedEventListParams);
 			// json success tag
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
-			if (success == 1) {
-				createdEventList = json.optJSONArray(TAG_EVENTLIST);
-				// looping through All Products
-				for (int i = 0; i < createdEventList.length(); i++) {
-					JSONObject event = createdEventList.optJSONObject(i);
-					eventID = event.optString(TAG_EVENTID);
-					eventName = event.optString(TAG_EVENTNAME);
-					String[] eventItems = { eventID, eventName };
-					createdEventItemsList.add(eventItems);
-				}
+			if(success == 1){
+			countEvent = json.optInt(TAG_COUNTEVENT);
 			} else {
-				
 			}
 			return null;
 		}
 
+
 		@Override
 		protected void onPostExecute(String result) {
-			if (success == 0) {
+			if(success == 1){
+				tvGetCreatedEventTextView.setText(countEvent + " Created Events");
+			}
+			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			}
-			else{
-				String textShowed="";
-				for(String[] arr : createdEventItemsList){
-					textShowed+=arr[1]+"\n";
-					System.out.println(textShowed);
-				}
-				tvGetCreatedEventTextView.setText(textShowed);
-				}
+			} 
 		}
 	}
 	
 	private class GetCreatedGroupTask extends AsyncTask<String, Void, String> {
-		private String groupID;
-		private String groupName;
+		int success;
+		String message;
+		private int countGroup;
+
 		@Override
 		protected String doInBackground(String... urls) {
 			// Building Parameters
@@ -226,44 +221,31 @@ public class ViewOrganizationProfile extends Activity {
 					sessionID));
 			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
-			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+			getCreatedGroupListParams.add(new BasicNameValuePair(TAG_USERTYPE,
+					userType));
 			// getting event details by making HTTP request
-			JSONObject json = jsonParser.getJSONFromUrl(urlCreatedGroupList,
+			JSONObject json = jsonParser.getJSONFromUrl(urlCountCreatedGroup,
 					getCreatedGroupListParams);
 			// json success tag
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
-			if (success == 1) {
-				createdGroupList = json.optJSONArray(TAG_GROUPLIST);
-				// looping through All Products
-				for (int i = 0; i < createdGroupList.length(); i++) {
-					JSONObject event = createdGroupList.optJSONObject(i);
-					groupID = event.optString(TAG_GROUPID);
-					groupName = event.optString(TAG_GROUPNAME);
-					String[] groupItems = { groupID, groupName };
-					createdGroupItemsList.add(groupItems);
-				}
-			} else {
-				
+			if(success == 1){
+				countGroup = json.optInt(TAG_COUNTGROUP);
+			}else {
+
 			}
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
-			if (success == 0) {
+			if(success == 1){
+				tvGetCreatedGroupTextView.setText(countGroup + " Created Groups");
+			}
+			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 			}
-			else{
-
-				String textShowed="";
-				for(String[] arr : createdGroupItemsList){
-					textShowed+=arr[1]+"\n";
-					System.out.println(textShowed);
-				}
-				tvGetCreatedGroupTextView.setText(textShowed);
-				}
 		}
 	}
 	
