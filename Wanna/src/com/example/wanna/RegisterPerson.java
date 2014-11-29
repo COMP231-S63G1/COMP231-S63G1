@@ -123,8 +123,7 @@ public class RegisterPerson extends Activity {
     		JSONObject json = jsonParser.getJSONFromUrl(urlRegister, registerParams);
     		success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
-			userid = json.optString(TAG_USERID);
-			System.out.println("PHP¡¡Message " + message);    		
+			userid = json.optString(TAG_USERID);  		
 			return null;
         }        
 

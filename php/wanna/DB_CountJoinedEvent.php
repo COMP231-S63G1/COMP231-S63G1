@@ -11,33 +11,24 @@ require_once '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
 
-        $result = mysql_query("SELECT `eventID`, `eventName` FROM `event` where `eventCreaterID` = $userID");	
+        $result = mysql_query("SELECT `eventID` FROM `eventjoinin` WHERE `userID` = $userID");	
 	if (!empty($result)) {
         // check for empty result
         if (mysql_num_rows($result) > 0) {
 			// looping through all results
-			// products node
-			$response["eventList"] = array();
-			while ($row = mysql_fetch_array($result)) {
-				// temp user array
-				$event = array();
-				$event["eventID"] = $row["eventID"];
-				$event["eventName"] = $row["eventName"];
-				// push single event into final response array
-				array_push($response["eventList"], $event);
+			while($row=mysql_fetch_array($result))  {
+				$countEvent = $row['COUNT(`eventID`)'];
 			}
-			//$result = mysql_fetch_array($result);
-			
-			//$response["eventList"] = $result;           
+			$response["countEvent"] = $countEvent;
             // success
             $response["success"] = 1;
-			$response["message"] = "Get created event";
+	    $response["message"] = "Get event name";
             // echo no users JSON
             echo json_encode($response);
 			}else{          
             // failed
             $response["success"] = 0;
-			$response["message"] = "No created event";
+	    $response["message"] = "No event name";
             // echo no users JSON
             echo json_encode($response);
 			}
