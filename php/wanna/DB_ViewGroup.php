@@ -16,7 +16,8 @@ $db = new DB_Connect();
 
 require_once '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
-	$userID=$_SESSION['userid'];
+	$userID=$_SESSION["userid"];
+	if (isset($_POST["groupID"])) {
 	// get group detail group table
    $groupID = $_POST['groupID'];
     $result = mysql_query("SELECT * FROM `group` WHERE `groupID`=$groupID");
@@ -35,16 +36,15 @@ if($sessionSuccess == 1){
             // success
             $response["success"] = 1; 
             // user node
-            $response["groupDetail"] = array();
- 
+            $response["groupDetail"] = array(); 
             array_push($response["groupDetail"], $groupDetail);
- 
+			$response["message"] = "Get group success"; 
             // echoing JSON response
             echo json_encode($response);
         } else {
             // no group found
             $response["success"] = 0;
- 
+			$response["message"] = "Get group failed"; 
             // echo no users JSON
             echo json_encode($response);
         }
@@ -56,6 +56,13 @@ if($sessionSuccess == 1){
         // echo no users JSON
         echo json_encode($response);
     }
+}
+else{
+	// failed
+	$response["success"] = 0;
+	$response["message"] = "Pass data failed";
+	echo json_encode($response);
+}
 }else{
 		// failed
 		$response["success"] = 0;

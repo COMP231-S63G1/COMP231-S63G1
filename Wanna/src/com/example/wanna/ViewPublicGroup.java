@@ -55,11 +55,11 @@ public class ViewPublicGroup extends ListActivity {
 	private static final String TAG_USERID = "userid";
 	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_GroupDetail = "groupDetail";
-	private static final String TAG_GroupID = "groupID";
-	private static final String TAG_GroupType = "groupType";
-	private static final String TAG_GroupName = "groupName";
-	private static final String TAG_GroupDescription = "groupDescription";
+	private static final String TAG_GROUPDETAIL = "groupDetail";
+	private static final String TAG_GROUPID = "groupID";
+	private static final String TAG_GROUPTYPE = "groupType";
+	private static final String TAG_GROUPNAME = "groupName";
+	private static final String TAG_GROUPDESCRIPTON = "groupDescription";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_GroupList = "groupMemberList";
 	private static final String TAG_MEMBERNAME = "groupMemberName";
@@ -78,8 +78,6 @@ public class ViewPublicGroup extends ListActivity {
 	String description;
 	String name;
 	String type;
-	int success;
-	String message;
 	String memberName;
 
 	// group member list
@@ -96,7 +94,7 @@ public class ViewPublicGroup extends ListActivity {
 		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 
 		Intent intent = getIntent();
-		groupID = intent.getStringExtra(TAG_GroupID);
+		groupID = intent.getStringExtra(TAG_GROUPID);
 		// Edit Text
 		tvGroupTitle = (TextView) findViewById(R.id.tvGroupNameValue);
 		tvGroupType = (TextView) findViewById(R.id.tvGroupTypeValue);
@@ -111,11 +109,10 @@ public class ViewPublicGroup extends ListActivity {
 	}
 
 	private class ViewGroupDetailTask extends AsyncTask<String, Void, String> {
-
+		private int success;
+		private String message;
 		@Override
 		protected String doInBackground(String... urls) {
-			// Check for success tag
-			int success;
 			// Building Parameters
 			List<NameValuePair> viewGroupDatailParams = new ArrayList<NameValuePair>();
 			viewGroupDatailParams.add(new BasicNameValuePair(TAG_SESSIONID,
@@ -125,7 +122,7 @@ public class ViewPublicGroup extends ListActivity {
 			viewGroupDatailParams.add(new BasicNameValuePair(TAG_USERTYPE,
 					userType));
 			viewGroupDatailParams
-					.add(new BasicNameValuePair("groupID", groupID));
+					.add(new BasicNameValuePair(TAG_GROUPID, groupID));
 			// getting event details by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlViewGroupDetail,
 					viewGroupDatailParams);
@@ -134,14 +131,13 @@ public class ViewPublicGroup extends ListActivity {
 			message = json.optString(TAG_MESSAGE);
 			if (success == 1) {
 				// successfully received event details
-				JSONArray groupDetailArray = json.optJSONArray(TAG_GroupDetail); // JSON
-																					// Array
+				JSONArray groupDetailArray = json.optJSONArray(TAG_GROUPDETAIL); 
 				// get first group object from JSON Array
 				groupDetail = groupDetailArray.optJSONObject(0);
 				// group with this goupID found
-				description = groupDetail.optString(TAG_GroupDescription);
-				name = groupDetail.optString(TAG_GroupName);
-				type = groupDetail.optString(TAG_GroupType);
+				description = groupDetail.optString(TAG_GROUPDESCRIPTON);
+				name = groupDetail.optString(TAG_GROUPNAME);
+				type = groupDetail.optString(TAG_GROUPTYPE);
 			} else {
 			}
 			return null;
@@ -162,8 +158,9 @@ public class ViewPublicGroup extends ListActivity {
 		}
 	}
 
-	private class DisplayGroupMemberTask extends
-			AsyncTask<String, Void, String> {
+	private class DisplayGroupMemberTask extends AsyncTask<String, Void, String> {
+		private int success;
+		private String message;
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -219,6 +216,8 @@ public class ViewPublicGroup extends ListActivity {
 	}
 
 	private class JoinGroupTask extends AsyncTask<String, Void, String> {
+		private int success;
+		private String message;
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
