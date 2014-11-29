@@ -23,18 +23,6 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="68dp"
-        android:layout_marginTop="27dp"
-        android:text="@string/searchResultsTv"
-        android:textColor="#48D1CC"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/tvSearchName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,5 +61,16 @@
         android:onClick="ViewDetails1"
         android:text="placeholder"
         android:textColor="#48D1CC" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imgView1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="49dp"
+        android:text="@string/searchResultsTv"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
 
 </RelativeLayout>

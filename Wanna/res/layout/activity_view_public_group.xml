@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="#48D1CC"
+    >
 
     <ScrollView
         android:id="@+id/viewPrivateGroupScrollView"
@@ -23,7 +25,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Group title:" />
+                android:text="Group title:" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvGroupNameValue"
@@ -32,7 +36,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/tvGroupNameLabel" />
+                android:layout_toRightOf="@id/tvGroupNameLabel" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvGroupTypeLabel"
@@ -42,7 +48,9 @@
                 android:layout_below="@id/tvGroupNameLabel"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Group Type: " />
+                android:text="Group Type: " 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvGroupTypeValue"
@@ -52,7 +60,9 @@
                 android:layout_below="@id/tvGroupNameValue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/tvGroupTypeLabel" />
+                android:layout_toRightOf="@id/tvGroupTypeLabel" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvGroupDescriptionLabel"
@@ -62,7 +72,9 @@
                 android:layout_below="@id/tvGroupTypeLabel"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Group Description: " />
+                android:text="Group Description: " 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvGroupDescriptionValue"
@@ -72,7 +84,9 @@
                 android:layout_below="@id/tvGroupTypeValue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/tvGroupDescriptionLabel" />
+                android:layout_toRightOf="@id/tvGroupDescriptionLabel" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvGroupMember"
@@ -82,7 +96,9 @@
                 android:layout_below="@id/tvGroupDescriptionValue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Members" />
+                android:text="Members" 
+                android:textColor="#ffffff"
+                />
 
             <ListView
                 android:id="@android:id/list"
@@ -98,10 +114,10 @@
                 android:layout_height="40dp"
                 android:layout_below="@@android:id/list"
                 android:layout_marginTop="60dp"
-                android:background="#48D1CC"
+                android:background="#ffffff"
                 android:onClick="onJoinGroupClick"
                 android:text="Join Group"
-                android:textColor="#ffffff" />
+                android:textColor="#48D1CC" />
 
             <Button
                 android:id="@+id/buttonCancelViewGroup"
@@ -109,10 +125,10 @@
                 android:layout_height="40dp"
                 android:layout_below="@id/buttonJoinPublicGroup"
                 android:layout_marginTop="20dp"
-                android:background="#48D1CC"
+                android:background="#ffffff"
                 android:onClick="onCancel"
                 android:text="Cancel"
-                android:textColor="#ffffff" />
+                android:textColor="#48D1CC" />
         </RelativeLayout>
     </ScrollView>
 

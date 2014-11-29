@@ -64,6 +64,7 @@
         android:background="#48D1CC"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
+        android:textColor="#ffffff"
         />
     
 
@@ -203,14 +204,14 @@
 
     <EditText
         android:id="@+id/eventDescriptionEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textMultiLine" />
     
     <Button
         android:id="@+id/buttonCreateEvent"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="onCreateEvent"
         android:layout_marginTop="10dp"

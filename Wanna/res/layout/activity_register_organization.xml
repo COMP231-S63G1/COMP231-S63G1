@@ -13,7 +13,7 @@
             android:layout_gravity="center"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:layout_marginBottom="20dp"
             android:textSize="25sp"
             />
@@ -23,7 +23,7 @@
             android:layout_height="40dp"
             android:text="Organization Name"
             android:id="@+id/registerOrganizationName"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:layout_below="@+id/registerTitle"
             android:layout_alignParentLeft="true"
             android:textSize="15dp"/>
@@ -42,7 +42,7 @@
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:text="Email"
             android:id="@+id/registerEmail"
             android:layout_below="@+id/registerOrganizationName"
@@ -64,7 +64,7 @@
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:text="Password"
             android:id="@+id/registerPassword"
             android:layout_below="@+id/registerEmail"
@@ -97,40 +97,12 @@
     <TextView
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:text="Confirm Password"
             android:id="@+id/registerConfirmPassword"
             android:layout_alignTop="@+id/confirmPassword"
             android:layout_alignRight="@+id/registerPassword"
             android:textSize="15dp"/>
-
-    <Button
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:textColor="#48D1CC"
-            android:text="Register"
-            android:id="@+id/register"
-            android:layout_below="@+id/registerConfirmPassword"
-            android:layout_alignRight="@+id/registerFirstName"
-            android:textSize="15sp"
-            android:background="#FFFFFF"
-            android:layout_marginTop="15dp"
-            android:onClick="onRegisterClick"
-            />
-
-    <Button
-            android:layout_width="175dp"
-            android:layout_height="40dp"
-            android:textColor="#48D1CC"
-            android:text="Back To Login"
-            android:layout_marginTop="15dp"
-            android:id="@+id/bktologin"
-            android:layout_below="@+id/confirmPassword"
-            android:layout_alignParentRight="true"
-            android:textSize="15sp"
-            android:background="#ffffff"
-            android:onClick="onBackLoginClick"
-            />
 
     <TextView
             android:layout_width="fill_parent"
@@ -139,5 +111,30 @@
             android:id="@+id/register_error"
             android:layout_below="@+id/register"
             android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/bktologin"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/register_error"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:onClick="onBackLoginClick"
+        android:text="Back To Login"
+        android:textColor="#48D1CC"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/confirmPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:background="#FFFFFF"
+        android:onClick="onRegisterClick"
+        android:text="Register"
+        android:textColor="#48D1CC"
+        android:textSize="15sp" />
 
 </RelativeLayout>

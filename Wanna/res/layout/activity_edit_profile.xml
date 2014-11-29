@@ -31,6 +31,43 @@
         android:layout_width="172dp"
         android:layout_height="wrap_content"        
         android:ems="10" />
+    
+    <RadioGroup 
+    android:id="@+id/userGenderGroup"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RadioButton
+        android:id="@+id/genderMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/genderMale"
+        android:textColor="#48D1CC" 
+        android:onClick="onRadioButtonClicked"/>
+
+    <RadioButton
+        android:id="@+id/genderFemale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/genderFemale"
+        android:textColor="#48D1CC" 
+        android:onClick="onRadioButtonClicked"/>
+</RadioGroup>
+    <TextView
+        android:id="@+id/tvAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:text="@string/age"
+        android:textColor="#48D1CC"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="71dp"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+    
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
@@ -49,26 +86,35 @@
 
     <Button
         android:id="@+id/buttonUpdate"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/update" 
         android:onClick="onUpdateClick"
+        android:background="#48D1CC"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
         />
     
     <Button
         android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/delete" 
         android:onClick="onDeleteClick"
+        android:background="#48D1CC"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="10dp"
         />
 
     <Button
         android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/cancel"
         android:onClick="onCancelClick"
+        android:background="#48D1CC"
+        android:textColor="#ffffff"
          />
 
 </LinearLayout>

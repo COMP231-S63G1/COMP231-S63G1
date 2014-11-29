@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="#48D1CC"
+    >
 
     <ScrollView
         android:id="@+id/viewEventScrollView"
@@ -23,7 +25,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/name" />
+                android:text="@string/name" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvProfileNickNameValue"
@@ -32,7 +36,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/tvProfileNickNameLabel" />
+                android:layout_toRightOf="@id/tvProfileNickNameLabel" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvProfileGenderLabel"
@@ -42,7 +48,9 @@
                 android:layout_below="@id/tvProfileNickNameLabel"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/gender" />
+                android:text="@string/gender" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvProfileGenderValue"
@@ -52,7 +60,9 @@
                 android:layout_below="@id/tvProfileNickNameValue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/tvProfileGenderLabel" />
+                android:layout_toRightOf="@id/tvProfileGenderLabel" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvProfileAgeLabel"
@@ -62,7 +72,9 @@
                 android:layout_below="@id/tvProfileGenderLabel"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/age" />
+                android:text="@string/age" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvProfileAgeValue"
@@ -72,7 +84,9 @@
                 android:layout_below="@id/tvProfileGenderValue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/tvProfileAgeLabel" />
+                android:layout_toRightOf="@id/tvProfileAgeLabel" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvProfileDescriptionLabel"
@@ -82,7 +96,9 @@
                 android:layout_below="@id/tvProfileAgeLabel"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/description" />
+                android:text="@string/description" 
+                android:textColor="#ffffff"
+                />
 
             <TextView
                 android:id="@+id/tvProfileDescriptionValue"
@@ -92,7 +108,9 @@
                 android:layout_below="@id/tvProfileAgeValue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/tvProfileDescriptionLabel" />
+                android:layout_toRightOf="@id/tvProfileDescriptionLabel" 
+                android:textColor="#ffffff"
+                />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -109,7 +127,9 @@
                         android:layout_below="@id/tvProfileDescriptionLabel"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/profileGetCreatEventTextView" />
+                        android:text="@string/profileGetCreatEventTextView" 
+                        android:textColor="#ffffff"
+                        />
 
                     <TextView
                         android:id="@+id/tvProfileGetCreateEventValue"
@@ -119,7 +139,9 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:clickable="true"
-                        android:onClick="GetCreateEventValueOnClick" />
+                        android:onClick="GetCreateEventValueOnClick" 
+                        android:textColor="#ffffff"
+                        />
                 </TableRow>
 
                 <TableRow>
@@ -131,7 +153,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/profileGetJoinEventTextView" />
+                        android:text="@string/profileGetJoinEventTextView" 
+                        android:textColor="#ffffff"
+                        />
 
                     <TextView
                         android:id="@+id/tvProfileGetJoinEventValue"
@@ -141,7 +165,9 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:clickable="true"
-                        android:onClick="GetJoinEventValueOnClick" />
+                        android:onClick="GetJoinEventValueOnClick" 
+                        android:textColor="#ffffff"
+                        />
                 </TableRow>
 
                 <TableRow>
@@ -153,7 +179,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/profileGetCreatGroupTextView" />
+                        android:text="@string/profileGetCreatGroupTextView" 
+                        android:textColor="#ffffff"
+                        />
 
                     <TextView
                         android:id="@+id/tvProfileGetCreateGroupValue"
@@ -163,7 +191,9 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:clickable="true"
-                        android:onClick="GetCreateGroupValueOnClick" />
+                        android:onClick="GetCreateGroupValueOnClick" 
+                        android:textColor="#ffffff"
+                        />
                 </TableRow>
 
                 <TableRow>
@@ -175,7 +205,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/profileGetJoinGroupTextView" />
+                        android:text="@string/profileGetJoinGroupTextView" 
+                        android:textColor="#ffffff"
+                        />
 
                     <TextView
                         android:id="@+id/tvProfileGetJoinGroupValue"
@@ -185,19 +217,23 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:clickable="true"
-                        android:onClick="GetJoinGroupValueOnClick" />
+                        android:onClick="GetJoinGroupValueOnClick" 
+                        android:textColor="#ffffff"
+                        />
                 </TableRow>
 
-                <TableRow>
+               
 
                     <Button
                         android:id="@+id/buttonBack"
                         android:layout_width="120dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
-                        android:background="#48D1CC"
+                        android:background="#ffffff"
                         android:onClick="onViewProfileInformationBackClick"
-                        android:text="@string/buttonBack" />
+                        android:text="@string/buttonBack" 
+                        android:textColor="#48D1CC"
+                        />
 
                     <Button
                         android:id="@+id/buttonEditProfile"
@@ -205,11 +241,13 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:background="#48D1CC"
+                        android:background="#ffffff"
                         android:onClick="onEditProfileClick"
-                        android:text="@string/buttonEditProfile" />
-                </TableRow>
-            </TableLayout>
+                        android:text="@string/buttonEditProfile" 
+                        android:textColor="#48D1CC"
+                        />
+                
+           </TableLayout> 
         </RelativeLayout>
     </ScrollView>
 

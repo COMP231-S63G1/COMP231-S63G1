@@ -105,7 +105,7 @@
                         android:onClick="GetCreateGroupValueOnClick" />
                 </TableRow>
 
-                <TableRow>
+                
 
                     <Button
                         android:id="@+id/buttonBack"
@@ -114,7 +114,9 @@
                         android:layout_marginTop="10dp"
                         android:background="#48D1CC"
                         android:onClick="onViewProfileInformationBackClick"
-                        android:text="@string/buttonBack" />
+                        android:text="@string/buttonBack" 
+                        android:textColor="#ffffff"
+                        />
 
                     <Button
                         android:id="@+id/buttonEditProfile"
@@ -124,8 +126,10 @@
                         android:layout_marginTop="10dp"
                         android:background="#48D1CC"
                         android:onClick="onEditProfileClick"
-                        android:text="@string/buttonEditProfile" />
-                </TableRow>
+                        android:text="@string/buttonEditProfile"
+                        android:textColor="#ffffff" />
+
+                
             </TableLayout>
         </RelativeLayout>
 
