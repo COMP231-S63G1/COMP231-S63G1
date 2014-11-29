@@ -12,7 +12,7 @@
             android:layout_gravity="center"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:layout_marginBottom="20dp"
             android:textSize="25sp"
             />
@@ -22,7 +22,7 @@
             android:layout_height="40dp"
             android:text="First Name"
             android:id="@+id/registerFirstName"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:layout_below="@+id/registerTitle"
             android:layout_alignParentLeft="true"
             android:textSize="15dp"/>
@@ -41,7 +41,7 @@
             android:layout_width="125dp"
             android:layout_height="40dp"
             android:text="Last Name"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:id="@+id/registerLastName"
             android:layout_below="@+id/registerFirstName"
             android:layout_alignRight="@+id/registerFirstName"
@@ -60,7 +60,7 @@
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:text="Email"
             android:id="@+id/registerEmail"
             android:layout_below="@+id/registerLastName"
@@ -82,7 +82,7 @@
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:text="Password"
             android:id="@+id/registerPassword"
             android:layout_below="@+id/registerEmail"
@@ -115,7 +115,7 @@
     <TextView
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:text="Confirm Password"
             android:id="@+id/registerConfirmPassword"
             android:layout_alignTop="@+id/confirmPassword"

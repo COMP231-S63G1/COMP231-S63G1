@@ -11,10 +11,20 @@
             android:layout_height="40dp"
             android:text="@string/changePass"
             android:id="@+id/textView"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:textSize="17dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView"
+        android:text="@string/newPass"
+        android:textColor="#000000"
+        android:textSize="15dp" />
 
     <EditText
             android:layout_width="200dp"
@@ -37,7 +47,7 @@
 
     <Button
         android:id="@+id/btcancel"
-        android:layout_width="fill_parent"
+        android:layout_width="170dp"
         android:layout_height="40dp"
         android:layout_alignBottom="@+id/alertpass"
         android:layout_centerHorizontal="true"
@@ -57,16 +67,5 @@
         android:text="Change Password"
         android:textColor="#48D1CC"
         android:textSize="15dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="14dp"
-        android:text="@string/newPass"
-        android:textColor="#ffffff"
-        android:textSize="17dp" />
 
 </RelativeLayout>
