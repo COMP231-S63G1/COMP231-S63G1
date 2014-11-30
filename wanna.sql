@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2014 at 10:00 AM
+-- Generation Time: Nov 30, 2014 at 12:59 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -153,6 +153,25 @@ INSERT INTO `groupjoinin` (`userID`, `groupID`) VALUES
 (14, 1),
 (14, 2),
 (18, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE IF NOT EXISTS `notification` (
+`notificationNO` int(11) NOT NULL,
+  `senderType` varchar(10) NOT NULL,
+  `senderID` int(11) NOT NULL,
+  `receiverType` varchar(10) NOT NULL,
+  `receiverID` int(11) NOT NULL,
+  `receiverUserID` int(11) NOT NULL,
+  `acceptable` tinyint(1) NOT NULL,
+  `readStatus` tinyint(1) NOT NULL,
+  `message` varchar(225) NOT NULL,
+  `sendTime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -343,6 +362,12 @@ ALTER TABLE `groupjoinin`
  ADD PRIMARY KEY (`userID`,`groupID`), ADD UNIQUE KEY `groupID_2` (`groupID`), ADD KEY `profileID` (`userID`), ADD KEY `groupID` (`groupID`);
 
 --
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+ ADD PRIMARY KEY (`notificationNO`), ADD KEY `receiverUserID` (`receiverUserID`);
+
+--
 -- Indexes for table `organizationprofile`
 --
 ALTER TABLE `organizationprofile`
@@ -397,6 +422,11 @@ MODIFY `eventTypeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 ALTER TABLE `group`
 MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
+MODIFY `notificationNO` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `organizationprofile`
 --
 ALTER TABLE `organizationprofile`
@@ -450,6 +480,12 @@ ADD CONSTRAINT `group_ibfk_1` FOREIGN KEY (`groupCreaterID`) REFERENCES `users` 
 ALTER TABLE `groupjoinin`
 ADD CONSTRAINT `groupjoinin_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userid`),
 ADD CONSTRAINT `groupjoinin_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `group` (`groupID`);
+
+--
+-- Constraints for table `notification`
+--
+ALTER TABLE `notification`
+ADD CONSTRAINT `notification_ibfk_1` FOREIGN KEY (`receiverUserID`) REFERENCES `users` (`userid`);
 
 --
 -- Constraints for table `organizationprofile`
