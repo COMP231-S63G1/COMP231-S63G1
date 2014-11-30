@@ -1,0 +1,167 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#48D1CC"
+    tools:context="com.example.wanna.ViewUserProfile" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+       
+
+        	<TableLayout
+        	    android:layout_marginTop="70dp"
+            	android:layout_width="fill_parent"
+            	android:layout_height="fill_parent">
+
+        		<TableRow>
+        
+            		 <TextView
+					        android:id="@+id/userName"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_below="@+id/imageView1"
+					        android:layout_marginTop="16dp"
+					        android:layout_toLeftOf="@+id/chatRequestBtn"
+					        android:text="Name:"
+					        android:textColor="#ffffff"
+					        android:textSize="17sp" />
+		            <TextView
+					        android:id="@+id/userNameValue"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignBaseline="@+id/userName"
+					        android:layout_alignBottom="@+id/userName"
+					        android:layout_centerHorizontal="true"
+					        android:text="" 
+					        android:textColor="#ffffff"/>
+				</TableRow>
+         
+        		<TableRow>
+        		    
+                	 <TextView
+					        android:id="@+id/userGender"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignLeft="@+id/userName"
+					        android:layout_below="@+id/userNameValue"
+					        android:text="Gender"
+					        android:textColor="#ffffff"
+					        android:textSize="17sp" />
+                 	<TextView
+					        android:id="@+id/userGenderValue"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignBaseline="@+id/userGender"
+					        android:layout_alignBottom="@+id/userGender"
+					        android:layout_alignLeft="@+id/userNameValue"
+					        android:text="" 
+					         android:textColor="#ffffff"/>
+        		    
+        		</TableRow>
+        		
+           		<TableRow>
+                	<TextView
+					        android:id="@+id/userAge"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignLeft="@+id/userGender"
+					        android:layout_below="@+id/userGenderValue"
+					        android:text="Age:"
+					        android:textColor="#ffffff"
+					        android:textSize="17sp" />
+                	<TextView
+					        android:id="@+id/userAgeValue"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignBottom="@+id/userAge"
+					        android:layout_alignLeft="@+id/userGenderValue"
+					        android:text="" 
+					        android:textColor="#ffffff"/>
+            	</TableRow>
+            
+            	<TableRow>
+                	<TextView
+					        android:id="@+id/userStatus"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignLeft="@+id/userDescription"
+					        android:layout_below="@+id/userDescription"
+					        android:layout_marginTop="16dp"
+					        android:text="Status: " 
+					        android:textColor="#ffffff"
+					        android:textSize="17sp"/>
+
+    				<TextView
+					        android:id="@+id/userStatusValue"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignBaseline="@+id/userStatus"
+					        android:layout_alignBottom="@+id/userStatus"
+					        android:layout_alignLeft="@+id/userDescriptionValue"
+					        android:text="" 
+					        android:textColor="#ffffff"/>
+                
+            	</TableRow>
+            
+            	<TableRow>
+                	 <TextView
+					        android:id="@+id/userDescription"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignLeft="@+id/userAge"
+					        android:layout_below="@+id/userAge"
+					        android:text="Description:"
+					        android:textColor="#ffffff"
+					        android:textSize="17sp" />
+    				<TextView
+					        android:id="@+id/userDescriptionValue"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_alignBaseline="@+id/userDescription"
+					        android:layout_alignBottom="@+id/userDescription"
+					        android:layout_alignLeft="@+id/imageView1"
+					        android:text="" 
+					        android:textColor="#ffffff"/>
+				 </TableRow>
+            
+            	
+    				
+            	
+            
+            
+         </TableLayout>   
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/chatRequestBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/button1"
+        android:layout_marginBottom="50dp"
+        android:background="#ffffff"
+        android:text="Request Chat"
+        android:textColor="#48D1CC" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/chatRequestBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:background="#ffffff"
+        android:text="Send Friend Request"
+        android:textColor="#48D1CC" />
+   
+</RelativeLayout>

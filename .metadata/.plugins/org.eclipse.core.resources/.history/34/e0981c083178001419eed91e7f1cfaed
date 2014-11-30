@@ -182,10 +182,6 @@
             android:name=".ViewCreatedGroup"
             android:label="@string/title_activity_view_created_group" >
         </activity>
-        <activity
-            android:name=".ViewUserProfile"
-            android:label="@string/title_activity_view_user_profile" >
-        </activity>
     </application>
 
 </manifest>
