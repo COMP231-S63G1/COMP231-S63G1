@@ -137,6 +137,5 @@
     </string-array>
 
     <string name="title_activity_view_created_group">ViewCreatedGroup</string>
-    <string name="title_activity_view_user_profile">Wanna...?</string>
 
 </resources>

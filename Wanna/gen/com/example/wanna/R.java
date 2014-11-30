@@ -34,13 +34,13 @@ public final class R {
         public static final int Cancle=0x7f090069;
         public static final int CustomFontText=0x7f090043;
         public static final int OrganizationRegisterbtn=0x7f09003e;
-        public static final int action_settings=0x7f0900be;
+        public static final int action_settings=0x7f0900c9;
         public static final int age=0x7f09002d;
-        public static final int alert=0x7f0900b6;
-        public static final int alertpass=0x7f0900b2;
-        public static final int bktolog=0x7f0900b7;
+        public static final int alert=0x7f0900c1;
+        public static final int alertpass=0x7f0900bd;
+        public static final int bktolog=0x7f0900c2;
         public static final int bktologin=0x7f090060;
-        public static final int btcancel=0x7f0900b3;
+        public static final int btcancel=0x7f0900be;
         public static final int btchangepass=0x7f090048;
         public static final int btnSaveChanges=0x7f09002f;
         public static final int btnSearch=0x7f09007b;
@@ -67,6 +67,7 @@ public final class R {
         public static final int buttonJoinPublicGroup=0x7f0900af;
         public static final int buttonUpdate=0x7f090032;
         public static final int cancelButton=0x7f090056;
+        public static final int chatRequestBtn=0x7f0900b1;
         public static final int confirmPassword=0x7f09005c;
         public static final int createEvent=0x7f090047;
         public static final int createGroup=0x7f09004b;
@@ -89,7 +90,7 @@ public final class R {
         public static final int eventTimeEditText=0x7f09000a;
         public static final int eventVenue=0x7f09000c;
         public static final int fname=0x7f090062;
-        public static final int forpas=0x7f0900b4;
+        public static final int forpas=0x7f0900bf;
         public static final int genderFemale=0x7f09002b;
         public static final int genderMale=0x7f09002a;
         public static final int group1=0x7f090038;
@@ -106,7 +107,7 @@ public final class R {
         public static final int loginErrorMsg=0x7f09003f;
         public static final int logout=0x7f090049;
         public static final int name=0x7f090023;
-        public static final int newpass=0x7f0900b0;
+        public static final int newpass=0x7f0900bb;
         public static final int oname=0x7f090059;
         public static final int passres=0x7f090040;
         public static final int personRegisterbtn=0x7f09003d;
@@ -118,7 +119,7 @@ public final class R {
         public static final int rbtnBoth=0x7f090078;
         public static final int rbtnFemale=0x7f090077;
         public static final int rbtnMale=0x7f090076;
-        public static final int regat=0x7f0900bd;
+        public static final int regat=0x7f0900c8;
         public static final int register=0x7f09005f;
         public static final int registerConfirmPassword=0x7f09005d;
         public static final int registerEmail=0x7f09005a;
@@ -128,7 +129,7 @@ public final class R {
         public static final int registerPassword=0x7f09005b;
         public static final int registerTitle=0x7f090057;
         public static final int register_error=0x7f09005e;
-        public static final int respass=0x7f0900b5;
+        public static final int respass=0x7f0900c0;
         public static final int rgFilterGender=0x7f090075;
         public static final int scrollView=0x7f090014;
         public static final int scrollView1=0x7f090000;
@@ -145,12 +146,12 @@ public final class R {
         public static final int spinnerGroupCategories=0x7f09006d;
         public static final int textView=0x7f090039;
         public static final int textView1=0x7f090034;
-        public static final int textView11=0x7f0900bc;
+        public static final int textView11=0x7f0900c7;
         public static final int textView2=0x7f090041;
-        public static final int textView3=0x7f0900b1;
-        public static final int textView5=0x7f0900b8;
-        public static final int textView7=0x7f0900b9;
-        public static final int textView9=0x7f0900ba;
+        public static final int textView3=0x7f0900bc;
+        public static final int textView5=0x7f0900c3;
+        public static final int textView7=0x7f0900c4;
+        public static final int textView9=0x7f0900c5;
         public static final int textwelcome=0x7f090045;
         public static final int tvAge=0x7f09002c;
         public static final int tvDescription=0x7f090024;
@@ -215,9 +216,19 @@ public final class R {
         public static final int tvSelectGroupPrivacy=0x7f090017;
         public static final int tvSelectGroupType=0x7f090015;
         public static final int tvdash=0x7f090073;
-        public static final int uname=0x7f0900bb;
+        public static final int uname=0x7f0900c6;
+        public static final int userAge=0x7f0900b5;
+        public static final int userAgeValue=0x7f0900b6;
+        public static final int userDescription=0x7f0900b8;
+        public static final int userDescriptionValue=0x7f0900ba;
+        public static final int userGender=0x7f0900b3;
         public static final int userGenderGroup=0x7f090029;
+        public static final int userGenderValue=0x7f0900b4;
+        public static final int userName=0x7f0900b0;
+        public static final int userNameValue=0x7f0900b2;
         public static final int userPitcure=0x7f090021;
+        public static final int userStatus=0x7f0900b7;
+        public static final int userStatusValue=0x7f0900b9;
         public static final int view1=0x7f090036;
         public static final int viewEventScrollView=0x7f09007f;
         public static final int viewPrivateGroupScrollView=0x7f090093;
@@ -258,9 +269,10 @@ public final class R {
         public static final int activity_view_person_profile=0x7f03001f;
         public static final int activity_view_private_group=0x7f030020;
         public static final int activity_view_public_group=0x7f030021;
-        public static final int changepassword=0x7f030022;
-        public static final int passwordreset=0x7f030023;
-        public static final int registered=0x7f030024;
+        public static final int activity_view_user_profile=0x7f030022;
+        public static final int changepassword=0x7f030023;
+        public static final int passwordreset=0x7f030024;
+        public static final int registered=0x7f030025;
     }
     public static final class menu {
         public static final int create_event=0x7f080000;
@@ -272,6 +284,7 @@ public final class R {
         public static final int search_username=0x7f080006;
         public static final int view_private_group=0x7f080007;
         public static final int view_public_group=0x7f080008;
+        public static final int view_user_profile=0x7f080009;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -376,6 +389,7 @@ public final class R {
         public static final int title_activity_view_private_group=0x7f050057;
         public static final int title_activity_view_profile_information=0x7f050043;
         public static final int title_activity_view_public_group=0x7f050056;
+        public static final int title_activity_view_user_profile=0x7f05006a;
         public static final int update=0x7f05002c;
         public static final int uploadImage=0x7f050025;
         public static final int username=0x7f05000b;
