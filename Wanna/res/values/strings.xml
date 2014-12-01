@@ -138,5 +138,6 @@
 
     <string name="title_activity_view_created_group">ViewCreatedGroup</string>
     <string name="title_activity_view_user_profile">Wanna...?</string>
+    <string name="title_activity_view_notifications">Wanna...?</string>
 
 </resources>

@@ -186,6 +186,10 @@
             android:name=".ViewUserProfile"
             android:label="@string/title_activity_view_user_profile" >
         </activity>
+        <activity
+            android:name=".ViewNotifications"
+            android:label="@string/title_activity_view_notifications" >
+        </activity>
     </application>
 
 </manifest>

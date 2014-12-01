@@ -1,0 +1,84 @@
+package com.example.wanna;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class ViewNotifications extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_view_notifications);
+	}
+
+	public void ChatRequestClick(View view) {
+		 
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+			context);
+
+		// set title
+		alertDialogBuilder.setTitle("Chat Request Notification");
+
+		// set dialog message
+		alertDialogBuilder
+			.setMessage("You have a chat request. If you would like to accept the request" +
+					"choose Accept.")
+			.setCancelable(false)
+			.setPositiveButton("Accept",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					// if this button is clicked, close
+					// current activity
+					ViewNotifications.this.finish();
+				}
+			  })
+			.setNegativeButton("Decline",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					// if this button is clicked, just close
+					// the dialog box and do nothing
+					dialog.cancel();
+				}
+			});
+
+			// create alert dialog
+			AlertDialog alertDialog = alertDialogBuilder.create();
+
+			// show it
+			alertDialog.show();
+		}
+	public void FriendRequestClick(View view) {
+		 
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+			context);
+
+		// set title
+		alertDialogBuilder.setTitle("Friend Request Notification");
+
+		// set dialog message
+		alertDialogBuilder
+			.setMessage("You have a friend request - if you would like to be friends, click Accept!")
+			.setCancelable(false)
+			.setPositiveButton("Accept",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					// if this button is clicked, close
+					// current activity
+					ViewNotifications.this.finish();
+				}
+			  })
+			.setNegativeButton("Decline",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					// if this button is clicked, just close
+					// the dialog box and do nothing
+					dialog.cancel();
+				}
+			});
+
+			// create alert dialog
+			AlertDialog alertDialog = alertDialogBuilder.create();
+
+			// show it
+			alertDialog.show();
+		}
+	
+}
