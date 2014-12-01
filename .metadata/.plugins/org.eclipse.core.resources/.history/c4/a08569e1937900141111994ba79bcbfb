@@ -72,39 +72,6 @@ public class ViewNotifications extends Activity {
 				alertDialog.show();
 			}
 		
-		public void RegularAlertClick(View view) {
-			 
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-				context);
- 
-			// set title
-			alertDialogBuilder.setTitle("Notification");
- 
-			// set dialog message
-			alertDialogBuilder
-				.setMessage("There has been a change of information. To view click OK.")
-				.setCancelable(false)
-				.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
-						// if this button is clicked, close
-						// current activity
-						ViewNotifications.this.finish();
-					}
-				  })
-				.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
-						// if this button is clicked, just close
-						// the dialog box and do nothing
-						dialog.cancel();
-					}
-				});
- 
-				// create alert dialog
-				AlertDialog alertDialog = alertDialogBuilder.create();
- 
-				// show it
-				alertDialog.show();
-			}
 		
 		
 		
