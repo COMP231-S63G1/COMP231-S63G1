@@ -1,5 +1,6 @@
 package com.example.wanna;
 
+import com.example.wanna.library.LocationTracker;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
@@ -21,6 +22,9 @@ public class SearchUserFiltration extends Activity {
 	private static final String TAG_SEARCHMINAGE = "searchMinAge";
 	private static final String TAG_SEARCHMAXAGE = "searchMaxAge";
 	private static final String TAG_SEARCHGENDER = "searchGender";
+	private static final String TAG_SEARCHRANGE = "searchRange";
+	private static final String TAG_LATITUDE = "latitude";
+	private static final String TAG_LONGITUDE = "longitude";
 
 	EditText etStatus;
 	EditText etMinAge;
@@ -35,11 +39,19 @@ public class SearchUserFiltration extends Activity {
 	int searchMinAge;
 	int searchMaxAge;
 	String searchGender;
+	String searchRange;
+	double latitude;
+    double longitude;
+    
+	LocationTracker location;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_user_filtration);
+		
+		location = new LocationTracker(SearchUserFiltration.this);
+		
 		searchType = "Filtration";
 		etStatus = (EditText) findViewById(R.id.etStatus);
 		etMinAge = (EditText) findViewById(R.id.etMinAge);
@@ -89,6 +101,15 @@ public class SearchUserFiltration extends Activity {
 		if (searchGender.equals("Both")) {
 			searchGender = "";
 		}
+		searchRange = locationRangeSpinner.getSelectedItem().toString();
+		if(location.canGetLocation()){            
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+           }else{
+        	   Toast.makeText(getApplicationContext(), "Cannot get location",
+						Toast.LENGTH_SHORT).show();
+        }
+		
 		if (searchMinAge > searchMaxAge) {
 			Toast.makeText(getApplicationContext(), "Age range invalid",
 					Toast.LENGTH_SHORT).show();
@@ -100,6 +121,9 @@ public class SearchUserFiltration extends Activity {
 			intent.putExtra(TAG_SEARCHMINAGE, searchMinAge);
 			intent.putExtra(TAG_SEARCHMAXAGE, searchMaxAge);
 			intent.putExtra(TAG_SEARCHGENDER, searchGender);
+			intent.putExtra(TAG_SEARCHRANGE, searchRange);
+			intent.putExtra(TAG_LATITUDE, latitude);
+			intent.putExtra(TAG_LONGITUDE, longitude);
 			startActivity(intent);
 		}
 	}

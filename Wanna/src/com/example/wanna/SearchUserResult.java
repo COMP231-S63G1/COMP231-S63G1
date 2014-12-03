@@ -40,6 +40,9 @@ public class SearchUserResult extends Activity {
 	String searchMinAge;
 	String searchMaxAge;
 	String searchGender;
+	String searchRange;
+	String latitude;
+    String longitude;
 
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
@@ -55,6 +58,9 @@ public class SearchUserResult extends Activity {
 	private static final String TAG_SEARCHGENDER = "searchGender";
 	private static final String TAG_SEARCHMAXAGE = "searchMaxAge";
 	private static final String TAG_SEARCHMINAGE = "searchMinAge";
+	private static final String TAG_SEARCHRANGE = "searchRange";
+	private static final String TAG_LATITUDE = "latitude";
+	private static final String TAG_LONGITUDE = "longitude";
 	// group JSONArray
 	JSONArray userList = null;
 
@@ -71,6 +77,9 @@ public class SearchUserResult extends Activity {
 			searchMaxAge = String.valueOf(intent.getIntExtra(TAG_SEARCHMAXAGE, 0));
 			searchMinAge = String.valueOf(intent.getIntExtra(TAG_SEARCHMINAGE, 0));
 			searchGender = intent.getStringExtra(TAG_SEARCHGENDER);
+			searchRange = intent.getStringExtra(TAG_SEARCHRANGE);
+			latitude = Double.toString(intent.getDoubleExtra(TAG_LATITUDE, 0));
+		    longitude = Double.toString(intent.getDoubleExtra(TAG_LONGITUDE, 0));
 
 		}
 		new SearchUserTask().execute();
@@ -99,6 +108,12 @@ public class SearchUserResult extends Activity {
 						searchMaxAge));		
 				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHGENDER,
 						searchGender));		
+				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHRANGE,
+						searchRange));		
+				searchUserParams.add(new BasicNameValuePair(TAG_LATITUDE,
+						latitude));		
+				searchUserParams.add(new BasicNameValuePair(TAG_LONGITUDE,
+						longitude));		
 			}			
 			JSONObject json = jsonParser.getJSONFromUrl(urlSearchUser,
 					searchUserParams);

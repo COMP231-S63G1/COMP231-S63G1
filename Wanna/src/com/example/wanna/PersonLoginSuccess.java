@@ -8,8 +8,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wanna.library.JSONParser;
+import com.example.wanna.library.LocationTracker;
 import com.example.wanna.library.UserFunctions;
 
 import java.util.ArrayList;
@@ -33,6 +35,8 @@ public class PersonLoginSuccess extends Activity {
 	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_ORGANIZATION = "Organization";
+	private static final String TAG_LATITUDE = "latitude";
+	private static final String TAG_LONGITUDE = "longitude";
   
     TextView tvSessionID;
     TextView tvTextwelcome;
@@ -42,6 +46,10 @@ public class PersonLoginSuccess extends Activity {
 	String userType;
 	String nickName;     
 	int success;
+	double latitude;
+    double longitude;
+
+	LocationTracker location;
     
 	UserFunctions userFunctions = new UserFunctions();
 	private String urlCheckLogin = UserFunctions.URL_ROOT + "DB_LoginSuccess.php";
@@ -53,7 +61,9 @@ public class PersonLoginSuccess extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_person_login_success);        
+        setContentView(R.layout.activity_person_login_success);    
+
+		location = new LocationTracker(PersonLoginSuccess.this);   
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
 
@@ -68,7 +78,13 @@ public class PersonLoginSuccess extends Activity {
 		}
         tvTextwelcome = (TextView) findViewById(R.id.textwelcome);
         tvSessionID = (TextView) findViewById(R.id.textView);
-        
+        if(location.canGetLocation()){            
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+           }else{
+        	   Toast.makeText(getApplicationContext(), "Cannot get location",
+						Toast.LENGTH_SHORT).show();
+        }
         new LoginSeccessTask().execute();        
     }
     
@@ -126,6 +142,8 @@ public class PersonLoginSuccess extends Activity {
 			checkLoginParams.add(new BasicNameValuePair(TAG_USERID,
 					userID));
 			checkLoginParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+			checkLoginParams.add(new BasicNameValuePair(TAG_LATITUDE, Double.toString(latitude)));		
+			checkLoginParams.add(new BasicNameValuePair(TAG_LONGITUDE, Double.toString(longitude)));		
 			JSONObject json = jsonParser.getJSONFromUrl(urlCheckLogin,
 					checkLoginParams);
 			success = json.optInt(TAG_SUCCESS);
