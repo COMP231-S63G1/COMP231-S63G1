@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2014 at 12:59 AM
+-- Generation Time: Dec 03, 2014 at 06:08 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -309,17 +309,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varbinary(80) NOT NULL,
-  `userType` varchar(12) NOT NULL
+  `userType` varchar(12) NOT NULL,
+  `latitude` decimal(11,7) DEFAULT NULL,
+  `longitude` decimal(11,7) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`) VALUES
-(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person'),
-(15, 'Anson Kong', 'ansonkong1992@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person'),
-(18, 'CIPS', 'gulang15@hotmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Organization');
+INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`, `latitude`, `longitude`) VALUES
+(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '0.0000000', NULL),
+(15, 'Anson Kong', 'ansonkong1992@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '0.0000000', NULL),
+(18, 'CIPS', 'gulang15@hotmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Organization', '0.0000000', NULL);
 
 --
 -- Indexes for dumped tables
