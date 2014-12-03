@@ -130,10 +130,11 @@
     <string name="title_activity_edit_organization_profile">EditOrganizationProfile</string>
 
     <string-array name="locationRangeOptions">
-        <item>2km </item>
-        <item>5km </item>
-        <item>10km </item>
-        <item>15km </item>
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>No limit</item>
     </string-array>
 
     <string name="title_activity_view_created_group">ViewCreatedGroup</string>

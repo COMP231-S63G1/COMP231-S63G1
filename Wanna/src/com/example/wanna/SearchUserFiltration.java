@@ -102,6 +102,9 @@ public class SearchUserFiltration extends Activity {
 			searchGender = "";
 		}
 		searchRange = locationRangeSpinner.getSelectedItem().toString();
+		if(searchRange.equals("No limit")){
+			searchRange = "40075";
+		}
 		if(location.canGetLocation()){            
             latitude = location.getLatitude();
             longitude = location.getLongitude();

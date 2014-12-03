@@ -11,12 +11,15 @@ $searchType = $_POST["searchType"];
 		$searchName = $_POST["searchName"];
 		$result = mysql_query("SELECT `profileID`, `nickName` FROM `personprofile` WHERE `nickName` LIKE '%$searchName%'");
 		}
-	elseif($searchType== "Filtration" && isset($_POST["searchStatus"]) && isset($_POST["searchMinAge"]) && isset($_POST["searchMaxAge"]) && isset($_POST["searchGender"])){
+	elseif($searchType== "Filtration" && isset($_POST["searchStatus"]) && isset($_POST["searchMinAge"]) && isset($_POST["searchMaxAge"]) && isset($_POST["searchGender"]) && isset($_POST["searchRange"]) && isset($_POST["latitude"]) && isset($_POST["longitude"])){
 		$searchStatus = $_POST["searchStatus"];
 		$searchGender = $_POST["searchGender"];
 		$searchMaxAge = $_POST["searchMaxAge"];
-		$searchMinAge = $_POST["searchMinAge"];		
-		$result = mysql_query("SELECT `profileID`, `nickName` FROM `personprofile` WHERE `profileID` = (SELECT `profileID` FROM `users` WHERE `userID` = (SELECT DISTINCT(`userID`) FROM `eventjoinin` WHERE `eventID` =  (SELECT DISTINCT(`eventID`) FROM `event` WHERE `eventName` LIKE '%$searchStatus%' AND `gender` LIKE '$searchGender%' AND `age` BETWEEN $searchMinAge AND $searchMaxAge)))");	
+		$searchMinAge = $_POST["searchMinAge"];	
+		$searchRange = $_POST["searchRange"];	
+		$latitude = $_POST["latitude"];	
+		$longitude = $_POST["longitude"];		
+		$result = mysql_query("SELECT `profileID`, `nickName` FROM `personprofile` WHERE `userID` IN (SELECT `userID` FROM `users` WHERE `userID` IN (SELECT DISTINCT(`userID`) FROM `eventjoinin` WHERE `eventID` IN (SELECT DISTINCT(`eventID`) FROM `event` WHERE `eventName` LIKE '%$searchStatus%' AND `gender` LIKE '$searchGender%' AND `age` BETWEEN $searchMinAge AND $searchMaxAge)) AND sqrt(((('$longitude'-longitude)*PI()*12656*cos((('$latitude'+latitude)/2)*PI()/180)/180)*(('$longitude'-longitude)*PI()*12656*cos ((('$latitude'+latitude)/2)*PI()/180)/180))+((('$latitude'-latitude)*PI()*12656/180)*(('$latitude'-latitude)*PI()*12656/180)) )<'$searchRange')");	
 		}else{
 			// failed
 			$response["success"] = 0;
