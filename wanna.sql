@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2014 at 06:08 AM
+-- Generation Time: Dec 03, 2014 at 09:45 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`, `latitude`, `longitude`) VALUES
-(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '0.0000000', NULL),
+(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '43.7844285', '-79.2285720'),
 (15, 'Anson Kong', 'ansonkong1992@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '0.0000000', NULL),
 (18, 'CIPS', 'gulang15@hotmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Organization', '0.0000000', NULL);
 
