@@ -34,6 +34,7 @@ public class PersonLoginSuccess extends Activity {
 	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_ORGANIZATION = "Organization";
 	private static final String TAG_LATITUDE = "latitude";
 	private static final String TAG_LONGITUDE = "longitude";
@@ -46,6 +47,7 @@ public class PersonLoginSuccess extends Activity {
 	String userType;
 	String nickName;     
 	int success;
+	String message;
 	double latitude;
     double longitude;
 
@@ -143,11 +145,13 @@ public class PersonLoginSuccess extends Activity {
 					userID));
 			checkLoginParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			checkLoginParams.add(new BasicNameValuePair(TAG_LATITUDE, Double.toString(latitude)));		
-			checkLoginParams.add(new BasicNameValuePair(TAG_LONGITUDE, Double.toString(longitude)));		
-			JSONObject json = jsonParser.getJSONFromUrl(urlCheckLogin,
-					checkLoginParams);
+			checkLoginParams.add(new BasicNameValuePair(TAG_LONGITUDE, Double.toString(longitude)));	
+			System.out.println("latitude: " + latitude);
+			System.out.println("longitude: " + longitude);
+			JSONObject json = jsonParser.getJSONFromUrl(urlCheckLogin, checkLoginParams);
 			success = json.optInt(TAG_SUCCESS);
-			if (success != 1) {
+			message = json.optString(TAG_MESSAGE);
+			if (success == 0) {
 				Intent intent = new Intent(getApplicationContext(),
 						PersonLoginSuccess.class);
 				startActivity(intent);					
@@ -157,6 +161,10 @@ public class PersonLoginSuccess extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
+			if(success != 1){
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
 			// display product data in EditText
 			tvTextwelcome.setText("Welcome " + nickName);	
 			tvSessionID.setText("userID " + userID);			
