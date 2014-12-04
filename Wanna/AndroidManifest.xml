@@ -190,6 +190,10 @@
             android:name=".ViewNotifications"
             android:label="@string/title_activity_view_notifications" >
         </activity>
+        <activity
+            android:name=".ChatActivity"
+            android:label="@string/title_activity_chat" >
+        </activity>
     </application>
 
 </manifest>
