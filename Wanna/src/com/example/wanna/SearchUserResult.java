@@ -13,13 +13,15 @@ import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class SearchUserResult extends Activity {
+public class SearchUserResult extends ListActivity {
 
 	// Creating JSON Parser object
 	JSONParser jsonParser = new JSONParser();
@@ -84,10 +86,17 @@ public class SearchUserResult extends Activity {
 		}
 		new SearchUserTask().execute();
 		lvUserItem = (ListView) findViewById(android.R.id.list);
-		searchUserAdapter = new ListViewAdapter(userItemsList, this);
-		lvUserItem.setAdapter(searchUserAdapter);
+//		searchUserAdapter = new ListViewAdapter(userItemsList, this);
+//		lvUserItem.setAdapter(searchUserAdapter);
 	}
 
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		String profileID = (String)searchUserAdapter.getItem(position);
+		Intent intent = new Intent(getApplicationContext(),
+				ViewUserProfile.class);
+		intent.putExtra("profileID", profileID);
+		startActivity(intent);
+	}
 	private class SearchUserTask extends AsyncTask<String, Void, String> {
 
 		@Override
@@ -139,6 +148,9 @@ public class SearchUserResult extends Activity {
 			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
+			}else{
+				searchUserAdapter = new ListViewAdapter(userItemsList, SearchUserResult.this);
+				lvUserItem.setAdapter(searchUserAdapter);
 			}
 		}
 	}

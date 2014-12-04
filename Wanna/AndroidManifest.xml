@@ -194,6 +194,15 @@
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat" >
         </activity>
+        <activity
+            android:name=".ViewUserProfileActivity"
+            android:label="@string/title_activity_view_user_profile" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
