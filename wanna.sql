@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2014 at 11:34 PM
+-- Generation Time: Dec 04, 2014 at 06:06 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -70,7 +70,6 @@ INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES
 (14, 2),
 (14, 6),
 (14, 12),
-(15, 2),
 (18, 13),
 (18, 14);
 
@@ -109,6 +108,18 @@ CREATE TABLE IF NOT EXISTS `eventtype_table` (
 INSERT INTO `eventtype_table` (`eventTypeID`, `eventTypeName`) VALUES
 (1, 'Sports'),
 (2, 'Entertainment');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `friend`
+--
+
+CREATE TABLE IF NOT EXISTS `friend` (
+  `friend_one` int(11) NOT NULL,
+  `friend_two` int(11) NOT NULL,
+  `status` enum('0','1') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -320,8 +331,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`, `latitude`, `longitude`) VALUES
-(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '43.7844285', '-79.2285720'),
-(15, 'Anson Kong', 'ansonkong1992@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '43.7844286', '-79.2285721'),
+(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '43.7736061', '-79.2459734'),
+(15, 'Anson Kong', 'ansonkong1992@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '0.0000000', NULL),
 (18, 'CIPS', 'gulang15@hotmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Organization', '0.0000000', NULL);
 
 --
@@ -351,6 +362,12 @@ ALTER TABLE `eventlocation_table`
 --
 ALTER TABLE `eventtype_table`
  ADD PRIMARY KEY (`eventTypeID`);
+
+--
+-- Indexes for table `friend`
+--
+ALTER TABLE `friend`
+ ADD PRIMARY KEY (`friend_one`,`friend_two`), ADD KEY `friend_one` (`friend_one`), ADD KEY `friend_two` (`friend_two`);
 
 --
 -- Indexes for table `group`
@@ -470,6 +487,13 @@ ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`eventCreaterID`) REFERENCES `users` 
 ALTER TABLE `eventjoinin`
 ADD CONSTRAINT `eventjoinin_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userid`),
 ADD CONSTRAINT `eventjoinin_ibfk_2` FOREIGN KEY (`eventID`) REFERENCES `event` (`eventID`);
+
+--
+-- Constraints for table `friend`
+--
+ALTER TABLE `friend`
+ADD CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`friend_one`) REFERENCES `users` (`userid`),
+ADD CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`friend_two`) REFERENCES `users` (`userid`);
 
 --
 -- Constraints for table `group`
