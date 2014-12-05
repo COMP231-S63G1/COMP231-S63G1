@@ -134,7 +134,10 @@ public class PersonLoginSuccess extends Activity {
 		Intent intent = new Intent(this, SearchUserFiltration.class);
 		startActivity(intent);
 		}
-    
+    public void onViewFriendClick(View view){
+    	Intent intent = new Intent(this,ViewFriendList.class);
+    	startActivity(intent);
+    }
     private class LoginSeccessTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {

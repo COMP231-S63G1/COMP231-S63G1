@@ -110,8 +110,8 @@ public class Login extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-//			loginEmail = etEmail.getText().toString();
-//			loginPassword = etPassword.getText().toString();
+			loginEmail = etEmail.getText().toString();
+			loginPassword = etPassword.getText().toString();
 			 loginEmail = "gulang15@gmail.com";
 			 loginPassword = "123";
 			List<NameValuePair> loginParams = new ArrayList<NameValuePair>();
