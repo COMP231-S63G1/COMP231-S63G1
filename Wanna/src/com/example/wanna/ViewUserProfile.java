@@ -58,11 +58,12 @@ public class ViewUserProfile extends Activity {
 	private static final String TAG_ProfileGender = "gender";
 	private static final String TAG_DESCRIPTION = "description";
 
-	
 	private String urlViewUserProfile = UserFunctions.URL_ROOT
 			+ "DB_ViewUserProfile.php";
+	private String urlSendFriendRequest = UserFunctions.URL_ROOT
+			+ "DB_SendFriendRequest.php";
 	JSONObject profileInformation;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,7 +75,7 @@ public class ViewUserProfile extends Activity {
 
 		Intent intent = getIntent();
 		profileID = intent.getStringExtra(TAG_PROFILEID);
-		
+
 		tvProfileNickName = (TextView) findViewById(R.id.userNameValue);
 		tvProfileGender = (TextView) findViewById(R.id.userGenderValue);
 		tvProfileAge = (TextView) findViewById(R.id.userAgeValue);
@@ -102,14 +103,11 @@ public class ViewUserProfile extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void friendRequestBtnOnclick(View view){
-		Toast.makeText(getApplicationContext(),"Your Request Have Been Send!!",
-				Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(getApplicationContext(),ViewPersonProfile.class);
-		startActivity(intent);
+	public void friendRequestBtnOnclick(View view) {
+		new SendFriendRequestTask().execute();
 	}
-	private class ViewUserProfileTask extends
-			AsyncTask<String, Void, String> {
+
+	private class ViewUserProfileTask extends AsyncTask<String, Void, String> {
 		int success;
 		String message;
 
@@ -133,11 +131,11 @@ public class ViewUserProfile extends Activity {
 			ViewProfileParams.add(new BasicNameValuePair(TAG_USERID, userID));
 			ViewProfileParams
 					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
-			ViewProfileParams
-			.add(new BasicNameValuePair(TAG_PROFILEID, profileID));
+			ViewProfileParams.add(new BasicNameValuePair(TAG_PROFILEID,
+					profileID));
 			// getting profile info by making HTTP request
-			JSONObject json = jsonParser.getJSONFromUrl(
-					urlViewUserProfile, ViewProfileParams);
+			JSONObject json = jsonParser.getJSONFromUrl(urlViewUserProfile,
+					ViewProfileParams);
 			// json success tag
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
@@ -170,6 +168,51 @@ public class ViewUserProfile extends Activity {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
 			}
+
+		}
+	}
+
+	private class SendFriendRequestTask extends AsyncTask<String, Void, String> {
+		int success;
+		String message;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(ViewUserProfile.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Sending Request ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... urls) {
+			// Building Parameters
+			List<NameValuePair> ViewProfileParams = new ArrayList<NameValuePair>();
+			ViewProfileParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
+			ViewProfileParams.add(new BasicNameValuePair(TAG_USERID, userID));
+			ViewProfileParams
+					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+			ViewProfileParams.add(new BasicNameValuePair(TAG_PROFILEID,
+					profileID));
+			// getting profile info by making HTTP request
+			JSONObject json = jsonParser.getJSONFromUrl(urlSendFriendRequest,
+					ViewProfileParams);
+			// json success tag
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// display product data in EditText
+			pDialog.dismiss();
+			Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
+					.show();
 
 		}
 	}
