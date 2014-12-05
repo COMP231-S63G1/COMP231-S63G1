@@ -106,6 +106,10 @@ public class ViewUserProfile extends Activity {
 	public void friendRequestBtnOnclick(View view) {
 		new SendFriendRequestTask().execute();
 	}
+	public void backBtnOnclick(View view){
+		Intent intent = new Intent(getApplicationContext(), PersonLoginSuccess.class);
+		startActivity(intent);
+	}
 
 	private class ViewUserProfileTask extends AsyncTask<String, Void, String> {
 		int success;

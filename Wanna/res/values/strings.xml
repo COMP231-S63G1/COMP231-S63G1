@@ -141,5 +141,6 @@
     <string name="title_activity_view_user_profile">Wanna...?</string>
     <string name="title_activity_view_notifications">Wanna...?</string>
     <string name="title_activity_chat">Wanna...?</string>
+    <string name="title_activity_view_friend_list">View Friend</string>
 
 </resources>
