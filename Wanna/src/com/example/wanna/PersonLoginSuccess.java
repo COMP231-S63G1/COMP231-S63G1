@@ -138,6 +138,10 @@ public class PersonLoginSuccess extends Activity {
     	Intent intent = new Intent(this,ViewFriendList.class);
     	startActivity(intent);
     }
+    public void onViewNotificationClick(View view){
+    	Intent intent = new Intent(this,ViewNotifications.class);
+    	startActivity(intent);
+    }
     private class LoginSeccessTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
