@@ -69,6 +69,11 @@ public class SearchUserFiltration extends Activity {
 
 	public void onSearchClick(View view) {
 		searchStatus = etStatus.getText().toString();
+		if(searchStatus.equals(""))
+		{
+			Toast.makeText(getApplicationContext(), "Status is empty",
+					Toast.LENGTH_SHORT).show();
+		}
 		if (etMinAge.getText().toString().equals("")) {
 			searchMinAge = 18;
 		} else {
