@@ -57,6 +57,7 @@ public class ViewUserProfile extends Activity {
 	private static final String TAG_ProfileAge = "age";
 	private static final String TAG_ProfileGender = "gender";
 	private static final String TAG_DESCRIPTION = "description";
+	private static final String TAG_NOTIFICATIONTYPE="notificationType";
 
 	private String urlViewUserProfile = UserFunctions.URL_ROOT
 			+ "DB_ViewUserProfile.php";
@@ -105,6 +106,7 @@ public class ViewUserProfile extends Activity {
 
 	public void friendRequestBtnOnclick(View view) {
 		new SendFriendRequestTask().execute();
+		new SendNotificationTask().execute();
 	}
 	public void backBtnOnclick(View view){
 		Intent intent = new Intent(getApplicationContext(), PersonLoginSuccess.class);
@@ -140,6 +142,74 @@ public class ViewUserProfile extends Activity {
 			// getting profile info by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlViewUserProfile,
 					ViewProfileParams);
+			// json success tag
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
+			if (success == 1) {
+				// successfully received profile info
+				JSONArray profileInformationArray = json
+						.optJSONArray(TAG_PROFILEINFORMATION); // JSON Array
+				// get first profile object from JSON Array
+				profileInformation = profileInformationArray.optJSONObject(0);
+				nickName = profileInformation.optString(TAG_NICKNAME);
+				age = profileInformation.optString(TAG_ProfileAge);
+				gender = profileInformation.optString(TAG_ProfileGender);
+				description = profileInformation.optString(TAG_DESCRIPTION);
+			} else {
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// display product data in EditText
+			pDialog.dismiss();
+			if (success == 1) {
+				tvProfileNickName.setText(nickName);
+				tvProfileGender.setText(gender);
+				tvProfileAge.setText(age);
+				tvProfileDescription.setText(description);
+			}
+			if (success != 1) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
+
+		}
+	}
+
+	
+	private class SendNotificationTask extends AsyncTask<String, Void, String> {
+		int success;
+		String message;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(ViewUserProfile.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Sending Notification...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... urls) {
+			// Building Parameters
+			List<NameValuePair> SendNotificationParams = new ArrayList<NameValuePair>();
+			SendNotificationParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_USERID, userID));
+			SendNotificationParams
+					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_NOTIFICATIONTYPE,"friendRequest"));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_PROFILEID,
+					profileID));
+			
+			// getting profile info by making HTTP request
+			JSONObject json = jsonParser.getJSONFromUrl(urlViewUserProfile,
+					SendNotificationParams);
 			// json success tag
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
