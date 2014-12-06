@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/tvNotificationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="34dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvNotificationMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvNotificationTitle"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/NotificationAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="160dp"
+        android:layout_marginLeft="48dp"
+        android:text="Accept"
+        android:enabled="true"
+        android:onClick="onAcceptClick" />
+
+    <Button
+        android:id="@+id/NotificationDecline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/NotificationAccept"
+        android:layout_marginLeft="57dp"
+        android:layout_toRightOf="@+id/NotificationAccept"
+        android:text="Decline" 
+        android:enabled="true"
+        android:onClick="onDeclineClick"/>
+    
+     <Button
+        android:id="@+id/NotificationBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_below="@id/NotificationDecline"
+        android:text="Back" 
+        android:onClick="onBakcClick"/>
+</RelativeLayout>
