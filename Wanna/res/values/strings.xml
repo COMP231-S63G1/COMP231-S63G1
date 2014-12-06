@@ -10,8 +10,8 @@
     <string name="title_activity_register_login">RegisterLogin</string>
     <string name="title_activity_home_page">Home</string>
     <string name="login">LOGIN</string>
-    <string name="personRegister">PERSON REGISTER</string>
-    <string name="organizationRegister">ORGANIZATION REGISTER</string>
+    <string name="personRegister">Registration</string>
+    <string name="organizationRegister">Registration</string>
     <string name="username">Username</string>
     <string name="name">Name:</string>
     <string name="password">Password</string>
@@ -69,17 +69,17 @@
         <item>Entertainment</item>
     </string-array>
 
-    <string name="title_activity_search_event">Wanna?</string>
-    <string name="title_activity_edit_profile_form">EditProfileForm</string>
-    <string name="title_activity_view_event_detail">ViewEventDetail</string>
-    <string name="title_activity_edit_profile">EditProfile</string>
-    <string name="title_activity_profile__form">Profile_Form</string>
-    <string name="title_activity_view_profile_information">ViewProfileInformation</string>
+    <string name="title_activity_search_event">Search Event</string>
+    <string name="title_activity_edit_profile_form">Edit Profile</string>
+    <string name="title_activity_view_event_detail">Event Details</string>
+    <string name="title_activity_edit_profile">Edit Profile</string>
+    <string name="title_activity_profile__form">Profile Form</string>
+    <string name="title_activity_view_profile_information"></string>
     <string name="title_activity_register">Register</string>
-    <string name="title_activity_view_and_join_event">ViewAndJoinEventActivity</string>
-    <string name="title_activity_try">TryActivity</string>
-    <string name="title_activity_">Activity</string>
-    <string name="title_activity_search_event_result">SearchEventResult</string>
+    <string name="title_activity_view_and_join_event"></string>
+    <string name="title_activity_try">Wanna...?</string>
+    <string name="title_activity_">Wanna...?</string>
+    <string name="title_activity_search_event_result">Search Results</string>
     <string name="title_activity_create_group">Create a New Group</string>
     <string name="buttonCreateGroup">Create Group</string>
     <string name="groupName">Group Name:</string>
@@ -108,26 +108,26 @@
     <string name="title_activity_group_search_result">Search Results</string>
     <string name="searchResultsTv">Search results for</string>
     <string name="title_activity_edit_group">Edit Group Information</string>
-    <string name="title_activity_search_group_result">SearchGroupResult</string>
+    <string name="title_activity_search_group_result">Search Results</string>
     <string name="title_activity_view_public_group">Wanna...?</string>
     <string name="title_activity_view_private_group">Wanna...?</string>
-    <string name="title_activity_search_user_result">SearchUserResult</string>
-    <string name="title_activity_search_user_name">Wanna...?</string>
-    <string name="title_activity_search_username">Wanna...?</string>
-    <string name="title_activity_search_user_status">Wanna...?</string>
-    <string name="title_activity_get_created_event">GetCreatedEvent</string>
-    <string name="title_activity_get_joined_event">GetJoinedEvent</string>
+    <string name="title_activity_search_user_result">Search Results</string>
+    <string name="title_activity_search_user_name">Search</string>
+    <string name="title_activity_search_username">Search</string>
+    <string name="title_activity_search_user_status">Search</string>
+    <string name="title_activity_get_created_event"></string>
+    <string name="title_activity_get_joined_event"></string>
     <string name="profileGetCreatEventTextView">Created Event: </string>
     <string name="profileGetJoinEventTextView">Joined Event: </string>
     <string name="profileGetCreatGroupTextView">Created Group: </string>
     <string name="profileGetJoinGroupTextView">Joined Group: </string>
-    <string name="title_activity_register_organization">RegisterOrganization</string>
-    <string name="title_activity_get_created_group">GetCreatedGroup</string>
-    <string name="title_activity_get_joined_group">GetJoinedGroup</string>
-    <string name="title_activity_create_organization_profile">CreateOrganizationProfile</string>
-    <string name="title_activity_organization_login_success">OrganizationLoginSuccess</string>
-    <string name="title_activity_view_organization_profile">ViewOrganizationProfile</string>
-    <string name="title_activity_edit_organization_profile">EditOrganizationProfile</string>
+    <string name="title_activity_register_organization">Register</string>
+    <string name="title_activity_get_created_group"></string>
+    <string name="title_activity_get_joined_group"></string>
+    <string name="title_activity_create_organization_profile">Create Profile</string>
+    <string name="title_activity_organization_login_success">Home Page</string>
+    <string name="title_activity_view_organization_profile">Profile</string>
+    <string name="title_activity_edit_organization_profile">Edit Profile</string>
 
     <string-array name="locationRangeOptions">
         <item>2</item>
@@ -137,10 +137,10 @@
         <item>No limit</item>
     </string-array>
 
-    <string name="title_activity_view_created_group">ViewCreatedGroup</string>
+    <string name="title_activity_view_created_group"></string>
     <string name="title_activity_view_user_profile">Wanna...?</string>
-    <string name="title_activity_view_notifications">Wanna...?</string>
+    <string name="title_activity_view_notifications">Notifications</string>
     <string name="title_activity_chat">Wanna...?</string>
-    <string name="title_activity_view_friend_list">View Friend</string>
+    <string name="title_activity_view_friend_list">Friends List</string>
 
 </resources>

@@ -1,19 +1,29 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#48D1CC"
-    tools:context="com.example.wanna.ViewUserProfile" >
-
-    <ScrollView
-        android:id="@+id/scrollView1"
+    
+    >
+     
+<ScrollView 
+        android:id="@+id/scrollView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+<TableLayout
+    android:layout_width="318dp"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:stretchColumns="1" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_launcher" />
 
             <TableLayout
                 android:layout_width="fill_parent"
@@ -142,53 +152,37 @@
                         android:id="@+id/chatRequestBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/button1"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignRight="@+id/button1"
-                        android:layout_marginBottom="50dp"
                         android:background="#ffffff"
                         android:onClick="chatRequestBtnOnclick"
                         android:text="Request Chat"
-                        android:textColor="#48D1CC" />
-                </TableRow>
-
-                <TableRow>
-
-                    <Button
+                        android:textColor="#48D1CC" 
+                        android:layout_marginTop="30dp"
+                      
+                     />
+                     <Button
                         android:id="@+id/friendRequestBtn"
-                        android:layout_width="wrap_content"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/chatRequestBtn"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginBottom="23dp"
                         android:background="#ffffff"
                         android:onClick="friendRequestBtnOnclick"
                         android:text="Send Friend Request"
-                        android:textColor="#48D1CC" />
-                </TableRow>
-                <TableRow>
+                        android:textColor="#48D1CC" 
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                      />
 
-                    <Button
-                        android:id="@+id/backBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="50dp"
-                        android:background="#ffffff"
-                        android:onClick="backBtnOnclick"
-                        android:text="Back"
-                        android:textColor="#48D1CC" />
                 </TableRow>
+				<TableRow>
+				    
+				    
+                     
+				</TableRow>
+              
+                
             </TableLayout>
-        </LinearLayout>
-    </ScrollView>
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/ic_launcher" />
-
-</RelativeLayout>
+</TableLayout>
+</ScrollView>
+</LinearLayout>
