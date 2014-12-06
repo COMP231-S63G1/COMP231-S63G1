@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wanna...?</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="welcome">Wanna...?</string>
+    <string name="email">E-mail</string>
+    <string name="enterButton"> ENTER </string>
+    <string name="title_activity_register_login">RegisterLogin</string>
+    <string name="title_activity_home_page">Home</string>
+    <string name="login">LOGIN</string>
+    <string name="personRegister">Registration</string>
+    <string name="organizationRegister">Registration</string>
+    <string name="username">Username</string>
+    <string name="name">Name:</string>
+    <string name="password">Password</string>
+    <string name="forgetPassword">Forgot Password</string>
+    <string name="retypePassword">Retype Password</string>
+    <string name="changePass">Change your Password</string>
+    <string name="newPass">New Password</string>
+    <string name="registerTo">Register to Wanna...?</string>
+    <string name="loginButton">LOGIN</string>
+    <string name="title_activity_create_event">Create Event</string>
+    <string name="eventName">Event Name: </string>
+    <string name="eventDescription">Description: </string>
+    <string name="eventDate">Date: </string>
+    <string name="eventTime">Time: </string>
+    <string name="eventVenue">Venue: </string>
+    <string name="eventLocation">Address: </string>
+    <string name="eventPrice">Price range: </string>
+    <string name="eventPurchase">Buy tickets now!</string>
+    <string name="gender">Gender:</string>
+    <string name="genderMale">Male</string>
+    <string name="genderFemale">Female</string>
+    <string name="age">Age:</string>
+    <string name="description">Description:</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="activity_profile_form">Profile Form</string>
+    <string name="uploadImage">Upload Image</string>
+    <string name="hintEventTime">Ex. 12am</string>
+    <string name="hintEventDate">Ex. 1/1/2014</string>
+    <string name="hintPrice">Ex. $35-$45</string>
+    <string name="buttonCreateEvent">Create!</string>
+    <string name="btnSearch">Search</string>
+    <string name="searchEventName">Search Event Name</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="eventType">Event Type: </string>
+    <string name="buttonBack">Back</string>
+    <string name="buttonEditProfile">Edit Profile</string>
+    <string name="title_activity_editEvent">Edit Event</string>
+    <string name="editEvent">Edit Event</string>
+    <string name="joinEvent">Join Event</string>
+    <string name="profileStatusString">Status</string>
+    <string name="changeImage">Change Image</string>
+    <string name="buttonSaveEvent">Save</string>
+    <string name="privacyPublic">Public</string>
+    <string name="privacyPrivate">Private</string>
+    <string name="selectGroupType">Select Group Type</string>
+    <string name="selectGroupPrivacy">Select Group Privacy</string>
+    <string name="selectEventType">Select Event Type</string>
+    <string name="btnSave">Save</string>
+    <string name="search_event_category">Search Event Category</string>
+
+    <string-array name="createEventArray">
+        <item>Sports</item>
+        <item>Entertainment</item>
+    </string-array>
+
+    <string name="title_activity_search_event">Search Event</string>
+    <string name="title_activity_edit_profile_form">Edit Profile</string>
+    <string name="title_activity_view_event_detail">Event Details</string>
+    <string name="title_activity_edit_profile">Edit Profile</string>
+    <string name="title_activity_profile__form">Profile Form</string>
+    <string name="title_activity_view_profile_information"></string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_view_and_join_event"></string>
+    <string name="title_activity_try">Wanna...?</string>
+    <string name="title_activity_">Wanna...?</string>
+    <string name="title_activity_search_event_result">Search Results</string>
+    <string name="title_activity_create_group">Create a New Group</string>
+    <string name="buttonCreateGroup">Create Group</string>
+    <string name="groupName">Group Name:</string>
+    <string name="groupDescription">Description</string>
+    <string name="buttonCancel">Cancel</string>
+
+    <string-array name="createGroupArray">
+        <item>Sports</item>
+        <item>Music</item>
+        <item>Video Games</item>
+        <item>Comics</item>
+    </string-array>
+
+    <string name="title_activity_search_groups">Search for Groups</string>
+    <string name="search_group_name">Search Group Name</string>
+    <string name="search_group_category">Search Group Category</string>
+    <string name="search_group_instructions">Search by name OR category</string>
+
+    <string-array name="searchGroupCategory">
+        <item>Sports</item>
+        <item>Music</item>
+        <item>Video Games</item>
+        <item>Comics</item>
+    </string-array>
+
+    <string name="title_activity_group_search_result">Search Results</string>
+    <string name="searchResultsTv">Search results for</string>
+    <string name="title_activity_edit_group">Edit Group Information</string>
+    <string name="title_activity_search_group_result">Search Results</string>
+    <string name="title_activity_view_public_group">Wanna...?</string>
+    <string name="title_activity_view_private_group">Wanna...?</string>
+    <string name="title_activity_search_user_result">Search Results</string>
+    <string name="title_activity_search_user_name">Search</string>
+    <string name="title_activity_search_username">Search</string>
+    <string name="title_activity_search_user_status">Search</string>
+    <string name="title_activity_get_created_event"></string>
+    <string name="title_activity_get_joined_event"></string>
+    <string name="profileGetCreatEventTextView">Created Event: </string>
+    <string name="profileGetJoinEventTextView">Joined Event: </string>
+    <string name="profileGetCreatGroupTextView">Created Group: </string>
+    <string name="profileGetJoinGroupTextView">Joined Group: </string>
+    <string name="title_activity_register_organization">Register</string>
+    <string name="title_activity_get_created_group"></string>
+    <string name="title_activity_get_joined_group"></string>
+    <string name="title_activity_create_organization_profile">Create Profile</string>
+    <string name="title_activity_organization_login_success">Home Page</string>
+    <string name="title_activity_view_organization_profile">Profile</string>
+    <string name="title_activity_edit_organization_profile">Edit Profile</string>
+
+    <string-array name="locationRangeOptions">
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>No limit</item>
+    </string-array>
+
+    <string name="title_activity_view_created_group">ViewCreatedGroup</string>
+    <string name="title_activity_view_user_profile">Wanna...?</string>
+    <string name="title_activity_view_notifications">Wanna...?</string>
+    <string name="title_activity_chat">Wanna...?</string>
+    <string name="title_activity_view_friend_list">View Friend</string>
+
+</resources>
