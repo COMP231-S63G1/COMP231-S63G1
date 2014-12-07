@@ -1,6 +1,9 @@
 package com.example.wanna;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -12,14 +15,18 @@ import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +52,8 @@ public class ViewUserProfile extends Activity {
 	String age;
 	String gender;
 	String description;
+	String friendUserID;
+	String notificationMessage;
 
 	private static final String TAG_SESSIONID = "sessionid";
 	private static final String TAG_USERID = "userid";
@@ -58,11 +67,25 @@ public class ViewUserProfile extends Activity {
 	private static final String TAG_ProfileGender = "gender";
 	private static final String TAG_DESCRIPTION = "description";
 	private static final String TAG_NOTIFICATIONTYPE="notificationType";
+	private static final String TAG_FRIENDUSERIDFROMINTENT = "userID";
+	private static final String TAG_FRIENDUSERID = "friendUserID";
+	private static final String TAG_SENDERTYPE = "senderType";
+	private static final String TAG_SENDERID = "senderID";
+	private static final String TAG_RECEIVERTYPE = "receiverType";
+	private static final String TAG_RECEIVERID = "receiverID";
+	private static final String TAG_RECEIVERUSERID = "receiverUserID";
+	private static final String TAG_ACCEPTALBE = "acceptable";
+	private static final String TAG_NOTIFICATIONMASSAGE = "notificationMessage";
+	private static final String TAG_SENDTIME="sendTime";
+
+
 
 	private String urlViewUserProfile = UserFunctions.URL_ROOT
 			+ "DB_ViewUserProfile.php";
 	private String urlSendFriendRequest = UserFunctions.URL_ROOT
 			+ "DB_SendFriendRequest.php";
+	private String urlSendNotification = UserFunctions.URL_ROOT
+			+ "DB_SendNotification.php";
 	JSONObject profileInformation;
 
 	@Override
@@ -75,7 +98,7 @@ public class ViewUserProfile extends Activity {
 		userType = sharedpreferences.getString(TAG_USERTYPE, "");
 
 		Intent intent = getIntent();
-		profileID = intent.getStringExtra(TAG_PROFILEID);
+		friendUserID = intent.getStringExtra(TAG_FRIENDUSERIDFROMINTENT);
 
 		tvProfileNickName = (TextView) findViewById(R.id.userNameValue);
 		tvProfileGender = (TextView) findViewById(R.id.userGenderValue);
@@ -105,8 +128,27 @@ public class ViewUserProfile extends Activity {
 	}
 
 	public void friendRequestBtnOnclick(View view) {
-		new SendFriendRequestTask().execute();
-		new SendNotificationTask().execute();
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		 alert.setMessage("Leave Your Message Here");
+		final EditText input = new EditText(this);
+		 alert.setView(input);
+		 alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+	            public void onClick(DialogInterface dialog, int whichButton) {
+	             notificationMessage = input.getEditableText().toString();
+	                         System.out.println(notificationMessage);
+	                         new SendFriendRequestTask().execute();
+	            } // End of onClick(DialogInterface dialog, int whichButton)
+	        }); //End of alert.setPositiveButton
+	            alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int whichButton) {
+	                // Canceled.
+	                  dialog.cancel();
+	              }
+	        }); //End of alert.setNegativeButton
+	            AlertDialog alertDialog = alert.create();
+	            alertDialog.show();
+		
+		
 	}
 	public void backBtnOnclick(View view){
 		Intent intent = new Intent(getApplicationContext(), PersonLoginSuccess.class);
@@ -137,8 +179,8 @@ public class ViewUserProfile extends Activity {
 			ViewProfileParams.add(new BasicNameValuePair(TAG_USERID, userID));
 			ViewProfileParams
 					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
-			ViewProfileParams.add(new BasicNameValuePair(TAG_PROFILEID,
-					profileID));
+			ViewProfileParams.add(new BasicNameValuePair(TAG_FRIENDUSERID,
+					friendUserID));
 			// getting profile info by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlViewUserProfile,
 					ViewProfileParams);
@@ -182,67 +224,61 @@ public class ViewUserProfile extends Activity {
 	private class SendNotificationTask extends AsyncTask<String, Void, String> {
 		int success;
 		String message;
-
+        String senderType = "User";
+        String senderID = userID;
+        String receiverType = "User";
+        String receiverID = friendUserID;
+        String acceptable ="1"; 
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        String sendTime = sdf.format(c.getTime());
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pDialog = new ProgressDialog(ViewUserProfile.this);
-			pDialog.setTitle("Contacting Servers");
-			pDialog.setMessage("Sending Notification...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
+			
 		}
 
 		@Override
 		protected String doInBackground(String... urls) {
 			// Building Parameters
+			System.out.println(sendTime);
 			List<NameValuePair> SendNotificationParams = new ArrayList<NameValuePair>();
 			SendNotificationParams.add(new BasicNameValuePair(TAG_SESSIONID,
 					sessionID));
 			SendNotificationParams.add(new BasicNameValuePair(TAG_USERID, userID));
 			SendNotificationParams
 					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
-			SendNotificationParams.add(new BasicNameValuePair(TAG_NOTIFICATIONTYPE,"friendRequest"));
-			SendNotificationParams.add(new BasicNameValuePair(TAG_PROFILEID,
-					profileID));
-			
+
+			SendNotificationParams.add(new BasicNameValuePair(TAG_SENDERTYPE,
+					senderType));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_SENDERID,
+					senderID));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_RECEIVERTYPE,
+					receiverType));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_RECEIVERID,
+					receiverID));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_ACCEPTALBE,
+					acceptable));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_NOTIFICATIONMASSAGE,
+					notificationMessage));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_SENDTIME,
+					sendTime));
 			// getting profile info by making HTTP request
-			JSONObject json = jsonParser.getJSONFromUrl(urlViewUserProfile,
+			JSONObject json = jsonParser.getJSONFromUrl(urlSendNotification,
 					SendNotificationParams);
 			// json success tag
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
-			if (success == 1) {
-				// successfully received profile info
-				JSONArray profileInformationArray = json
-						.optJSONArray(TAG_PROFILEINFORMATION); // JSON Array
-				// get first profile object from JSON Array
-				profileInformation = profileInformationArray.optJSONObject(0);
-				nickName = profileInformation.optString(TAG_NICKNAME);
-				age = profileInformation.optString(TAG_ProfileAge);
-				gender = profileInformation.optString(TAG_ProfileGender);
-				description = profileInformation.optString(TAG_DESCRIPTION);
-			} else {
-			}
+			
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
 			// display product data in EditText
-			pDialog.dismiss();
-			if (success == 1) {
-				tvProfileNickName.setText(nickName);
-				tvProfileGender.setText(gender);
-				tvProfileAge.setText(age);
-				tvProfileDescription.setText(description);
-			}
-			if (success != 1) {
-				Toast.makeText(getApplicationContext(), message,
+			
+			Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();
-			}
-
 		}
 	}
 
@@ -270,8 +306,8 @@ public class ViewUserProfile extends Activity {
 			ViewProfileParams.add(new BasicNameValuePair(TAG_USERID, userID));
 			ViewProfileParams
 					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
-			ViewProfileParams.add(new BasicNameValuePair(TAG_PROFILEID,
-					profileID));
+			ViewProfileParams.add(new BasicNameValuePair(TAG_FRIENDUSERID,
+					friendUserID));
 			// getting profile info by making HTTP request
 			JSONObject json = jsonParser.getJSONFromUrl(urlSendFriendRequest,
 					ViewProfileParams);
@@ -285,8 +321,12 @@ public class ViewUserProfile extends Activity {
 		protected void onPostExecute(String result) {
 			// display product data in EditText
 			pDialog.dismiss();
+			if(success == 0){
 			Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
 					.show();
+			}else if (success==1){
+				new SendNotificationTask().execute();
+			}
 
 		}
 	}

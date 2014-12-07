@@ -32,7 +32,7 @@ public class SearchUserResult extends ListActivity {
 
 	ArrayList<String[]> userItemsList = new ArrayList<String[]>();
 	ListViewAdapter searchUserAdapter;
-	String profileID;
+	String userID;
 	String profileName;
 	int success;
 	String message;
@@ -50,7 +50,7 @@ public class SearchUserResult extends ListActivity {
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_USERLIST = "userList";
-	private static final String TAG_PROFILEID = "profileID";
+	private static final String TAG_USERID = "userID";
 	private static final String TAG_PROFILENAME = "profileName";
 	private static final String TAG_SEARCHTYPE = "searchType";
 	private static final String TAG_SEARCHTYPENAME = "Name";
@@ -86,15 +86,13 @@ public class SearchUserResult extends ListActivity {
 		}
 		new SearchUserTask().execute();
 		lvUserItem = (ListView) findViewById(android.R.id.list);
-//		searchUserAdapter = new ListViewAdapter(userItemsList, this);
-//		lvUserItem.setAdapter(searchUserAdapter);
 	}
 
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		String profileID = (String)searchUserAdapter.getItem(position);
+		String userID = (String)searchUserAdapter.getItem(position);
 		Intent intent = new Intent(getApplicationContext(),
 				ViewUserProfile.class);
-		intent.putExtra("profileID", profileID);
+		intent.putExtra(TAG_USERID, userID);
 		startActivity(intent);
 	}
 	private class SearchUserTask extends AsyncTask<String, Void, String> {
@@ -133,9 +131,9 @@ public class SearchUserResult extends ListActivity {
 				// looping through All groups
 				for (int i = 0; i < userList.length(); i++) {
 					JSONObject event = userList.optJSONObject(i);
-					profileID = event.optString(TAG_PROFILEID);
+					userID = event.optString(TAG_USERID);
 					profileName = event.optString(TAG_PROFILENAME);
-					String[] userItems = { profileID, profileName };
+					String[] userItems = { userID, profileName };
 					userItemsList.add(userItems);
 				}
 			}else {
