@@ -22,20 +22,22 @@ if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
 	// check for post data
 
-	if (isset($_POST["profileID"])) {
+	if (isset($_POST["friendUserID"])) {
 
-            $profileID = $_POST["profileID"];
-            $result = mysql_query("SELECT `userid` FROM personprofile WHERE profileID = $profileID");
-            $result = mysql_fetch_array($result);
-            $friendID=$result["userid"];
+            
+            $friendID=$_POST["friendUserID"];
 
 	$result = mysql_query("SELECT * FROM `friend` where (`friend_one` = $userID AND `friend_two` = $friendID ) OR ( `friend_one` = $friendID AND `friend_two` = $userID )");
         if (mysql_num_rows($result) > 0) {
             $result = mysql_fetch_array($result);
             if($result["status"]==0)
+			{
             $response["message"]="You have already sent the request to this person";
-            if($result["status"]==1)
+			}
+            else if($result["status"]==1)
+			{
             $response["message"]="You already be friend with this person";
+			}
 	    $response["success"] = 0;
 	    echo json_encode($response);
         }else{

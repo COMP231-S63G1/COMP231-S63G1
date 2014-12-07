@@ -24,13 +24,13 @@ if (isset($_POST['groupID']) && isset($_POST['groupType']) && isset($_POST['grou
     if ($result) {
         // successfully inserted into database
         $response["success"] = 1;
- 
+        $response["message"] = "The group information is updated succeed";
         // echoing JSON response
         echo json_encode($response);
     } else {
         // failed to insert row
         $response["success"] = 0;
- 
+		$response["message"] = "The group information updated failed";
         // echoing JSON response
         echo json_encode($response);
     }

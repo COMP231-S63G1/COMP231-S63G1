@@ -33,7 +33,7 @@ if($sessionSuccess == 1){
 			//check if user is already in grouop
 			$checkUserMembership = mysql_query("SELECT `userid` from `groupjoinin` WHERE `userID` = '$senderID' AND `groupID` = '$receiverID'");
 			if(!empty($checkUserMembership)){
-				if (mysql_num_rows($checkUserMembership) = 0) {			
+				if (mysql_num_rows($checkUserMembership) == 0) {			
 			$getCreaterIDresult = mysql_query("SELECT `groupCreaterID` FROM `group` WHERE `groupID` = '$receiverID'");
 			if(!empty($getCreaterIDresult)){
 				if (mysql_num_rows($getCreaterIDresult) > 0) {
@@ -69,7 +69,7 @@ if($sessionSuccess == 1){
 			}
 		}
 		
-	$result = mysql_query("INSERT INTO `wanna`.`notification` (`notificationNO`, `senderType`, `senderID`, `receiverType`, `receiverID`, `receiverUserID`, `acceptable`, `readStatus`, `message`, `sendTime`)
+	$result = mysql_query("INSERT INTO `wanna`.`notification` (`notificationID`, `senderType`, `senderID`, `receiverType`, `receiverID`, `receiverUserID`, `acceptable`, `readStatus`, `message`, `sendTime`)
         VALUES (NULL, '$senderType', '$senderID', '$receiverType', '$receiverID', '$receiverUserID', '$acceptable', '0', '$notificationMessage', '$sendtime')");
 	if ($result) {
 	$response["success"] = 1;

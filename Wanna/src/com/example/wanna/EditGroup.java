@@ -1,6 +1,8 @@
 package com.example.wanna;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -8,7 +10,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.wanna.EditEvent.CreateNewEvent;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
@@ -42,6 +43,8 @@ public class EditGroup extends Activity {
 	// php file url in the server
 	private String urlUpdateGroup = UserFunctions.URL_ROOT + "DB_UpdateGroup.php";
 	private String urlUploadImage = UserFunctions.URL_ROOT + "saveImage.php";
+	private String urlSendNotification = UserFunctions.URL_ROOT
+			+ "DB_SendMultipleNotification.php";
 	// JSON Node names
 	private static final String TAG_SESSIONID = "sessionid";
 	private static final String TAG_USERID = "userid";
@@ -50,6 +53,14 @@ public class EditGroup extends Activity {
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_PERSON = "Person";
 	private static final String TAG_ORGANIZATION = "Organization";
+	private static final String TAG_SENDERTYPE = "senderType";
+	private static final String TAG_SENDERID = "senderID";
+	private static final String TAG_RECEIVERTYPE = "receiverType";
+	private static final String TAG_RECEIVERID = "receiverID";
+	private static final String TAG_RECEIVERUSERID = "receiverUserID";
+	private static final String TAG_ACCEPTALBE = "acceptable";
+	private static final String TAG_NOTIFICATIONMASSAGE = "notificationMessage";
+	private static final String TAG_SENDTIME="sendTime";
 	private static final int SELECT_PICTURE = 1;
 	private Spinner groupTypeSpinner;
 	private ImageView img;
@@ -70,8 +81,6 @@ public class EditGroup extends Activity {
 	String groupName;
 	String groupDescription;
 	String groupNumber;
-	int success;
-	String message;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +119,10 @@ public class EditGroup extends Activity {
 	 class SaveNewInformationTask extends AsyncTask<String, String, String> {
 
 			/**
-			 * Creating event
+			 * Updating group information 
 			 * */
+			int success;
+			String message;
 
 			protected String doInBackground(String... args) {
 //				String groupID = intent.getStringExtra(TAG_GroupID);
@@ -134,16 +145,11 @@ public class EditGroup extends Activity {
 			}
 			@Override
 			protected void onPostExecute(String result) {
+				System.out.println("Inside update group # post execute");
 				if (success == 1) {
-					if(userType.equals(TAG_PERSON)){
-						Intent intent = new Intent(getApplicationContext(),
-								ViewPersonProfile.class);		
-						startActivity(intent);			
-					}else if(userType.equals(TAG_ORGANIZATION)){
-						Intent intent = new Intent(getApplicationContext(),
-								ViewOrganizationProfile.class);
-						startActivity(intent);						
-					}
+					System.out.println(success);
+					new SendNotificationTask().execute();
+					
 				} 
 				if (success != 1) {
 					Toast.makeText(getApplicationContext(), message,
@@ -187,8 +193,74 @@ public class EditGroup extends Activity {
 
 		return bitmap;
 	}
-	/*
-	 * public void onSaveInformation(View view){ Intent intent = new
-	 * Intent(this, Login_Success.class); startActivity(intent); }
-	 */
+	private class SendNotificationTask extends AsyncTask<String, Void, String> {
+		int success;
+		String message;
+        String senderType = "Group";
+        String senderID = groupID;
+        String receiverType = "User";
+        String acceptable ="0"; 
+        String notificationMessage = "The group you have joined has been changed";
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String sendTime = sdf.format(c.getTime());
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			
+		}
+
+		@Override
+		protected String doInBackground(String... urls) {
+			// Building Parameters
+			System.out.println("Inside  send notification do in backgroud");
+			List<NameValuePair> SendNotificationParams = new ArrayList<NameValuePair>();
+			SendNotificationParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_USERID, userID));
+			SendNotificationParams
+					.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+
+			SendNotificationParams.add(new BasicNameValuePair(TAG_SENDERTYPE,
+					senderType));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_SENDERID,
+					senderID));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_RECEIVERTYPE,
+					receiverType));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_ACCEPTALBE,
+					acceptable));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_NOTIFICATIONMASSAGE,
+					notificationMessage));
+			SendNotificationParams.add(new BasicNameValuePair(TAG_SENDTIME,
+					sendTime));
+			// getting profile info by making HTTP request
+			JSONObject json = jsonParser.getJSONFromUrl(urlSendNotification,
+					SendNotificationParams);
+			// json success tag
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);
+			
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// display product data in EditText
+			System.out.println("Inside send notification # post execute");
+            System.out.println(success);
+			Toast.makeText(getApplicationContext(), message,
+					Toast.LENGTH_SHORT).show();
+			if(userType.equals(TAG_PERSON)){
+				Intent intent = new Intent(getApplicationContext(),
+						ViewPersonProfile.class);		
+				startActivity(intent);			
+			}else if(userType.equals(TAG_ORGANIZATION)){
+				Intent intent = new Intent(getApplicationContext(),
+						ViewOrganizationProfile.class);
+				startActivity(intent);						
+			}
+			
+			
+		}
+	}
 }
