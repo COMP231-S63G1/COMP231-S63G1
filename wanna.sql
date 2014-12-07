@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2014 at 06:06 PM
+-- Generation Time: Dec 07, 2014 at 08:07 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 --
 
 INSERT INTO `event` (`eventID`, `eventCreaterID`, `eventType`, `eventName`, `eventImageURI`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES
-(2, 14, 'Sports', 'swiming', NULL, '2014-12-10', '15:59:00', 'Centennial', 'Progress', '10', 'swim'),
+(2, 14, 'Sports', 'swiming try', NULL, '2014-12-10', '15:59:00', 'Centennial', 'Progress', '10', 'swim'),
 (6, 14, 'Sports', 'basketball', NULL, '2014-12-04', '18:32:00', 'STC', 'stc', '10', 'basketball'),
 (12, 14, 'Sports', 'basketball', NULL, '2014-12-23', '18:32:00', 'STC', 'stc', '10', 'basketball'),
 (13, 18, 'Sports', 'football', NULL, '2014-12-23', '15:38:00', 'downtown', 'yonge', '20', 'football'),
@@ -70,6 +70,7 @@ INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES
 (14, 2),
 (14, 6),
 (14, 12),
+(15, 2),
 (18, 13),
 (18, 14);
 
@@ -121,6 +122,13 @@ CREATE TABLE IF NOT EXISTS `friend` (
   `status` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `friend`
+--
+
+INSERT INTO `friend` (`friend_one`, `friend_two`, `status`) VALUES
+(14, 15, '0');
+
 -- --------------------------------------------------------
 
 --
@@ -144,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `group` (
 INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupPrivacy`, `groupType`, `groupName`, `groupImageURI`, `groupDescription`) VALUES
 (1, 14, 'Public', 'Sports', 'games', NULL, 'games'),
 (2, 14, 'Public', 'Sports', 'movie', NULL, 'movies'),
-(3, 18, 'Public', 'Sports', 'camping', NULL, 'camping');
+(3, 18, 'Private', 'Sports', 'camping', NULL, 'camping');
 
 -- --------------------------------------------------------
 
@@ -163,7 +171,9 @@ CREATE TABLE IF NOT EXISTS `groupjoinin` (
 
 INSERT INTO `groupjoinin` (`userID`, `groupID`) VALUES
 (14, 1),
+(15, 1),
 (14, 2),
+(15, 2),
 (18, 3);
 
 -- --------------------------------------------------------
@@ -173,7 +183,7 @@ INSERT INTO `groupjoinin` (`userID`, `groupID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `notification` (
-`notificationNO` int(11) NOT NULL,
+`notificationID` int(11) NOT NULL,
   `senderType` varchar(10) NOT NULL,
   `senderID` int(11) NOT NULL,
   `receiverType` varchar(10) NOT NULL,
@@ -183,7 +193,19 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `readStatus` tinyint(1) NOT NULL,
   `message` varchar(225) NOT NULL,
   `sendTime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`notificationID`, `senderType`, `senderID`, `receiverType`, `receiverID`, `receiverUserID`, `acceptable`, `readStatus`, `message`, `sendTime`) VALUES
+(7, 'User', 14, 'User', 15, 15, 1, 0, 'gggggggg', '2014-12-07 03:35:31'),
+(8, 'Group', 2, 'User', 14, 14, 1, 0, 'The group you have joined has been changed', '2014-12-07 01:12:58'),
+(9, 'Event', 2, 'User', 14, 14, 1, 0, 'The event you have joined has been changed', '2014-12-07 01:15:25'),
+(10, 'Event', 2, 'User', 15, 15, 1, 0, 'The event you have joined has been changed', '2014-12-07 01:15:25'),
+(11, 'Group', 2, 'User', 14, 14, 1, 0, 'The group you have joined has been changed', '2014-12-07 01:52:45'),
+(12, 'Group', 2, 'User', 15, 15, 1, 0, 'The group you have joined has been changed', '2014-12-07 01:52:45');
 
 -- --------------------------------------------------------
 
@@ -331,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`, `latitude`, `longitude`) VALUES
-(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '43.7736061', '-79.2459734'),
+(14, 'Darren Liu', 'gulang15@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '43.7883626', '-79.2281661'),
 (15, 'Anson Kong', 'ansonkong1992@gmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Person', '0.0000000', NULL),
 (18, 'CIPS', 'gulang15@hotmail.com', 0x2a32334145383039444441434146393641463046443738454430344236413236354530354141323537, 'Organization', '0.0000000', NULL);
 
@@ -379,13 +401,13 @@ ALTER TABLE `group`
 -- Indexes for table `groupjoinin`
 --
 ALTER TABLE `groupjoinin`
- ADD PRIMARY KEY (`userID`,`groupID`), ADD UNIQUE KEY `groupID_2` (`groupID`), ADD KEY `profileID` (`userID`), ADD KEY `groupID` (`groupID`);
+ ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `groupID` (`groupID`);
 
 --
 -- Indexes for table `notification`
 --
 ALTER TABLE `notification`
- ADD PRIMARY KEY (`notificationNO`), ADD KEY `receiverUserID` (`receiverUserID`);
+ ADD PRIMARY KEY (`notificationID`), ADD KEY `receiverUserID` (`receiverUserID`);
 
 --
 -- Indexes for table `organizationprofile`
@@ -445,7 +467,7 @@ MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-MODIFY `notificationNO` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `notificationID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `organizationprofile`
 --

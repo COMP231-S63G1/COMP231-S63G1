@@ -128,6 +128,8 @@
     <string name="title_activity_organization_login_success">Home Page</string>
     <string name="title_activity_view_organization_profile">Profile</string>
     <string name="title_activity_edit_organization_profile">Edit Profile</string>
+    <string name="title_activity_view_acceptable_notification">View Acceptable Notification</string>
+    <string name="title_activity_view_unacceptable_notification">View Unacceptable Notification</string>
 
     <string-array name="locationRangeOptions">
         <item>2</item>

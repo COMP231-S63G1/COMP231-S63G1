@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="18"
+        android:minSdkVersion="9"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -189,6 +189,14 @@
         <activity
             android:name=".ViewNotifications"
             android:label="@string/title_activity_view_notifications" >
+        </activity>
+         <activity
+            android:name=".ViewAcceptableNotification"
+            android:label="@string/title_activity_view_acceptable_notification" >
+        </activity>
+        <activity
+            android:name=".ViewUnacceptableNotification"
+            android:label="@string/title_activity_view_unacceptable_notification" >
         </activity>
         <activity
             android:name=".ChatActivity"

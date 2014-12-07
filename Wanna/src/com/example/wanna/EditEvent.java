@@ -1,6 +1,7 @@
 package com.example.wanna;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -53,6 +54,8 @@ public class EditEvent extends Activity {
 	//php file url in the server 
 	private String urlEditEvent = UserFunctions.URL_ROOT
 			+ "DB_UpdateEvent.php";
+	private String urlSendNotification = UserFunctions.URL_ROOT
+			+ "DB_SendMultipleNotification.php";
 	private String urlUploadImage = UserFunctions.URL_ROOT+"saveImage.php";
 	// JSON Node names
 	private static final String TAG_SESSIONID = "sessionid";
@@ -62,6 +65,14 @@ public class EditEvent extends Activity {
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_PERSON = "Person";
 	private static final String TAG_ORGANIZATION = "Organization";
+	private static final String TAG_SENDERTYPE = "senderType";
+	private static final String TAG_SENDERID = "senderID";
+	private static final String TAG_RECEIVERTYPE = "receiverType";
+	private static final String TAG_RECEIVERID = "receiverID";
+	private static final String TAG_RECEIVERUSERID = "receiverUserID";
+	private static final String TAG_ACCEPTALBE = "acceptable";
+	private static final String TAG_NOTIFICATIONMASSAGE = "notificationMessage";
+	private static final String TAG_SENDTIME="sendTime";
 	private static final int SELECT_PICTURE = 1;
 	// tag for check whether the photo is uploaded succeed
 	private static final String TAG = "upload";
@@ -220,9 +231,10 @@ public class EditEvent extends Activity {
 			return bitmap;
 		}
 	 public void onCreateEvent(View view) {
-			new CreateNewEvent().execute(urlEditEvent);
+			new UpdateEventTask().execute(urlEditEvent);
 		}
-	 class CreateNewEvent extends AsyncTask<String, String, String> {
+	 
+	 private class UpdateEventTask extends AsyncTask<String, String, String> {
 
 			/**
 			 * Creating event
@@ -289,8 +301,71 @@ public class EditEvent extends Activity {
 					Toast.makeText(getApplicationContext(), message,
 							Toast.LENGTH_SHORT).show();
 				}
+				else{
+					new SendNotificationTask().execute();
+				}
 			}
 
 		}
+	 
+	 private class SendNotificationTask extends AsyncTask<String, Void, String> {
+			int success;
+			String message;
+	        String senderType = "Event";
+	        String senderID = eventID;
+	        String receiverType = "User";
+	        String acceptable ="0"; 
+	        String notificationMessage = "The event you have joined has been changed";
+	        Calendar c = Calendar.getInstance();
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	        String sendTime = sdf.format(c.getTime());
+			@Override
+			protected void onPreExecute() {
+				super.onPreExecute();
+				
+			}
 
+			@Override
+			protected String doInBackground(String... urls) {
+				// Building Parameters
+				System.out.println(sendTime);
+				List<NameValuePair> SendNotificationParams = new ArrayList<NameValuePair>();
+				SendNotificationParams.add(new BasicNameValuePair(TAG_SESSIONID,
+						sessionID));
+				SendNotificationParams.add(new BasicNameValuePair(TAG_USERID, userID));
+				SendNotificationParams
+						.add(new BasicNameValuePair(TAG_USERTYPE, userType));
+
+				SendNotificationParams.add(new BasicNameValuePair(TAG_SENDERTYPE,
+						senderType));
+				SendNotificationParams.add(new BasicNameValuePair(TAG_SENDERID,
+						senderID));
+				SendNotificationParams.add(new BasicNameValuePair(TAG_RECEIVERTYPE,
+						receiverType));
+				SendNotificationParams.add(new BasicNameValuePair(TAG_ACCEPTALBE,
+						acceptable));
+				SendNotificationParams.add(new BasicNameValuePair(TAG_NOTIFICATIONMASSAGE,
+						notificationMessage));
+				SendNotificationParams.add(new BasicNameValuePair(TAG_SENDTIME,
+						sendTime));
+				// getting profile info by making HTTP request
+				JSONObject json = jsonParser.getJSONFromUrl(urlSendNotification,
+						SendNotificationParams);
+				// json success tag
+				success = json.optInt(TAG_SUCCESS);
+				message = json.optString(TAG_MESSAGE);
+				
+				return null;
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				// display product data in EditText
+				
+				Toast.makeText(getApplicationContext(), message,
+							Toast.LENGTH_SHORT).show();
+				
+			}
+		}
+		
 }
