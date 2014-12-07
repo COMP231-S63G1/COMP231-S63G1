@@ -1,228 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-<LinearLayout 
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              
-              >
-
-    <TextView
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+         <FrameLayout
+        android:layout_width="240dp"
+        android:layout_height="200dp" >
+        <TextView
             android:layout_width="300dp"
             android:textColor="#48D1CC"
             android:layout_height="40dp"
             android:id="@+id/textwelcome" 
             android:textSize="25sp"
             android:gravity="center"
+            android:layout_marginTop="98dp"
+            android:layout_marginLeft="100dp"
             />
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
             android:id="@+id/lname"
-            android:layout_alignParentTop="true"
-            android:textColor="#000000"
-            android:layout_toRightOf="@+id/textwelcome"
-            android:textSize="20sp"/>
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_marginTop="98dp"
+            android:layout_marginLeft="100dp"
+            />
    
-<TableLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-<TableRow>
-
-
-      <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="Search Event"
-            android:id="@+id/searchEvent"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"	
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onSearchEvent"
-      />
-      <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="Create Event"
-            android:id="@+id/createEvent"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onCreateEvent"
-      />
+        
       
-      
-</TableRow>
-<TableRow>
-    
-    
-    
+  <TextView
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="NEW USER? Please create a profile!" 
+             android:textColor="#48D1CC"
+              android:layout_marginTop="70dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="19sp"
+             >
+</TextView>
+<Button
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="Create Profile" 
+             android:textColor="#ffffff"
+             android:background="#48D1CC"
+             android:layout_marginTop="100dp"
+             android:layout_marginLeft="120dp"
+             android:onClick="onCreateProfile"
+             >
+</Button>
 
-    <Button
-        android:id="@+id/btchangepass"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-		android:background="#48D1CC"
-        android:layout_below="@+id/textwelcome"
-        android:text="Change Password"
-        android:textColor="#ffffff"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:textSize="12sp" 
-        android:onClick="onChangePasswordClick"
+
+
+ 	 <TextView
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="Can't find a group or event?" 
+             android:textColor="#48D1CC"
+              android:layout_marginTop="220dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="19sp"
+             >
+	</TextView>
+	<Button
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="Create Group" 
+             android:textColor="#ffffff"
+             android:background="#48D1CC"
+             android:layout_marginTop="250dp"
+             android:layout_marginLeft="70dp"
+             android:onClick="onCreateGroup"
+             >
+	</Button>
+	<Button
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="Create Event" 
+             android:textColor="#ffffff"
+             android:background="#48D1CC"
+             android:layout_marginTop="250dp"
+             android:layout_marginLeft="200dp"
+             android:onClick="onCreateEvent"
+             >
+	</Button>
+	
+	 <TextView
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="Find a friend!" 
+             android:textColor="#48D1CC"
+              android:layout_marginTop="370dp"
+            android:layout_marginLeft="120dp"
+            android:textSize="19sp"
+             >
+	</TextView>
+	<Button
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="Search Username" 
+             android:textColor="#ffffff"
+             android:background="#48D1CC"
+             android:layout_marginTop="400dp"
+             android:layout_marginLeft="110dp"
+             android:onClick="onSearchUserName"
+             >
+	</Button>
+	
+    </FrameLayout>
+   
+
+    <ListView android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="#fff"
+        android:textColor="#A9A9A9"
         />
     
-       <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="Logout"
-            android:id="@+id/logout"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onLogoutClick"
-      />
-    
-    </TableRow>
-    
-    
-<TableRow>
- 
-   
 
-    
-</TableRow>
-<TableRow>
-    <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="ViewProfile"
-            android:id="@+id/viewProfileInformation"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onViewProfileClick"
-      />
-     <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="View Friend"
-            android:id="@+id/viewFriend"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onViewFriendClick"
-      />
-   
-</TableRow>
-<TableRow>
-  <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="Create Group"
-            android:id="@+id/createGroup"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onCreateGroupClick"
-      />
-  <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="Search Group"
-            android:id="@+id/searchGroup"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onSearchGroupClick"
-      />
-    
-
-</TableRow>
-
-<TableRow>
-  <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="Search user"
-            android:id="@+id/searchUserByName"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onSearchUserClick"
-      />
-  
-  <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="Filter user"
-            android:id="@+id/searchUserByFiltration"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onFiltrationUserClick"
-      />
-    
-
-</TableRow>
-<TableRow>
-  <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="View Notification"
-            android:id="@+id/ViewNotification"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onViewNotificationClick"
-      />
-  
-</TableRow>
-    
-    </TableLayout>
-    <TextView
-            android:layout_width="300dp"
-            android:layout_height="25dp"
-            android:id="@+id/textView" 
-            android:layout_below="@+id/logout" 
-            android:layout_alignParentRight="true"
-            android:textSize="18sp" android:textColor="#000000" 
-            android:textAlignment="center"/>
-
-</LinearLayout>
-</ScrollView>
+</android.support.v4.widget.DrawerLayout>

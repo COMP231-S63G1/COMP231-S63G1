@@ -12,6 +12,11 @@
 		<link>
 			<name>.link0</name>
 			<type>2</type>
+			<location>C:/Development/adt-bundle-windows-x86_64-20140702/sdk/sources/android-18</location>
+		</link>
+		<link>
+			<name>.link3</name>
+			<type>2</type>
 			<location>C:/Development/adt-bundle-windows-x86_64-20140702/sdk/sources/android-19</location>
 		</link>
 	</linkedResources>
