@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.wanna.MyAccountPerson" 
+    android:orientation="vertical"
+    android:background="#48D1CC"
+    >
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="View Profile" 
+        android:layout_marginTop="50dp"
+        android:background="#ffffff"
+        android:textColor="#48D1CC"
+        android:onClick="onViewProfile"
+        android:layout_marginBottom="10dp"
+        />
+      <Button
+        android:id="@+id/button7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Password" 
+        android:background="#ffffff"
+        android:textColor="#48D1CC"
+        android:onClick="onEditProfile"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile" 
+        android:background="#ffffff"
+        android:textColor="#48D1CC"
+        android:onClick="onEditProfile"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit My Events" 
+        android:background="#ffffff"
+        android:textColor="#48D1CC"
+        android:onClick="onEditEvents"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit My Groups" 
+        android:background="#ffffff"
+        android:textColor="#48D1CC"
+        android:onClick="onEditGroup"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Friends List" 
+        android:background="#ffffff"
+        android:textColor="#48D1CC"
+        android:onClick="onFriendsList"
+        android:layout_marginBottom="10dp"
+        />
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Notifications" 
+        android:background="#ffffff"
+        android:textColor="#48D1CC"
+        android:onClick="onNotifications"
+        android:layout_marginBottom="10dp"
+        />
+
+</LinearLayout>

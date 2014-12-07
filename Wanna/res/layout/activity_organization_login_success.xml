@@ -46,21 +46,19 @@
             android:layout_marginTop="9dp"
             android:onClick="onCreateEvent"
       />
-      
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="View Notification"
-            android:id="@+id/ViewNotification"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onViewNotificationClick"
-      />
-      
+
+      <Button
+          android:id="@+id/logout"
+          android:layout_width="80dp"
+          android:layout_height="80dp"
+          android:layout_marginLeft="50dp"
+          android:layout_marginRight="50dp"
+          android:layout_marginTop="9dp"
+          android:background="#48D1CC"
+          android:onClick="onLogoutClick"
+          android:text="Logout"
+          android:textColor="#ffffff"
+          android:textSize="12sp" />
       
 </TableRow>
 <TableRow>
@@ -81,20 +79,19 @@
         android:textSize="12sp" 
         android:onClick="onChangePasswordClick"
         />
-    
-       <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="Logout"
-            android:id="@+id/logout"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onLogoutClick"
-      />
+      <Button
+        android:id="@+id/btnCreateProfile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+		android:background="#48D1CC"
+        android:text="Create Profile"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp" 
+        android:onClick="onCreateOrganization"
+        />
     
     </TableRow>
     
@@ -119,11 +116,7 @@
             android:layout_marginTop="9dp"
             android:onClick="onViewProfileClick"
       />
-    
-   
-</TableRow>
-<TableRow>
-  <Button
+      <Button
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:text="Create Group"
@@ -137,13 +130,9 @@
             android:onClick="onCreateGroupClick"
       />
     
-
+   
 </TableRow>
 
-<TableRow>
-    
-
-</TableRow>
     
     </TableLayout>
     <TextView
