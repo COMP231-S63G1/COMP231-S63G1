@@ -230,12 +230,11 @@ public class ViewUserProfile extends Activity {
         String receiverID = friendUserID;
         String acceptable ="1"; 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String sendTime = sdf.format(c.getTime());
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			
 		}
 
 		@Override
