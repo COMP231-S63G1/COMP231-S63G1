@@ -1,0 +1,154 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textwelcome"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="98dp"
+        android:gravity="center"
+        android:textColor="#48D1CC"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/lname"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="98dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="NEW USER? Please create a profile!"
+        android:textColor="#48D1CC"
+        android:textSize="19sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="110sp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_alignLeft="@+id/textwelcome"
+        
+        android:onClick="onCreateProfile"
+        android:text="Create Profile"
+        android:textColor="#ffffff"
+        android:background="#48D1CC" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignRight="@+id/textView2"
+        android:background="#48D1CC"
+        android:onClick="onCreateEvent"
+        android:text="Create Event"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button3"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="14dp"
+        android:text="Find a friend!"
+        android:textColor="#48D1CC"
+        android:textSize="19sp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button7"
+        android:layout_alignBottom="@+id/button7"
+        android:layout_alignLeft="@+id/button9"
+        android:background="#48D1CC"
+        android:onClick="searcheventclick"
+        android:text="Search Event"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button7"
+        android:layout_alignRight="@+id/button7"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="34dp"
+        android:onClick="myaccountclick"
+        android:text="My Account" 
+        android:textColor="#ffffff"
+        android:background="#48D1CC" 
+        />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/button2"
+        android:layout_marginLeft="16dp"
+        android:background="#48D1CC"
+        android:onClick="searchgroupclick"
+        android:text="Search Group"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button4"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_alignLeft="@+id/button5"
+        android:background="#48D1CC"
+        android:onClick="searchfilterationclick"
+        android:text="Search for user"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textwelcome"
+        android:layout_marginTop="18dp"
+        android:background="#48D1CC"
+        android:onClick="onCreateGroup"
+        android:text="Create Group"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:text="Can&apos;t find a group or event?"
+        android:textColor="#48D1CC"
+        android:textSize="19sp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:background="#48D1CC"
+        android:onClick="onSearchUserName"
+        android:text="Search Username"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>

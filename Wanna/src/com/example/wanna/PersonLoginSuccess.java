@@ -61,10 +61,7 @@ public class PersonLoginSuccess extends Activity {
 	UserFunctions userFunctions = new UserFunctions();
 	private String urlCheckLogin = UserFunctions.URL_ROOT + "DB_LoginSuccess.php";
 
-	String[] menu;
-    DrawerLayout dLayout;
-    ListView dList;
-    ArrayAdapter<String> adapter;
+	
     /**
      * Called when the activity is first created.
      */
@@ -96,50 +93,9 @@ public class PersonLoginSuccess extends Activity {
 						Toast.LENGTH_SHORT).show();
         }
         new LoginSeccessTask().execute();  
-        
-        menu = new String[]{"MY ACCOUNT","EVENTS","GROUPS","SEARCH USERS","LOGOUT"};
-        dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        dList = (ListView) findViewById(R.id.left_drawer);
+       
 
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
-        
-        dList.setAdapter(adapter);
-		dList.setSelector(android.R.color.holo_blue_dark);
 
-        dList.setOnItemClickListener(new OnItemClickListener(){
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-
-           	 switch( position )
-           	 {
-           	    case 0:  Intent intent = new Intent(PersonLoginSuccess.this, MyAccountPerson.class);     
-  	             			 startActivity(intent);
-           	             break;
-           	    case 1:  Intent i2 = new Intent(PersonLoginSuccess.this, SearchEvent.class);     
-           	             startActivity(i2);
-           	             break;
-           	    case 2:  Intent i3 = new Intent(PersonLoginSuccess.this, SearchGroup.class);     
-           	             startActivity(i3);
-           	             break;
-           	    case 3:  Intent i4 = new Intent(PersonLoginSuccess.this, SearchUserFiltration.class);     
-           	    		startActivity(i4);
-           	    		break;
-           	    case 5:  Intent i5 = new Intent(PersonLoginSuccess.this, Login.class);     
-           	    		startActivity(i5);
-           	    		break;
-            }
-				/*dLayout.closeDrawers();					
-				Bundle args = new Bundle();
-				args.putString("Menu", menu[position]);
-				Fragment detail = new DetailFragment();
-				detail.setArguments(args);
-			    FragmentManager fragmentManager = getFragmentManager();		    
-				fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
-				*/
-			}
-        	
-        });
 }
     
     
@@ -161,46 +117,28 @@ public class PersonLoginSuccess extends Activity {
   		Intent intent = new Intent(this, CreatePersonProfile.class);
   		startActivity(intent);
   		}  
-   /* public void onSearchEvent(View view){	
-		Intent intent = new Intent(this, SearchEvent.class);
-		startActivity(intent);
-		}
+  
+    public void myaccountclick(View view){	
+  		Intent intent = new Intent(this, MyAccountPerson.class);
+  		startActivity(intent);
+  		}  
+    public void searcheventclick(View view){	
+  		Intent intent = new Intent(this, SearchEvent.class);
+  		startActivity(intent);
+  		}  
+    public void searchgroupclick(View view){	
+  		Intent intent = new Intent(this, SearchGroup.class);
+  		startActivity(intent);
+  		}  
+    public void searchfilterationclick(View view){	
+  		Intent intent = new Intent(this, SearchUserFiltration.class);
+  		startActivity(intent);
+  		}  
+  
+  
+  
+  
     
-    public void onViewProfileClick(View view){	
-		Intent intent = new Intent(this, ViewPersonProfile.class);
-		startActivity(intent);
-		}
-    
-    public void onChangePasswordClick(View view){	
-		Intent intent = new Intent(this, ChangePassword.class);
-		startActivity(intent);    	
-    }
-    
-    public void onLogoutClick(View view){    	
-		Intent intent = new Intent(this, Login.class);
-		startActivity(intent);    	
-    }
-    
-    public void onSearchGroupClick(View view){	
-		Intent intent = new Intent(this, SearchGroup.class);
-		startActivity(intent);
-		}
-    
-    
-
-    public void onSearchUserClick(View view){	
-		Intent intent = new Intent(this, SearchUserName.class);
-		startActivity(intent);
-		}
-
-    public void onFiltrationUserClick(View view){	
-		Intent intent = new Intent(this, SearchUserFiltration.class);
-		startActivity(intent);
-		}
-    public void onViewFriendClick(View view){
-    	Intent intent = new Intent(this,ViewFriendList.class);
-    	startActivity(intent);
-    }*/
     private class LoginSeccessTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {

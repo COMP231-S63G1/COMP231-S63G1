@@ -16900,3 +16900,1886 @@ java.io.IOException: The filename, directory name, or volume label syntax is inc
 	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
 	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SESSION 2014-12-07 21:52:28.569 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.7.0_67
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product com.android.ide.eclipse.adt.package.adtproduct
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.adtproduct
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-12-07 21:53:03.808
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-12-07 21:53:12.986
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-12-07 21:53:12.986
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Ani'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 21:53:35.854
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ui 2 2 2014-12-07 21:53:36.918
+!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
+!SESSION 2014-12-07 22:16:59.013 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.7.0_67
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product com.android.ide.eclipse.adt.package.adtproduct
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.adtproduct
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-12-07 22:17:14.913
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-12-07 22:17:14.913
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Ani'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:18:06.347
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:18:10.989
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:18:37.262
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:18:47.722
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:06.325
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:11.274
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:12.399
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:14.869
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:17.323
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:20.198
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:22.756
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:24.600
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:28.467
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:30.855
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:34.220
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:37.911
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:53.757
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:57.121
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:19:59.857
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:20:02.004
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:20:04.019
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:20:21.211
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:20:26.700
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:20:37.084
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:20:52.148
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:20.777
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:25.851
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:34.080
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:39.230
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:42.165
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:44.369
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:47.062
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:48.965
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:51.657
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:53.579
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:56.458
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:21:58.459
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:00.740
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:04.194
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:07.468
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:09.172
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:35.793
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:41.740
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:44.722
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:47.210
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:49.334
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:22:50.757
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:23:33.959
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:23:51.338
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:23:58.837
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:24:05.183
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:24:08.381
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:24:19.520
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:24:28.295
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ui 2 2 2014-12-07 22:24:35.851
+!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:25:51.224
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:25:54.585
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:25:57.626
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:01.085
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:03.794
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:05.637
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:06.696
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:07.421
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:11.400
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:12.498
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:14.426
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:18.791
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:21.813
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:23.846
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:25.164
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:26.733
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:39.216
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:41.475
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:26:47.957
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:02.592
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:07.128
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:13.034
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:18.777
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:22.196
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:23.469
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:24.656
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:25.662
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:26.508
+!MESSAGE activity_person_login_success.xml: Dimension "1" in attribute "layout_width" is missing unit!
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:26.566
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:28.692
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:35.843
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:42.459
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-07 22:27:58.870
+!MESSAGE Initializing project state
+!STACK 0
+java.io.IOException: The filename, directory name, or volume label syntax is incorrect
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.Win32FileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at com.android.tools.lint.detector.api.Project.initialize(Project.java:254)
+	at com.android.tools.lint.detector.api.Project.<init>(Project.java:207)
+	at com.android.tools.lint.detector.api.Project.create(Project.java:136)
+	at com.android.tools.lint.client.api.LintClient.createProject(LintClient.java:638)
+	at com.android.tools.lint.client.api.LintClient.getProject(LintClient.java:589)
+	at com.android.tools.lint.client.api.LintDriver$LintClientWrapper.getProject(LintDriver.java:2075)
+	at com.android.tools.lint.client.api.LintDriver.registerProjectFile(LintDriver.java:692)
+	at com.android.tools.lint.client.api.LintDriver.computeProjects(LintDriver.java:764)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:391)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
