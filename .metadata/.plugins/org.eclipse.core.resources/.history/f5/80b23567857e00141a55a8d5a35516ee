@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void enterApplication(View view){	
-		Intent intent = new Intent(this, PersonLoginSuccess.class);
+		Intent intent = new Intent(this, Login.class);
 		startActivity(intent);
 		}
 }
