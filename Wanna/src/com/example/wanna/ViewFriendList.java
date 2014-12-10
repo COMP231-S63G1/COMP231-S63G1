@@ -45,6 +45,7 @@ public class ViewFriendList extends ListActivity {
 	String userType;
 	String profileID;
 	String nickName;
+	String friendID;
 
 	JSONArray friendListJsonArray;
 	private ListAdapter getFriendListAdapter;
@@ -57,6 +58,7 @@ public class ViewFriendList extends ListActivity {
 	private static final String TAG_FRIENDLIST = "friendList";
 	private static final String TAG_PROFILEID = "profileID";
 	private static final String TAG_NICKNAME = "nickName";
+	private static final String TAG_FRIENDID = "friendID";
 
 
 	@Override
@@ -74,10 +76,10 @@ public class ViewFriendList extends ListActivity {
 	}
 
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		String profileID = (String) getFriendListAdapter.getItem(position);
+		String friendID = (String) getFriendListAdapter.getItem(position);
 		Intent intent = new Intent(getApplicationContext(),
 				ViewUserProfile.class);
-		intent.putExtra("profileID", profileID);
+		intent.putExtra("userID", friendID);
 		startActivity(intent);
 	}
 
@@ -103,9 +105,9 @@ public class ViewFriendList extends ListActivity {
 				// looping through All Products
 				for (int i = 0; i < friendListJsonArray.length(); i++) {
 					JSONObject friend = friendListJsonArray.optJSONObject(i);
-					profileID = friend.optString(TAG_PROFILEID);
+				    friendID = friend.optString(TAG_FRIENDID);
 					nickName = friend.optString(TAG_NICKNAME);
-					String[] eventItems = { profileID, nickName };
+					String[] eventItems = { friendID, nickName };
 					friendList.add(eventItems);
 				}
 			} else {

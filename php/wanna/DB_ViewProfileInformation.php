@@ -18,7 +18,7 @@ require_once __DIR__ . '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
 	$userID=$_SESSION['userid'];
 	// get profile from profile table
-    $result = mysql_query("SELECT * FROM `personprofile` WHERE `userid` = $userID");
+    $result = mysql_query("SELECT * FROM profile WHERE userid = $userID");
 	
 	if (!empty($result)) {
         // check for empty result
@@ -31,8 +31,21 @@ if($sessionSuccess == 1){
             $profileInformation["nickName"] = $result["nickName"];
             $profileInformation["age"] = $result["age"];
             $profileInformation["gender"] = $result["gender"];
-            $profileInformation["description"] = $result["description"]; 
-         
+            $profileInformation["description"] = $result["description"];
+	    $eventID = $result["eventID"];
+	    $eventName = "";
+	    if($eventID!=NULL){
+		$resultForEventName = mysql_query("SELECT eventName FROM wanna.event WHERE eventID = $eventID");
+		if (!empty($resultForEventName)) {
+        		// check for empty result
+       			 if (mysql_num_rows($resultForEventName) > 0) {
+ 
+         			   $resultForEventName = mysql_fetch_array($resultForEventName);
+					$eventName =  $resultForEventName["eventName"];
+			}
+                }
+            }
+            $profileInformation["eventName"] = $eventName;           
             // success
             $response["success"] = 1;
 			$response["message"] = "Get user profile information";
@@ -47,7 +60,7 @@ if($sessionSuccess == 1){
         } else {
             // no profile found
             $response["success"] = 0;
-			$response["message"] = "Get user profile information failed";
+			$response["message"] = "No user profile from database";
  
             // echo no users JSON
             echo json_encode($response);

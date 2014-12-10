@@ -9,7 +9,7 @@ $response = array();
     // connecting to db
     $db = new DB_Connect();
  
-require_once '/DB_CheckLogin.php';
+require_once __DIR__ . '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
     $userID=$_SESSION['userid'];
  

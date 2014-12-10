@@ -9,7 +9,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     $tag = $_POST['tag'];
 
     // Include Database handler
-    require_once 'include/DB_Functions.php';
+    require_once __DIR__ . 'include/DB_Functions.php';
     $db = new DB_Functions();
     // response Array
     $response = array("tag" => $tag, "success" => 0, "error" => 0);

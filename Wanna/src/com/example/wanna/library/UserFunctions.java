@@ -18,8 +18,9 @@ public class UserFunctions {
 //    private static String forpassURL = "http://192.168.137.1:80/wanna/";
 //    private static String chgpassURL = "http://192.168.137.1:80/wanna/";
     
-    public static final String URL_ROOT = "http://192.168.43.19:80/wanna/";
+//    public static final String URL_ROOT = "http://192.168.43.19:80/wanna/";
 //    public static final String URL_ROOT = "http://10.0.2.2:80/wanna/";
+    public static final String URL_ROOT = "http://www.collegecornerstone.com/wanna/";
     private static String loginURL = URL_ROOT;
     private static String registerURL = URL_ROOT;
     private static String forpassURL = URL_ROOT;
