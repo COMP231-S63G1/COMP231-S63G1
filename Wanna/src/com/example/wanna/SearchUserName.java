@@ -15,14 +15,14 @@ public class SearchUserName extends Activity {
 	String searchType;
 	
 	private static final String TAG_SEARCHTYPE = "searchType";
-	private static final String TAG_SEARCHNAME = "searchName";
+	private static final String TAG_SEARCHEMAIL = "searchEmail";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_user_name);
 		etSearchUserName = (EditText)findViewById(R.id.etSearchUserName);	
-		searchType = "Name";
+		searchType = "Email";
 	}
 	
 	public void onSearchEventClick(View view){
@@ -34,7 +34,7 @@ public class SearchUserName extends Activity {
 			Intent intent = new Intent(getApplicationContext(),
 					SearchUserResult.class);
 			intent.putExtra(TAG_SEARCHTYPE, searchType);
-			intent.putExtra(TAG_SEARCHNAME, searchUserName);
+			intent.putExtra(TAG_SEARCHEMAIL, searchUserName);
 			startActivity(intent);
 		}
 	}

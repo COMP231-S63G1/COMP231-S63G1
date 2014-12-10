@@ -14,7 +14,7 @@ require_once __DIR__ . '/include/DB_Connect.php';
 // connecting to db
 $db = new DB_Connect();
 
-require_once '/DB_CheckLogin.php';
+require_once __DIR__ . '/DB_CheckLogin.php';
 
 if (isset($_POST['friendUserID'])) {
     $friendUserID = $_POST['friendUserID'];

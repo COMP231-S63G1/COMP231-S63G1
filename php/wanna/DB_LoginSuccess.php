@@ -5,7 +5,7 @@ $response = array();
 // include db connect class
 require_once __DIR__ . '/include/DB_Connect.php';
 $db = new DB_Connect();
-require_once '/DB_CheckLogin.php';
+require_once __DIR__ . '/DB_CheckLogin.php';
 if($sessionSuccess == 1){
 	$userid = $_SESSION['userid'];
 	if($_SESSION['userType'] == "Person"){

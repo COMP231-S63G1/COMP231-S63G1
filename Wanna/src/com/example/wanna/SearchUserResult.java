@@ -33,7 +33,7 @@ public class SearchUserResult extends ListActivity {
 	ArrayList<String[]> userItemsList = new ArrayList<String[]>();
 	ListViewAdapter searchUserAdapter;
 	String userID;
-	String profileName;
+	String email;
 	int success;
 	String message;
 	String searchType;
@@ -51,11 +51,11 @@ public class SearchUserResult extends ListActivity {
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_USERLIST = "userList";
 	private static final String TAG_USERID = "userID";
-	private static final String TAG_PROFILENAME = "profileName";
+	private static final String TAG_PROFILEEMAIL = "email";
 	private static final String TAG_SEARCHTYPE = "searchType";
-	private static final String TAG_SEARCHTYPENAME = "Name";
+	private static final String TAG_SEARCHTYPEEMAIL = "Email";
 	private static final String TAG_SEARCHTYPEFILTRATION = "Filtration";
-	private static final String TAG_SEARCHNAME = "searchName";
+	private static final String TAG_SEARCHEMAIL = "searchEmail";
 	private static final String TAG_SEARCHSTATUS = "searchStatus";
 	private static final String TAG_SEARCHGENDER = "searchGender";
 	private static final String TAG_SEARCHMAXAGE = "searchMaxAge";
@@ -72,8 +72,8 @@ public class SearchUserResult extends ListActivity {
 		setContentView(R.layout.activity_search_user_result);
 		Intent intent = getIntent();
 		searchType = intent.getStringExtra(TAG_SEARCHTYPE);
-		if (searchType.equals( TAG_SEARCHTYPENAME)) {
-			searchName = intent.getStringExtra(TAG_SEARCHNAME);
+		if (searchType.equals( TAG_SEARCHTYPEEMAIL)) {
+			searchName = intent.getStringExtra(TAG_SEARCHEMAIL);
 		} else if (searchType.equals(TAG_SEARCHTYPEFILTRATION)) {
 			searchStatus = intent.getStringExtra(TAG_SEARCHSTATUS);
 			searchMaxAge = String.valueOf(intent.getIntExtra(TAG_SEARCHMAXAGE, 0));
@@ -103,8 +103,8 @@ public class SearchUserResult extends ListActivity {
 			List<NameValuePair> searchUserParams = new ArrayList<NameValuePair>();
 			searchUserParams.add(new BasicNameValuePair(TAG_SEARCHTYPE,
 					searchType));
-			if (searchType.equals(TAG_SEARCHTYPENAME)) {
-				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHNAME,
+			if (searchType.equals(TAG_SEARCHTYPEEMAIL)) {
+				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHEMAIL,
 						searchName));
 			} else if (searchType.equals(TAG_SEARCHTYPEFILTRATION)) {
 				searchUserParams.add(new BasicNameValuePair(TAG_SEARCHSTATUS,
@@ -132,8 +132,8 @@ public class SearchUserResult extends ListActivity {
 				for (int i = 0; i < userList.length(); i++) {
 					JSONObject event = userList.optJSONObject(i);
 					userID = event.optString(TAG_USERID);
-					profileName = event.optString(TAG_PROFILENAME);
-					String[] userItems = { userID, profileName };
+					email = event.optString(TAG_PROFILEEMAIL);
+					String[] userItems = { userID, email };
 					userItemsList.add(userItems);
 				}
 			}else {
