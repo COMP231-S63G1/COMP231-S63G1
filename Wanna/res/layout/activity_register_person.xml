@@ -2,8 +2,13 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="#48D1CC"
-                >
+                android:background="#48D1CC" >
+                <ScrollView 
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+                <RelativeLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -13,7 +18,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:textColor="#ffffff"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="20dp"
             android:textSize="25sp"
             />
 
@@ -23,6 +29,8 @@
             android:text="First Name"
             android:id="@+id/registerFirstName"
             android:textColor="#ffffff"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
             android:layout_below="@+id/registerTitle"
             android:layout_alignParentLeft="true"
             android:textSize="15dp"/>
@@ -31,20 +39,23 @@
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:id="@+id/fname"
+            android:layout_marginRight="15dp"
             android:hint="First Name"
+            android:singleLine="true"
             android:textColor="#000000"
             android:layout_alignTop="@+id/registerFirstName"
             android:layout_alignParentRight="true"
-            android:textSize="15dp"/>
+            android:textSize="15sp"/>
 
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
             android:text="Last Name"
+            android:gravity="center_vertical"
             android:textColor="#ffffff"
             android:id="@+id/registerLastName"
             android:layout_below="@+id/registerFirstName"
-            android:layout_alignRight="@+id/registerFirstName"
+            android:layout_alignLeft="@+id/registerFirstName"
             android:textSize="15dp"/>
 
     <EditText
@@ -53,18 +64,21 @@
             android:textColor="#000000"
             android:id="@+id/lname"
             android:hint="Last Name"
+            android:singleLine="true"
+            android:layout_marginRight="15dp"
             android:layout_alignTop="@+id/registerLastName"
             android:layout_alignParentRight="true"
-            android:textSize="15dp"/>
+            android:textSize="15sp"/>
 
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
             android:textColor="#ffffff"
             android:text="Email"
+            android:gravity="center_vertical"
             android:id="@+id/registerEmail"
             android:layout_below="@+id/registerLastName"
-            android:layout_alignRight="@+id/registerLastName"
+            android:layout_alignLeft="@+id/registerLastName"
             android:textSize="15dp"/>
 
     <EditText
@@ -72,21 +86,24 @@
             android:layout_height="40dp"
             android:textColor="#000000"
             android:inputType="textEmailAddress"
+            android:layout_marginRight="15dp"
             android:ems="10"
             android:id="@+id/email"
             android:hint="E-mail"
+            android:singleLine="true"
             android:layout_below="@+id/lname"
             android:layout_alignParentRight="true"
-            android:textSize="15dp"/>
+            android:textSize="15sp"/>
 
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
             android:textColor="#ffffff"
             android:text="Password"
+            android:gravity="center_vertical"
             android:id="@+id/registerPassword"
             android:layout_below="@+id/registerEmail"
-            android:layout_alignRight="@+id/registerEmail"
+            android:layout_alignLeft="@+id/registerEmail"
             android:textSize="15dp"/>
 
     <EditText
@@ -94,11 +111,13 @@
             android:layout_height="40dp"
             android:textColor="#000000"
             android:inputType="textPassword"
+            android:layout_marginRight="15dp"
             android:id="@+id/pword"
             android:hint="Password"
+            android:singleLine="true"
             android:layout_alignTop="@+id/registerPassword"
             android:layout_alignParentRight="true"
-            android:textSize="15dp"/>
+            android:textSize="15sp"/>
 
     <EditText
             android:layout_width="200dp"
@@ -117,10 +136,13 @@
             android:layout_height="40dp"
             android:textColor="#ffffff"
             android:text="Confirm Password"
+            android:gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:singleLine="true"
             android:id="@+id/registerConfirmPassword"
             android:layout_alignTop="@+id/confirmPassword"
-            android:layout_alignRight="@+id/registerPassword"
-            android:textSize="15dp"/>
+            android:layout_alignLeft="@+id/registerPassword"
+            android:textSize="15sp"/>
 
     <Button
             android:layout_width="200dp"
@@ -132,7 +154,8 @@
             android:layout_alignRight="@+id/registerFirstName"
             android:textSize="15sp"
             android:background="#FFFFFF"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
             android:onClick="onRegisterClick"
             />
 
@@ -141,11 +164,12 @@
             android:layout_height="40dp"
             android:textColor="#48D1CC"
             android:text="Back To Login"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:id="@+id/bktologin"
             android:layout_below="@+id/confirmPassword"
             android:layout_alignParentRight="true"
             android:textSize="15sp"
+            android:layout_marginRight="15dp"
             android:background="#ffffff"
             android:onClick="onBackLoginClick"
             />
@@ -157,5 +181,6 @@
             android:id="@+id/register_error"
             android:layout_below="@+id/register"
             android:layout_alignParentRight="true"/>
-
+</RelativeLayout>
+</ScrollView>
 </RelativeLayout>

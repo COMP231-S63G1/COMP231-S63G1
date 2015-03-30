@@ -10,8 +10,8 @@
     <string name="title_activity_register_login">RegisterLogin</string>
     <string name="title_activity_home_page">Home</string>
     <string name="login">LOGIN</string>
-    <string name="personRegister">Registration</string>
-    <string name="organizationRegister">Registration</string>
+    <string name="personRegister">Person Registration</string>
+    <string name="organizationRegister">Organization Registration</string>
     <string name="username">Username</string>
     <string name="name">Name:</string>
     <string name="password">Password</string>
