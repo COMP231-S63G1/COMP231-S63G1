@@ -5,11 +5,11 @@
  
 */
 
-define("DB_HOST", "wanna.db.10437204.hostedresource.com");
+define("DB_HOST", "107.180.0.218");
 
 define("DB_USER", "wanna");
 
-define("DB_PASSWORD", "WOLDeyesus1!");
+define("DB_PASSWORD", "1stAPPWanna!");
 
 define("DB_DATABASE", "wanna");
 

@@ -105,7 +105,7 @@ public class Login extends Activity {
 			pDialog.setMessage("Logging in ...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(true);
-			pDialog.show();
+			//pDialog.show();
 		}
 
 		@Override

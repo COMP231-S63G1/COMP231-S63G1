@@ -20,7 +20,11 @@ public class UserFunctions {
     
 //    public static final String URL_ROOT = "http://192.168.43.19:80/wanna/";
 //    public static final String URL_ROOT = "http://10.0.2.2:80/wanna/";
-    public static final String URL_ROOT = "http://www.collegecornerstone.com/wanna/";
+//    public static final String URL_ROOT = "http://www.collegecornerstone.com/wanna/";
+
+    public static final String URL_ROOT = "http://wanna.developerdarren.com/";
+
+//  public static final String URL_ROOT = "http://127.0.0.1:80/wanna/";
     private static String loginURL = URL_ROOT;
     private static String registerURL = URL_ROOT;
     private static String forpassURL = URL_ROOT;
