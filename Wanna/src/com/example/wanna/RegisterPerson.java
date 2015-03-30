@@ -71,6 +71,11 @@ public class RegisterPerson extends Activity {
 		etConfirmPassword = (EditText) findViewById(R.id.confirmPassword);
 	}
 	
+	boolean checkEmail(String mail) {
+		String regex = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+		return mail.matches(regex);
+		}
+	
 	public void onRegisterClick(View view){
 		firstName = etFirstName.getText().toString();
 		lastName = etLastName.getText().toString();
@@ -79,8 +84,13 @@ public class RegisterPerson extends Activity {
 		confirmPassword = etConfirmPassword.getText().toString(); 
 		
 		if((!firstName.equals(""))&&(!lastName.equals(""))&&(!email.equals(""))&&(!password.equals(""))&&(!confirmPassword.equals(""))&&(password.equals(confirmPassword))){
-			userName = firstName + " " + lastName;
-			new RegisterTask().execute();
+			if (!checkEmail(email)){
+				Toast.makeText(getApplicationContext(), "Invalid Email Type",
+						Toast.LENGTH_SHORT).show();
+			    }else{
+			    	userName = firstName + " " + lastName;
+					new RegisterTask().execute();
+			    }
 		}else if(firstName.equals("")){
 			Toast.makeText(getApplicationContext(),
                     "First name field empty", Toast.LENGTH_SHORT).show(); 

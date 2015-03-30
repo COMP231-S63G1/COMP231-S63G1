@@ -66,6 +66,11 @@ public class RegisterOrganization extends Activity {
 			etConfirmPassword = (EditText) findViewById(R.id.confirmPassword);
 		}
 		
+		boolean checkEmail(String mail) {
+			String regex = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+			return mail.matches(regex);
+			}
+		
 		public void onRegisterClick(View view){
 			userName = etOrganizationName.getText().toString();
 			email = etEmail.getText().toString();
@@ -73,7 +78,12 @@ public class RegisterOrganization extends Activity {
 			confirmPassword = etConfirmPassword.getText().toString(); 
 			
 			if((!userName.equals(""))&&(!email.equals(""))&&(!password.equals(""))&&(!confirmPassword.equals(""))&&(password.equals(confirmPassword))){
-				new RegisterTask().execute();
+				if (!checkEmail(email)){
+					Toast.makeText(getApplicationContext(), "Invalid Email Type",
+							Toast.LENGTH_SHORT).show();
+				    }else{
+				    	new RegisterTask().execute();
+				    }
 			}else if(userName.equals("")){
 				Toast.makeText(getApplicationContext(),
 	                    "Organization name field empty", Toast.LENGTH_SHORT).show(); 

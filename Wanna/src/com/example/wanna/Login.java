@@ -67,7 +67,12 @@ public class Login extends Activity {
 		loginEmail = etEmail.getText().toString();
 		loginPassword = etPassword.getText().toString();
 		if ((!loginEmail.equals("")) && (!loginPassword.equals(""))) {
-			new LoginTask().execute();
+			if (!checkEmail(loginEmail)){
+				Toast.makeText(getApplicationContext(), "Invalid Email Type",
+						Toast.LENGTH_SHORT).show();
+			    }else{
+			    	new LoginTask().execute();
+			    }
 		} else if ((!loginEmail.equals(""))) {
 			Toast.makeText(getApplicationContext(), "Password field empty",
 					Toast.LENGTH_SHORT).show();
@@ -80,6 +85,11 @@ public class Login extends Activity {
 					.show();
 		}
 	}
+	
+	boolean checkEmail(String mail) {
+		String regex = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+		return mail.matches(regex);
+		}
 
 	public void onPersonRegisterClick(View view) {
 		Intent intent = new Intent(getApplicationContext(), RegisterPerson.class);
