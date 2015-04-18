@@ -55,14 +55,22 @@ public class DemoActivity extends Activity {
     public static final String PROPERTY_REG_ID = "registration_id";
     private static final String PROPERTY_APP_VERSION = "appVersion";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    
+
+	public static final String MyPREFERENCES = "Wanna";
+	SharedPreferences sharedpreferences;
 	JSONParser jsonParser = new JSONParser();
 	UserFunctions userFunctions = new UserFunctions();
     private String urlUploadGCMRegid = userFunctions.URL_ROOT
 			+ "DB_UploadGCMRegid.php";
-    private static final String TAG_UploadGCMRegid = "gcm_regid";
+	private static final String TAG_SESSIONID = "sessionid";
+	private static final String TAG_USERID = "userid";
+	private static final String TAG_USERTYPE = "userType";
+    private static final String TAG_UploadGCMRegid = "gcmRegid";
     private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
+	String sessionID;
+	String userID;
+	String userType;
 	int success;
 	String message;
 
@@ -88,7 +96,14 @@ public class DemoActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_demo);
+        setContentView(R.layout.activity_demo);        
+
+		sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+		sessionID = sharedpreferences.getString(TAG_SESSIONID, "");
+		userID = sharedpreferences.getString(TAG_USERID, "");
+		userType = sharedpreferences.getString(TAG_USERTYPE, "");
+
+        
         mDisplay = (TextView) findViewById(R.id.display);
 
         context = getApplicationContext();
@@ -96,11 +111,20 @@ public class DemoActivity extends Activity {
         // Check device for Play Services APK. If check succeeds, proceed with GCM registration.
         if (checkPlayServices()) {
             gcm = GoogleCloudMessaging.getInstance(this);
-            regid = getRegistrationId(context);
+            regid = getRegistrationId(context);                        
+
+        	//Notice
+        	System.out.println("old regid: " + regid);
 
             if (regid.isEmpty()) {
                 registerInBackground();
             }
+            
+            //Notice: for debug
+            else{
+            	sendRegistrationIdToBackend();
+            }
+            
         } else {
             Log.i(TAG, "No valid Google Play Services APK found.");
         }
@@ -188,12 +212,18 @@ public class DemoActivity extends Activity {
             @Override
             protected String doInBackground(Void... params) {
             	
+            	//Notice
+            	System.out.println("gcm: " + gcm);
+            	
                 String msg = "";
                 try {
                     if (gcm == null) {
                         gcm = GoogleCloudMessaging.getInstance(context);
                     }
-                    regid = gcm.register(SENDER_ID);
+                    regid = gcm.register(SENDER_ID);                    
+
+                	//Notice
+                	System.out.println("new regid: " + regid);
                     
                     msg = "Device registered, registration ID=" + regid;
 
@@ -295,6 +325,9 @@ public class DemoActivity extends Activity {
     class UploadGCMRegid extends AsyncTask<String, String, String> {
 		protected String doInBackground(String... args) {
 			List<NameValuePair> uploadGCMRegidParams = new ArrayList<NameValuePair>();
+			uploadGCMRegidParams.add(new BasicNameValuePair(TAG_SESSIONID,	sessionID));
+			uploadGCMRegidParams.add(new BasicNameValuePair(TAG_USERID, userID));
+			uploadGCMRegidParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
 			uploadGCMRegidParams.add(new BasicNameValuePair(TAG_UploadGCMRegid,	regid));
 			JSONObject json = jsonParser.getJSONFromUrl(urlUploadGCMRegid, uploadGCMRegidParams);
 			success = json.optInt(TAG_SUCCESS);

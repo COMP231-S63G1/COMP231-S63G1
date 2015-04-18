@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2015 at 12:51 AM
+-- Generation Time: Apr 18, 2015 at 03:11 AM
 -- Server version: 5.5.41-cll-lve
 -- PHP Version: 5.4.23
 
@@ -386,8 +386,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`, `latitude`, `longitude`, `gcm_regid`) VALUES
-(14, 'Darren Liu', 'gulang15@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5007795', '121.4298562', NULL),
-(15, 'Anson Kong', 'ansonkong1992@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '0.0000000', NULL, NULL),
+(14, 'Darren Liu', 'gulang15@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5008447', '121.4297596', 'APA91bEOCjgP7T6DjBWtqSZ3pPrpt73Z58nFmlq2WexSW9xXMLQoCt6mgw3DUDq7tcjPBUfq6e6AznIpRLgdt63RBLkkQI66wp9ZSJhnT76TRpb8qfCJJF6_tp_Z-xp-02Sslx_gS0X0'),
+(15, 'Anson Kong', 'ansonkong1992@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5008148', '121.4298933', NULL),
 (18, 'CIPS', 'gulang15@hotmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Organization', '0.0000000', NULL, NULL);
 
 --
