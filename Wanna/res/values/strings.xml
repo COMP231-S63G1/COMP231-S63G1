@@ -144,5 +144,8 @@
     <string name="title_activity_view_notifications">Notifications</string>
     <string name="title_activity_chat">Wanna...?</string>
     <string name="title_activity_view_friend_list">Friends List</string>
+    <string name="title_activity_demo">DemoActivity</string>
+    <string name="send">Send</string>
+    <string name="clear">Clear</string>
 
 </resources>
