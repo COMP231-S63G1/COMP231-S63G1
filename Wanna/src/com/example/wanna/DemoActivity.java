@@ -16,12 +16,16 @@ package com.example.wanna;
  * limitations under the License.
  */
 
+import com.example.wanna.CreateEvent.CreateNewEvent;
+import com.example.wanna.library.JSONParser;
+import com.example.wanna.library.UserFunctions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -30,9 +34,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 /**
  * Main UI for the demo app.
@@ -44,6 +55,16 @@ public class DemoActivity extends Activity {
     public static final String PROPERTY_REG_ID = "registration_id";
     private static final String PROPERTY_APP_VERSION = "appVersion";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    
+	JSONParser jsonParser = new JSONParser();
+	UserFunctions userFunctions = new UserFunctions();
+    private String urlUploadGCMRegid = userFunctions.URL_ROOT
+			+ "DB_UploadGCMRegid.php";
+    private static final String TAG_UploadGCMRegid = "gcm_regid";
+    private static final String TAG_SUCCESS = "success";
+	private static final String TAG_MESSAGE = "message";
+	int success;
+	String message;
 
     /**
      * Substitute you own sender ID here. This is the project number you got
@@ -268,6 +289,29 @@ public class DemoActivity extends Activity {
      * to a server that echoes back the message using the 'from' address in the message.
      */
     private void sendRegistrationIdToBackend() {
-      // Your implementation here.
+    	new UploadGCMRegid().execute(urlUploadGCMRegid);
+    }
+    
+    class UploadGCMRegid extends AsyncTask<String, String, String> {
+		protected String doInBackground(String... args) {
+			List<NameValuePair> uploadGCMRegidParams = new ArrayList<NameValuePair>();
+			uploadGCMRegidParams.add(new BasicNameValuePair(TAG_UploadGCMRegid,	regid));
+			JSONObject json = jsonParser.getJSONFromUrl(urlUploadGCMRegid, uploadGCMRegidParams);
+			success = json.optInt(TAG_SUCCESS);
+			message = json.optString(TAG_MESSAGE);		
+			return null;			
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			if (success == 1) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
+			if (success == 0) {
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
+			}
+		}
     }
 }
