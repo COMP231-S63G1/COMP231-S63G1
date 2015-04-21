@@ -43,6 +43,21 @@
             </intent-filter>
         </activity>
         
+        <!-- GCM Notification Receiver -->
+        <receiver
+            android:name=".GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+ 
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+ 
+                <category android:name="com.example.wanna" />
+            </intent-filter>
+        </receiver>
+ 
+        <service android:name=".GcmIntentService" />
+        
         <!-- Notification Activity -->
         <activity
             android:name=".ResulatActivity"

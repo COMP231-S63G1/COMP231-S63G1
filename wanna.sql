@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2015 at 03:11 AM
+-- Generation Time: Apr 21, 2015 at 06:29 AM
 -- Server version: 5.5.41-cll-lve
 -- PHP Version: 5.4.23
 
@@ -79,7 +79,8 @@ INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES
 (14, 12),
 (15, 2),
 (18, 13),
-(18, 14);
+(18, 14),
+(20, 2);
 
 -- --------------------------------------------------------
 
@@ -159,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `group` (
   UNIQUE KEY `groupCreaterID_2` (`groupCreaterID`,`groupPrivacy`,`groupType`,`groupName`,`groupImageURI`),
   KEY `groupID` (`groupID`),
   KEY `groupCreaterID` (`groupCreaterID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `group`
@@ -168,7 +169,8 @@ CREATE TABLE IF NOT EXISTS `group` (
 INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupPrivacy`, `groupType`, `groupName`, `groupImageURI`, `groupDescription`) VALUES
 (1, 14, 'Public', 'Sports', 'games', NULL, 'games'),
 (2, 14, 'Public', 'Sports', 'movie', NULL, 'movies'),
-(3, 18, 'Private', 'Sports', 'camping', NULL, 'camping');
+(3, 18, 'Private', 'Sports', 'camping', NULL, 'camping'),
+(4, 14, 'Private', 'Sports', 'test private group', NULL, 'test private group');
 
 -- --------------------------------------------------------
 
@@ -192,7 +194,8 @@ INSERT INTO `groupjoinin` (`userID`, `groupID`) VALUES
 (15, 1),
 (14, 2),
 (15, 2),
-(18, 3);
+(18, 3),
+(14, 4);
 
 -- --------------------------------------------------------
 
@@ -213,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `sendTime` datetime NOT NULL,
   PRIMARY KEY (`notificationID`),
   KEY `receiverUserID` (`receiverUserID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `notification`
@@ -225,7 +228,15 @@ INSERT INTO `notification` (`notificationID`, `senderType`, `senderID`, `receive
 (9, 'Event', 2, 'User', 14, 14, 1, 0, 'The event you have joined has been changed', '2014-12-07 01:15:25'),
 (10, 'Event', 2, 'User', 15, 15, 1, 0, 'The event you have joined has been changed', '2014-12-07 01:15:25'),
 (11, 'Group', 2, 'User', 14, 14, 1, 0, 'The group you have joined has been changed', '2014-12-07 01:52:45'),
-(12, 'Group', 2, 'User', 15, 15, 1, 0, 'The group you have joined has been changed', '2014-12-07 01:52:45');
+(12, 'Group', 2, 'User', 15, 15, 1, 0, 'The group you have joined has been changed', '2014-12-07 01:52:45'),
+(13, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 06:33:02'),
+(14, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 07:12:52'),
+(15, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 11:32:40'),
+(16, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 11:52:10'),
+(17, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 12:19:43'),
+(18, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 12:23:13'),
+(19, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 12:25:28'),
+(20, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 12:26:28');
 
 -- --------------------------------------------------------
 
@@ -270,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `personprofile` (
   PRIMARY KEY (`profileID`),
   UNIQUE KEY `userid_2` (`userid`),
   KEY `userid` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `personprofile`
@@ -278,7 +289,8 @@ CREATE TABLE IF NOT EXISTS `personprofile` (
 
 INSERT INTO `personprofile` (`profileID`, `nickName`, `gender`, `age`, `description`, `pictureURI`, `userid`) VALUES
 (12, 'DL', 'Male', 24, 'so cool', NULL, 14),
-(13, 'AK', 'Male', 22, 'handsome', NULL, 15);
+(13, 'AK', 'Male', 22, 'handsome', NULL, 15),
+(14, 'Darren Liu', 'Male', 25, 'smart', NULL, 20);
 
 -- --------------------------------------------------------
 
@@ -379,16 +391,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `gcm_regid` text,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`, `latitude`, `longitude`, `gcm_regid`) VALUES
-(14, 'Darren Liu', 'gulang15@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5008447', '121.4297596', 'APA91bEOCjgP7T6DjBWtqSZ3pPrpt73Z58nFmlq2WexSW9xXMLQoCt6mgw3DUDq7tcjPBUfq6e6AznIpRLgdt63RBLkkQI66wp9ZSJhnT76TRpb8qfCJJF6_tp_Z-xp-02Sslx_gS0X0'),
-(15, 'Anson Kong', 'ansonkong1992@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5008148', '121.4298933', NULL),
-(18, 'CIPS', 'gulang15@hotmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Organization', '0.0000000', NULL, NULL);
+(14, 'Darren Liu', 'gulang15@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '0.0000000', '0.0000000', 'APA91bEOCjgP7T6DjBWtqSZ3pPrpt73Z58nFmlq2WexSW9xXMLQoCt6mgw3DUDq7tcjPBUfq6e6AznIpRLgdt63RBLkkQI66wp9ZSJhnT76TRpb8qfCJJF6_tp_Z-xp-02Sslx_gS0X0'),
+(15, 'Anson Kong', 'ansonkong1992@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5008109', '121.4298952', NULL),
+(18, 'CIPS', 'gulang15@hotmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Organization', '0.0000000', NULL, NULL),
+(20, 'Darren Liu', 'gulang15a@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5008596', '121.4297439', NULL);
 
 --
 -- Constraints for dumped tables

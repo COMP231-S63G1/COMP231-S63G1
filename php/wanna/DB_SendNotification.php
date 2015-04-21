@@ -71,6 +71,28 @@ if($sessionSuccess == 1){
 		
 	$result = mysql_query("INSERT INTO `wanna`.`notification` (`notificationID`, `senderType`, `senderID`, `receiverType`, `receiverID`, `receiverUserID`, `acceptable`, `readStatus`, `message`, `sendTime`)
         VALUES (NULL, '$senderType', '$senderID', '$receiverType', '$receiverID', '$receiverUserID', '$acceptable', '0', '$notificationMessage', '$sendtime')");
+        $gcmresult = mysql_query("SELECT `gcm_regid` FROM `users` where `userid` = $receiverUserID ");
+			if (!empty($gcmresult )) {
+                       // check for empty result			
+                       if (mysql_num_rows($gcmresult ) > 0) {       
+                       while ($row = mysql_fetch_array($gcmresult )) {
+                       $gcm_regid = $row['gcm_regid'];
+                       $gcm_data = $notificationMessage;
+	                require_once __DIR__ . '/GCM_PushNotification.php';
+	                }
+	                }
+	                else{
+    			     $response["success"] = 0;
+   			     $response["message"] = "mysql row number not bigger than o"; 
+   			     // echoing JSON response
+			     echo json_encode($response);
+  			        }
+	                }
+	                else{
+    			     $response["success"] = 0;
+   			     $response["message"] = "fetch gcm_regid from database failed"; 
+   			     echo json_encode($response);
+  			        }
 	if ($result) {
 	$response["success"] = 1;
         $response["message"] = "Insert Notification Succeed!"; 
