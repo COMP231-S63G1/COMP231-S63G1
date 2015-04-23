@@ -121,9 +121,9 @@ public class DemoActivity extends Activity {
             }
             
             //Notice: for debug
-            else{
-            	sendRegistrationIdToBackend();
-            }
+//            else{
+//            	sendRegistrationIdToBackend();
+//            }
             
         } else {
             Log.i(TAG, "No valid Google Play Services APK found.");

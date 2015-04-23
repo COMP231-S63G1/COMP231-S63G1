@@ -7,6 +7,8 @@
  
 // array for JSON response
 $response = array();
+$gcm_regid = array();
+$gcm_data = array();
  
 // include db connect class
 require_once __DIR__ . '/include/DB_Connect.php';
@@ -35,34 +37,42 @@ if($sessionSuccess == 1){
                         
 			while ($row = mysql_fetch_array($result)) {
 			$receiverID = $receiverUserID = $row['userID'];
-			$resultForNotification = mysql_query("INSERT INTO `wanna`.`notification` (`notificationID`, `senderType`, `senderID`, `receiverType`, `receiverID`, `receiverUserID`, `acceptable`, `readStatus`, `message`, `sendTime`) VALUES (NULL, '$senderType', '$senderID', '$receiverType', '$receiverID', '$receiverUserID', '$acceptable', '0', '$notificationMessage', '$sendtime')");			
+			$resultForNotification = mysql_query("INSERT INTO `wanna`.`notification` (`notificationID`, `senderType`, `senderID`, `receiverType`, `receiverID`, `receiverUserID`, `acceptable`, `readStatus`, `message`, `sendTime`) VALUES (NULL, '$senderType', '$senderID', '$receiverType', '$receiverID', '$receiverUserID', '$acceptable', '0', '$notificationMessage', '$sendtime')");	
 			$gcmresult = mysql_query("SELECT `gcm_regid` FROM `users` where `userid` = $receiverUserID ");
 			if (!empty($gcmresult )) {
                        // check for empty result			
                        if (mysql_num_rows($gcmresult ) > 0) {       
                        while ($row = mysql_fetch_array($gcmresult )) {
-                       $gcm_regid = $row['gcm_regid'];
-                       $gcm_data = $notificationMessage;
-	                require_once __DIR__ . '/GCM_PushNotification.php';
+                       $single_gcm_regid = $row['gcm_regid'];
+                       array_push($gcm_regid, $single_gcm_regid );
+                       array_push($gcm_data , $notificationMessage);
+                       //$gcm_regid = $row['gcm_regid'];
+                       //$gcm_data = $notificationMessage;
 	                }
-	                }
+	                }	
 	                else{
     			     $response["success"] = 0;
    			     $response["message"] = "mysql row number not bigger than o"; 
    			     // echoing JSON response
 			     echo json_encode($response);
   			        }
-	                }
+	                }	
 	                else{
     			     $response["success"] = 0;
    			     $response["message"] = "fetch gcm_regid from database failed"; 
    			     echo json_encode($response);
   			        }
+  			        
+	                
+  			        $response["success"] = 1;
+     				$response["message"] = "Insert Notification Succeed 1! receiverUserID: " . $receiverUserID  . " gcm_regid: " . $single_gcm_regid  .  " gcm_data: " . $notificationMessage; 
+				echo json_encode($response);
 	                }
-					 if ($resultForNotification) {
-				    $response["success"] = 1;
-     				$response["message"] = "Insert Notification Succeed! gcm_regid: " .$gcm_regid; 
-    			        // echoing JSON response
+	                require_once __DIR__ . '/GCM_PushNotification.php';
+	                if ($resultForNotification) {
+	                $response["success"] = 1;
+	                $response["message"] = "Insert Notification Succeed 2! gcm_regid: " . $single_gcm_regid . " gcm_data: " .$notificationMessage. " resultForNotification: " . $result; 
+	                // echoing JSON response
     			 
     			     }
     			     else{

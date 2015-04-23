@@ -6,10 +6,10 @@ $url    = 'https://android.googleapis.com/gcm/send';
 $apiKey = 'AIzaSyAd6juDRu0ofqsdVO5RUzAMAa3MgBB7Hng';
  
 //registration ids
-$registrationIDs = array($gcm_regid);
+$registrationIDs = $gcm_regid;
  
 //payload data
-$data   = array('data' => $gcm_data) ;
+$data = $gcm_data;
  
 $fields = array('registration_ids' => $registrationIDs,
                 'data' => $data);
