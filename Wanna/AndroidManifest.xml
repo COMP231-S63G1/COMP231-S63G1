@@ -32,6 +32,22 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        
+         <!-- GCM Notification Receiver -->
+        <receiver
+            android:name=".GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+ 
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- <action android:name="com.google.android.c2dm.intent.REGISTRATION" /> -->
+                
+                <category android:name="com.example.wanna" />
+            </intent-filter>
+        </receiver>
+ 
+        <service android:name=".GcmIntentService" />
 
         <activity
             android:name=".MainActivity"
@@ -42,22 +58,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <!-- GCM Notification Receiver -->
-        <receiver
-            android:name=".GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter>
- 
-                <!-- Receives the actual messages. -->
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                
-                <category android:name="com.example.wanna" />
-            </intent-filter>
-        </receiver>
- 
-        <service android:name=".GcmIntentService" />
         
         <!-- Notification Activity -->
         <activity

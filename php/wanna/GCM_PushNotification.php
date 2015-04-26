@@ -9,7 +9,7 @@ $apiKey = 'AIzaSyAd6juDRu0ofqsdVO5RUzAMAa3MgBB7Hng';
 $registrationIDs = $gcm_regid;
  
 //payload data
-$data = $gcm_data;
+$data = array('message' => $gcm_data);
  
 $fields = array('registration_ids' => $registrationIDs,
                 'data' => $data);

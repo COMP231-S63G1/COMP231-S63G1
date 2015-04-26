@@ -1,4 +1,4 @@
-package com.example.wanna.library;
+package com.example.wanna;
 
 /*
  * Copyright (C) 2013 The Android Open Source Project
@@ -16,8 +16,6 @@ package com.example.wanna.library;
  * limitations under the License.
  */
 
-import com.example.wanna.DemoActivity;
-import com.example.wanna.MainActivity;
 import com.example.wanna.R;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -51,6 +49,7 @@ public class GcmIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        System.out.println("GcmIntentService Started");
         Bundle extras = intent.getExtras();
         GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
         // The getMessageType() intent parameter must be the intent you received
@@ -92,38 +91,38 @@ public class GcmIntentService extends IntentService {
     // This is just one simple example of what you might choose to do with
     // a GCM message.
     private void sendNotification(String msg) {
-//        mNotificationManager = (NotificationManager)
-//                this.getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-//                new Intent(this, DemoActivity.class), 0);
-//
-//        NotificationCompat.Builder mBuilder =
-//                new NotificationCompat.Builder(this)
-//        .setSmallIcon(R.drawable.ic_stat_gcm)
-//        .setContentTitle("GCM Notification")
-//        .setStyle(new NotificationCompat.BigTextStyle()
-//        .bigText(msg))
-//        .setContentText(msg);
-//
-//        mBuilder.setContentIntent(contentIntent);
-//        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+        mNotificationManager = (NotificationManager)
+                this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, DemoActivity.class), 0);
+
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+        .setSmallIcon(R.drawable.ic_stat_gcm)
+        .setContentTitle("GCM Notification")
+        .setStyle(new NotificationCompat.BigTextStyle()
+        .bigText(msg))
+        .setContentText(msg);
+
+        mBuilder.setContentIntent(contentIntent);
+        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     	
-    	Log.d(TAG, "Preparing to send notification...: " + msg);
-		mNotificationManager = (NotificationManager) this
-				.getSystemService(Context.NOTIFICATION_SERVICE);
-
-		PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-				new Intent(this, MainActivity.class), 0);
-
-		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-				this).setSmallIcon(R.drawable.gcm_cloud)
-				.setContentTitle("GCM Notification")
-				.setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
-				.setContentText(msg);
-
-		mBuilder.setContentIntent(contentIntent);
-		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
-		Log.d(TAG, "Notification sent successfully.");
+//    	Log.d(TAG, "Preparing to send notification...: " + msg);
+//		mNotificationManager = (NotificationManager) this
+//				.getSystemService(Context.NOTIFICATION_SERVICE);
+//
+//		PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+//				new Intent(this, MainActivity.class), 0);
+//
+//		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+//				this).setSmallIcon(R.drawable.gcm_cloud)
+//				.setContentTitle("GCM Notification")
+//				.setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
+//				.setContentText(msg);
+//
+//		mBuilder.setContentIntent(contentIntent);
+//		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+//		Log.d(TAG, "Notification sent successfully.");
     }
 }

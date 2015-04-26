@@ -1,4 +1,4 @@
-package com.example.wanna.library;
+package com.example.wanna;
 
 /*
  * Copyright 2013 Google Inc.
@@ -15,6 +15,7 @@ package com.example.wanna.library;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 
 import android.app.Activity;
 import android.content.ComponentName;

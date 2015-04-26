@@ -8,7 +8,7 @@
 // array for JSON response
 $response = array();
 $gcm_regid = array();
-$gcm_data = array();
+//$gcm_data = array();
  
 // include db connect class
 require_once __DIR__ . '/include/DB_Connect.php';
@@ -47,7 +47,7 @@ if($sessionSuccess == 1){
                        array_push($gcm_regid, $single_gcm_regid );
                        array_push($gcm_data , $notificationMessage);
                        //$gcm_regid = $row['gcm_regid'];
-                       //$gcm_data = $notificationMessage;
+                       $gcm_data = $notificationMessage;
 	                }
 	                }	
 	                else{
@@ -64,14 +64,14 @@ if($sessionSuccess == 1){
   			        }
   			        
 	                
-  			        $response["success"] = 1;
-     				$response["message"] = "Insert Notification Succeed 1! receiverUserID: " . $receiverUserID  . " gcm_regid: " . $single_gcm_regid  .  " gcm_data: " . $notificationMessage; 
-				echo json_encode($response);
+  			        //$response["success"] = 1;
+     				//$response["message"] = "Insert Notification Succeed 1! receiverUserID: " . $receiverUserID  . " gcm_regid: " . $single_gcm_regid  .  " gcm_data: " . $notificationMessage; 
+				//echo json_encode($response);
 	                }
 	                require_once __DIR__ . '/GCM_PushNotification.php';
 	                if ($resultForNotification) {
 	                $response["success"] = 1;
-	                $response["message"] = "Insert Notification Succeed 2! gcm_regid: " . $single_gcm_regid . " gcm_data: " .$notificationMessage. " resultForNotification: " . $result; 
+	                $response["message"] = "Insert Notification Succeed 2! first gcm_regid: " . $gcm_regid[0] . " second gcm_regid: "  . $gcm_regid[1] . " gcm_data: " .$notificationMessage. " resultForNotification: " . $result; 
 	                // echoing JSON response
     			 
     			     }
