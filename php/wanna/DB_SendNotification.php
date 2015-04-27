@@ -7,6 +7,7 @@
  
 // array for JSON response
 $response = array();
+$gcm_regid = array();
  
 // include db connect class
 require_once __DIR__ . '/include/DB_Connect.php';
@@ -76,9 +77,9 @@ if($sessionSuccess == 1){
                        // check for empty result			
                        if (mysql_num_rows($gcmresult ) > 0) {       
                        while ($row = mysql_fetch_array($gcmresult )) {
-                       $gcm_regid = $row['gcm_regid'];
+                       $single_gcm_regid = $row['gcm_regid'];
+                       array_push($gcm_regid, $single_gcm_regid );
                        $gcm_data = $notificationMessage;
-	                require_once __DIR__ . '/GCM_PushNotification.php';
 	                }
 	                }
 	                else{
@@ -93,6 +94,8 @@ if($sessionSuccess == 1){
    			     $response["message"] = "fetch gcm_regid from database failed"; 
    			     echo json_encode($response);
   			        }
+  			        }
+	                require_once __DIR__ . '/GCM_PushNotification.php';
 	if ($result) {
 	$response["success"] = 1;
         $response["message"] = "Insert Notification Succeed!"; 

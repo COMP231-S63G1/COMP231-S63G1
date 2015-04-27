@@ -212,20 +212,6 @@
             android:onClick="onViewNotificationClick"
       />
   
-   <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="GCM Demo"
-            android:id="@+id/GCMDemo"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:background="#48D1CC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="9dp"
-            android:onClick="onGCMDemoClick"
-      />
-  
 </TableRow>
     
     </TableLayout>

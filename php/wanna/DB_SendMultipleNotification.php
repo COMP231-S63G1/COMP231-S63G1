@@ -45,7 +45,7 @@ if($sessionSuccess == 1){
                        while ($row = mysql_fetch_array($gcmresult )) {
                        $single_gcm_regid = $row['gcm_regid'];
                        array_push($gcm_regid, $single_gcm_regid );
-                       array_push($gcm_data , $notificationMessage);
+                       //array_push($gcm_data , $notificationMessage);
                        //$gcm_regid = $row['gcm_regid'];
                        $gcm_data = $notificationMessage;
 	                }
@@ -114,9 +114,9 @@ if($sessionSuccess == 1){
                        // check for empty result			
                        if (mysql_num_rows($gcmresult ) > 0) {       
                        while ($row = mysql_fetch_array($gcmresult )) {
-                       $gcm_regid = $row['gcm_regid'];
-                       $gcm_data = $notificationMessage;
-	                require_once __DIR__ . '/GCM_PushNotification.php';
+                       $single_gcm_regid = $row['gcm_regid'];
+                       array_push($gcm_regid, $single_gcm_regid );
+	               $gcm_data = $notificationMessage;
 	                }
 	                }
 	                else{
@@ -132,6 +132,7 @@ if($sessionSuccess == 1){
    			     echo json_encode($response);
   			        }
   			        }
+  			        require_once __DIR__ . '/GCM_PushNotification.php';
 					if ($resultforNodification) {
 				    $response["success"] = 1;
      				$response["message"] = "Insert Notification Succeed!"; 

@@ -79,7 +79,7 @@ public class GcmIntentService extends IntentService {
                 }
                 Log.i(TAG, "Completed work @ " + SystemClock.elapsedRealtime());
                 // Post notification of received message.
-                sendNotification("Received: " + extras.toString());
+                sendNotification(intent.getExtras().getString("message"));
                 Log.i(TAG, "Received: " + extras.toString());
             }
         }
@@ -95,34 +95,17 @@ public class GcmIntentService extends IntentService {
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
 
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, DemoActivity.class), 0);
+                new Intent(this, ViewNotifications.class), 0);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-        .setSmallIcon(R.drawable.ic_stat_gcm)
-        .setContentTitle("GCM Notification")
+        .setSmallIcon(R.drawable.wannalogo)
+        .setContentTitle("Wanna New Notification")
         .setStyle(new NotificationCompat.BigTextStyle()
         .bigText(msg))
         .setContentText(msg);
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
-    	
-//    	Log.d(TAG, "Preparing to send notification...: " + msg);
-//		mNotificationManager = (NotificationManager) this
-//				.getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//		PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-//				new Intent(this, MainActivity.class), 0);
-//
-//		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-//				this).setSmallIcon(R.drawable.gcm_cloud)
-//				.setContentTitle("GCM Notification")
-//				.setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
-//				.setContentText(msg);
-//
-//		mBuilder.setContentIntent(contentIntent);
-//		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
-//		Log.d(TAG, "Notification sent successfully.");
     }
 }
