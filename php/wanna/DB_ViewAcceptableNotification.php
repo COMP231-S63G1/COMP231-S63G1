@@ -26,7 +26,7 @@ if($sessionSuccess == 1){
 		if($senderType == "User"){
 			$senderResult = mysql_query("SELECT `username` AS senderName from `users` WHERE `userid` = $senderID");
 		}else if($senderType == "Event"){
-			$senderResult = mysql_query("SELECT `eventname` AS senderName from `event` WHERE `event` = $senderID");			
+			$senderResult = mysql_query("SELECT `eventname` AS senderName from `event` WHERE `eventid` = $senderID");			
 		}else if($senderType == "Group"){
 			$senderResult = mysql_query("SELECT `groupname` AS senderName from `group` WHERE `groupid` = $senderID");			
 		}
