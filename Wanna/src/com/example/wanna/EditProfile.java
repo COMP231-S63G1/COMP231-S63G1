@@ -1,6 +1,10 @@
 package com.example.wanna;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -8,18 +12,34 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.example.wanna.library.BaseAlbumDirFactory;
+import com.example.wanna.library.FroyoAlbumDirFactory;
+import com.example.wanna.library.ImageFilePath;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
+import com.example.wanna.library.AlbumStorageDirFactory;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class EditProfile extends Activity {
@@ -29,11 +49,22 @@ public class EditProfile extends Activity {
 	UserFunctions userFunctions = new UserFunctions();
 
 	private ProgressDialog pDialog;
-	
+
 	public static final String MyPREFERENCES = "Wanna";
 	SharedPreferences sharedpreferences;
 
-	private String urlUpdateProfile = UserFunctions.URL_ROOT + "DB_UpdateProfile.php";
+	private String urlUpdateProfile = UserFunctions.URL_ROOT
+			+ "DB_UpdateProfile.php";
+
+	static final int REQUEST_IMAGE_CAPTURE = 1;
+	static final int REQUEST_TAKE_PHOTO = 1;
+	static final int SELECT_FILE = 1;
+	private static int RESULT_LOAD_IMG = 1;
+	String mCurrentPhotoPath;
+	String imgDecodableString;
+	private static final String JPEG_FILE_PREFIX = "IMG_";
+	private static final String JPEG_FILE_SUFFIX = ".jpg";
+	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 
 	// user profile JSONArray
 	JSONArray userProfileArray = null;
@@ -50,6 +81,7 @@ public class EditProfile extends Activity {
 
 	EditText txtUserNickName;
 	EditText txtUserDescription;
+	ImageButton imbUserPicture;
 
 	String sessionID;
 	String userID;
@@ -75,9 +107,16 @@ public class EditProfile extends Activity {
 
 		txtUserNickName = (EditText) findViewById(R.id.etName);
 		txtUserDescription = (EditText) findViewById(R.id.etDescription);
+		imbUserPicture = (ImageButton) findViewById(R.id.userPicture);
 
 		txtUserNickName.setText(userNickName);
 		txtUserDescription.setText(userDescription);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+			mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
+		} else {
+			mAlbumStorageDirFactory = new BaseAlbumDirFactory();
+		}
 	}
 
 	public void onUpdateClick(View view) {
@@ -109,42 +148,249 @@ public class EditProfile extends Activity {
 			pDialog.setCancelable(true);
 			pDialog.show();
 		}
-		
+
 		@Override
 		protected String doInBackground(String... urls) {
 			// Building Parameters
 			List<NameValuePair> updateProfileParams = new ArrayList<NameValuePair>();
-			updateProfileParams.add(new BasicNameValuePair(TAG_SESSIONID, sessionID));
+			updateProfileParams.add(new BasicNameValuePair(TAG_SESSIONID,
+					sessionID));
 			updateProfileParams.add(new BasicNameValuePair(TAG_USERID, userID));
-			updateProfileParams.add(new BasicNameValuePair(TAG_USERTYPE, userType));
-			updateProfileParams.add(new BasicNameValuePair(TAG_NICKNAME, userNickName));
-			updateProfileParams.add(new BasicNameValuePair(TAG_DESCRIPTION, userDescription));
-			JSONObject json = jsonParser.getJSONFromUrl(urlUpdateProfile, updateProfileParams);
+			updateProfileParams.add(new BasicNameValuePair(TAG_USERTYPE,
+					userType));
+			updateProfileParams.add(new BasicNameValuePair(TAG_NICKNAME,
+					userNickName));
+			updateProfileParams.add(new BasicNameValuePair(TAG_DESCRIPTION,
+					userDescription));
+			JSONObject json = jsonParser.getJSONFromUrl(urlUpdateProfile,
+					updateProfileParams);
 			success = json.optInt(TAG_SUCCESS);
 			message = json.optString(TAG_MESSAGE);
 			if (success == 1) {
 				Editor editor = sharedpreferences.edit();
 				editor.putString(TAG_NICKNAME, json.optString(TAG_NICKNAME));
 				editor.commit();
-				if(userType.equals(TAG_PERSON)){
+				if (userType.equals(TAG_PERSON)) {
 					Intent intent = new Intent(getApplicationContext(),
-							ViewPersonProfile.class);		
-					startActivity(intent);			
-				}else if(userType.equals(TAG_ORGANIZATION)){
+							ViewPersonProfile.class);
+					startActivity(intent);
+				} else if (userType.equals(TAG_ORGANIZATION)) {
 					Intent intent = new Intent(getApplicationContext(),
 							ViewOrganizationProfile.class);
-					startActivity(intent);						
+					startActivity(intent);
 				}
 			} else {
 			}
 			return null;
 		}
-		
+
 		@Override
 		protected void onPostExecute(String result) {
 			if (success != 1) {
-				Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();				
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_SHORT).show();
 			}
 		}
+	}
+
+	public void onAddPictureClick(View view) {
+		selectImage();
+		// dispatchTakePictureIntent();
+	}
+
+	private void selectImage() {
+		final CharSequence[] items = { "Take Photo", "Choose from Library",
+				"Cancel" };
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(EditProfile.this);
+		builder.setTitle("Add Photo!");
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int item) {
+				if (items[item].equals("Take Photo")) {
+					dispatchTakePictureIntent();
+					// Intent intent = new
+					// Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+					// startActivityForResult(intent, REQUEST_CAMERA);
+				} else if (items[item].equals("Choose from Library")) {
+					Intent galleryIntent = new Intent(
+							Intent.ACTION_PICK,
+							android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+					// Start the Intent
+					startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+					// intent.setType("image/*");
+					// startActivityForResult(
+					// Intent.createChooser(intent, "Select File"),
+					// SELECT_FILE);
+				} else if (items[item].equals("Cancel")) {
+					dialog.dismiss();
+				}
+			}
+		});
+		builder.show();
+	}
+
+	private void dispatchTakePictureIntent() {
+		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+			// Create the File where the photo should go
+			File photoFile = null;
+			try {
+				photoFile = setUpPhotoFile();
+				mCurrentPhotoPath = photoFile.getAbsolutePath();
+				takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+						Uri.fromFile(photoFile));
+			} catch (IOException e) {
+				e.printStackTrace();
+				photoFile = null;
+				mCurrentPhotoPath = null;
+			}
+			startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+			// // Continue only if the File was successfully created
+			// if (photoFile != null) {
+			// takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+			// Uri.fromFile(photoFile));
+			// startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+			// }
+		}
+	}
+
+	// private void dispatchTakeVideoIntent() {
+	// Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+	// startActivityForResult(takeVideoIntent, ACTION_TAKE_VIDEO);
+	// }
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		try {
+			if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+				handleBigCameraPhoto();
+				// Bundle extras = data.getExtras();
+				// Bitmap imageBitmap = (Bitmap) extras.get("data");
+				// imbUserPicture.setImageBitmap(imageBitmap);
+			}
+			// When an Image is picked
+			if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+					&& null != data) {
+				// Get the Image from data
+
+				Uri selectedImage = data.getData();
+				String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+				// Get the cursor
+				Cursor cursor = getContentResolver().query(selectedImage,
+						filePathColumn, null, null, null);
+				// Move to first row
+				cursor.moveToFirst();
+
+				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+				imgDecodableString = cursor.getString(columnIndex);
+				cursor.close();
+//				ImageView imgView = (ImageView) findViewById(R.id.imgView);
+				// Set the Image in ImageView after decoding the String
+				mCurrentPhotoPath = ImageFilePath.getPath(getApplicationContext(), selectedImage);
+				handleBigCameraPhoto();
+
+			} else {
+				Toast.makeText(this, "You haven't picked Image",
+						Toast.LENGTH_LONG).show();
+			}
+		} catch (Exception e) {
+			Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+					.show();
+		}
+	}
+
+	private void handleBigCameraPhoto() {
+
+		if (mCurrentPhotoPath != null) {
+			setPic();
+			galleryAddPic();
+			mCurrentPhotoPath = null;
+		}
+
+	}
+
+	private File setUpPhotoFile() throws IOException {
+
+		File f = createImageFile();
+		mCurrentPhotoPath = f.getAbsolutePath();
+
+		return f;
+	}
+
+	private File createImageFile() throws IOException {
+		// Create an image file name
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+				.format(new Date());
+		String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
+		File albumF = getAlbumDir();
+		File imageF = File.createTempFile(imageFileName, JPEG_FILE_SUFFIX,
+				albumF);
+		return imageF;
+	}
+
+	private File getAlbumDir() {
+		File storageDir = null;
+
+		if (Environment.MEDIA_MOUNTED.equals(Environment
+				.getExternalStorageState())) {
+
+			storageDir = mAlbumStorageDirFactory
+					.getAlbumStorageDir(getAlbumName());
+
+			if (storageDir != null) {
+				if (!storageDir.mkdirs()) {
+					if (!storageDir.exists()) {
+						Log.d("CameraSample", "failed to create directory");
+						return null;
+					}
+				}
+			}
+
+		} else {
+			Log.v(getString(R.string.app_name),
+					"External storage is not mounted READ/WRITE.");
+		}
+
+		return storageDir;
+	}
+
+	/* Photo album for this application */
+	private String getAlbumName() {
+		return getString(R.string.album_name);
+	}
+
+	private void galleryAddPic() {
+		Intent mediaScanIntent = new Intent(
+				Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+		File f = new File(mCurrentPhotoPath);
+		Uri contentUri = Uri.fromFile(f);
+		mediaScanIntent.setData(contentUri);
+		this.sendBroadcast(mediaScanIntent);
+	}
+
+	private void setPic() {
+		// Get the dimensions of the View
+		int targetW = imbUserPicture.getWidth();
+		int targetH = imbUserPicture.getHeight();
+
+		// Get the dimensions of the bitmap
+		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+		bmOptions.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+		int photoW = bmOptions.outWidth;
+		int photoH = bmOptions.outHeight;
+
+		// Determine how much to scale down the image
+		int scaleFactor = Math.min(photoW / targetW, photoH / targetH);
+
+		// Decode the image file into a Bitmap sized to fill the View
+		bmOptions.inJustDecodeBounds = false;
+		bmOptions.inSampleSize = scaleFactor;
+		bmOptions.inPurgeable = true;
+
+		Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+		imbUserPicture.setImageBitmap(bitmap);
 	}
 }
