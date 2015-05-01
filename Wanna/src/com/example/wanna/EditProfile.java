@@ -1,5 +1,6 @@
 package com.example.wanna;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -7,8 +8,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -35,6 +42,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -55,7 +63,8 @@ public class EditProfile extends Activity {
 
 	private String urlUpdateProfile = UserFunctions.URL_ROOT
 			+ "DB_UpdateProfile.php";
-
+	
+	//Select images from gallery or take images from camera
 	static final int REQUEST_IMAGE_CAPTURE = 1;
 	static final int REQUEST_TAKE_PHOTO = 1;
 	static final int SELECT_FILE = 1;
@@ -65,6 +74,10 @@ public class EditProfile extends Activity {
 	private static final String JPEG_FILE_PREFIX = "IMG_";
 	private static final String JPEG_FILE_SUFFIX = ".jpg";
 	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
+	
+	//Upload images
+    String ba1;
+    public static String urlUploadImage = UserFunctions.URL_ROOT + "DB_UploadImages.php";
 
 	// user profile JSONArray
 	JSONArray userProfileArray = null;
@@ -122,12 +135,14 @@ public class EditProfile extends Activity {
 	public void onUpdateClick(View view) {
 		userNickName = txtUserNickName.getText().toString();
 		userDescription = txtUserDescription.getText().toString();
+		upload();
 		new UploadNewInformationTask().execute(urlUpdateProfile);
 	}
 
 	public void onDeleteClick(View view) {
 		userNickName = "";
 		userDescription = "";
+        mCurrentPhotoPath = null;
 		new UploadNewInformationTask().execute(urlUpdateProfile);
 	}
 
@@ -306,7 +321,7 @@ public class EditProfile extends Activity {
 		if (mCurrentPhotoPath != null) {
 			setPic();
 			galleryAddPic();
-			mCurrentPhotoPath = null;
+			//mCurrentPhotoPath = null;
 		}
 
 	}
@@ -393,4 +408,60 @@ public class EditProfile extends Activity {
 		Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
 		imbUserPicture.setImageBitmap(bitmap);
 	}
+	
+	private void upload() {
+        // Image location URL
+        Log.e("path", "----------------" + mCurrentPhotoPath);
+ 
+        // Image
+        Bitmap bm = BitmapFactory.decodeFile(mCurrentPhotoPath);
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+        byte[] ba = bao.toByteArray();
+        ba1 = Base64.encodeToString(ba, 0);
+ 
+        Log.e("base64", "-----" + ba1);
+ 
+        // Upload image to server
+        new uploadToServer().execute();
+ 
+    }
+	
+	public class uploadToServer extends AsyncTask<Void, Void, String> {
+		 
+        private ProgressDialog pd = new ProgressDialog(EditProfile.this);
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pd.setMessage("Wait image uploading!");
+            pd.show();
+        }
+ 
+        @Override
+        protected String doInBackground(Void... params) {
+ 
+            ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("base64", ba1));
+            nameValuePairs.add(new BasicNameValuePair("ImageName", System.currentTimeMillis() + ".jpg"));
+            try {
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost httppost = new HttpPost(urlUploadImage);
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                HttpResponse response = httpclient.execute(httppost);
+                String st = EntityUtils.toString(response.getEntity());
+                Log.v("log_tag", "In the try Loop" + st);
+ 
+            } catch (Exception e) {
+                Log.v("log_tag", "Error in http connection " + e.toString());
+            }
+            return "Success";
+ 
+        }
+ 
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            pd.hide();
+            pd.dismiss();
+            mCurrentPhotoPath = null;
+        }
+    }
 }

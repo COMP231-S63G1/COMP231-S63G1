@@ -1,1 +1,22 @@
 [21-Apr-2015 12:25:29 UTC] PHP Fatal error:  Call to undefined function arrya() in /home/darrenliu/public_html/wanna.com/GCM_PushNotification.php on line 9
+[01-May-2015 08:26:42 UTC] PHP Warning:  fopen(/Images/1430468798294.jpg): failed to open stream: No such file or directory in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 6
+[01-May-2015 08:26:42 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 7
+[01-May-2015 08:26:42 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 8
+[01-May-2015 08:29:15 UTC] PHP Warning:  fopen(../Images/1430468951383.jpg): failed to open stream: No such file or directory in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 6
+[01-May-2015 08:29:15 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 7
+[01-May-2015 08:29:15 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 8
+[01-May-2015 08:30:48 UTC] PHP Warning:  fopen(../Images/1430469039788.jpg): failed to open stream: No such file or directory in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 6
+[01-May-2015 08:30:48 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 7
+[01-May-2015 08:30:48 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 8
+[01-May-2015 08:33:22 UTC] PHP Warning:  fopen(/home/darrenliu/public_html/wanna.com/../Images/1430469197627.jpg): failed to open stream: No such file or directory in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 6
+[01-May-2015 08:33:22 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 7
+[01-May-2015 08:33:22 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 8
+[01-May-2015 08:37:40 UTC] PHP Warning:  fopen(/home/darrenliu/public_html/wanna.com../Images/1430469454225.jpg): failed to open stream: No such file or directory in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 6
+[01-May-2015 08:37:40 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 7
+[01-May-2015 08:37:40 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 8
+[01-May-2015 08:38:49 UTC] PHP Warning:  fopen(/home/darrenliu/public_html/wanna.com../Images/1430469515801.jpg): failed to open stream: No such file or directory in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 6
+[01-May-2015 08:38:49 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 7
+[01-May-2015 08:38:49 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 8
+[01-May-2015 08:41:03 UTC] PHP Warning:  fopen(/home/darrenliu/public_html/wanna.comImages/1430469654507.jpg): failed to open stream: No such file or directory in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 6
+[01-May-2015 08:41:03 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 7
+[01-May-2015 08:41:03 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/darrenliu/public_html/wanna.com/DB_UploadImages.php on line 8
