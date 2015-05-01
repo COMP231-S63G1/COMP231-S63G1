@@ -78,6 +78,7 @@ public class EditProfile extends Activity {
 	//Upload images
     String ba1;
     public static String urlUploadImage = UserFunctions.URL_ROOT + "DB_UploadImages.php";
+    String ServerPictureName;
 
 	// user profile JSONArray
 	JSONArray userProfileArray = null;
@@ -87,6 +88,7 @@ public class EditProfile extends Activity {
 	private static final String TAG_USERTYPE = "userType";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_DESCRIPTION = "description";
+	private static final String TAG_PICTUREURL = "pictureURL";
 	private static final String TAG_NICKNAME = "nickName";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_PERSON = "Person";
@@ -135,6 +137,7 @@ public class EditProfile extends Activity {
 	public void onUpdateClick(View view) {
 		userNickName = txtUserNickName.getText().toString();
 		userDescription = txtUserDescription.getText().toString();
+        ServerPictureName = String.valueOf(System.currentTimeMillis());
 		upload();
 		new UploadNewInformationTask().execute(urlUpdateProfile);
 	}
@@ -166,6 +169,8 @@ public class EditProfile extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
+			System.out.println("session id: " + sessionID + " user id: " + userID + " user type: " + userType + " nick name: " + userNickName + " description: " + userDescription + " Server Picture Name: " + ServerPictureName);
+		
 			// Building Parameters
 			List<NameValuePair> updateProfileParams = new ArrayList<NameValuePair>();
 			updateProfileParams.add(new BasicNameValuePair(TAG_SESSIONID,
@@ -177,6 +182,8 @@ public class EditProfile extends Activity {
 					userNickName));
 			updateProfileParams.add(new BasicNameValuePair(TAG_DESCRIPTION,
 					userDescription));
+			updateProfileParams.add(new BasicNameValuePair(TAG_PICTUREURL,
+					ServerPictureName));
 			JSONObject json = jsonParser.getJSONFromUrl(urlUpdateProfile,
 					updateProfileParams);
 			success = json.optInt(TAG_SUCCESS);
@@ -441,7 +448,7 @@ public class EditProfile extends Activity {
  
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("base64", ba1));
-            nameValuePairs.add(new BasicNameValuePair("ImageName", System.currentTimeMillis() + ".jpg"));
+            nameValuePairs.add(new BasicNameValuePair("ImageName", ServerPictureName + ".jpg"));
             try {
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new HttpPost(urlUploadImage);

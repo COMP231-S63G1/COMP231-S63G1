@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 21, 2015 at 06:29 AM
+-- Generation Time: May 01, 2015 at 06:22 AM
 -- Server version: 5.5.41-cll-lve
 -- PHP Version: 5.4.23
 
@@ -42,18 +42,21 @@ CREATE TABLE IF NOT EXISTS `event` (
   UNIQUE KEY `eventCreaterID_2` (`eventCreaterID`,`eventType`,`eventName`,`eventImageURI`,`eventDate`,`eventTime`,`eventVenue`,`eventAddress`,`eventPriceRange`),
   KEY `eventID` (`eventID`),
   KEY `eventCreaterID` (`eventCreaterID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`eventID`, `eventCreaterID`, `eventType`, `eventName`, `eventImageURI`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES
-(2, 14, 'Sports', 'swiming try', NULL, '2014-12-10', '15:59:00', 'Centennial', 'Progress', '10', 'swim'),
+(2, 14, 'Sports', 'swiming try 1', NULL, '2014-12-10', '15:59:00', 'Centennial', 'Progress', '10', 'swim'),
 (6, 14, 'Sports', 'basketball', NULL, '2014-12-04', '18:32:00', 'STC', 'stc', '10', 'basketball'),
 (12, 14, 'Sports', 'basketball', NULL, '2014-12-23', '18:32:00', 'STC', 'stc', '10', 'basketball'),
 (13, 18, 'Sports', 'football', NULL, '2014-12-23', '15:38:00', 'downtown', 'yonge', '20', 'football'),
-(14, 18, 'Sports', 'jog', NULL, '2015-02-19', '21:40:00', 'scarborough', 'progress', '5', 'jog');
+(14, 18, 'Sports', 'jog', NULL, '2015-02-19', '21:40:00', 'scarborough', 'progress', '5', 'jog'),
+(15, 25, 'Sports', 'B', NULL, '2015-04-23', '00:20:00', 'v', 'a', '23', 'd'),
+(16, 25, 'Sports', 'B', NULL, '2015-04-23', '00:20:00', 'v', 'a', '23', 'd'),
+(17, 25, 'Sports', 'B', NULL, '2015-04-23', '00:20:00', 'v', 'a', '23', 'd');
 
 -- --------------------------------------------------------
 
@@ -77,10 +80,11 @@ INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES
 (14, 2),
 (14, 6),
 (14, 12),
-(15, 2),
 (18, 13),
 (18, 14),
-(20, 2);
+(24, 2),
+(25, 2),
+(25, 15);
 
 -- --------------------------------------------------------
 
@@ -216,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `sendTime` datetime NOT NULL,
   PRIMARY KEY (`notificationID`),
   KEY `receiverUserID` (`receiverUserID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=94 ;
 
 --
 -- Dumping data for table `notification`
@@ -229,14 +233,72 @@ INSERT INTO `notification` (`notificationID`, `senderType`, `senderID`, `receive
 (10, 'Event', 2, 'User', 15, 15, 1, 0, 'The event you have joined has been changed', '2014-12-07 01:15:25'),
 (11, 'Group', 2, 'User', 14, 14, 1, 0, 'The group you have joined has been changed', '2014-12-07 01:52:45'),
 (12, 'Group', 2, 'User', 15, 15, 1, 0, 'The group you have joined has been changed', '2014-12-07 01:52:45'),
-(13, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 06:33:02'),
-(14, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 07:12:52'),
-(15, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 11:32:40'),
-(16, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 11:52:10'),
-(17, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 12:19:43'),
-(18, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 12:23:13'),
-(19, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 12:25:28'),
-(20, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-21 12:26:28');
+(28, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-22 06:23:24'),
+(29, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-22 07:58:05'),
+(30, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 03:48:34'),
+(31, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 03:48:34'),
+(32, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 03:52:43'),
+(33, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 03:52:43'),
+(34, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 04:00:47'),
+(35, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 04:00:47'),
+(36, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 04:03:00'),
+(37, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 04:03:00'),
+(38, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 04:04:38'),
+(39, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 04:04:38'),
+(40, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 04:06:34'),
+(41, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:03:27'),
+(42, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:03:27'),
+(43, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:09:43'),
+(44, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:09:43'),
+(45, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:20:02'),
+(46, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:20:02'),
+(47, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:23:20'),
+(48, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:23:20'),
+(49, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:32:18'),
+(50, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:32:18'),
+(51, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:44:28'),
+(52, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:44:28'),
+(53, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:48:59'),
+(54, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:48:59'),
+(55, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:56:59'),
+(56, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:56:59'),
+(57, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:59:36'),
+(58, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 05:59:36'),
+(59, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 10:00:36'),
+(60, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 10:00:36'),
+(61, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-23 10:03:07'),
+(62, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-23 10:03:07'),
+(63, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 12:03:31'),
+(64, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 12:03:31'),
+(65, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 12:08:02'),
+(66, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 12:08:02'),
+(67, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 12:57:03'),
+(68, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 12:57:03'),
+(69, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 12:59:58'),
+(70, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 12:59:58'),
+(71, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:03:40'),
+(72, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:03:40'),
+(73, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:06:26'),
+(74, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:06:26'),
+(75, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:45:47'),
+(76, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:45:47'),
+(77, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:53:00'),
+(78, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:53:00'),
+(79, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:57:34'),
+(80, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 01:57:34'),
+(81, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 02:24:38'),
+(82, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 02:24:38'),
+(83, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-25 02:29:08'),
+(84, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-25 02:29:08'),
+(85, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-26 12:01:43'),
+(86, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-26 12:01:43'),
+(87, 'Event', 2, 'User', 25, 25, 0, 0, 'The event you have joined has been changed', '2015-04-26 12:01:43'),
+(88, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-27 02:02:52'),
+(89, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-27 02:02:52'),
+(90, 'Event', 2, 'User', 25, 25, 0, 0, 'The event you have joined has been changed', '2015-04-27 02:02:52'),
+(91, 'Event', 2, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-04-27 03:10:57'),
+(92, 'Event', 2, 'User', 24, 24, 0, 0, 'The event you have joined has been changed', '2015-04-27 03:10:57'),
+(93, 'Event', 2, 'User', 25, 25, 0, 0, 'The event you have joined has been changed', '2015-04-27 03:10:57');
 
 -- --------------------------------------------------------
 
@@ -248,21 +310,21 @@ CREATE TABLE IF NOT EXISTS `organizationprofile` (
   `profileID` int(11) NOT NULL AUTO_INCREMENT,
   `nickName` varchar(225) NOT NULL,
   `description` varchar(225) NOT NULL,
-  `pictureURI` varchar(225) DEFAULT NULL,
+  `pictureURL` varchar(225) NOT NULL,
   `userid` int(11) NOT NULL,
   PRIMARY KEY (`profileID`),
   UNIQUE KEY `userid_2` (`userid`),
   UNIQUE KEY `userid_3` (`userid`),
-  UNIQUE KEY `pictureURI` (`pictureURI`),
+  UNIQUE KEY `pictureURI` (`pictureURL`),
   KEY `userid` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `organizationprofile`
 --
 
-INSERT INTO `organizationprofile` (`profileID`, `nickName`, `description`, `pictureURI`, `userid`) VALUES
-(7, 'CIPS', 'cips', NULL, 18);
+INSERT INTO `organizationprofile` (`profileID`, `nickName`, `description`, `pictureURL`, `userid`) VALUES
+(7, 'CIPS', 'cips', '', 18);
 
 -- --------------------------------------------------------
 
@@ -276,21 +338,22 @@ CREATE TABLE IF NOT EXISTS `personprofile` (
   `gender` varchar(6) NOT NULL,
   `age` int(11) NOT NULL,
   `description` varchar(225) NOT NULL,
-  `pictureURI` varchar(225) DEFAULT NULL,
+  `pictureURL` varchar(225) NOT NULL,
   `userid` int(11) NOT NULL,
   PRIMARY KEY (`profileID`),
   UNIQUE KEY `userid_2` (`userid`),
   KEY `userid` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `personprofile`
 --
 
-INSERT INTO `personprofile` (`profileID`, `nickName`, `gender`, `age`, `description`, `pictureURI`, `userid`) VALUES
-(12, 'DL', 'Male', 24, 'so cool', NULL, 14),
-(13, 'AK', 'Male', 22, 'handsome', NULL, 15),
-(14, 'Darren Liu', 'Male', 25, 'smart', NULL, 20);
+INSERT INTO `personprofile` (`profileID`, `nickName`, `gender`, `age`, `description`, `pictureURL`, `userid`) VALUES
+(12, 'DL', 'Male', 24, 'cool', '1430482857088', 14),
+(13, 'AK', 'Male', 22, 'handsome', '', 15),
+(18, 'Darren Liu', 'Male', 25, 'smart', '', 24),
+(19, 'Yu', 'Female', 26, 'Yu', '', 25);
 
 -- --------------------------------------------------------
 
@@ -391,17 +454,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `gcm_regid` text,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userid`, `username`, `email`, `password`, `userType`, `latitude`, `longitude`, `gcm_regid`) VALUES
-(14, 'Darren Liu', 'gulang15@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '0.0000000', '0.0000000', 'APA91bEOCjgP7T6DjBWtqSZ3pPrpt73Z58nFmlq2WexSW9xXMLQoCt6mgw3DUDq7tcjPBUfq6e6AznIpRLgdt63RBLkkQI66wp9ZSJhnT76TRpb8qfCJJF6_tp_Z-xp-02Sslx_gS0X0'),
+(14, 'Darren Liu', 'gulang15@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5007800', '121.4298563', 'APA91bEvHt60Yq4xnf81exADAVPIDvNz0Fwf8f5hrQaYLlYGS_tUE_DZ4JCOLztRxgFhTRqdKuqsbSUOEw6vFABCBBGmUvlzbAaTU-WNVeiOfkPwOWxBGzhUblQu_rOxGe1HAe6sEjH7'),
 (15, 'Anson Kong', 'ansonkong1992@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5008109', '121.4298952', NULL),
-(18, 'CIPS', 'gulang15@hotmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Organization', '0.0000000', NULL, NULL),
-(20, 'Darren Liu', 'gulang15a@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5008596', '121.4297439', NULL);
+(18, 'CIPS', 'gulang15@hotmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Organization', '37.4890099', '121.4377120', 'APA91bEvHt60Yq4xnf81exADAVPIDvNz0Fwf8f5hrQaYLlYGS_tUE_DZ4JCOLztRxgFhTRqdKuqsbSUOEw6vFABCBBGmUvlzbAaTU-WNVeiOfkPwOWxBGzhUblQu_rOxGe1HAe6sEjH7'),
+(24, 'Darren Liu', 'gulang15a@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Person', '37.5007998', '121.4299078', 'APA91bGiSWcoje79PLjWWs9__vD1Gin8cxVszgveptaAqZhxGy0DNbB0OANq1IxrQrz9T_PXrXCl7x4hm2I_OE9AajJqWgRqK3P_Xfvt2N5oVRxRfYpH8U5HzhSk7sShn9FWVMDSmDBu'),
+(25, 'Yu Chang', 'changyu19882013@gmail.com', '*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9', 'Person', '0.0000000', '0.0000000', 'APA91bEUpvnWs4R3MlSSPREHwdDrmODf4ehx34LFxhctqq_fFHqC4h-m06d3DXE__Q9ycJZEqnHMFI5-9R0u0KfrgUDuEbBLeAepeJn1t8Y-tG9pE6uwAQgJ6W1SECqH8_TRVPl6sSli');
 
 --
 -- Constraints for dumped tables
