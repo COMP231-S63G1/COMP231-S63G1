@@ -13,8 +13,7 @@ if ($sessionSuccess == 1) {
         
         $nickName = $_POST['nickName'];
         $description = $_POST['description'];
-        // $pictureURL= "/Images/" . $_POST['pictureURL'] . "jpg";
-        $pictureURL = $_POST['pictureURL'];
+        $pictureURL= "/Images/" . $_POST['pictureURL'] . ".jpg";
         
         $userID = $_SESSION['userid'];
         $userType = $_SESSION['userType'];

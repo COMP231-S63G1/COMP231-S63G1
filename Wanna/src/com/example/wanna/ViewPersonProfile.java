@@ -51,6 +51,7 @@ public class ViewPersonProfile extends Activity {
 	String age;
 	String gender;
 	String description;
+	String pictureURL;	
 
 	// url to view profile info
 	private String urlViewProfileInformation = UserFunctions.URL_ROOT
@@ -88,6 +89,7 @@ public class ViewPersonProfile extends Activity {
 	private static final String TAG_GROUPNAME = "groupName";
 	private static final String TAG_COUNTEVENT = "countEvent";
 	private static final String TAG_COUNTGROUP = "countGroup";
+	private static final String TAG_PICTUREURL = "pictureURL";
 	
 	JSONObject profileInformation;
 	JSONArray joinedGroupList = null;
@@ -128,6 +130,7 @@ public class ViewPersonProfile extends Activity {
 		Intent intent = new Intent(getApplicationContext(), EditProfile.class);
 		intent.putExtra(TAG_NICKNAME, nickName);
 		intent.putExtra(TAG_DESCRIPTION, description);
+		intent.putExtra(TAG_PICTUREURL, pictureURL);
 		startActivity(intent);
 	}
 
@@ -171,6 +174,9 @@ public class ViewPersonProfile extends Activity {
 				age = profileInformation.optString(TAG_ProfileAge);
 				gender = profileInformation.optString(TAG_ProfileGender);
 				description = profileInformation.optString(TAG_DESCRIPTION);
+				pictureURL = "http://wanna.developerdarren.com"
+						+ profileInformation.optString(TAG_PICTUREURL);
+				System.out.println("full url: " + pictureURL);
 			} else {
 			}
 			return null;

@@ -3,6 +3,8 @@ package com.example.wanna;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +24,7 @@ import org.json.JSONObject;
 import com.example.wanna.library.BaseAlbumDirFactory;
 import com.example.wanna.library.FroyoAlbumDirFactory;
 import com.example.wanna.library.ImageFilePath;
+import com.example.wanna.library.ImageLoader;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 import com.example.wanna.library.AlbumStorageDirFactory;
@@ -36,6 +39,7 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -103,6 +107,7 @@ public class EditProfile extends Activity {
 	String userType;
 	String userNickName;
 	String userDescription;
+	String userPictureURL;
 	int success;
 	String message;
 
@@ -119,20 +124,33 @@ public class EditProfile extends Activity {
 		// getting user nick name and description from intent
 		userNickName = intent.getStringExtra(TAG_NICKNAME);
 		userDescription = intent.getStringExtra(TAG_DESCRIPTION);
+		userPictureURL = intent.getStringExtra(TAG_PICTUREURL);
 
+		// Loader image - will be shown before loading image
+        int loader = R.drawable.loader;
 		txtUserNickName = (EditText) findViewById(R.id.etName);
 		txtUserDescription = (EditText) findViewById(R.id.etDescription);
 		imbUserPicture = (ImageButton) findViewById(R.id.userPicture);
 
 		txtUserNickName.setText(userNickName);
 		txtUserDescription.setText(userDescription);
-
+		ImageLoader imgLoader = new ImageLoader(getApplicationContext());
+        
+        // whenever you want to load an image from url
+        // call DisplayImage function
+        // url - image url to load
+        // loader - loader image, will be displayed before getting image
+        // image - ImageView 
+        imgLoader.DisplayImage(userPictureURL, loader, imbUserPicture);
+		
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
 			mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
 		} else {
 			mAlbumStorageDirFactory = new BaseAlbumDirFactory();
 		}
 	}
+	
+	
 
 	public void onUpdateClick(View view) {
 		userNickName = txtUserNickName.getText().toString();
@@ -169,8 +187,7 @@ public class EditProfile extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-			System.out.println("session id: " + sessionID + " user id: " + userID + " user type: " + userType + " nick name: " + userNickName + " description: " + userDescription + " Server Picture Name: " + ServerPictureName);
-		
+			
 			// Building Parameters
 			List<NameValuePair> updateProfileParams = new ArrayList<NameValuePair>();
 			updateProfileParams.add(new BasicNameValuePair(TAG_SESSIONID,
@@ -421,7 +438,10 @@ public class EditProfile extends Activity {
         Log.e("path", "----------------" + mCurrentPhotoPath);
  
         // Image
-        Bitmap bm = BitmapFactory.decodeFile(mCurrentPhotoPath);
+        final int THUMBSIZE = 64;
+        Bitmap bm = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(mCurrentPhotoPath), 
+                THUMBSIZE, THUMBSIZE);
+        //Bitmap bm = BitmapFactory.decodeFile(mCurrentPhotoPath);
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 90, bao);
         byte[] ba = bao.toByteArray();
