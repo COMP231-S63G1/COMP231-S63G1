@@ -4,20 +4,28 @@
 $response = array();
  
 // check for required fields
-if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['nickName']) && isset($_POST['userDescription'])) {
+if (isset($_POST['userid']) && isset($_POST['userType']) && isset($_POST['nickName']) && isset($_POST['userDescription']) && isset($_POST['pictureURL']) && isset($_POST['BoolImageChange'])) {
 	$userid = $_POST['userid'];	
 	$userType = $_POST['userType'];
     $nickName = $_POST['nickName'];
     $userDescription = $_POST['userDescription'];
+        $pictureURL= "/Images/" . $_POST['pictureURL'] . ".jpg";
+        $BoolImageChange = $_POST['BoolImageChange'];
 
     // include db connect class
     require_once __DIR__ . '/include/DB_Connect.php';
  
     // connecting to db
     $db = new DB_Connect();
- 
+    
+    if ($BoolImageChange == "true") {
+    // mysql inserting a new row
+    $result = mysql_query("INSERT INTO `organizationprofile` (`nickName`, `description`, `userid`, `pictureURL`) VALUES('$nickName', '$userDescription', '$userid', '$pictureURL')");
+    }
+    else if ($BoolImageChange == "false") {
     // mysql inserting a new row
     $result = mysql_query("INSERT INTO `organizationprofile` (`nickName`, `description`, `userid`) VALUES('$nickName', '$userDescription', '$userid')");
+    }
  
     // check if row inserted or not
     if ($result) {

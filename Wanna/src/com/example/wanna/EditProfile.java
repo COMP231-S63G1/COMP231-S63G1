@@ -256,9 +256,6 @@ public class EditProfile extends Activity {
 				if (items[item].equals("Take Photo")) {
 					pictureResource = "Camera";
 					dispatchTakePictureIntent();
-					// Intent intent = new
-					// Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-					// startActivityForResult(intent, REQUEST_CAMERA);
 				} else if (items[item].equals("Choose from Library")) {
 					pictureResource = "Gallery";
 					Intent galleryIntent = new Intent(
@@ -266,10 +263,6 @@ public class EditProfile extends Activity {
 							android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 					// Start the Intent
 					startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
-					// intent.setType("image/*");
-					// startActivityForResult(
-					// Intent.createChooser(intent, "Select File"),
-					// SELECT_FILE);
 				} else if (items[item].equals("Cancel")) {
 					dialog.dismiss();
 				}
@@ -294,19 +287,9 @@ public class EditProfile extends Activity {
 				mCurrentPhotoPath = null;
 			}
 			startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-			// // Continue only if the File was successfully created
-			// if (photoFile != null) {
-			// takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-			// Uri.fromFile(photoFile));
-			// startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-			// }
 		}
 	}
 
-	// private void dispatchTakeVideoIntent() {
-	// Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-	// startActivityForResult(takeVideoIntent, ACTION_TAKE_VIDEO);
-	// }
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -314,9 +297,6 @@ public class EditProfile extends Activity {
 			if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && pictureResource.equals("Camera")) {
 				handleBigCameraPhoto();
 				ChangePicture = "true";
-				// Bundle extras = data.getExtras();
-				// Bitmap imageBitmap = (Bitmap) extras.get("data");
-				// imbUserPicture.setImageBitmap(imageBitmap);
 			}
 			// When an Image is picked
 			else if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK && pictureResource.equals("Gallery")
@@ -335,8 +315,6 @@ public class EditProfile extends Activity {
 				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 				imgDecodableString = cursor.getString(columnIndex);
 				cursor.close();
-//				ImageView imgView = (ImageView) findViewById(R.id.imgView);
-				// Set the Image in ImageView after decoding the String
 				mCurrentPhotoPath = ImageFilePath.getPath(getApplicationContext(), selectedImage);
 				handleBigCameraPhoto();
 				ChangePicture = "true";
