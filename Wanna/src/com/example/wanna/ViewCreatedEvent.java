@@ -209,6 +209,7 @@ public class ViewCreatedEvent extends Activity {
 				.toString());
 		intent.putExtra("eventDescription", tvEventDescription.getText()
 				.toString());
+		intent.putExtra(TAG_PICTUREURL, pictureURL);
 		startActivity(intent);
 	}
 }

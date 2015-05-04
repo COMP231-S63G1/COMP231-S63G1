@@ -4,7 +4,7 @@
 $response = array();
 
 // check for required fields
-if (isset($_POST['eventID']) && isset($_POST['eventName']) && isset($_POST['eventType']) && isset($_POST['eventDate']) && isset($_POST['eventTime']) && isset($_POST['eventVenue']) && isset($_POST['eventAddress']) && isset($_POST['eventPriceRange']) && isset($_POST['eventDescription'])) {
+if (isset($_POST['eventID']) && isset($_POST['eventName']) && isset($_POST['eventType']) && isset($_POST['eventDate']) && isset($_POST['eventTime']) && isset($_POST['eventVenue']) && isset($_POST['eventAddress']) && isset($_POST['eventPriceRange']) && isset($_POST['eventDescription']) && isset($_POST['pictureURL']) && isset($_POST['BoolImageChange'])) {
     $eventID = $_POST['eventID'];
     $eventType = $_POST['eventType'];
     $eventName = $_POST['eventName'];
@@ -14,6 +14,8 @@ if (isset($_POST['eventID']) && isset($_POST['eventName']) && isset($_POST['even
     $eventAddress= $_POST['eventAddress'];
     $eventPriceRange = $_POST['eventPriceRange'];
     $eventDescription = $_POST['eventDescription'];
+        $pictureURL= "/Images/" . $_POST['pictureURL'] . ".jpg";
+        $BoolImageChange = $_POST['BoolImageChange'];
  
     // include db connect class
     require_once __DIR__ . '/include/DB_Connect.php';
@@ -21,8 +23,14 @@ if (isset($_POST['eventID']) && isset($_POST['eventName']) && isset($_POST['even
     // connecting to db
     $db = new DB_Connect();
  
+    if ($BoolImageChange == "true") {
+    // mysql inserting a new row
+    $result = mysql_query("UPDATE event SET eventType='$eventType', eventName = '$eventName', eventDate='$eventDate', eventTime='$eventTime', eventVenue='$eventVenue', eventAddress='$eventAddress', eventPriceRange=$eventPriceRange, eventDescription = '$eventDescription', `pictureURL` = '$pictureURL' WHERE eventID = $eventID;");
+    }
+    else if ($BoolImageChange == "false") {
     // mysql inserting a new row
     $result = mysql_query("UPDATE event SET eventType='$eventType', eventName = '$eventName', eventDate='$eventDate', eventTime='$eventTime', eventVenue='$eventVenue', eventAddress='$eventAddress', eventPriceRange=$eventPriceRange, eventDescription = '$eventDescription' WHERE eventID = $eventID;");
+    }
  
     // check if row inserted or not
     if ($result) {
