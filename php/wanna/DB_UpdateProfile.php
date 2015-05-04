@@ -9,21 +9,32 @@ $db = new DB_Connect();
 require_once __DIR__ . '/DB_CheckLogin.php';
 if ($sessionSuccess == 1) {
     // check for required fields
-    if (isset($_POST['nickName']) && isset($_POST['description']) && isset($_POST['pictureURL'])) {
+    if (isset($_POST['nickName']) && isset($_POST['description']) && isset($_POST['pictureURL']) && isset($_POST['BoolImageChange'])) {
         
         $nickName = $_POST['nickName'];
         $description = $_POST['description'];
         $pictureURL= "/Images/" . $_POST['pictureURL'] . ".jpg";
-        
+        $BoolImageChange = $_POST['BoolImageChange'];
+                
         $userID = $_SESSION['userid'];
         $userType = $_SESSION['userType'];
-        if ($userType == "Person") {
+        if ($userType == "Person" && $BoolImageChange == "true") {
             // mysql inserting a new row
             $result = mysql_query("UPDATE `personprofile` SET `nickName` = '$nickName', `description` = '$description', `pictureURL` = '$pictureURL' WHERE `userid` = $userID;");
-        } else 
-            if ($userType == "Organization") {
+        } 
+        else if ($userType == "Person" && $BoolImageChange == "false") {
+            // mysql inserting a new row
+            $result = mysql_query("UPDATE `personprofile` SET `nickName` = '$nickName', `description` = '$description' WHERE `userid` = $userID;");
+        } 
+        else 
+            if ($userType == "Organization" && $BoolImageChange == "true") {
                 // mysql inserting a new row
                 $result = mysql_query("UPDATE `organizationprofile` SET `nickName` = '$nickName', `description` = '$description', `pictureURL` = '$pictureURL' WHERE `userid` = $userID;");
+            }
+        else 
+            if ($userType == "Organization" && $BoolImageChange == "false") {
+                // mysql inserting a new row
+                $result = mysql_query("UPDATE `organizationprofile` SET `nickName` = '$nickName', `description` = '$description' WHERE `userid` = $userID;");
             }
         // check if row inserted or not
         if ($result) {

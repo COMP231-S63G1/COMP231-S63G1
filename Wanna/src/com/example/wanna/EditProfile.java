@@ -78,11 +78,13 @@ public class EditProfile extends Activity {
 	private static final String JPEG_FILE_PREFIX = "IMG_";
 	private static final String JPEG_FILE_SUFFIX = ".jpg";
 	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
+	private String ChangePicture = "false";
 	
 	//Upload images
     String ba1;
     public static String urlUploadImage = UserFunctions.URL_ROOT + "DB_UploadImages.php";
     String ServerPictureName;
+	private static final String TAG_BOOLIMAGECHANGE = "BoolImageChange";
 
 	// user profile JSONArray
 	JSONArray userProfileArray = null;
@@ -156,7 +158,9 @@ public class EditProfile extends Activity {
 		userNickName = txtUserNickName.getText().toString();
 		userDescription = txtUserDescription.getText().toString();
         ServerPictureName = String.valueOf(System.currentTimeMillis());
-		upload();
+        if(ChangePicture.equals("true")){
+    		upload();        	
+        }
 		new UploadNewInformationTask().execute(urlUpdateProfile);
 	}
 
@@ -199,6 +203,8 @@ public class EditProfile extends Activity {
 					userNickName));
 			updateProfileParams.add(new BasicNameValuePair(TAG_DESCRIPTION,
 					userDescription));
+			updateProfileParams.add(new BasicNameValuePair(TAG_BOOLIMAGECHANGE,
+					ChangePicture));
 			updateProfileParams.add(new BasicNameValuePair(TAG_PICTUREURL,
 					ServerPictureName));
 			JSONObject json = jsonParser.getJSONFromUrl(urlUpdateProfile,
@@ -304,12 +310,13 @@ public class EditProfile extends Activity {
 		try {
 			if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 				handleBigCameraPhoto();
+				ChangePicture = "true";
 				// Bundle extras = data.getExtras();
 				// Bitmap imageBitmap = (Bitmap) extras.get("data");
 				// imbUserPicture.setImageBitmap(imageBitmap);
 			}
 			// When an Image is picked
-			if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+			else if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
 					&& null != data) {
 				// Get the Image from data
 
@@ -329,6 +336,7 @@ public class EditProfile extends Activity {
 				// Set the Image in ImageView after decoding the String
 				mCurrentPhotoPath = ImageFilePath.getPath(getApplicationContext(), selectedImage);
 				handleBigCameraPhoto();
+				ChangePicture = "true";
 
 			} else {
 				Toast.makeText(this, "You haven't picked Image",
