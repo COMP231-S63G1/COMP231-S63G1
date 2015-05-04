@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.wanna.library.ImageLoader;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
@@ -20,6 +21,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +66,7 @@ public class ViewCreatedEvent extends Activity {
 	private static final String TAG_EventDescription = "eventDescription";
 	private static final String TAG_PERSON = "Person";
 	private static final String TAG_ORGANIZATION = "Organization";
+	private static final String TAG_PICTUREURL = "pictureURL";
 
 	JSONObject eventDetail;
 	// session variables
@@ -74,6 +77,9 @@ public class ViewCreatedEvent extends Activity {
 	String userType;
 	int success;
 	String message;
+	String pictureURL;		
+
+	ImageView imvUserPicture;
 
 	// // Profile detail JSONArray
 	// JSONArray eventDetailArray = null;
@@ -92,6 +98,7 @@ public class ViewCreatedEvent extends Activity {
 		// getting event id (pid) from intent
 		eventID = intent.getStringExtra(TAG_EventID);
 		// Edit Text
+		imvUserPicture = (ImageView) findViewById(R.id.userPicture);
 		tvEventType = (TextView) findViewById(R.id.tvEventTypeValue);
 		tvEventName = (TextView) findViewById(R.id.tvEventNameValue);
 		tvEventDate = (TextView) findViewById(R.id.tvEventDateValue);
@@ -148,6 +155,8 @@ public class ViewCreatedEvent extends Activity {
 																					// Array
 				// get first event object from JSON Array
 				eventDetail = eventDetailArray.optJSONObject(0);
+				pictureURL = "http://wanna.developerdarren.com"
+						+ eventDetail.optString(TAG_PICTUREURL);
 				// evnet with this eventID found
 			} else {
 			}
@@ -170,6 +179,16 @@ public class ViewCreatedEvent extends Activity {
 						.optString(TAG_EventPriceRange));
 				tvEventDescription.setText(eventDetail
 						.optString(TAG_EventDescription));
+				// Loader image - will be shown before loading image
+		        int loader = R.drawable.loader;
+				ImageLoader imgLoader = new ImageLoader(getApplicationContext());
+		        
+		        // whenever you want to load an image from url
+		        // call DisplayImage function
+		        // url - image url to load
+		        // loader - loader image, will be displayed before getting image
+		        // image - ImageView 
+		        imgLoader.DisplayImage(pictureURL, loader, imvUserPicture);
 			} else {
 				Toast.makeText(getApplicationContext(), message,
 						Toast.LENGTH_SHORT).show();

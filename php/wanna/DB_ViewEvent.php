@@ -33,6 +33,7 @@ if (isset($_POST['eventID'])) {
             $eventDetail["eventLocation"] = $result["eventAddress"];
             $eventDetail["eventPriceRange"] = $result["eventPriceRange"];
             $eventDetail["eventDescription"] = $result["eventDescription"];
+            $eventDetail["pictureURL"] = $result["pictureURL"]; 
             // success
             $response["success"] = 1;
 			$response["message"] = "Get event success."; 
