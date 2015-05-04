@@ -9,6 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.example.wanna.library.ImageLoader;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
@@ -19,6 +20,8 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +54,9 @@ public class ViewPersonProfile extends Activity {
 	String age;
 	String gender;
 	String description;
-	String pictureURL;	
+	String pictureURL;		
+
+	ImageView imvUserPicture;
 
 	// url to view profile info
 	private String urlViewProfileInformation = UserFunctions.URL_ROOT
@@ -105,6 +110,7 @@ public class ViewPersonProfile extends Activity {
 		nickName = sharedpreferences.getString(TAG_NICKNAME, "");
 
 		// Edit Text
+		imvUserPicture = (ImageView) findViewById(R.id.userPicture);
 		tvProfileNickName = (TextView) findViewById(R.id.tvProfileNickNameValue);
 		tvProfileGender = (TextView) findViewById(R.id.tvProfileGenderValue);
 		tvProfileAge = (TextView) findViewById(R.id.tvProfileAgeValue);
@@ -176,7 +182,7 @@ public class ViewPersonProfile extends Activity {
 				description = profileInformation.optString(TAG_DESCRIPTION);
 				pictureURL = "http://wanna.developerdarren.com"
 						+ profileInformation.optString(TAG_PICTUREURL);
-				System.out.println("full url: " + pictureURL);
+				
 			} else {
 			}
 			return null;
@@ -191,6 +197,17 @@ public class ViewPersonProfile extends Activity {
 				tvProfileGender.setText(gender);
 				tvProfileAge.setText(age);
 				tvProfileDescription.setText(description);
+
+				// Loader image - will be shown before loading image
+		        int loader = R.drawable.loader;
+				ImageLoader imgLoader = new ImageLoader(getApplicationContext());
+		        
+		        // whenever you want to load an image from url
+		        // call DisplayImage function
+		        // url - image url to load
+		        // loader - loader image, will be displayed before getting image
+		        // image - ImageView 
+		        imgLoader.DisplayImage(pictureURL, loader, imvUserPicture);
 			}
 			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,

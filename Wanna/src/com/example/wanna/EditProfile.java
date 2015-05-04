@@ -79,6 +79,7 @@ public class EditProfile extends Activity {
 	private static final String JPEG_FILE_SUFFIX = ".jpg";
 	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 	private String ChangePicture = "false";
+	private String pictureResource;
 	
 	//Upload images
     String ba1;
@@ -253,11 +254,13 @@ public class EditProfile extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {
 				if (items[item].equals("Take Photo")) {
+					pictureResource = "Camera";
 					dispatchTakePictureIntent();
 					// Intent intent = new
 					// Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 					// startActivityForResult(intent, REQUEST_CAMERA);
 				} else if (items[item].equals("Choose from Library")) {
+					pictureResource = "Gallery";
 					Intent galleryIntent = new Intent(
 							Intent.ACTION_PICK,
 							android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -308,7 +311,7 @@ public class EditProfile extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		try {
-			if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+			if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && pictureResource.equals("Camera")) {
 				handleBigCameraPhoto();
 				ChangePicture = "true";
 				// Bundle extras = data.getExtras();
@@ -316,7 +319,7 @@ public class EditProfile extends Activity {
 				// imbUserPicture.setImageBitmap(imageBitmap);
 			}
 			// When an Image is picked
-			else if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+			else if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK && pictureResource.equals("Gallery")
 					&& null != data) {
 				// Get the Image from data
 

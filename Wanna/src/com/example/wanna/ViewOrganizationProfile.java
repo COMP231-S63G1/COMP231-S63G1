@@ -9,6 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.example.wanna.library.ImageLoader;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
@@ -21,6 +22,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +50,10 @@ public class ViewOrganizationProfile extends Activity {
 	String userType;
 	String nickName;
 	String description;
+	String pictureURL;	
 
+	ImageView imvUserPicture;
+	
 	// url to view profile info
 	private String urlViewProfileInformation = UserFunctions.URL_ROOT
 			+ "DB_ViewOrganizationProfile.php";
@@ -76,6 +81,7 @@ public class ViewOrganizationProfile extends Activity {
 	private static final String TAG_GROUPNAME = "groupName";
 	private static final String TAG_COUNTEVENT = "countEvent";
 	private static final String TAG_COUNTGROUP = "countGroup";
+	private static final String TAG_PICTUREURL = "pictureURL";
 	
 	JSONObject profileInformation;
 	JSONArray createdEventList = null;
@@ -92,6 +98,7 @@ public class ViewOrganizationProfile extends Activity {
 		nickName = sharedpreferences.getString(TAG_PROFILENICKNAME, "");
 		
 		// Edit Text
+		imvUserPicture = (ImageView) findViewById(R.id.userPicture);
 		tvProfileNickName = (TextView) findViewById(R.id.tvProfileNickNameValue);
 		tvProfileDescription = (TextView) findViewById(R.id.tvProfileDescriptionValue);
 		tvGetCreatedEventTextView =(TextView) findViewById(R.id.tvProfileGetCreateEventValue);
@@ -110,6 +117,7 @@ public class ViewOrganizationProfile extends Activity {
 		Intent intent = new Intent(getApplicationContext(), EditProfile.class);
 		intent.putExtra(TAG_PROFILENICKNAME, nickName);
 		intent.putExtra(TAG_PROFILEDESCRIPTION, description);
+		intent.putExtra(TAG_PICTUREURL, pictureURL);
 		startActivity(intent);
 	}
 
@@ -150,6 +158,9 @@ public class ViewOrganizationProfile extends Activity {
 				nickName = profileInformation.optString(TAG_PROFILENICKNAME);
 				description = profileInformation
 						.optString(TAG_PROFILEDESCRIPTION);
+				pictureURL = "http://wanna.developerdarren.com"
+						+ profileInformation.optString(TAG_PICTUREURL);
+				System.out.println("pictureURL: " + pictureURL);
 				// status = profileInformation.optString(TAG_Status);
 			} else {
 			}
@@ -162,6 +173,16 @@ public class ViewOrganizationProfile extends Activity {
 			pDialog.dismiss();
 			tvProfileNickName.setText(nickName);
 			tvProfileDescription.setText(description);
+			// Loader image - will be shown before loading image
+	        int loader = R.drawable.loader;
+			ImageLoader imgLoader = new ImageLoader(getApplicationContext());
+	        
+	        // whenever you want to load an image from url
+	        // call DisplayImage function
+	        // url - image url to load
+	        // loader - loader image, will be displayed before getting image
+	        // image - ImageView 
+	        imgLoader.DisplayImage(pictureURL, loader, imvUserPicture);
 			// tvStatus.setText(status);
 
 		}

@@ -30,10 +30,11 @@ if($sessionSuccess == 1){
             $profileInformation["profileID"] = $result["profileID"];
             $profileInformation["nickName"] = $result["nickName"];
             $profileInformation["description"] = $result["description"]; 
+            $profileInformation["pictureURL"] = $result["pictureURL"]; 
          
             // success
             $response["success"] = 1;
-			$response["message"] = "Get user profile information";
+			$response["message"] = "Get user profile information" ;
  
             // user node
             $response["profileInformation"] = array();
