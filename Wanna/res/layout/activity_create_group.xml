@@ -29,6 +29,18 @@
         android:textColor="#48D1CC"
         android:textSize="18sp"
          />
+      <TableRow>
+
+       <ImageButton
+        android:id="@+id/userPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp"
+        android:onClick="onAddPictureClick"
+        android:src="@android:drawable/sym_def_app_icon" />
+    </TableRow>
+    
     <Spinner
         android:id="@+id/groupTypeSpin"
         android:layout_width="wrap_content"
@@ -91,26 +103,7 @@
         <requestFocus />
     </EditText>
 
-    <TableRow>
-
-        <Button
-            android:id="@+id/btnSelectImage"
-            android:layout_height="wrap_content"
-            android:layout_width="80dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="10dp"
-            android:background="#48D1CC"
-            android:onClick="onClickPic"
-            android:text="@string/uploadImage" 
-            android:textColor="#F5F5F5"
-            />
-
-        <ImageView
-            android:id="@+id/imgView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="30dp" />
-    </TableRow>
+  
 
     <LinearLayout
         android:layout_width="match_parent"

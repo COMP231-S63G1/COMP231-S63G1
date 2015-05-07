@@ -14,6 +14,15 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
+            
+            <ImageView
+                android:id="@+id/userPicture"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/tvEventNameValue"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:src="@android:drawable/sym_def_app_icon"/>
 
             <TextView
                 android:id="@+id/tvGroupNameLabel"
@@ -21,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_below="@id/userPicture"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Group title:" />
@@ -30,6 +40,7 @@
                 style="@style/FormTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/userPicture"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/tvGroupNameLabel" />

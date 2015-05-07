@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 04, 2015 at 09:57 AM
+-- Generation Time: May 06, 2015 at 11:49 PM
 -- Server version: 5.5.41-cll-lve
 -- PHP Version: 5.4.23
 
@@ -161,23 +161,24 @@ CREATE TABLE IF NOT EXISTS `group` (
   `groupPrivacy` varchar(10) NOT NULL,
   `groupType` varchar(50) DEFAULT NULL,
   `groupName` varchar(225) DEFAULT NULL,
-  `groupImageURI` varchar(225) DEFAULT NULL,
+  `pictureURL` varchar(225) DEFAULT NULL,
   `groupDescription` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`groupID`),
-  UNIQUE KEY `groupCreaterID_2` (`groupCreaterID`,`groupPrivacy`,`groupType`,`groupName`,`groupImageURI`),
+  UNIQUE KEY `groupCreaterID_2` (`groupCreaterID`,`groupPrivacy`,`groupType`,`groupName`,`pictureURL`),
   KEY `groupID` (`groupID`),
   KEY `groupCreaterID` (`groupCreaterID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `group`
 --
 
-INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupPrivacy`, `groupType`, `groupName`, `groupImageURI`, `groupDescription`) VALUES
+INSERT INTO `group` (`groupID`, `groupCreaterID`, `groupPrivacy`, `groupType`, `groupName`, `pictureURL`, `groupDescription`) VALUES
 (1, 14, 'Public', 'Sports', 'games', NULL, 'games'),
 (2, 14, 'Public', 'Sports', 'movie', NULL, 'movies'),
 (3, 18, 'Private', 'Sports', 'camping', NULL, 'camping'),
-(4, 14, 'Private', 'Sports', 'test private group', NULL, 'test private group');
+(4, 14, 'Private', 'Sports', 'test private group', NULL, 'test private group'),
+(5, 14, 'Public', 'Sports', 'fgft', '/Images/1430973444770.jpg', 'vcfdd');
 
 -- --------------------------------------------------------
 
@@ -202,7 +203,8 @@ INSERT INTO `groupjoinin` (`userID`, `groupID`) VALUES
 (14, 2),
 (15, 2),
 (18, 3),
-(14, 4);
+(14, 4),
+(14, 5);
 
 -- --------------------------------------------------------
 
@@ -223,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `sendTime` datetime NOT NULL,
   PRIMARY KEY (`notificationID`),
   KEY `receiverUserID` (`receiverUserID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=96 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=99 ;
 
 --
 -- Dumping data for table `notification`
@@ -231,7 +233,10 @@ CREATE TABLE IF NOT EXISTS `notification` (
 
 INSERT INTO `notification` (`notificationID`, `senderType`, `senderID`, `receiverType`, `receiverID`, `receiverUserID`, `acceptable`, `readStatus`, `message`, `sendTime`) VALUES
 (94, 'Event', 20, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-05-04 09:45:57'),
-(95, 'Event', 20, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-05-04 11:49:29');
+(95, 'Event', 20, 'User', 14, 14, 0, 0, 'The event you have joined has been changed', '2015-05-04 11:49:29'),
+(96, 'Group', 5, 'User', 14, 14, 0, 0, 'The group you have joined has been changed', '2015-05-07 12:26:50'),
+(97, 'Group', 5, 'User', 14, 14, 0, 0, 'The group you have joined has been changed', '2015-05-07 12:27:31'),
+(98, 'Group', 5, 'User', 14, 14, 0, 0, 'The group you have joined has been changed', '2015-05-07 12:37:28');
 
 -- --------------------------------------------------------
 

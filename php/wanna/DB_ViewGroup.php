@@ -32,7 +32,8 @@ if($sessionSuccess == 1){
             $groupDetail["groupID"] = $result["groupID"];
             $groupDetail["groupName"] = $result["groupName"];
             $groupDetail["groupType"] = $result["groupType"];
-            $groupDetail["groupDescription"] = $result["groupDescription"];           
+            $groupDetail["groupDescription"] = $result["groupDescription"];    
+            $groupDetail["pictureURL"] = $result["pictureURL"];        
             // success
             $response["success"] = 1; 
             // user node
