@@ -14,6 +14,14 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
+            
+            <ImageView
+                android:id="@+id/userPicture"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:src="@android:drawable/sym_def_app_icon"/>
 
             <TextView
                 android:id="@+id/tvEventTypeLabel"
@@ -21,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_below="@id/userPicture"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/eventType" />
@@ -31,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tvEventTypeLabel"
+                android:layout_below="@id/userPicture"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp" />
 
@@ -54,21 +64,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"/>
 
-            <ImageView
-                android:id="@+id/userPicture"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_below="@id/tvEventNameValue"
-                android:layout_marginTop="10dp"
-                android:layout_centerInParent="true"
-                android:src="@android:drawable/sym_def_app_icon"/>
-
             <TextView
                 android:id="@+id/tvEventDateLabel"
                 style="@style/FormTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/userPicture"
+                android:layout_below="@id/tvEventNameLabel"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/eventDate" />
@@ -78,7 +79,7 @@
                 style="@style/FormTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/userPicture"
+                android:layout_below="@id/tvEventNameValue"
                 android:layout_toRightOf="@id/tvEventDateLabel"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"/>
@@ -190,6 +191,7 @@
                 android:layout_below="@id/tvEventDescriptionValue"
                 android:layout_toRightOf="@id/buttonEdit"
                 android:layout_marginLeft="50dp"
+                   android:layout_marginTop="10dp"
                 android:background="#48D1CC"
                 android:onClick="onViewEventDetailBackClick"
                 android:text="@string/buttonBack" 
@@ -204,6 +206,7 @@
                    android:layout_alignRight="@+id/imgViewViewEvent"
                    android:layout_below="@+id/tvEventDescriptionLabel"
                    android:background="#48D1CC"
+                   android:layout_marginTop="10dp"
                    android:onClick="onEditEventDetailButtonClick"
                    android:text="@string/editEvent"
                    android:textColor="#ffffff" />

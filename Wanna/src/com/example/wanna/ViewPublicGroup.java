@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.wanna.library.ImageLoader;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.ListViewAdapter;
 import com.example.wanna.library.UserFunctions;
@@ -22,6 +23,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +65,7 @@ public class ViewPublicGroup extends ListActivity {
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_GroupList = "groupMemberList";
 	private static final String TAG_MEMBERNAME = "groupMemberName";
+	private static final String TAG_PICTUREURL = "pictureURL";
 
 	JSONObject groupDetail;
 
@@ -79,6 +82,9 @@ public class ViewPublicGroup extends ListActivity {
 	String name;
 	String type;
 	String memberName;
+	String pictureURL;
+
+	ImageView imvUserPicture;
 
 	// group member list
 	ArrayList<String[]> groupMemberList = new ArrayList<String[]>();
@@ -96,6 +102,7 @@ public class ViewPublicGroup extends ListActivity {
 		Intent intent = getIntent();
 		groupID = intent.getStringExtra(TAG_GROUPID);
 		// Edit Text
+		imvUserPicture = (ImageView) findViewById(R.id.userPicture);
 		tvGroupTitle = (TextView) findViewById(R.id.tvGroupNameValue);
 		tvGroupType = (TextView) findViewById(R.id.tvGroupTypeValue);
 		tvGroupDescription = (TextView) findViewById(R.id.tvGroupDescriptionValue);
@@ -138,6 +145,8 @@ public class ViewPublicGroup extends ListActivity {
 				description = groupDetail.optString(TAG_GROUPDESCRIPTON);
 				name = groupDetail.optString(TAG_GROUPNAME);
 				type = groupDetail.optString(TAG_GROUPTYPE);
+				pictureURL = "http://wanna.developerdarren.com"
+						+ groupDetail.optString(TAG_PICTUREURL);
 			} else {
 			}
 			return null;
@@ -150,6 +159,16 @@ public class ViewPublicGroup extends ListActivity {
 				tvGroupTitle.setText(name);
 				tvGroupType.setText(type);
 				tvGroupDescription.setText(description);
+				// Loader image - will be shown before loading image
+				int loader = R.drawable.loader;
+				ImageLoader imgLoader = new ImageLoader(getApplicationContext());
+
+				// whenever you want to load an image from url
+				// call DisplayImage function
+				// url - image url to load
+				// loader - loader image, will be displayed before getting image
+				// image - ImageView
+				imgLoader.DisplayImage(pictureURL, loader, imvUserPicture);
 			}
 			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,

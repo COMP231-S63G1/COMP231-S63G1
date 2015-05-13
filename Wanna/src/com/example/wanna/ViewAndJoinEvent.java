@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.wanna.library.ImageLoader;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
@@ -20,6 +21,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +66,7 @@ public class ViewAndJoinEvent extends Activity {
 		private static final String TAG_EventPriceRange = "eventPriceRange";
 		private static final String TAG_EventDescription = "eventDescription";
 		private static final String TAG_MESSAGE = "message";
+		private static final String TAG_PICTUREURL = "pictureURL";
 		
 		JSONObject eventDetail;
 		
@@ -75,6 +78,9 @@ public class ViewAndJoinEvent extends Activity {
 		String profileID;
 		String message;
 		int success;
+		String pictureURL;		
+
+		ImageView imvUserPicture;
 		
 
 	@Override
@@ -93,6 +99,7 @@ public class ViewAndJoinEvent extends Activity {
 		eventID = i.getStringExtra(TAG_EventID);
 
 		// Edit Text
+		imvUserPicture = (ImageView) findViewById(R.id.userPicture);
 		tvEventType = (TextView) findViewById(R.id.tvEventTypeValue);
 		tvEventName = (TextView) findViewById(R.id.tvEventNameValue);
 		tvEventDate = (TextView) findViewById(R.id.tvEventDateValue);
@@ -140,6 +147,8 @@ public class ViewAndJoinEvent extends Activity {
 						JSONArray eventDetailArray = json.optJSONArray(TAG_EventDetail); // JSON Array
 						// get first event object from JSON Array
 						eventDetail = eventDetailArray.optJSONObject(0);
+						pictureURL = "http://wanna.developerdarren.com"
+								+ eventDetail.optString(TAG_PICTUREURL);
 						// evnet with this eventID found
 					}else{
 					}
@@ -157,6 +166,16 @@ public class ViewAndJoinEvent extends Activity {
 			tvEventLocation.setText(eventDetail.optString(TAG_EventLocation));
 			tvEventPriceRange.setText(eventDetail.optString(TAG_EventPriceRange));
 			tvEventDescription.setText(eventDetail.optString(TAG_EventDescription));
+			// Loader image - will be shown before loading image
+	        int loader = R.drawable.loader;
+			ImageLoader imgLoader = new ImageLoader(getApplicationContext());
+	        
+	        // whenever you want to load an image from url
+	        // call DisplayImage function
+	        // url - image url to load
+	        // loader - loader image, will be displayed before getting image
+	        // image - ImageView 
+	        imgLoader.DisplayImage(pictureURL, loader, imvUserPicture);
 		}
 	}
 	public void JoinEventonClick(View view){

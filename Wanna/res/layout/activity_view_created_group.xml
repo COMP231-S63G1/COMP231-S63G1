@@ -19,7 +19,6 @@
                 android:id="@+id/userPicture"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_below="@id/tvEventNameValue"
                 android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
                 android:src="@android:drawable/sym_def_app_icon"/>

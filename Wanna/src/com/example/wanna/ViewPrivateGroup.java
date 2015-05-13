@@ -11,6 +11,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.example.wanna.library.ImageLoader;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
@@ -27,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +71,7 @@ public class ViewPrivateGroup extends Activity {
 	private static final String TAG_ACCEPTALBE = "acceptable";
 	private static final String TAG_NOTIFICATIONMASSAGE = "notificationMessage";
 	private static final String TAG_SENDTIME = "sendTime";
+	private static final String TAG_PICTUREURL = "pictureURL";
 
 	JSONObject groupDetail;
 	// session variables
@@ -83,6 +86,9 @@ public class ViewPrivateGroup extends Activity {
 	int success;
 	String message;
 	String notificationMessage;
+	String pictureURL;
+
+	ImageView imvUserPicture;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +102,7 @@ public class ViewPrivateGroup extends Activity {
 		Intent intent = getIntent();
 		groupID = intent.getStringExtra(TAG_GroupID);
 		// Edit Text
+		imvUserPicture = (ImageView) findViewById(R.id.userPicture);
 		tvGroupTitle = (TextView) findViewById(R.id.tvGroupNameValue);
 		tvGroupType = (TextView) findViewById(R.id.tvGroupTypeValue);
 		tvGroupDescription = (TextView) findViewById(R.id.tvGroupDescriptionValue);
@@ -132,11 +139,10 @@ public class ViewPrivateGroup extends Activity {
 				groupDetail = groupDetailArray.optJSONObject(0);
 				// group with this goupID found
 				description = groupDetail.optString(TAG_GroupDescription);
-				System.out.println(description);
 				name = groupDetail.optString(TAG_GroupName);
-				System.out.println(name);
 				type = groupDetail.optString(TAG_GroupType);
-				System.out.println(type);
+				pictureURL = "http://wanna.developerdarren.com"
+						+ groupDetail.optString(TAG_PICTUREURL);
 			} else {
 			}
 			return null;
@@ -149,6 +155,16 @@ public class ViewPrivateGroup extends Activity {
 				tvGroupTitle.setText(name);
 				tvGroupType.setText(type);
 				tvGroupDescription.setText(description);
+				// Loader image - will be shown before loading image
+				int loader = R.drawable.loader;
+				ImageLoader imgLoader = new ImageLoader(getApplicationContext());
+
+				// whenever you want to load an image from url
+				// call DisplayImage function
+				// url - image url to load
+				// loader - loader image, will be displayed before getting image
+				// image - ImageView
+				imgLoader.DisplayImage(pictureURL, loader, imvUserPicture);
 			}
 			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,
