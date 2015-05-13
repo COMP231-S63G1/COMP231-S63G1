@@ -36,7 +36,7 @@ if (isset($_POST['eventName']) && isset($_POST['eventType']) && isset($_POST['ev
       $result = mysql_query("INSERT INTO `event` (`eventCreaterID`, `eventType`, `eventName`, `eventDate`, `eventTime`, `eventVenue`, `eventAddress`, `eventPriceRange`, `eventDescription`) VALUES ('$userID', '$eventType', '$eventName', '$eventDate', '$eventTime', '$eventVenue', '$eventAddress', '$eventPriceRange', '$eventDescription')");
       }
 	 if ($result) {
-		 $joinResult = mysql_query("INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES ($userID, (SELECT `eventID` FROM `event` WHERE `eventCreaterID` = '$userID' AND `eventType` = '$eventType' AND `eventName` = '$eventName' AND `eventDate` = '$eventDate' AND `eventTime` = '$eventTime' AND `eventVenue` = '$eventVenue' AND `eventAddress` = '$eventAddress' AND `eventPriceRange` = '$eventPriceRange'))");
+		 $joinResult = mysql_query("INSERT INTO `eventjoinin` (`userID`, `eventID`) VALUES ('$userID', (SELECT `eventID` FROM `event` WHERE `eventCreaterID` = '$userID' AND `eventType` = '$eventType' AND `eventName` = '$eventName' AND `eventDate` = '$eventDate' AND `eventTime` = '$eventTime' AND `eventVenue` = '$eventVenue' AND `eventAddress` = '$eventAddress' AND `eventPriceRange` = '$eventPriceRange'))");
 		 if($joinResult){
         $response["success"] = 1;
 		$response["message"] = "Create and event success."; 

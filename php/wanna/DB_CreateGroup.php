@@ -27,10 +27,10 @@ if (isset($_POST['groupType']) && isset($_POST['groupPrivacy']) && isset($_POST[
     $result = mysql_query("INSERT INTO `group`(`groupCreaterID`, `groupType`, `groupPrivacy`, `groupName`, `groupDescription`, `pictureURL`) VALUES($groupCreaterID, '$groupType', '$groupPrivacy', '$groupName', '$groupDescription', '$pictureURL')");
     }
     else if ($BoolImageChange == "false") {
-    $result = mysql_query("INSERT INTO `group`(`groupCreaterID`, `groupType`, `groupPrivacy`, `groupName`, `groupDescription`) VALUES($groupCreaterID, '$groupType', '$groupPrivacy', '$groupName', '$groupDescription')");
+    $result = mysql_query("INSERT INTO `group`(`groupCreaterID`, `groupType`, `groupPrivacy`, `groupName`, `groupDescription`) VALUES('$groupCreaterID', '$groupType', '$groupPrivacy', '$groupName', '$groupDescription')");
     }
 	if ($result) {
-		$joinResult = mysql_query("INSERT INTO `groupjoinin` (`userID`, `groupID`) VALUES ($userID, (SELECT `groupID` FROM `group` WHERE `groupCreaterID` = '$userID' AND `groupPrivacy` = '$groupPrivacy' AND `groupType` = '$groupType' AND `groupName` = '$groupName'))");
+		$joinResult = mysql_query("INSERT INTO `groupjoinin` (`userID`, `groupID`) VALUES ('$userID', (SELECT `groupID` FROM `group` WHERE `groupCreaterID` = '$userID' AND `groupPrivacy` = '$groupPrivacy' AND `groupType` = '$groupType' AND `groupName` = '$groupName'))");
 		 if($joinResult){
 			// successfully inserted into database
 			$response["success"] = 1;

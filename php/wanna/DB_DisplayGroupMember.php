@@ -13,9 +13,9 @@ $groupID = $_POST["groupID"];
 $userType = $_SESSION['userType'];
 
 if($userType == "Person"){
-	$result = mysql_query("SELECT `nickName`, `profileID` FROM `personprofile` where `profileID` in(SELECT `profileID` FROM `users` WHERE `userid` in (SELECT DISTINCT(`userid`) from `groupjoinin` WHERE `groupID`=$groupID))");
+	$result = mysql_query("SELECT `nickName`, `profileID` FROM `personprofile` where `userID` in (SELECT DISTINCT(`userid`) from `groupjoinin` WHERE `groupID`='$groupID')");
 }else if($userType == "Organization"){
-	$result = mysql_query("SELECT `nickName`, `profileID` FROM `organizationfile` where `profileID `in (SELECT `profileID` FROM `users` WHERE `userid` in(SELECT DISTINCT(`userid`) from `groupjoinin` WHERE `groupID`=$groupID))");
+	$result = mysql_query("SELECT `nickName`, `profileID` FROM `organizationfile` where `userID`in (SELECT DISTINCT(`userid`) from `groupjoinin` WHERE `groupID`='$groupID'))");
 }
 	
 	if (!empty($result)) {
