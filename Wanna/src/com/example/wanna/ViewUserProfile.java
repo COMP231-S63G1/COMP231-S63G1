@@ -11,6 +11,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.example.wanna.library.ImageLoader;
 import com.example.wanna.library.JSONParser;
 import com.example.wanna.library.UserFunctions;
 
@@ -27,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +56,9 @@ public class ViewUserProfile extends Activity {
 	String description;
 	String friendUserID;
 	String notificationMessage;
+	String pictureURL;		
+
+	ImageView imvUserPicture;
 
 	private static final String TAG_SESSIONID = "sessionid";
 	private static final String TAG_USERID = "userid";
@@ -77,6 +82,7 @@ public class ViewUserProfile extends Activity {
 	private static final String TAG_ACCEPTALBE = "acceptable";
 	private static final String TAG_NOTIFICATIONMASSAGE = "notificationMessage";
 	private static final String TAG_SENDTIME="sendTime";
+	private static final String TAG_PICTUREURL = "pictureURL";
 
 
 
@@ -100,6 +106,7 @@ public class ViewUserProfile extends Activity {
 		Intent intent = getIntent();
 		friendUserID = intent.getStringExtra(TAG_FRIENDUSERIDFROMINTENT);
 
+		imvUserPicture = (ImageView) findViewById(R.id.userPicture);
 		tvProfileNickName = (TextView) findViewById(R.id.userNameValue);
 		tvProfileGender = (TextView) findViewById(R.id.userGenderValue);
 		tvProfileAge = (TextView) findViewById(R.id.userAgeValue);
@@ -197,6 +204,8 @@ public class ViewUserProfile extends Activity {
 				age = profileInformation.optString(TAG_ProfileAge);
 				gender = profileInformation.optString(TAG_ProfileGender);
 				description = profileInformation.optString(TAG_DESCRIPTION);
+				pictureURL = "http://wanna.developerdarren.com"
+						+ profileInformation.optString(TAG_PICTUREURL);
 			} else {
 			}
 			return null;
@@ -210,7 +219,16 @@ public class ViewUserProfile extends Activity {
 				tvProfileNickName.setText(nickName);
 				tvProfileGender.setText(gender);
 				tvProfileAge.setText(age);
-				tvProfileDescription.setText(description);
+				tvProfileDescription.setText(description);// Loader image - will be shown before loading image
+		        int loader = R.drawable.loader;
+				ImageLoader imgLoader = new ImageLoader(getApplicationContext());
+		        
+		        // whenever you want to load an image from url
+		        // call DisplayImage function
+		        // url - image url to load
+		        // loader - loader image, will be displayed before getting image
+		        // image - ImageView 
+		        imgLoader.DisplayImage(pictureURL, loader, imvUserPicture);
 			}
 			if (success != 1) {
 				Toast.makeText(getApplicationContext(), message,

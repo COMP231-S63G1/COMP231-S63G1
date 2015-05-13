@@ -41,6 +41,7 @@ if (!empty($result)) {
             $profileInformation["age"] = $result["age"];
             $profileInformation["gender"] = $result["gender"];
             $profileInformation["description"] = $result["description"]; 
+            $profileInformation["pictureURL"] = $result["pictureURL"]; 
          
             // success
             $response["success"] = 1;
