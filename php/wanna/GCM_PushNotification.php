@@ -3,7 +3,7 @@
 $url    = 'https://android.googleapis.com/gcm/send';
  
 //your api key
-$apiKey = 'AIzaSyAd6juDRu0ofqsdVO5RUzAMAa3MgBB7Hng';
+$apiKey = 'AIzaSyBrhBPxsVHOMKwtVqZaKGZwUbH2BNcgJiI';
  
 //registration ids
 $registrationIDs = $gcm_regid;
