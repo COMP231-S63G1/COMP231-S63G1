@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wannaproject"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.comp231061.project.wanna"
+    android:versionCode="2"
+    android:versionName="1.01" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -21,10 +21,10 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="com.example.wanna.permission.C2D_MESSAGE" />
+    <uses-permission android:name="comp231061.project.wanna.permission.C2D_MESSAGE" />
 
     <permission
-        android:name="com.wannaproject.permission.C2D_MESSAGE"
+        android:name="com.comp231061.project.wanna.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <application
@@ -38,7 +38,7 @@
         
          <!-- GCM Notification Receiver -->
         <receiver
-            android:name="com.wannaproject.GcmBroadcastReceiver"
+            android:name="com.comp231061.project.wanna.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
  
@@ -50,10 +50,10 @@
             </intent-filter>
         </receiver>
  
-        <service android:name="com.wannaproject.GcmIntentService" />
+        <service android:name="com.comp231061.project.wanna.GcmIntentService" />
 
         <activity
-            android:name="com.wannaproject.MainActivity"
+            android:name="com.comp231061.project.wanna.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,197 +64,197 @@
         
         <!-- Notification Activity -->
         <activity
-            android:name="com.wannaproject.ResulatActivity"
-            android:parentActivityName=".MainActivity">
+            android:name="com.comp231061.project.wanna.ResulatActivity"
+            android:parentActivityName="com.comp231061.project.wanna.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         
         <activity
-            android:name="com.wannaproject.Login"
+            android:name="com.comp231061.project.wanna.Login"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="com.wannaproject.Registered"
+            android:name="com.comp231061.project.wanna.Registered"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.wannaproject.PersonLoginSuccess"
+            android:name="com.comp231061.project.wanna.PersonLoginSuccess"
             android:label="Wanna..? USER PANEL" >
         </activity>
         <activity
-            android:name="com.wannaproject.PasswordReset"
+            android:name="com.comp231061.project.wanna.PasswordReset"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.wannaproject.ChangePassword"
+            android:name="com.comp231061.project.wanna.ChangePassword"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.wannaproject.CreatePersonProfile"
+            android:name="com.comp231061.project.wanna.CreatePersonProfile"
             android:label="@string/activity_profile_form" >
         </activity>
         <activity
-            android:name="com.wannaproject.CreateEvent"
+            android:name="com.comp231061.project.wanna.CreateEvent"
             android:label="@string/title_activity_create_event" >
         </activity>
         <activity
-            android:name="com.wannaproject.EditEvent"
+            android:name="com.comp231061.project.wanna.EditEvent"
             android:label="@string/title_activity_editEvent" >
         </activity>
         <activity
-            android:name="com.wannaproject.SearchEvent"
+            android:name="com.comp231061.project.wanna.SearchEvent"
             android:label="@string/title_activity_search_event" >
         </activity>
         <activity
-            android:name="com.wannaproject.EditProfileForm"
+            android:name="com.comp231061.project.wanna.EditProfileForm"
             android:label="@string/title_activity_edit_profile_form" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewCreatedEvent"
+            android:name="com.comp231061.project.wanna.ViewCreatedEvent"
             android:label="@string/title_activity_view_event_detail" >
         </activity>
         <activity
-            android:name="com.wannaproject.EditProfile"
+            android:name="com.comp231061.project.wanna.EditProfile"
             android:label="@string/title_activity_edit_profile" >
         </activity>
         <activity
-            android:name="com.wannaproject.Profile_Form"
+            android:name="com.comp231061.project.wanna.Profile_Form"
             android:label="@string/title_activity_profile__form" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewPersonProfile"
+            android:name="com.comp231061.project.wanna.ViewPersonProfile"
             android:label="@string/title_activity_view_profile_information" >
         </activity>
         <activity
-            android:name="com.wannaproject.RegisterPerson"
+            android:name="com.comp231061.project.wanna.RegisterPerson"
             android:label="@string/title_activity_register"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewAndJoinEvent"
+            android:name="com.comp231061.project.wanna.ViewAndJoinEvent"
             android:label="@string/title_activity_view_and_join_event" >
         </activity>
         <activity
-            android:name="com.wannaproject.SearchEventResult"
+            android:name="com.comp231061.project.wanna.SearchEventResult"
             android:label="@string/title_activity_search_event_result" >
         </activity>
         <activity
-            android:name="com.wannaproject.CreateGroup"
+            android:name="com.comp231061.project.wanna.CreateGroup"
             android:label="@string/title_activity_create_group" >
         </activity>
         <activity
-            android:name="com.wannaproject.SearchGroup"
+            android:name="com.comp231061.project.wanna.SearchGroup"
             android:label="@string/title_activity_search_groups" >
         </activity>
         <activity
-            android:name="com.wannaproject.GroupSearchResult"
+            android:name="com.comp231061.project.wanna.GroupSearchResult"
             android:label="@string/title_activity_group_search_result" >
         </activity>
         <activity
-            android:name="com.wannaproject.EditGroup"
+            android:name="com.comp231061.project.wanna.EditGroup"
             android:label="@string/title_activity_edit_group" >
         </activity>
         <activity
-            android:name="com.wannaproject.SearchGroupResult"
+            android:name="com.comp231061.project.wanna.SearchGroupResult"
             android:label="@string/title_activity_search_group_result" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewPublicGroup"
+            android:name="com.comp231061.project.wanna.ViewPublicGroup"
             android:label="@string/title_activity_view_public_group" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewPrivateGroup"
+            android:name="com.comp231061.project.wanna.ViewPrivateGroup"
             android:label="@string/title_activity_view_private_group" >
         </activity>
         <activity
-            android:name="com.wannaproject.SearchUserResult"
+            android:name="com.comp231061.project.wanna.SearchUserResult"
             android:label="@string/title_activity_search_user_result" >
         </activity>
         <activity
-            android:name="com.wannaproject.SearchUserName"
+            android:name="com.comp231061.project.wanna.SearchUserName"
             android:label="@string/title_activity_search_user_name" >
         </activity>
         <activity
-            android:name="com.wannaproject.SearchUsername"
+            android:name="com.comp231061.project.wanna.SearchUsername"
             android:label="@string/title_activity_search_username" >
         </activity>
         <activity
-            android:name="com.wannaproject.SearchUserFiltration"
+            android:name="com.comp231061.project.wanna.SearchUserFiltration"
             android:label="@string/title_activity_search_user_status" >
         </activity>
         <activity
-            android:name="com.wannaproject.GetCreatedEvent"
+            android:name="com.comp231061.project.wanna.GetCreatedEvent"
             android:label="@string/title_activity_get_created_event" >
         </activity>
         <activity
-            android:name="com.wannaproject.GetJoinedEvent"
+            android:name="com.comp231061.project.wanna.GetJoinedEvent"
             android:label="@string/title_activity_get_joined_event" >
         </activity>
         <activity
-            android:name="com.wannaproject.RegisterOrganization"
+            android:name="com.comp231061.project.wanna.RegisterOrganization"
             android:label="@string/title_activity_register_organization" >
         </activity>
         <activity
-            android:name="com.wannaproject.GetCreatedGroup"
+            android:name="com.comp231061.project.wanna.GetCreatedGroup"
             android:label="@string/title_activity_get_created_group" >
         </activity>
         <activity
-            android:name="com.wannaproject.GetJoinedGroup"
+            android:name="com.comp231061.project.wanna.GetJoinedGroup"
             android:label="@string/title_activity_get_joined_group" >
         </activity>
         <activity
-            android:name="com.wannaproject.CreateOrganizationProfile"
+            android:name="com.comp231061.project.wanna.CreateOrganizationProfile"
             android:label="@string/title_activity_create_organization_profile" >
         </activity>
         <activity
-            android:name="com.wannaproject.OrganizationLoginSuccess"
+            android:name="com.comp231061.project.wanna.OrganizationLoginSuccess"
             android:label="@string/title_activity_organization_login_success" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewOrganizationProfile"
+            android:name="com.comp231061.project.wanna.ViewOrganizationProfile"
             android:label="@string/title_activity_view_organization_profile" >
         </activity>
         <activity
-            android:name="com.wannaproject.EditOrganizationProfile"
+            android:name="com.comp231061.project.wanna.EditOrganizationProfile"
             android:label="@string/title_activity_edit_organization_profile" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewCreatedGroup"
+            android:name="com.comp231061.project.wanna.ViewCreatedGroup"
             android:label="@string/title_activity_view_created_group" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewUserProfile"
+            android:name="com.comp231061.project.wanna.ViewUserProfile"
             android:label="@string/title_activity_view_user_profile" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewNotifications"
+            android:name="com.comp231061.project.wanna.ViewNotifications"
             android:label="@string/title_activity_view_notifications" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewAcceptableNotification"
+            android:name="com.comp231061.project.wanna.ViewAcceptableNotification"
             android:label="@string/title_activity_view_acceptable_notification" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewUnacceptableNotification"
+            android:name="com.comp231061.project.wanna.ViewUnacceptableNotification"
             android:label="@string/title_activity_view_unacceptable_notification" >
         </activity>
         <activity
-            android:name="com.wannaproject.ChatActivity"
+            android:name="com.comp231061.project.wanna.ChatActivity"
             android:label="@string/title_activity_chat" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewUserProfileActivity"
+            android:name="com.comp231061.project.wanna.ViewUserProfileActivity"
             android:label="@string/title_activity_view_user_profile" >
         </activity>
         <activity
-            android:name="com.wannaproject.ViewFriendList"
+            android:name="com.comp231061.project.wanna.ViewFriendList"
             android:label="@string/title_activity_view_friend_list" >
         </activity>
         <activity
-            android:name="com.wannaproject.DemoActivity"
+            android:name="com.comp231061.project.wanna.DemoActivity"
             android:label="@string/title_activity_demo" >
         </activity>
     </application>
